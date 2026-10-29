@@ -29,24 +29,45 @@ From the Canvas assignment, "Project Alpha":
 
 ## Validation plan (Activity 1)
 
-Per the professor, the Alpha validates **menu import**. Week-2 return and rating KPIs from the MVP pitch are **not** part of Alpha validation. Say this on the slide, so it doesn't look like we dropped our own KPIs.
+Per the professor: **the hypothesis and validation are about the MVP's assumptions, not the whole product.** The highest-risk item is whether we can get dish information from sources we can actually read. Whether picks rate ≥ 4/5 and whether people come back test the whole product, so they move to the **Beta hypothesis**. Say this on the slide, so it doesn't look like we dropped our own KPIs.
 
-**Hypothesis:** our LLM import turns real, messy restaurant menus fetched online into accurate structured dish data with no manual fixes.
+**Hypothesis:** for Charlottesville restaurants, the dish information the MVP needs can be read from real sources: (A1) a readable menu source exists, (A2) our LLM import extracts the dishes from it correctly, and (A3) the reviews we can read mention specific dishes often enough to back picks with real quotes.
+
+| # | MVP assumption | Test | Pass threshold | Issue |
+|---|---|---|---|---|
+| A1 | **Sources exist.** Most target restaurants publish their menu somewhere we can read (own site, PDF, ordering page), not only Instagram stories or an in-store photo. | Survey 30 restaurants on the Corner, Downtown Mall and Barracks Road. Record each one's menu source type and whether it is readable. | ≥ 24 of 30 (80%) | US-23 |
+| A2 | **We can extract dishes from those sources.** The LLM import gets dish names and prices right with no manual fixes. | 1 easy demo, then 10 medium-to-hard menus scored against hand-copied menus. | ≥ 8 of 10 import easily, and dish-accuracy 95% lower bound ≥ 90% | US-18, US-19, US-20 |
+| A3 | **Reviews mention dishes.** The reviews we can read talk about specific dishes often enough for an evidence-backed top 3. | For the same 10 restaurants, pull reviews and run dish-mention extraction (US-07). Count menu dishes with ≥ 3 matched mentions. | ≥ 8 of 10 restaurants have at least 3 dishes with ≥ 3 mentions each | US-24 |
+
+**Verdict:** all three pass means **Validated**. If any one fails, the pivot follows which one failed:
+- A1 fails: make photo scanning (US-04) the main way menus get in.
+- A2 fails: narrow import to the source types that passed and move the rest to the Beta.
+- A3 fails: rank from the menu plus our own post-meal ratings, and lean on the "few reviews" labels (US-13).
+
+### A1 — source availability survey (US-23)
+
+- The 30 restaurants are listed before anyone looks at their menus: every sit-down restaurant in the three areas, up to 30, in map order.
+- Each gets a source type: `html`, `pdf`, `ordering-page`, `image-on-site`, `third-party-only` (e.g. Yelp photos), `social-only`, or `none`.
+- **Readable** means `html`, `pdf`, `ordering-page` or `image-on-site`.
+- Report the readable count and its exact Clopper-Pearson 95% interval. For example, 24/30 gives [61.4%, 92.3%].
+- The 10 benchmark restaurants for A2 are drawn from the readable, medium-to-hard ones.
+
+### A2 — menu import benchmark (US-18 to US-20)
 
 1. **Easy demo.** One restaurant with a clean HTML menu goes through the import live, with the structured dishes shown on screen.
-2. **Benchmark set.** 10 Charlottesville restaurants whose online menus are medium-to-hard to read:
+2. **Benchmark set.** 10 restaurants whose online menus are medium-to-hard to read:
    - PDF menus
    - image-only menus
    - JavaScript ordering pages (Toast, Square, ChowNow)
    - long menus with many sections or specials
 
-   Each restaurant's tier and source type is written down **before** anything is imported.
+   Each restaurant's tier, source type and review source is written down **before** anything is imported.
 3. **Correct answers.** A team member copies each menu by hand into the schema. A second person spot-checks 20% of the dishes.
 4. **"Imported easily" (pass/fail per restaurant)** means, with no manual fixes:
    - at least 95% of dish names and prices correct
    - 0 invented dishes
    - finished in under 2 minutes
-5. **Threshold:** at least **8 of 10** restaurants pass means **Validated**.
+5. **Threshold:** at least **8 of 10** restaurants pass.
 6. **Supporting statistics** (reported, not used as the pass rule):
    - Restaurant level: exact Clopper-Pearson 95% interval for the pass count. 8/10 gives [44.4%, 97.5%] and 9/10 gives [55.5%, 99.7%]. With n = 10 the normal approximation (CLT) does not hold (np ≥ 10 and n(1−p) ≥ 10 both fail), so exact methods are used. For context, the exact one-sided binomial test against p₀ = 0.6 gives p = 0.167 for 8/10 and p = 0.046 for 9/10.
    - Dish level: 10 menus give hundreds of dishes. Dishes on the same menu fail together, so use a **cluster bootstrap**: resample restaurants with replacement 10,000 times and take the 95% percentile interval of pooled dish accuracy. Target: lower bound at least 90%.
@@ -55,9 +76,16 @@ Per the professor, the Alpha validates **menu import**. Week-2 return and rating
    - Tiers are written down before the run.
    - Prompts are frozen at a tagged commit before the benchmark. No tuning on the 10 test restaurants.
    - The person who copied a menu does not do the only check of it.
-8. **If it fails:** the pivot follows whichever source type failed. For example, ship website and HTML import only, and move PDF and photo menus to the Beta.
 
 Photo scanning (US-04) is a product feature but is **out of** the benchmark, because the professor asked us to fetch menus online.
+
+### A3 — review dish coverage (US-24)
+
+- Use the same 10 restaurants as A2, with their reviews pulled through US-06.
+- Run US-07 extraction with prompts frozen at the same tag as A2. A mention counts only if it matches a menu dish at ≥ 0.9.
+- To check the extraction itself, a team member reads 50 random reviews by hand and marks the dish mentions. Report the extraction's precision and recall against that hand check.
+- Per restaurant, report: number of reviews, dishes with ≥ 1 / ≥ 3 / ≥ 10 mentions, and whether it has at least 3 dishes with ≥ 3 mentions ("enough for a full top 3").
+- Report the count of 10 that are enough, with its Clopper-Pearson interval.
 
 ## User stories (GitHub issues, milestone `Alpha`)
 
@@ -82,9 +110,11 @@ Photo scanning (US-04) is a product feature but is **out of** the benchmark, bec
 | US-17 | Log usage events | area:validation |
 | US-18 | Benchmark restaurant set and correct menus | area:validation, area:menu-import |
 | US-19 | Benchmark runner | area:validation, area:menu-import |
-| US-20 | Benchmark scoring and statistics report | area:validation |
+| US-20 | Validation scoring and report (A1–A3 verdict) | area:validation |
 | US-21 | Audit picks for invented dishes and quotes | area:validation |
 | US-22 | Deploy on Cloudflare with CI | area:infra |
+| US-23 | Menu source availability survey (A1) | area:validation, area:menu-import |
+| US-24 | Review dish-coverage measurement (A3) | area:validation, area:reviews |
 
 The acceptance criteria and the planned tests are in each issue. If scope changes, update the issue **and** this table.
 
