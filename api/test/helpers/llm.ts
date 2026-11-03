@@ -9,7 +9,7 @@ export function mockLlm(responses: Scripted[]) {
   const llm: Llm & { calls: LlmRequest[] } = {
     calls,
     async json(req) {
-      calls.push(structuredClone(req));
+      calls.push({ ...req, messages: structuredClone(req.messages) });
       if (calls.length > responses.length) throw new Error(`mockLlm: unexpected call #${calls.length} (${req.task})`);
       let next = responses[calls.length - 1];
       if (typeof next === "function") next = (next as (r: LlmRequest) => unknown)(req);
