@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "benchmark": "tsx scripts/benchmark.ts",
     "coverage:a3": "tsx scripts/coverage-a3.ts",
-    "validation:report": "tsx scripts/validation-report.ts"
+    "validation:report": "tsx scripts/validation-report.ts",
+    "truth": "tsx scripts/truth-import.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.4.0",
