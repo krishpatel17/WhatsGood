@@ -63,7 +63,11 @@ export function PickCard({
         </>
       ) : (
         <div className="ranking-footer">
-          <span>Ranked by menu match &amp; review sentiment</span>
+          <span>
+            {pick.mentionCount > 0
+              ? "Ranked by menu match & review sentiment"
+              : "Matched from the menu, no review evidence"}
+          </span>
           <span className="evidence">✦ Verified on menu</span>
         </div>
       )}

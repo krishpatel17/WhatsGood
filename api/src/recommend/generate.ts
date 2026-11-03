@@ -1,4 +1,4 @@
-import type { Llm, LlmContent, LlmMessage, LlmUsage } from "../llm/types";
+import type { Llm, LlmContent, LlmMessage, LlmResponse, LlmUsage } from "../llm/types";
 import { RECOMMEND_SYSTEM } from "../prompts/recommend";
 import { labelsFor, MAX_PICKS } from "./plan";
 import { PicksSchema } from "./types";
@@ -49,7 +49,14 @@ export async function generatePicks(deps: { llm: Llm; onFailure: OnFailure }, ct
   const messages: LlmMessage[] = [{ role: "user", content: prompt }];
   const usage: LlmUsage = { input_tokens: 0, output_tokens: 0 };
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
-    const res = await deps.llm.json({ task: "recommend", system: RECOMMEND_SYSTEM, messages, schema: PicksSchema, effort: "low" });
+    let res: LlmResponse;
+    try {
+      res = await deps.llm.json({ task: "recommend", system: RECOMMEND_SYSTEM, messages, schema: PicksSchema, effort: "low" });
+    } catch (e) {
+      // No answer to correct, so retrying can't help: the diner still gets the plain ranking.
+      await deps.onFailure(attempt, [`model call failed: ${e instanceof Error ? e.message : String(e)}`]);
+      return { mode: "fallback", picks: fallbackRanking(ctx), attempts: attempt, usage };
+    }
     usage.input_tokens += res.usage.input_tokens;
     usage.output_tokens += res.usage.output_tokens;
     const { errors, picks } = validatePicks(res.data, ctx);

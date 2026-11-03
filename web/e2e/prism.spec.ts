@@ -167,3 +167,36 @@ test("[ai] adding a menu to an existing restaurant reuses its ID", async ({
   await expect(page).toHaveURL(/\/results\/\?r=r1/);
   expect(creates).toBe(0);
 });
+test("[ai] header buttons do not stack a second form on the page that already has it", async ({
+  page,
+}) => {
+  await mockApi(page);
+  await page.goto("/setup/");
+  await page.getByRole("button", { name: /My profile/ }).click();
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(page.locator("main input").first()).toBeFocused();
+  await page.goto("/scan/");
+  await page.getByRole("button", { name: "Scan Menu", exact: true }).click();
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(page.locator("main input").first()).toBeFocused();
+});
+test("[ai] results never credit reviews a restaurant does not have", async ({
+  page,
+}) => {
+  await mockApi(page);
+  const noReviews = {
+    mode: "fallback",
+    explanation: null,
+    picks: [{ dishId: "d1", name: "Dan Dan Noodles", price: 14, reason: null, quotes: [], mentionCount: 0, flags: [], labels: ["menu_only"] }],
+  };
+  await page.route(`${API}/restaurants/r1`, (route) =>
+    route.fulfill({ json: { id: "r1", name: "Test Noodle House", address: "1 Main St", has_menu: true, has_reviews: false } }),
+  );
+  await page.route(`${API}/restaurants/r1/fallback*`, (route) => route.fulfill({ json: noReviews }));
+  await page.route(`${API}/restaurants/r1/recommend`, (route) => route.fulfill({ json: noReviews }));
+  await page.goto("/results/?r=r1");
+  await expect(page.getByTestId("pick-card")).toHaveCount(1);
+  await expect(page.getByText("Up to three dishes, checked against the menu.")).toBeVisible();
+  await expect(page.getByText("Your menu matches, listed alphabetically.")).toBeVisible();
+  await expect(page.getByText(/review sentiment|real reviews|top-rated/)).toHaveCount(0);
+});

@@ -77,4 +77,22 @@ describe("US-12 failure log", () => {
     const rows = db.raw.prepare("SELECT restaurant_id, task, attempt, failed_check FROM llm_failures").all();
     expect(rows).toEqual([{ restaurant_id: "r1", task: "recommend", attempt: 1, failed_check: 'item[0] "Kung Pao Chicken" is not on this restaurant\'s menu' }]);
   });
+
+  it("[ai] T7 integration: a failed model call returns the fallback ranking and logs the failure", async () => {
+    let calls = 0;
+    const llm = {
+      json: async () => {
+        calls++;
+        throw new Error("401 Invalid bearer token");
+      },
+    };
+    const failures: { attempt: number; errors: string[] }[] = [];
+    const out = await generatePicks({ llm, onFailure: async (attempt, errors) => void failures.push({ attempt, errors }) }, context(), prompt);
+    expect(calls).toBe(1);
+    expect(out.mode).toBe("fallback");
+    expect(out.attempts).toBe(1);
+    expect(out.picks.map((p) => p.dishId)).toEqual(["d1", "d2", "d3"]);
+    expect(out.picks.every((p) => p.reason === null)).toBe(true);
+    expect(failures).toEqual([{ attempt: 1, errors: ["model call failed: 401 Invalid bearer token"] }]);
+  });
 });

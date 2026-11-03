@@ -95,7 +95,9 @@ function Results() {
         </a>
         <h1>{restaurant?.name ?? "Your picks"}</h1>
         <p className="sub">
-          Up to three dishes, checked against the menu and real reviews.
+          {restaurant && !restaurant.has_reviews
+            ? "Up to three dishes, checked against the menu."
+            : "Up to three dishes, checked against the menu and real reviews."}
         </p>
         {restaurant?.address && <p className="address">{restaurant.address}</p>}
         </div>
