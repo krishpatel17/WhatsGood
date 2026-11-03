@@ -1,4 +1,5 @@
 import { type Db, newId, nowIso } from "../db";
+import { logEvent } from "../events/log";
 import type { Llm } from "../llm/types";
 import type { Profile } from "../profile/schema";
 import { buildPrompt, loadContext, type RecommendContext } from "./context";
@@ -14,12 +15,21 @@ export type Recommendation = {
   attempts: number;
 };
 
+/** Stores the recommendation and logs exactly what was shown, so US-21 can audit it later. */
 async function store(db: Db, profileId: string, ctx: RecommendContext, rec: Omit<Recommendation, "recommendationId">): Promise<string> {
   const id = newId();
   await db
     .prepare("INSERT INTO recommendations (id, profile_id, restaurant_id, mode, picks, explanation, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)")
     .bind(id, profileId, ctx.restaurantId, rec.mode, JSON.stringify(rec.picks), rec.explanation, nowIso())
     .run();
+  await logEvent(db, {
+    type: "recommendation_shown",
+    profileId,
+    restaurantId: ctx.restaurantId,
+    recommendationId: id,
+    mode: rec.mode,
+    picks: rec.picks.map((p) => ({ dishId: p.dishId, name: p.name, quotes: p.quotes })),
+  });
   return id;
 }
 
