@@ -4,6 +4,7 @@ import type { Validate } from "./import";
 
 export const MAX_PRICE = 500;
 export const COUNT_TOLERANCE = 0.15;
+export const NO_DISHES = "no dishes found in the source";
 
 export type PriceResult = { ok: true; value: number | null } | { ok: false; error: string };
 
@@ -65,6 +66,7 @@ export function validateMenu(layoutCount: number | null): Validate {
     });
     const count = countCheck(dishes.length, layoutCount);
     if (count) errors.push(count);
+    else if (dishes.length === 0) errors.push(NO_DISHES);
     return { menu: { dishes }, errors };
   };
 }
