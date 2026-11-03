@@ -1,1 +1,75 @@
 section,name,price
+Appetizers,Garlic Knots,5.00
+Appetizers,Buddha Belly,5.00
+Appetizers,Hummus Plate,5.00
+Appetizers,Focaccia + Beer Cheese,5.00
+Appetizers,Spinach Artichoke Dip,5.00
+Wings,8 PC Wings,13.50
+Wings,20 PC Wings,32.00
+Calzones,Veghead,13.00
+Calzones,Meathead,14.00
+Calzones,747 Calzone,12.00
+Calzones,Cheese Calzone,10.00
+Calzones,Buffalo Chicken Calzone,11.73
+Hoagies,Meatball Parm,15.00
+Hoagies,Chicken Parm,15.00
+Hoagies,Veggie Parm,14.00
+Hoagies,Yummus,14.00
+Hoagies,BBQ Chicken,15.00
+Hoagies,Buffalo Chicken,15.00
+Hoagies,Pizza Hoagie,15.00
+Hoagies,Big Tony,12.00
+Salads,Caesar,10.00
+Salads,Greek,11.00
+Salads,Side Salad,4.50
+Sides,Dipping Sauce,1.00
+Sides,Beer Cheese,3.00
+Dessert,Cinnamon Buddha Bites,4.00
+SML,SML Create Your Own,9.00
+SML,SML Cheese,10.00
+SML,SML Pepperoni,11.50
+SML,SML 747,13.00
+SML,SML Big Yang,14.00
+SML,SML Buddhist,14.00
+SML,SML Capone,14.00
+SML,SML Carnivore,14.00
+SML,SML Emerald,14.00
+SML,SML Feisty Italian,14.00
+SML,SML Fun Guy,14.00
+SML,SML Maui,14.00
+SML,SML Outlaw,14.00
+SML,SML Southern Thing,14.00
+SML,SML Special,14.00
+SML,SML Veggie,13.00
+MED,MED Create Your Own,14.00
+MED,MED Cheese,14.00
+MED,MED Pepperoni,15.75
+MED,MED 747,20.00
+MED,MED Big Yang,22.00
+MED,MED Buddhist,21.00
+MED,MED Capone,21.00
+MED,MED Carnivore,21.00
+MED,MED Emerald,21.00
+MED,MED Feisty Italian,21.00
+MED,MED Fun Guy,21.00
+MED,MED Maui,21.00
+MED,MED Outlaw,21.00
+MED,MED Southern Thing,21.00
+MED,MED Special,22.00
+MED,MED Veggie,20.00
+LRG,LRG Create Your Own,17.00
+LRG,LRG Cheese,17.00
+LRG,LRG Pepperoni,19.00
+LRG,LRG 747,25.00
+LRG,LRG Big Yang,29.00
+LRG,LRG Buddhist,28.00
+LRG,LRG Capone,26.00
+LRG,LRG Carnivore,28.00
+LRG,LRG Emerald,26.00
+LRG,LRG Feisty Italian,28.00
+LRG,LRG Fun Guy,28.00
+LRG,LRG Maui,28.00
+LRG,LRG Outlaw,28.00
+LRG,LRG Southern Thing,28.00
+LRG,LRG Special,29.00
+LRG,LRG Veggie,25.00
