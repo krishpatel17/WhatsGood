@@ -1,5 +1,7 @@
 // Model-shaped menu for test/fixtures/menu-easy.html.
-export const easyMenu = {
+import type { Menu } from "../../src/menu/schema";
+
+export const easyMenu: Menu = {
   dishes: [
     {
       name: "Dan Dan Noodles",
