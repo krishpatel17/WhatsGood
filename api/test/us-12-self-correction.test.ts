@@ -51,8 +51,9 @@ describe("US-12 Self-correction loop and fallback ranking", () => {
   it("[ai] T4 unit: fallback ranking respects restriction filters and sorts by sentiment x mentions", () => {
     // d1: 0.8 x 3 = 2.4, d2: 0.95 x 2 = 1.9, d3: 0.6 x 1 = 0.6, d4: -0.7, d5: no mentions.
     expect(fallbackRanking(context()).map((p) => p.dishId)).toEqual(["d1", "d2", "d3"]);
-    // Peanut allergy removes Dan Dan Noodles; no pork removes it and the pork dumplings.
-    expect(fallbackRanking(context({ allergies: ["peanut"] })).map((p) => p.dishId)).toEqual(["d2", "d3", "d5"]);
+    // Peanut allergy removes Dan Dan Noodles, leaving 2 positively reviewed dishes, so the plan (US-13) caps it at 2.
+    expect(fallbackRanking(context({ allergies: ["peanut"] })).map((p) => p.dishId)).toEqual(["d2", "d3"]);
+    // No pork removes Dan Dan Noodles and the pork dumplings; the budget removes the lamb noodles.
     const ranked = fallbackRanking(context({ diets: ["no_pork"], budget: 15 }));
     expect(ranked.map((p) => p.dishId)).toEqual(["d3", "d5"]);
     expect(ranked[0]).toMatchObject({ reason: null, quotes: [], mentionCount: 1, labels: ["few_reviews"] });
