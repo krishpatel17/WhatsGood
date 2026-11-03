@@ -5,6 +5,7 @@ import { createRestaurant, getRestaurant, listRestaurants } from "./repo";
 import { searchRestaurants } from "./search";
 import { scanMenu, validateUpload, VISION_TYPES } from "../menu/scan";
 import { fetchReviews } from "../reviews/collect";
+import { extractMentions } from "../reviews/mentions";
 
 const NewRestaurantSchema = z.object({ name: z.string().min(1), address: z.string().min(1), area: z.string().optional(), mapsUrl: z.url().optional() });
 
@@ -23,6 +24,11 @@ export const restaurantRoutes = new Hono<AppEnv>()
     const { db, fetch, apifyToken } = c.get("deps");
     if (!(await getRestaurant(db, c.req.param("id")))) return c.json({ error: "not found" }, 404);
     return c.json(await fetchReviews({ db, fetch, apifyToken }, c.req.param("id")));
+  })
+  .post("/:id/reviews/extract", async (c) => {
+    const { db, llm } = c.get("deps");
+    if (!(await getRestaurant(db, c.req.param("id")))) return c.json({ error: "not found" }, 404);
+    return c.json(await extractMentions({ db, llm }, c.req.param("id")));
   })
   .post("/:id/scan", async (c) => {
     const { db, blobs, llm } = c.get("deps");
