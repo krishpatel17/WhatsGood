@@ -66,3 +66,15 @@ describe("US-12 Self-correction loop and fallback ranking", () => {
     expect(validatePicks({ picks: [] }, context()).errors).toContain("returned 0 picks; expected 1 to 3");
   });
 });
+
+describe("US-12 failure log", () => {
+  it("[ai] AC3 integration: every failure is logged with attempt number, failed check and restaurant ID", async () => {
+    const { testDb } = await import("./helpers/db");
+    const { failureLogger } = await import("../src/recommend/failures");
+    const db = testDb();
+    const llm = mockLlm([inventedDish, goodPicks]);
+    await generatePicks({ llm, onFailure: failureLogger(db, "r1", "recommend") }, context(), prompt);
+    const rows = db.raw.prepare("SELECT restaurant_id, task, attempt, failed_check FROM llm_failures").all();
+    expect(rows).toEqual([{ restaurant_id: "r1", task: "recommend", attempt: 1, failed_check: 'item[0] "Kung Pao Chicken" is not on this restaurant\'s menu' }]);
+  });
+});
