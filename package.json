@@ -2,10 +2,14 @@
   "name": "whats-good",
   "private": true,
   "workspaces": [
-    "api"
+    "api",
+    "web"
   ],
   "scripts": {
     "test": "npm test --workspaces --if-present",
     "coverage": "npm run coverage --workspaces --if-present"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0"
   }
 }

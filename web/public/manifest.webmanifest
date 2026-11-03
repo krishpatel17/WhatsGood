@@ -1,0 +1,9 @@
+{
+  "name": "What's Good",
+  "short_name": "What's Good",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf7f2",
+  "theme_color": "#c2410c",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
