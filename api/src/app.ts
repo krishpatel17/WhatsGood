@@ -19,13 +19,14 @@ export type Deps = {
   blobs: Blobs;
   llm: Llm;
   fetch: typeof fetch;
+  apifyToken?: string;
 };
 
 export type AppEnv = { Bindings: Env; Variables: { deps: Deps } };
 
 export function depsFromEnv(env: Env | undefined): Partial<Deps> {
   if (!env) return {};
-  return { db: env.DB, blobs: env.BUCKET, llm: anthropicLlm({ apiKey: env.ANTHROPIC_API_KEY }), fetch: (input, init) => fetch(input, init) };
+  return { db: env.DB, blobs: env.BUCKET, llm: anthropicLlm({ apiKey: env.ANTHROPIC_API_KEY }), fetch: (input, init) => fetch(input, init), apifyToken: env.APIFY_TOKEN };
 }
 
 /** Builds the API. Tests pass in-memory dependencies; production builds them from the Worker env. */
