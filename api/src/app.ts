@@ -6,6 +6,7 @@ import { anthropicLlm } from "./llm/anthropic";
 import type { Llm } from "./llm/types";
 import { profileRoutes } from "./profile/routes";
 import { restaurantRoutes } from "./restaurants/routes";
+import { recommendationRoutes } from "./feedback/routes";
 
 export type Env = {
   DB: D1Database;
@@ -41,5 +42,6 @@ export function createApp(override: Partial<Deps> = {}) {
   app.get("/health", (c) => c.json({ ok: true }));
   app.route("/profiles", profileRoutes);
   app.route("/restaurants", restaurantRoutes);
+  app.route("/recommendations", recommendationRoutes);
   return app;
 }
