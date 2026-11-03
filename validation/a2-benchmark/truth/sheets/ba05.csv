@@ -1,1 +1,216 @@
 section,name,price
+APPETIZERS,Nachos Supremos,12.99
+APPETIZERS,Queso Fundido,7.99
+APPETIZERS,Nachos,6.99
+APPETIZERS,Bean Nachos,7.99
+APPETIZERS,Beef Nachos,7.99
+APPETIZERS,Beef & Bean Nachos,7.99
+APPETIZERS,Chicken Nachos,7.99
+APPETIZERS,Cheese Dip,5.95
+APPETIZERS,Guacamole Dip,5.95
+APPETIZERS,Guacamole Salad,6.99
+APPETIZERS,Tossed Salad,6.99
+APPETIZERS,Sour Cream,0.99
+SOUPS,Caldo de Pollo,14.75
+SOUPS,Caldo de Camarón,17.25
+SOUPS,Caldo de Res,14.75
+SOUPS,Caldo de Mariscos,18.99
+TACOS,Tacos de Carne Asada,16.99
+TACOS,Tacos al Pastor,16.99
+TACOS,Tacos Salad,11.99
+TACOS,Tacos Salad Deluxe,12.99
+TACOS,Taquitos Mexicanos,16.99
+TACOS,Tacos de Carnitas,16.99
+TACOS,Tacos de Pescado,16.99
+CHILDREN'S PLATES,A. Enchilada,8.99
+CHILDREN'S PLATES,B. Taco,8.99
+CHILDREN'S PLATES,C. Cheese Quesadilla,8.99
+CHILDREN'S PLATES,D. Burrito & Taco,8.99
+CHILDREN'S PLATES,E. Burrito & Rice,8.99
+CHILDREN'S PLATES,F. Cheeseburger,8.99
+CHILDREN'S PLATES,G. Burrito & Quesadilla,8.99
+CHILDREN'S PLATES,H. Hot Dog,8.99
+CHILDREN'S PLATES,I. Chicken Nuggets,8.99
+VEGETARIAN DELIGHTS,A. 1 Cheese Burrito 1 Taco Rice and Beans,13.99
+VEGETARIAN DELIGHTS,B. 1 Bean Burrito 1 Cheese Enchilada and 1 Quesadilla,13.99
+VEGETARIAN DELIGHTS,C. 1 Cheese Burrito 1 Tostada and Beans,13.99
+VEGETARIAN DELIGHTS,D. 1 Chalupa 1 Bean Taco Rice and Beans,13.99
+VEGETARIAN DELIGHTS,E. 2 Cheese Enchiladas Rice and Beans,13.99
+VEGETARIAN DELIGHTS,F. Veggie Quesadilla with Mushrooms Onions and Guacamole Salad,13.99
+VEGETARIAN DELIGHTS,G. 2 Cheese Burritos and Rice,13.99
+VEGETARIAN DELIGHTS,El Mexicano,13.99
+LUNCH MENU,Speedy Gonzalez,9.25
+LUNCH MENU,Special Puerto,9.25
+LUNCH MENU,Special No. 1,10.25
+LUNCH MENU,Special No. 2,10.25
+LUNCH MENU,Special No. 3,10.25
+LUNCH MENU,Special No. 4,10.25
+LUNCH MENU,Special No. 5,10.25
+LUNCH MENU,Special No. 6,10.25
+LUNCH MENU,Special No. 7,10.25
+LUNCH MENU,Special No. 8,10.25
+LUNCH MENU,Special No. 9,10.25
+LUNCH MENU,Special No. 10,10.25
+LUNCH MENU,Special No. 11,10.25
+LUNCH MENU,Special No. 12,10.25
+LUNCH MENU,Special No. 13,10.25
+LUNCH MENU,Special No. 14,10.25
+LUNCH MENU,Special No. 15,10.25
+LUNCH MENU,Huevos Rancheros,10.25
+LUNCH MENU,Huevos con Chorizo,10.25
+LUNCH MENU,Fajitas,12.99
+LUNCH MENU,Grilled Chicken Salad,12.99
+LUNCH MENU,Lunch Taco Salad,10.25
+LUNCH MENU,Lunch Carnitas,12.99
+LUNCH MENU,Filete de Pescado,12.99
+LUNCH MENU,Camarones y Vegetales,12.99
+LUNCH MENU,Pollo a la Plancha,12.99
+LUNCH MENU,Chalupa Texana,7.99
+LUNCH MENU,Fajita Quesadilla,12.99
+LUNCH MENU,Burrito Mexicano,10.25
+LUNCH MENU,Burrito Special,10.25
+LUNCH MENU,Vegetarian Burrito,12.99
+LUNCH MENU,Fajita Burrito,12.99
+LUNCH MENU,Burrito Carnitas,12.99
+LUNCH MENU,Burrito Verde,12.99
+LUNCH MENU,Burrito Rojo,12.99
+A LA CARTE,Chalupa,4.25
+A LA CARTE,Tostaguac,4.75
+A LA CARTE,Tostadas,4.75
+A LA CARTE,Tostadas,8.99
+A LA CARTE,Tamales,3.99
+A LA CARTE,Tamales,10.99
+A LA CARTE,Chiles Rellenos,3.99
+A LA CARTE,Chiles Rellenos,10.99
+A LA CARTE,Soft Shell Taco,3.25
+A LA CARTE,Soft Shell Taco,9.75
+A LA CARTE,Hard Shell Taco,2.50
+A LA CARTE,Hard Shell Taco,7.50
+A LA CARTE,Beef Burrito,4.50
+A LA CARTE,Beef Burrito,9.50
+A LA CARTE,Bean Burrito,4.50
+A LA CARTE,Bean Burrito,9.50
+A LA CARTE,Cheese Burrito,4.50
+A LA CARTE,Cheese Burrito,9.50
+A LA CARTE,Chicken Burrito,4.50
+A LA CARTE,Chicken Burrito,9.50
+A LA CARTE,Beef Enchilada,2.55
+A LA CARTE,Beef Enchilada,7.50
+A LA CARTE,Cheese Enchilada,2.55
+A LA CARTE,Cheese Enchilada,7.50
+A LA CARTE,Chicken Enchilada,2.55
+A LA CARTE,Chicken Enchilada,7.50
+A LA CARTE,Bean Enchilada,2.55
+A LA CARTE,Bean Enchilada,7.50
+A LA CARTE,Corn Tortillas,1.50
+A LA CARTE,Flour Tortillas,1.50
+A LA CARTE,Cheese Quesadilla,3.50
+A LA CARTE,Cheese Quesadilla,7.00
+A LA CARTE,Chicken Quesadilla,4.25
+A LA CARTE,Chicken Quesadilla,8.50
+SIDE ORDERS,Rice,3.50
+SIDE ORDERS,Beans,3.50
+SIDE ORDERS,Lettuce,0.99
+SIDE ORDERS,Grated Cheese,1.50
+SIDE ORDERS,Jalapeño,0.99
+SIDE ORDERS,Tomatoes,0.99
+SIDE ORDERS,Onions,0.99
+SIDE ORDERS,Pico de Gallo,2.50
+COMBINATION DINNERS,Combination Dinner #1,13.99
+COMBINATION DINNERS,Combination Dinner #2,13.99
+COMBINATION DINNERS,Combination Dinner #3,13.99
+COMBINATION DINNERS,Combination Dinner #4,13.99
+COMBINATION DINNERS,Combination Dinner #5,13.99
+COMBINATION DINNERS,Combination Dinner #6,13.99
+COMBINATION DINNERS,Combination Dinner #7,13.99
+COMBINATION DINNERS,Combination Dinner #8,13.99
+COMBINATION DINNERS,Combination Dinner #9,13.99
+COMBINATION DINNERS,Combination Dinner #10,13.99
+COMBINATION DINNERS,Combination Dinner #11,13.99
+COMBINATION DINNERS,Combination Dinner #12,13.99
+COMBINATION DINNERS,Combination Dinner #13,13.99
+COMBINATION DINNERS,Combination Dinner #14,13.99
+COMBINATION DINNERS,Combination Dinner #15,13.99
+COMBINATION DINNERS,Combination Dinner #16,13.99
+COMBINATION DINNERS,Combination Dinner #17,13.99
+COMBINATION DINNERS,Combination Dinner #18,13.99
+COMBINATION DINNERS,Combination Dinner #19,13.99
+COMBINATION DINNERS,Combination Dinner #20,13.99
+COMBINATION DINNERS,Combination Dinner #21,13.99
+COMBINATION DINNERS,Combination Dinner #22,13.99
+COMBINATION DINNERS,Combination Dinner #23,13.99
+COMBINATION DINNERS,Combination Dinner #24,13.99
+COMBINATION DINNERS,Combination Dinner #25,13.99
+COMBINATION DINNERS,Combination Dinner #26,13.99
+COMBINATION DINNERS,Combination Dinner #27,13.99
+COMBINATION DINNERS,Combination Dinner #28,13.99
+COMBINATION DINNERS,Combination Dinner #29,13.99
+COMBINATION DINNERS,Combination Dinner #30,13.99
+COMBINATION DINNERS,Combination Dinner #31,13.99
+FAJITAS,Fajitas Vegetarianas,19.99
+FAJITAS,Fajitas,21.99
+FAJITAS,Fajitas Texanas,24.99
+FAJITAS,Fajitas Texanas for Two,32.99
+FAJITAS,Shrimp Fajitas,25.99
+FAJITAS,Taco Salad Fajitas,16.25
+FAJITAS,Fajitas Vallarta,26.99
+FAJITAS,Nachos Texanos,17.99
+FAJITAS,Special Dinner for Two,26.99
+BURRITOS,Burrito Mexicano,10.99
+BURRITOS,Burrito Jalisco,15.99
+BURRITOS,Burrito Deluxe,15.50
+BURRITOS,Burrito Special,10.99
+SEAFOOD,Mojarra Frita,19.99
+SEAFOOD,Camarones Diablos,19.99
+SEAFOOD,Camarones a la Mexicana,19.99
+SEAFOOD,Camarones Rancheros,19.99
+SEAFOOD,Shrimp Cocktail,19.99
+SEAFOOD,Veracruz,19.99
+SEAFOOD,Camarón Chimichangas,17.50
+SEAFOOD,Camaron Yucatán,19.99
+SEAFOOD,Arroz con Mariscos,19.99
+SEAFOOD,Shrimp Salad,16.99
+SEAFOOD,Pescado Empanizado,19.99
+SEAFOOD,Shrimp Quesadilla,16.99
+SPECIAL ORDERS,Chilaquiles Mexicanos,17.99
+SPECIAL ORDERS,Mole Ranchero "Red Gravy",17.99
+SPECIAL ORDERS,Mole Poblano,17.99
+SPECIAL ORDERS,#F,10.99
+SPECIAL ORDERS,Pollo Loco,19.99
+SPECIAL ORDERS,Chori-Pollo,19.99
+SPECIAL ORDERS,Pollo Sinaloa,19.99
+SPECIAL ORDERS,Arroz con Pollo,15.99
+SPECIAL ORDERS,La Mexicana,10.99
+SPECIAL ORDERS,Pollo Asado,19.99
+SPECIAL ORDERS,Carnitas,19.99
+SPECIAL ORDERS,Chile Verde,19.99
+SPECIAL ORDERS,Chile Rojo,19.99
+SPECIAL ORDERS,Special La Casa,12.99
+SPECIAL ORDERS,Steak Ranchero,22.99
+SPECIAL ORDERS,Quesadilla Rellena,10.99
+SPECIAL ORDERS,Quesadilla Deluxe,15.99
+SPECIAL ORDERS,Hamburger,10.50
+SPECIAL ORDERS,El Puerto,22.99
+SPECIAL ORDERS,Steak a la Tampiquena,22.99
+SPECIAL ORDERS,Carne Asada,19.99
+SPECIAL ORDERS,12oz T-bone Steak,22.99
+SPECIAL ORDERS,Carne encebollada,19.99
+SPECIAL ORDERS,Jalisco Special,16.99
+SPECIAL ORDERS,Pollo Ranchero,19.99
+SPECIAL ORDERS,Milanesa,19.99
+SPECIAL ORDERS,Pollo Empanizado,19.99
+SPECIAL ORDERS,Casuelon,19.99
+SPECIAL ORDERS,Chilaquiles Deluxe,19.99
+SPECIAL ORDERS,Nachos Deluxe,16.99
+SPECIAL ORDERS,Enchiladas Verdes,15.99
+SPECIAL ORDERS,Enchiladas Rojas,15.99
+SPECIAL ORDERS,Enchiladas Poblanas,15.99
+SPECIAL ORDERS,Yolandas,15.99
+SPECIAL ORDERS,Enchiladas Super Rancheras,16.99
+SPECIAL ORDERS,Enchiladas Supremas,15.99
+SPECIAL ORDERS,Enchiladas Rancheras,10.99
+SPECIAL ORDERS,Soft Chimichangas,15.99
+DESSERTS,Churros,6.50
+DESSERTS,Sopapillas,4.50
+DESSERTS,Flan,6.50
+DESSERTS,Mexican Fried Ice Cream,6.50
