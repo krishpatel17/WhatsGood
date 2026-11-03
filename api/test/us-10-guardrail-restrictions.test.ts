@@ -54,7 +54,10 @@ describe("US-10 Guardrail: restrictions and budget", () => {
 
   it("[ai] T5 unit: output text containing 'safe' or 'allergen-free' fails validation", () => {
     const p = profile({ allergies: ["peanut"] });
-    expect(checkRestrictions([pick("Cumin Lamb Noodles", "Safe for your peanut allergy.")], [lamb], p)).toEqual(['item[0] "Cumin Lamb Noodles" reason says "safe"']);
+    expect(checkRestrictions([pick("Cumin Lamb Noodles", "Safe for your peanut allergy.")], [lamb], p)).toEqual([
+      'item[0] "Cumin Lamb Noodles" reason names "peanut", which conflicts with user allergy: peanut. If the dish contains it, pick another dish',
+      'item[0] "Cumin Lamb Noodles" reason says "safe"',
+    ]);
     expect(checkRestrictions([pick("Cumin Lamb Noodles", "Totally allergen-free!")], [lamb], p)).toEqual(['item[0] "Cumin Lamb Noodles" reason says "allergen-free"']);
     expect(checkRestrictions([pick("Cumin Lamb Noodles", "Spicy and fragrant.")], [lamb], p)).toEqual([]);
   });

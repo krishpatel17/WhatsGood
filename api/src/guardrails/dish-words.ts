@@ -28,13 +28,32 @@ const IMPLIED: [IngredientTag, RegExp][] = [
 
 const PLANT_BASED = /\b(veggie|veg|vegetarian|vegan|plant[- ]based|beyond|impossible|no[-–\s]bull)\b/i;
 
+// Strip accents so "Camarón" matches like "camaron".
+const plain = (s: string) => s.normalize("NFD").replace(/\p{M}/gu, "");
+
+const dishText = (dish: Pick<MenuDish, "name" | "description">) => plain([dish.name, dish.description].filter(Boolean).join(" "));
+
+const rulesFor = (text: string) => (PLANT_BASED.test(text) ? STATED : [...STATED, ...IMPLIED]);
+
 /**
  * Ingredients the menu's own words state, so a dish the model forgot to tag still gets filtered.
  * This never proves a dish is free of anything: a dish with no match keeps its "ask your server" flag.
  */
 export function ingredientsNamed(dish: Pick<MenuDish, "name" | "description">): IngredientTag[] {
-  // Strip accents so "Camarón" matches like "camaron".
-  const text = [dish.name, dish.description].filter(Boolean).join(" ").normalize("NFD").replace(/\p{M}/gu, "");
-  const rules = PLANT_BASED.test(text) ? STATED : [...STATED, ...IMPLIED];
-  return [...new Set(rules.filter(([, words]) => words.test(text)).map(([tag]) => tag))];
+  const text = dishText(dish);
+  return [...new Set(rulesFor(text).filter(([, words]) => words.test(text)).map(([tag]) => tag))];
+}
+
+/**
+ * Ingredients a model's reason names, with the word that named them. Only the dish's own words can make
+ * it plant-based: a reason saying "a burger beyond compare" doesn't. Naming one in any phrasing counts, so
+ * "no pork" is caught too, since that's a safety claim. This can't prove a reason is free of a conflict.
+ */
+export function ingredientsInReason(reason: string, dish: Pick<MenuDish, "name" | "description">): { tag: IngredientTag; word: string }[] {
+  // "Tender" describes texture in prose. "Tenders" is still the dish.
+  const text = plain(reason).replace(/\btender\b/gi, " ");
+  return rulesFor(dishText(dish)).flatMap(([tag, words]) => {
+    const hit = text.match(words);
+    return hit ? [{ tag, word: hit[0].toLowerCase() }] : [];
+  });
 }

@@ -1,7 +1,7 @@
 import type { IngredientTag } from "../menu/schema";
 import type { Diet, Profile } from "../profile/schema";
 import type { MenuDish, Pick } from "../recommend/types";
-import { ingredientsNamed } from "./dish-words";
+import { ingredientsInReason, ingredientsNamed } from "./dish-words";
 
 const MEAT: IngredientTag[] = ["pork", "beef", "lamb", "poultry", "meat"];
 
@@ -25,13 +25,16 @@ export type Flag = "ask_server" | "price_unknown";
 
 const money = (n: number) => `$${Number.isInteger(n) ? n : n.toFixed(2)}`;
 
-export function dishConflicts(dish: MenuDish, profile: Profile): string[] {
-  const tags = new Set<IngredientTag>([...dish.tags.map((t) => t.tag), ...ingredientsNamed(dish)]);
+function tagConflicts(tags: Set<IngredientTag>, profile: Profile): string[] {
   const conflicts = profile.allergies.filter((a) => tags.has(a)).map((a) => `allergy: ${a}`);
   for (const diet of profile.diets) {
     if (DIET_CONFLICTS[diet].some((t) => tags.has(t))) conflicts.push(`diet: ${diet}`);
   }
   return conflicts;
+}
+
+export function dishConflicts(dish: MenuDish, profile: Profile): string[] {
+  return tagConflicts(new Set([...dish.tags.map((t) => t.tag), ...ingredientsNamed(dish)]), profile);
 }
 
 function overBudget(dish: MenuDish, profile: Profile): string | null {
@@ -71,6 +74,10 @@ export function checkRestrictions(picks: Pick[], resolved: (MenuDish | null)[], 
       for (const c of dishConflicts(dish, profile)) errors.push(`item[${i}] "${p.dish}" conflicts with user ${c}`);
       const budget = overBudget(dish, profile);
       if (budget) errors.push(`item[${i}] "${p.dish}" ${budget}`);
+      // Rewording alone isn't enough if the model believes the dish has it, so the error says so.
+      for (const { tag, word } of ingredientsInReason(p.reason, dish)) {
+        for (const c of tagConflicts(new Set([tag]), profile)) errors.push(`item[${i}] "${p.dish}" reason names "${word}", which conflicts with user ${c}. If the dish contains it, pick another dish`);
+      }
     }
     for (const re of BANNED) {
       const hit = p.reason.match(re);

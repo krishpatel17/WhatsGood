@@ -1,4 +1,5 @@
 import type { Evidence } from "../guardrails/evidence";
+import { uniqueDishes } from "../guardrails/menu";
 import type { MenuDish } from "./types";
 
 export const MAX_PICKS = 3;
@@ -17,10 +18,11 @@ export function labelsFor(mentions: number, mode: Mode): Label[] {
 const dishes = (n: number) => (n === 1 ? "1 dish" : `${n} dishes`);
 
 /**
- * How many picks to show and from which dishes. `allowed` is the menu after
+ * How many picks to show and from which dishes. `listed` is the menu after
  * restriction and budget filtering. Fewer than 3 picks always comes with a reason.
  */
-export function planPicks(allowed: MenuDish[], ev: Evidence): Plan {
+export function planPicks(listed: MenuDish[], ev: Evidence): Plan {
+  const allowed = uniqueDishes(listed, ev);
   if (allowed.length === 0) return { mode: "reviews", maxPicks: 0, candidates: [], explanation: "No dishes on this menu fit your profile." };
 
   const backed = allowed.filter((d) => {
