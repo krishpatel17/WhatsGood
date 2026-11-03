@@ -5,6 +5,7 @@ import { createRestaurant, getRestaurant, listRestaurants } from "./repo";
 import { searchRestaurants } from "./search";
 import { scanMenu, validateUpload, VISION_TYPES } from "../menu/scan";
 import { fetchReviews } from "../reviews/collect";
+import { importMenu } from "../menu/import";
 import { extractMentions } from "../reviews/mentions";
 import { getProfile } from "../profile/repo";
 import { quickFallback, recommend } from "../recommend/service";
@@ -21,6 +22,14 @@ export const restaurantRoutes = new Hono<AppEnv>()
   .get("/:id", async (c) => {
     const row = await getRestaurant(c.get("deps").db, c.req.param("id"));
     return row ? c.json(row) : c.json({ error: "not found" }, 404);
+  })
+  .post("/:id/menu", async (c) => {
+    const deps = c.get("deps");
+    if (!(await getRestaurant(deps.db, c.req.param("id")))) return c.json({ error: "not found" }, 404);
+    const body = z.object({ url: z.url() }).safeParse(await c.req.json().catch(() => ({})));
+    if (!body.success) return c.json({ error: "send { url } with the menu page, PDF or ordering page" }, 400);
+    const result = await importMenu(deps, { restaurantId: c.req.param("id"), url: body.data.url });
+    return c.json(result, 201);
   })
   .post("/:id/reviews/fetch", async (c) => {
     const { db, fetch, apifyToken } = c.get("deps");
