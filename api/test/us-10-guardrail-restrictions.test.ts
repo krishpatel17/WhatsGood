@@ -68,4 +68,30 @@ describe("US-10 Guardrail: restrictions and budget", () => {
     // Unresolved picks are the on-menu guardrail's job, not this one's.
     expect(checkRestrictions([pick("Unknown")], [null], p)).toEqual([]);
   });
+
+  it("[ai] T7 unit: an untagged dish is removed when its name states a conflict", () => {
+    const untagged = (name: string) => dish(name, []);
+    const vegetarian = profile({ diets: ["vegetarian"] });
+    for (const name of ["Afghan Beef Meatball", "Black & Blue Ridge Burger", "Chicken Kofta Kabob", "Tacos al Pastor", "SHRIMP & GRITS", "Grilled Trout", "Caldo de Camarón", "Hand-Cut NY Strip*", "Cheesesteak Hoagie", "Murgh Chalow", "Slaw Dog"]) {
+      expect(dishConflicts(untagged(name), vegetarian)).toEqual(["diet: vegetarian"]);
+    }
+    expect(dishConflicts(untagged("Peanut Tofu Soup"), profile({ allergies: ["peanut"] }))).toEqual(["allergy: peanut"]);
+    expect(dishConflicts(untagged("HAM BISCUIT"), profile({ diets: ["no_pork"] }))).toEqual(["diet: no_pork"]);
+    expect(dishConflicts(untagged("Cheese Calzone"), profile({ allergies: ["dairy", "gluten"] }))).toEqual(["allergy: dairy", "allergy: gluten"]);
+  });
+
+  it("[ai] T8 unit: a description can state a conflict too", () => {
+    const special = { ...dish("Chef's Special", []), description: "Slow-cooked lamb with rice" };
+    expect(dishConflicts(special, profile({ diets: ["vegetarian"] }))).toEqual(["diet: vegetarian"]);
+  });
+
+  it("[ai] T9 unit: plant-based and lookalike names are not removed", () => {
+    const vegetarian = profile({ diets: ["vegetarian"] });
+    for (const name of ["The Beyond Burger", "Veggie Kabob", "V - NO–BULL VEGGIE BURGER", "Afghan Red Beans", "Fried Eggplant"]) {
+      expect(dishConflicts(dish(name, []), vegetarian)).toEqual([]);
+    }
+    expect(dishConflicts(dish("Fried Eggplant", []), profile({ allergies: ["egg"] }))).toEqual([]);
+    expect(dishConflicts(dish("Shamrock Salad", []), profile({ diets: ["no_pork"] }))).toEqual([]);
+    expect(dishConflicts(dish("Peanut Butter Pie", []), profile({ allergies: ["peanut"] }))).toEqual(["allergy: peanut"]);
+  });
 });
