@@ -13,6 +13,8 @@ export function pickExtractor(url: string, contentType: string): SourceKind {
   return "html";
 }
 
+export const STRUCTURED_DATA_HEADING = "\n\nSTRUCTURED DATA:\n";
+
 const ENTITIES: Record<string, string> = { amp: "&", lt: "<", gt: ">", quot: '"', "#39": "'", apos: "'", nbsp: " " };
 
 /** Visible text of an HTML page plus any embedded structured data (JSON-LD), without scripts or styles. */
@@ -28,7 +30,7 @@ export function htmlToText(html: string): string {
     .map((l) => l.replace(/\s+/g, " ").trim())
     .filter(Boolean)
     .join("\n");
-  return jsonLd.length ? `${text}\n\nSTRUCTURED DATA:\n${jsonLd.join("\n")}` : text;
+  return jsonLd.length ? `${text}${STRUCTURED_DATA_HEADING}${jsonLd.join("\n")}` : text;
 }
 
 export type FetchedSource = { url: string; kind: SourceKind; contentType: string; bytes: Uint8Array };

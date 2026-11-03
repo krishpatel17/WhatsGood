@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { pickExtractor } from "../src/menu/fetcher";
 import { MenuSchema } from "../src/menu/schema";
 import { importMenu } from "../src/menu/import";
+import { NO_DISHES } from "../src/menu/validate";
 import { createRestaurant } from "../src/restaurants/repo";
 import { testDb } from "./helpers/db";
 import { mockLlm } from "./helpers/llm";
@@ -72,6 +73,45 @@ describe("US-03 Import a menu from a restaurant's website", () => {
       expect(result.status).toBe("active");
       const count = db.raw.prepare("SELECT COUNT(*) AS n FROM dishes").get() as { n: number };
       expect(count.n).toBe(5);
+    });
+
+    describe("a page with no dishes (its menu is loaded by JavaScript)", () => {
+      const URL_JS = "https://testnoodlehouse.example/eat";
+      const jsPage = `<html><body><h1>The Food</h1><div id="menu"></div><script>loadMenu()</script></body></html>`;
+      const pages = fakeFetch({ [URL_EASY]: { body: html, contentType: "text/html" }, [URL_JS]: { body: jsPage, contentType: "text/html" } });
+      const statuses = () => db.raw.prepare("SELECT id, status FROM menus ORDER BY created_at, rowid").all() as { id: string; status: string }[];
+
+      it("[ai] zero dishes ends in needs_review and stores nothing", async () => {
+        const result = await importMenu({ db, blobs, llm: mockLlm([{ dishes: [] }]), fetch: pages }, { restaurantId: "r1", url: URL_JS });
+        expect(result).toMatchObject({ status: "needs_review", dishCount: 0 });
+        expect(result.failures.at(-1)).toEqual([NO_DISHES]);
+        expect(statuses()).toEqual([{ id: result.menuId, status: "needs_review" }]);
+      });
+
+      it("[ai] zero dishes does not replace the restaurant's active menu", async () => {
+        const good = await importMenu({ db, blobs, llm: mockLlm([easyMenu]), fetch: pages }, { restaurantId: "r1", url: URL_EASY });
+        const empty = await importMenu({ db, blobs, llm: mockLlm([{ dishes: [] }]), fetch: pages }, { restaurantId: "r1", url: URL_JS });
+        expect(statuses()).toEqual([
+          { id: good.menuId, status: "active" },
+          { id: empty.menuId, status: "needs_review" },
+        ]);
+        const active = db.raw.prepare("SELECT COUNT(*) AS n FROM dishes d JOIN menus m ON m.id = d.menu_id WHERE m.restaurant_id = 'r1' AND m.status = 'active'").get();
+        expect(active).toEqual({ n: 5 });
+      });
+
+      it("[ai] the model is not asked again, so a retry cannot invent dishes that replace a good menu", async () => {
+        const invented = { dishes: [{ name: "Invented Burger", section: "", price: 12, description: null, tags: [] }] };
+        const llm = mockLlm([{ dishes: [] }, invented]);
+        const result = await importMenu({ db, blobs, llm, fetch: pages }, { restaurantId: "r1", url: URL_JS });
+        expect(llm.calls).toHaveLength(1);
+        expect(result).toMatchObject({ status: "needs_review", attempts: 1 });
+      });
+
+      it("[ai] zero dishes on a page with priced lines is still retried, because the page shows there are dishes", async () => {
+        const llm = mockLlm([{ dishes: [] }, easyMenu]);
+        const result = await importMenu({ db, blobs, llm, fetch: pages }, { restaurantId: "r1", url: URL_EASY });
+        expect(result).toMatchObject({ status: "active", attempts: 2, dishCount: 5 });
+      });
     });
 
     it("[ai] a page that cannot be fetched is reported, not stored", async () => {

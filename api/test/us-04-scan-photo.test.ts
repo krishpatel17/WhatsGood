@@ -42,6 +42,15 @@ describe("US-04 Scan a menu photo", () => {
       expect(llm.calls[0].messages[0].content).toContainEqual(expect.objectContaining({ type: "image", mediaType: "image/jpeg" }));
     });
 
+    it("[ai] an empty menu missing the scan flags ends in needs_review and does not replace the active menu", async () => {
+      const llm = mockLlm([{ is_menu: true, legible: true, ...easyMenu }, { dishes: [] }, { dishes: [] }, { dishes: [] }]);
+      const good = await scanMenu({ db, blobs, llm }, { restaurantId: "r1", bytes: photo, mediaType: "image/jpeg" });
+      const empty = await scanMenu({ db, blobs, llm }, { restaurantId: "r1", bytes: photo, mediaType: "image/jpeg" });
+      expect(empty).toMatchObject({ status: "needs_review", dishCount: 0 });
+      const row = db.raw.prepare("SELECT status FROM menus WHERE id = ?").get((good as { menuId: string }).menuId);
+      expect(row).toEqual({ status: "active" });
+    });
+
     it("[ai] T3 unit: a low-confidence / zero-item response maps to the retake message", async () => {
       for (const response of [
         { is_menu: false, legible: true, dishes: [] },

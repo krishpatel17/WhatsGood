@@ -5,7 +5,7 @@ import { createRestaurant, getRestaurant, listRestaurants } from "./repo";
 import { searchRestaurants } from "./search";
 import { scanMenu, validateUpload, VISION_TYPES } from "../menu/scan";
 import { fetchReviews } from "../reviews/collect";
-import { importMenu } from "../menu/import";
+import { importFailureMessage, importMenu } from "../menu/import";
 import { extractMentions } from "../reviews/mentions";
 import { getProfile } from "../profile/repo";
 import { quickFallback, recommend } from "../recommend/service";
@@ -29,6 +29,7 @@ export const restaurantRoutes = new Hono<AppEnv>()
     const body = z.object({ url: z.url() }).safeParse(await c.req.json().catch(() => ({})));
     if (!body.success) return c.json({ error: "send { url } with the menu page, PDF or ordering page" }, 400);
     const result = await importMenu(deps, { restaurantId: c.req.param("id"), url: body.data.url });
+    if (result.status === "needs_review") return c.json({ ...result, error: importFailureMessage(result.failures) }, 422);
     return c.json(result, 201);
   })
   .post("/:id/reviews/fetch", async (c) => {

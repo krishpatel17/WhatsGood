@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
-import { countCheck, layoutItemCount, mergeDuplicates, parsePrice, validateMenu } from "../src/menu/validate";
+import { countCheck, layoutItemCount, mergeDuplicates, NO_DISHES, parsePrice, validateMenu } from "../src/menu/validate";
 import { importMenu, retryMessage } from "../src/menu/import";
 import { createRestaurant, getRestaurant } from "../src/restaurants/repo";
 import type { Dish } from "../src/menu/schema";
@@ -54,6 +54,54 @@ describe("US-05 Validate imported menus", () => {
   it("[ai] AC1 unit: validateMenu flags a price outside $0-$500 with the dish index", () => {
     const { errors } = validateMenu(null)({ dishes: [dish(), dish({ name: "Caviar Tower", price: 900 })] });
     expect(errors).toEqual(['dishes[1] "Caviar Tower": price 900 is outside $0-$500']);
+  });
+
+  it("[ai] an empty menu fails validation: as no dishes when the page has no layout count, as a count mismatch when it has one", () => {
+    expect(validateMenu(null)({ dishes: [] }).errors).toEqual([NO_DISHES]);
+    expect(validateMenu(0)({ dishes: [] }).errors).toEqual([NO_DISHES]);
+    expect(validateMenu(5)({ dishes: [] }).errors).toEqual(["item count 0 is not within 15% of the page layout count 5"]);
+  });
+
+  describe("layout count trust", () => {
+    const priced = (n: number) => Array.from({ length: n }, (_, i) => `Dish ${i} $${10 + i}`);
+    const dishes = (n: number) => Array.from({ length: n }, (_, i) => dish({ name: `Dish ${i}` }));
+
+    it("[ai] on a page with a reliable count, truncated and far too long menus are rejected and a correct one passes", () => {
+      const check = validateMenu(layoutItemCount(priced(40).join("\n")));
+      expect(check({ dishes: dishes(40) }).errors).toEqual([]);
+      expect(check({ dishes: dishes(10) }).errors).toEqual(["item count 10 is not within 15% of the page layout count 40"]);
+      expect(check({ dishes: dishes(120) }).errors).toEqual(["item count 120 is not within 15% of the page layout count 40"]);
+    });
+
+    it("[ai] the count is not trusted when prices are bare numbers or split from their dollar sign", () => {
+      expect(layoutItemCount("Soup\n8\nStew\n$\n13\nCake\n7\nTea $4.00")).toBeNull();
+    });
+
+    it("[ai] the count is not trusted when prices are printed on both sides of each description", () => {
+      expect(layoutItemCount("Samosa\n$6.99\nFour pastries\n$6.99\nBolani\n$4.50\nLeek turnover\n$4.50")).toBeNull();
+    });
+
+    it("[ai] the count is not trusted when priced lines hold several items or add-ons", () => {
+      expect(layoutItemCount("SLAW ($5) • FRIES ($4) • GRITS ($5)\nBEANS ($6) • GREENS ($6)\nBurger $12")).toBeNull();
+      expect(layoutItemCount("Burger $12\n+ Add bacon for $2\nAdd cheese $1\nSoup $7")).toBeNull();
+    });
+
+    it("[ai] a little noise, under the 15% tolerance, does not lose trust in the count", () => {
+      expect(layoutItemCount(["0", ...priced(20)].join("\n"))).toBe(20);
+    });
+
+    it("[ai] structured data is not counted, because it is long lines of JSON rather than page layout", () => {
+      expect(layoutItemCount(`Menu\nSoup $8\n\nSTRUCTURED DATA:\n{"a":"$9.00"}\n{"b":"$7.00"}`)).toBe(1);
+    });
+
+    it("[ai] an untrusted count skips the check, so a full menu is stored on the first attempt", async () => {
+      const db = testDb();
+      await createRestaurant(db, { id: "r1", name: "Test Noodle House", address: "1 Main St" });
+      const body = "<p>Soup</p><p>8</p><p>Stew</p><p>13</p><p>Cake</p><p>7</p><p>Tea $4.00</p>";
+      const llm = mockLlm([{ dishes: dishes(58) }]);
+      const result = await importMenu({ db, blobs: memoryBlobs(), llm, fetch: fakeFetch({ [URL_EASY]: { body, contentType: "text/html" } }) }, { restaurantId: "r1", url: URL_EASY });
+      expect(result).toMatchObject({ status: "active", attempts: 1, dishCount: 58 });
+    });
   });
 
   it("[ai] T5 unit: the retry message lists each failed check", () => {
