@@ -12,7 +12,7 @@ export function mockLlm(responses: Scripted[]) {
       calls.push({ ...req, messages: structuredClone(req.messages) });
       if (calls.length > responses.length) throw new Error(`mockLlm: unexpected call #${calls.length} (${req.task})`);
       let next = responses[calls.length - 1];
-      if (typeof next === "function") next = (next as (r: LlmRequest) => unknown)(req);
+      if (typeof next === "function") next = await (next as (r: LlmRequest) => unknown)(req);
       const usage = { input_tokens: 1000, output_tokens: 200 };
       if (next && typeof next === "object" && "raw" in next) {
         const raw = (next as { raw: string }).raw;
