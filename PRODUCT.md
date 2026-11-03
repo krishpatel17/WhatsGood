@@ -21,10 +21,10 @@ Pick a restaurant from the seeded/saved list OR scan/import its menu from a web 
 Changes are limited to web/ and root PRODUCT.md and DESIGN.md. api/, api/src/prompts/, api/src/validation/ and validation/ are frozen. Preserve route paths, API request/response shapes, data-testid attributes and tested semantic selectors. Required verification: npm test; npm run build -w web; npm run e2e -w web.
 
 ## Evidence and implementation boundaries
-PLAN.md defines the Alpha stories. Existing API routes support restaurant listing/search, profile creation/update, URL import (including hosted PDFs), photo scan, recommendations, fallback ranking and ratings. No full-menu read endpoint or local PDF upload endpoint is exposed; do not invent either or represent unsupported inputs as working. The UI uses the actual returned records; no invented restaurants, images, review totals or dish fit claims.
+PLAN.md defines the Alpha stories. Existing API routes support restaurant listing/search, profile creation/update, URL import (including hosted PDFs), photo scan, recommendations, fallback ranking and ratings. No full-menu read endpoint or local PDF upload endpoint is exposed; do not invent either or represent unsupported inputs as working. The UI uses the actual returned records; no invented restaurants, photographs, review totals or dish fit claims.
 
 ## Brand commitment
-Apply the supplied DoorDash Prism adaptation recorded in DESIGN.md. Favor clarity, speed, neutral fit metadata and traceable evidence over decorative expression.
+Apply the supplied DoorDash Prism adaptation recorded in DESIGN.md. Favor clarity, speed, neutral fit metadata and traceable evidence, in a warm, appetizing visual world with original illustrations.
 
 ## Accessibility
 Keyboard-operable controls, visible focus, labelled inputs, status announcements, accessible dialogs with focus restoration, reduced-motion support, AA text contrast, and layouts at 390px and 1280px (also preserve the existing 375px test).

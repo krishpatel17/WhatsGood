@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { api, profileStore, type Profile } from "../lib/api";
 import { Dialog } from "./Dialog";
-import { ProfileForm, label } from "./ProfileForm";
+import { ProfileForm } from "./ProfileForm";
 import { ScanForm } from "./ScanForm";
 export function AppShell({ children }: { children: React.ReactNode }) {
   const path = usePathname();
@@ -37,15 +37,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       window.removeEventListener("wg:profile", refresh);
     };
   }, [path]);
-  const filters = [
-    { name: "Allergies", value: profile?.allergies.map(label).join(", ") },
-    { name: "Diet", value: profile?.diets.map(label).join(", ") },
-    {
-      name: "Max Budget",
-      value: profile?.budget != null ? `$${profile.budget}` : "",
-    },
-    { name: "Taste", value: profile?.tastes.map(label).join(", ") },
-  ];
   const scanActive = modal === "scan" || path.startsWith("/scan");
   return (
     <>
@@ -82,24 +73,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </button>
         </div>
       </header>
-      <div className="filter-bar">
-        <div className="filter-inner" aria-label="Profile filters">
-          <span className="filter-label">Your preferences</span>
-          {filters.map((f) => (
-            <button
-              key={f.name}
-              className={`filter-pill${f.value ? " selected" : ""}`}
-              onClick={() => setModal("profile")}
-              title={f.value || `Set ${f.name.toLowerCase()}`}
-            >
-              <span>{f.name}</span>
-              {f.value && <span className="filter-value">{f.value}</span>}
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m3 4.5 3 3 3-3" /></svg>
-            </button>
-          ))}
-        </div>
+      <div className="page-clip">
+        <main className={path.startsWith("/results") ? "results-page" : undefined}>{children}</main>
       </div>
-      <main className={path.startsWith("/results") ? "results-page" : undefined}>{children}</main>
       {modal && (
         <Dialog
           title={modal === "profile" ? "Your profile" : "Scan the menu"}

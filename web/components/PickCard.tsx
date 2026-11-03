@@ -1,4 +1,5 @@
 import type { Pick, Profile } from "../lib/api";
+import { dishArt, FoodArt, tileClass } from "./FoodArt";
 const FLAG_TEXT: Record<string, string> = {
   ask_server: "Ask your server about ingredients",
   price_unknown: "Price not listed. Check before ordering",
@@ -25,7 +26,11 @@ export function PickCard({
     pick.price !== null &&
     pick.price <= profile.budget;
   return (
-    <article className="card" data-testid="pick-card">
+    <article className={`card pick-card${rank === 1 ? " top-pick" : ""}`} data-testid="pick-card">
+      <div className={`pick-art ${tileClass(pick.name)}`}>
+        <FoodArt kind={dishArt(pick.name)} />
+      </div>
+      <div className="pick-body">
       <div className="card-head">
         <div className="card-badges">
           <span className="rank">#{rank} Pick</span>
@@ -82,6 +87,7 @@ export function PickCard({
           ))}
         </ul>
       )}
+      </div>
     </article>
   );
 }
