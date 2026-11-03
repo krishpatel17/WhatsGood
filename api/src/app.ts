@@ -7,6 +7,7 @@ import type { Llm } from "./llm/types";
 import { profileRoutes } from "./profile/routes";
 import { restaurantRoutes } from "./restaurants/routes";
 import { recommendationRoutes } from "./feedback/routes";
+import { auditPicks } from "./audit/audit";
 
 export type Env = {
   DB: D1Database;
@@ -43,5 +44,6 @@ export function createApp(override: Partial<Deps> = {}) {
   app.route("/profiles", profileRoutes);
   app.route("/restaurants", restaurantRoutes);
   app.route("/recommendations", recommendationRoutes);
+  app.get("/admin/audit", async (c) => c.json(await auditPicks(c.get("deps").db)));
   return app;
 }
