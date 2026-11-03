@@ -30,7 +30,7 @@ for (const a of assignments) {
     console.log(`${label} fill in copied_by and copied_on in assignments.csv first`);
     continue;
   }
-  const { truth, errors } = csvToTruth(readFileSync(sheet, "utf8"), { restaurant_id: a.restaurant_id, copied_by: a.copied_by.trim(), copied_on: a.copied_on.trim(), source_url: a.menu_url });
+  const { truth, errors, notes } = csvToTruth(readFileSync(sheet, "utf8"), { restaurant_id: a.restaurant_id, copied_by: a.copied_by.trim(), copied_on: a.copied_on.trim(), source_url: a.menu_url });
   if (!truth) {
     console.log(`${label} ${errors.length === 1 && errors[0] === "no dishes copied yet" ? "not started" : "fix: " + errors.join("; ")}`);
     continue;
@@ -42,4 +42,5 @@ for (const a of assignments) {
     writeFileSync(spotPath, toCsv(sample, ["section", "name", "price", "correct", "fix"]));
   }
   console.log(`${label} ${truth.dishes.length} dishes -> truth/${a.restaurant_id}.json; ${a.checked_by} checks truth/spot-check/${a.restaurant_id}.csv`);
+  for (const n of notes) console.log(`      ${n}`);
 }

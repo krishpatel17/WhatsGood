@@ -49,3 +49,23 @@ describe("US-18 hand-copied menus from spreadsheets (AC4, AC5)", () => {
     ]);
   });
 });
+
+describe("US-18 copying rules applied to the sheets", () => {
+  it("[ai] AC4 unit: the same dish listed in several sizes becomes one dish at the lowest price", () => {
+    const csv = "section,name,price\nSoups,Peanut Tofu Soup,5.50\nSoups,Peanut Tofu Soup,15.00\nA La Carte,Tostadas,8.99\nA La Carte,tostadas,4.75\nMains,Tostadas,12\n";
+    const { truth, notes } = csvToTruth(csv, meta);
+    expect(truth!.dishes).toEqual([
+      { section: "Soups", name: "Peanut Tofu Soup", price: 5.5 },
+      { section: "A La Carte", name: "Tostadas", price: 4.75 },
+      { section: "Mains", name: "Tostadas", price: 12 },
+    ]);
+    expect(notes).toEqual(['row 3: "Peanut Tofu Soup" is another size of row 2; kept the lowest price', 'row 5: "tostadas" is another size of row 4; kept the lowest price']);
+  });
+
+  it("[ai] AC4 unit: add-ons and extras are left out of the answer key", () => {
+    const csv = "section,name,price\nSalads,Cobb,11\nSalads,Add Grilled or Fried Chicken to any Salad,5\nOther,Extra Toping,0.75\nMains,Extra Large Burger,14\n";
+    const { truth, notes } = csvToTruth(csv, meta);
+    expect(truth!.dishes.map((d) => d.name)).toEqual(["Cobb", "Extra Large Burger"]);
+    expect(notes).toEqual(['row 3: "Add Grilled or Fried Chicken to any Salad" is an add-on; left out', 'row 4: "Extra Toping" is an add-on; left out']);
+  });
+});

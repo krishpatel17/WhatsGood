@@ -1,0 +1,223 @@
+{
+  "restaurant_id": "do04",
+  "copied_by": "Lara Mahajan",
+  "copied_on": "2026-11-02",
+  "source_url": "https://www.clover.com/online-ordering/otto-eats-catering-cville",
+  "dishes": [
+    {
+      "section": "SIGNATURE ITEMS",
+      "name": "Ottobun",
+      "price": 12.55
+    },
+    {
+      "section": "SIGNATURE ITEMS",
+      "name": "Falaway",
+      "price": 12.55
+    },
+    {
+      "section": "SIGNATURE ITEMS",
+      "name": "Classic Wrap-",
+      "price": 13.95
+    },
+    {
+      "section": "SIGNATURE ITEMS",
+      "name": "Istanbowl",
+      "price": 14.95
+    },
+    {
+      "section": "SIGNATURE ITEMS",
+      "name": "Veggie Bowl",
+      "price": 14.75
+    },
+    {
+      "section": "SIGNATURE ITEMS",
+      "name": "Combo Anatolia",
+      "price": 21.55
+    },
+    {
+      "section": "SIGNATURE ITEMS",
+      "name": "Combo Efes",
+      "price": 20.75
+    },
+    {
+      "section": "SIGNATURE ITEMS",
+      "name": "Mezzy",
+      "price": 14.95
+    },
+    {
+      "section": "SIGNATURE ITEMS",
+      "name": "Alaturca Wrap",
+      "price": 13.95
+    },
+    {
+      "section": "SIGNATURE ITEMS",
+      "name": "Mediterranean Bowl",
+      "price": 12.75
+    },
+    {
+      "section": "SIGNATURE ITEMS",
+      "name": "Loaded Fries.",
+      "price": 9.95
+    },
+    {
+      "section": "CREATE YOUR OWN",
+      "name": "Create Your Own Wrap",
+      "price": 13.95
+    },
+    {
+      "section": "CREATE YOUR OWN",
+      "name": "Create Your Own Bowl",
+      "price": 14.95
+    },
+    {
+      "section": "CREATE YOUR OWN",
+      "name": "Create Your Own Pita Sandwich",
+      "price": 12.55
+    },
+    {
+      "section": "OUR NEW SPECIALS",
+      "name": "KOFTE SLIDERS ( Gluten, Dairy, Eggs)",
+      "price": 14.95
+    },
+    {
+      "section": "OUR NEW SPECIALS",
+      "name": "Lemon Pepper Grilled Chicken",
+      "price": 16.6
+    },
+    {
+      "section": "SIDES",
+      "name": "Rosemary Fries",
+      "price": 6.45
+    },
+    {
+      "section": "SIDES",
+      "name": "Roasted Brussel Sprouts",
+      "price": 6.75
+    },
+    {
+      "section": "SIDES",
+      "name": "Side Hummus with Pita Chips",
+      "price": 7.45
+    },
+    {
+      "section": "SIDES",
+      "name": "Lentil Soup with Pita (12oz)",
+      "price": 6.55
+    },
+    {
+      "section": "SIDES",
+      "name": "Side Beet Salad",
+      "price": 7.95
+    },
+    {
+      "section": "SIDES",
+      "name": "Turkish Salad",
+      "price": 6.95
+    },
+    {
+      "section": "SIDES",
+      "name": "Celery Dip with Pita Chips",
+      "price": 8.95
+    },
+    {
+      "section": "SIDES",
+      "name": "Side Bulgur Rice",
+      "price": 5.95
+    },
+    {
+      "section": "SIDES",
+      "name": "Side Pickles",
+      "price": 4.95
+    },
+    {
+      "section": "SIDES",
+      "name": "Side Falafel (Contains Almond Flour)",
+      "price": 7.9
+    },
+    {
+      "section": "SIDES",
+      "name": "Side Pita",
+      "price": 2.15
+    },
+    {
+      "section": "SIDES",
+      "name": "Side Bean Salad",
+      "price": 7.05
+    },
+    {
+      "section": "SIDES",
+      "name": "Side Dolma ( Contains Gluten)",
+      "price": 6.75
+    },
+    {
+      "section": "SIDES",
+      "name": "Sweet Potato Salad ( Vegan)",
+      "price": 7.25
+    },
+    {
+      "section": "SIDES",
+      "name": "Bowl of Beef Doner",
+      "price": 36.4
+    },
+    {
+      "section": "SIDES",
+      "name": "Fried Eggplant",
+      "price": 7.25
+    },
+    {
+      "section": "SIDES",
+      "name": "Side Sumac Onion",
+      "price": 4.7
+    },
+    {
+      "section": "SIDES",
+      "name": "Bowl of Chicken Doner",
+      "price": 29.15
+    },
+    {
+      "section": "SIDES",
+      "name": "Side Chicken Doner",
+      "price": 6.8
+    },
+    {
+      "section": "SIDES",
+      "name": "Side Beef Doner",
+      "price": 7.8
+    },
+    {
+      "section": "YOUNG BITES",
+      "name": "Kids Pita Sandwich",
+      "price": 9.35
+    },
+    {
+      "section": "YOUNG BITES",
+      "name": "Kids Mini Bowl",
+      "price": 10.35
+    },
+    {
+      "section": "YOUNG BITES",
+      "name": "Kids Rosemary Fries",
+      "price": 5.5
+    },
+    {
+      "section": "DESSERTS",
+      "name": "Chocolate Custard (Dairy, Nuts, Gluten)",
+      "price": 5.95
+    },
+    {
+      "section": "DESSERTS",
+      "name": "Baklava (Contains Nuts, Gluten &Dairy))",
+      "price": 5.75
+    },
+    {
+      "section": "FAMILY MEAL PLANS",
+      "name": "Customize Your Family Plan",
+      "price": 57.7
+    },
+    {
+      "section": "UNCATEGORIZED",
+      "name": "Lemon Pepper Grilled Chicken",
+      "price": 61.35
+    }
+  ]
+}

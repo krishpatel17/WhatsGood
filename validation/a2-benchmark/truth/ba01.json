@@ -1,0 +1,353 @@
+{
+  "restaurant_id": "ba01",
+  "copied_by": "Lara Mahajan",
+  "copied_on": "2026-11-02",
+  "source_url": "https://sedonataphouse.com/wp-content/uploads/2019/01/Dinner_Summer2026_Cville_11x14_06.02.26_web.pdf",
+  "dishes": [
+    {
+      "section": "STARTERS",
+      "name": "House-Made Soup",
+      "price": 5.9
+    },
+    {
+      "section": "STARTERS",
+      "name": "Bread Basket",
+      "price": 4.9
+    },
+    {
+      "section": "STARTERS",
+      "name": "Edamame",
+      "price": 7.9
+    },
+    {
+      "section": "STARTERS",
+      "name": "Truffle Fries",
+      "price": 8.9
+    },
+    {
+      "section": "STARTERS",
+      "name": "Desert Fire Jalapeños",
+      "price": 9.9
+    },
+    {
+      "section": "STARTERS",
+      "name": "Goat Cheese + Tomato Jam Bruschetta",
+      "price": 9.9
+    },
+    {
+      "section": "STARTERS",
+      "name": "Classic Hummus",
+      "price": 9.9
+    },
+    {
+      "section": "STARTERS",
+      "name": "Guacamole",
+      "price": 9.9
+    },
+    {
+      "section": "STARTERS",
+      "name": "Seared Ahi Tuna",
+      "price": 16.9
+    },
+    {
+      "section": "STARTERS",
+      "name": "Steamed Shrimp",
+      "price": 12.9
+    },
+    {
+      "section": "STARTERS",
+      "name": "Canyon Crab Flatbread",
+      "price": 13.9
+    },
+    {
+      "section": "STARTERS",
+      "name": "Spicy Thai Shrimp",
+      "price": 13.9
+    },
+    {
+      "section": "STARTERS",
+      "name": "Canyon Nachos",
+      "price": 14.9
+    },
+    {
+      "section": "STARTERS",
+      "name": "Fried Calamari",
+      "price": 15.9
+    },
+    {
+      "section": "STARTERS",
+      "name": "Southwest Roasted Wings",
+      "price": 15.9
+    },
+    {
+      "section": "STARTERS",
+      "name": "Fried Oysters",
+      "price": 17.9
+    },
+    {
+      "section": "PASTA",
+      "name": "Primavera",
+      "price": 16.9
+    },
+    {
+      "section": "PASTA",
+      "name": "Grilled Chicken Alfredo",
+      "price": 21.9
+    },
+    {
+      "section": "PASTA",
+      "name": "French Quarter",
+      "price": 22.9
+    },
+    {
+      "section": "PASTA",
+      "name": "Devil’s Pass",
+      "price": 22.9
+    },
+    {
+      "section": "PASTA",
+      "name": "Shrimp Alfredo",
+      "price": 22.9
+    },
+    {
+      "section": "HOUSE SPECIALTIES",
+      "name": "Chicken Marsala",
+      "price": 22.9
+    },
+    {
+      "section": "HOUSE SPECIALTIES",
+      "name": "Chuckawalla Chicken",
+      "price": 22.9
+    },
+    {
+      "section": "HOUSE SPECIALTIES",
+      "name": "Roman Parmesan-Crusted Chicken",
+      "price": 22.9
+    },
+    {
+      "section": "HOUSE SPECIALTIES",
+      "name": "Pork Chop Marsala",
+      "price": 23.9
+    },
+    {
+      "section": "HOUSE SPECIALTIES",
+      "name": "Crab-Stuffed Shrimp",
+      "price": 24.9
+    },
+    {
+      "section": "HOUSE SPECIALTIES",
+      "name": "Wild Man Steak",
+      "price": 27.9
+    },
+    {
+      "section": "HOUSE SPECIALTIES",
+      "name": "Land + Sea",
+      "price": 32.9
+    },
+    {
+      "section": "HOUSE SPECIALTIES",
+      "name": "Shrimp + Grits",
+      "price": 20.9
+    },
+    {
+      "section": "HOUSE SPECIALTIES",
+      "name": "Sedona Crab Cakes",
+      "price": 28.9
+    },
+    {
+      "section": "SIMPLY WOOD GRILLED",
+      "name": "Hand-Cut NY Strip*",
+      "price": 34.9
+    },
+    {
+      "section": "SIMPLY WOOD GRILLED",
+      "name": "Hand-Cut Filet Mignon*",
+      "price": 34.9
+    },
+    {
+      "section": "SIMPLY WOOD GRILLED",
+      "name": "Black Angus Flat Iron Steak*",
+      "price": 24.9
+    },
+    {
+      "section": "SIMPLY WOOD GRILLED",
+      "name": "Grilled Chicken",
+      "price": 20.9
+    },
+    {
+      "section": "SIMPLY WOOD GRILLED",
+      "name": "Salmon*",
+      "price": 25.9
+    },
+    {
+      "section": "GREENS",
+      "name": "Sedona House",
+      "price": 5.9
+    },
+    {
+      "section": "GREENS",
+      "name": "Caesar",
+      "price": 6.9
+    },
+    {
+      "section": "GREENS",
+      "name": "Gorgonzola Chopped",
+      "price": 7.9
+    },
+    {
+      "section": "GREENS",
+      "name": "Strawberry + Beet",
+      "price": 9.9
+    },
+    {
+      "section": "GREENS",
+      "name": "Julie’s Farmer",
+      "price": 11.9
+    },
+    {
+      "section": "GREENS",
+      "name": "Ahi Tuna",
+      "price": 20.9
+    },
+    {
+      "section": "GREENS",
+      "name": "Salmon* + Asparagus",
+      "price": 25.9
+    },
+    {
+      "section": "SIDES",
+      "name": "Organic Greens",
+      "price": 4
+    },
+    {
+      "section": "SIDES",
+      "name": "Garlic Whipped Potatoes",
+      "price": 4
+    },
+    {
+      "section": "SIDES",
+      "name": "Steamed Broccoli",
+      "price": 4
+    },
+    {
+      "section": "SIDES",
+      "name": "Shoestring French Fries",
+      "price": 4
+    },
+    {
+      "section": "SIDES",
+      "name": "Steamed Spinach",
+      "price": 4
+    },
+    {
+      "section": "SIDES",
+      "name": "Grilled Asparagus",
+      "price": 4
+    },
+    {
+      "section": "SIDES",
+      "name": "Southwest Corn",
+      "price": 4
+    },
+    {
+      "section": "SIDES",
+      "name": "Spanish Rice",
+      "price": 4
+    },
+    {
+      "section": "SIDES",
+      "name": "Caprese",
+      "price": 4
+    },
+    {
+      "section": "SIDES",
+      "name": "Fruit",
+      "price": 4
+    },
+    {
+      "section": "PREMIUM SIDES",
+      "name": "Sweet Potato Fries",
+      "price": 6
+    },
+    {
+      "section": "PREMIUM SIDES",
+      "name": "Roasted Brussels Sprouts",
+      "price": 6
+    },
+    {
+      "section": "BURGER, SANDWICHES + SLIDERS",
+      "name": "Cheeseburger",
+      "price": 14.9
+    },
+    {
+      "section": "BURGER, SANDWICHES + SLIDERS",
+      "name": "STH Burger",
+      "price": 15.9
+    },
+    {
+      "section": "BURGER, SANDWICHES + SLIDERS",
+      "name": "Alpine Burger",
+      "price": 15.9
+    },
+    {
+      "section": "BURGER, SANDWICHES + SLIDERS",
+      "name": "Hangover Burger",
+      "price": 16.9
+    },
+    {
+      "section": "BURGER, SANDWICHES + SLIDERS",
+      "name": "The Beyond Burger",
+      "price": 15.9
+    },
+    {
+      "section": "BURGER, SANDWICHES + SLIDERS",
+      "name": "Vegan Burger",
+      "price": 16.9
+    },
+    {
+      "section": "BURGER, SANDWICHES + SLIDERS",
+      "name": "Alpine Chicken Sandwich",
+      "price": 15.9
+    },
+    {
+      "section": "BURGER, SANDWICHES + SLIDERS",
+      "name": "Prime Rib Sandwich",
+      "price": 15.9
+    },
+    {
+      "section": "BURGER, SANDWICHES + SLIDERS",
+      "name": "‘Kobe Beef’ Sliders",
+      "price": 12
+    },
+    {
+      "section": "BURGER, SANDWICHES + SLIDERS",
+      "name": "Crab Cake Sliders",
+      "price": 14
+    },
+    {
+      "section": "FLATBREADS",
+      "name": "South Rim Shrimp",
+      "price": 9.9
+    },
+    {
+      "section": "FLATBREADS",
+      "name": "Meat Lovers",
+      "price": 9.9
+    },
+    {
+      "section": "FLATBREADS",
+      "name": "BBQ Chicken",
+      "price": 8.9
+    },
+    {
+      "section": "FLATBREADS",
+      "name": "Goat Cheese + Basil",
+      "price": 7.9
+    },
+    {
+      "section": "FLATBREADS",
+      "name": "Margherita",
+      "price": 7.9
+    }
+  ]
+}

@@ -1,0 +1,1008 @@
+{
+  "restaurant_id": "ba05",
+  "copied_by": "Lara Mahajan",
+  "copied_on": "2026-11-02",
+  "source_url": "https://irp.cdn-website.com/d3c36932/files/uploaded/VA-2903_El+Puerto+Cville_9.5+x+14_113092+Web.pdf",
+  "dishes": [
+    {
+      "section": "APPETIZERS",
+      "name": "Nachos Supremos",
+      "price": 12.99
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "Queso Fundido",
+      "price": 7.99
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "Nachos",
+      "price": 6.99
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "Bean Nachos",
+      "price": 7.99
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "Beef Nachos",
+      "price": 7.99
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "Beef & Bean Nachos",
+      "price": 7.99
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "Chicken Nachos",
+      "price": 7.99
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "Cheese Dip",
+      "price": 5.95
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "Guacamole Dip",
+      "price": 5.95
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "Guacamole Salad",
+      "price": 6.99
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "Tossed Salad",
+      "price": 6.99
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "Sour Cream",
+      "price": 0.99
+    },
+    {
+      "section": "SOUPS",
+      "name": "Caldo de Pollo",
+      "price": 14.75
+    },
+    {
+      "section": "SOUPS",
+      "name": "Caldo de Camarón",
+      "price": 17.25
+    },
+    {
+      "section": "SOUPS",
+      "name": "Caldo de Res",
+      "price": 14.75
+    },
+    {
+      "section": "SOUPS",
+      "name": "Caldo de Mariscos",
+      "price": 18.99
+    },
+    {
+      "section": "TACOS",
+      "name": "Tacos de Carne Asada",
+      "price": 16.99
+    },
+    {
+      "section": "TACOS",
+      "name": "Tacos al Pastor",
+      "price": 16.99
+    },
+    {
+      "section": "TACOS",
+      "name": "Tacos Salad",
+      "price": 11.99
+    },
+    {
+      "section": "TACOS",
+      "name": "Tacos Salad Deluxe",
+      "price": 12.99
+    },
+    {
+      "section": "TACOS",
+      "name": "Taquitos Mexicanos",
+      "price": 16.99
+    },
+    {
+      "section": "TACOS",
+      "name": "Tacos de Carnitas",
+      "price": 16.99
+    },
+    {
+      "section": "TACOS",
+      "name": "Tacos de Pescado",
+      "price": 16.99
+    },
+    {
+      "section": "CHILDREN'S PLATES",
+      "name": "A. Enchilada",
+      "price": 8.99
+    },
+    {
+      "section": "CHILDREN'S PLATES",
+      "name": "B. Taco",
+      "price": 8.99
+    },
+    {
+      "section": "CHILDREN'S PLATES",
+      "name": "C. Cheese Quesadilla",
+      "price": 8.99
+    },
+    {
+      "section": "CHILDREN'S PLATES",
+      "name": "D. Burrito & Taco",
+      "price": 8.99
+    },
+    {
+      "section": "CHILDREN'S PLATES",
+      "name": "E. Burrito & Rice",
+      "price": 8.99
+    },
+    {
+      "section": "CHILDREN'S PLATES",
+      "name": "F. Cheeseburger",
+      "price": 8.99
+    },
+    {
+      "section": "CHILDREN'S PLATES",
+      "name": "G. Burrito & Quesadilla",
+      "price": 8.99
+    },
+    {
+      "section": "CHILDREN'S PLATES",
+      "name": "H. Hot Dog",
+      "price": 8.99
+    },
+    {
+      "section": "CHILDREN'S PLATES",
+      "name": "I. Chicken Nuggets",
+      "price": 8.99
+    },
+    {
+      "section": "VEGETARIAN DELIGHTS",
+      "name": "A. 1 Cheese Burrito 1 Taco Rice and Beans",
+      "price": 13.99
+    },
+    {
+      "section": "VEGETARIAN DELIGHTS",
+      "name": "B. 1 Bean Burrito 1 Cheese Enchilada and 1 Quesadilla",
+      "price": 13.99
+    },
+    {
+      "section": "VEGETARIAN DELIGHTS",
+      "name": "C. 1 Cheese Burrito 1 Tostada and Beans",
+      "price": 13.99
+    },
+    {
+      "section": "VEGETARIAN DELIGHTS",
+      "name": "D. 1 Chalupa 1 Bean Taco Rice and Beans",
+      "price": 13.99
+    },
+    {
+      "section": "VEGETARIAN DELIGHTS",
+      "name": "E. 2 Cheese Enchiladas Rice and Beans",
+      "price": 13.99
+    },
+    {
+      "section": "VEGETARIAN DELIGHTS",
+      "name": "F. Veggie Quesadilla with Mushrooms Onions and Guacamole Salad",
+      "price": 13.99
+    },
+    {
+      "section": "VEGETARIAN DELIGHTS",
+      "name": "G. 2 Cheese Burritos and Rice",
+      "price": 13.99
+    },
+    {
+      "section": "VEGETARIAN DELIGHTS",
+      "name": "El Mexicano",
+      "price": 13.99
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Speedy Gonzalez",
+      "price": 9.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special Puerto",
+      "price": 9.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special No. 1",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special No. 2",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special No. 3",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special No. 4",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special No. 5",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special No. 6",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special No. 7",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special No. 8",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special No. 9",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special No. 10",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special No. 11",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special No. 12",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special No. 13",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special No. 14",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Special No. 15",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Huevos Rancheros",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Huevos con Chorizo",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Fajitas",
+      "price": 12.99
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Grilled Chicken Salad",
+      "price": 12.99
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Lunch Taco Salad",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Lunch Carnitas",
+      "price": 12.99
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Filete de Pescado",
+      "price": 12.99
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Camarones y Vegetales",
+      "price": 12.99
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Pollo a la Plancha",
+      "price": 12.99
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Chalupa Texana",
+      "price": 7.99
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Fajita Quesadilla",
+      "price": 12.99
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Burrito Mexicano",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Burrito Special",
+      "price": 10.25
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Vegetarian Burrito",
+      "price": 12.99
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Fajita Burrito",
+      "price": 12.99
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Burrito Carnitas",
+      "price": 12.99
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Burrito Verde",
+      "price": 12.99
+    },
+    {
+      "section": "LUNCH MENU",
+      "name": "Burrito Rojo",
+      "price": 12.99
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Chalupa",
+      "price": 4.25
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Tostaguac",
+      "price": 4.75
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Tostadas",
+      "price": 4.75
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Tamales",
+      "price": 3.99
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Chiles Rellenos",
+      "price": 3.99
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Soft Shell Taco",
+      "price": 3.25
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Hard Shell Taco",
+      "price": 2.5
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Beef Burrito",
+      "price": 4.5
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Bean Burrito",
+      "price": 4.5
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Cheese Burrito",
+      "price": 4.5
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Chicken Burrito",
+      "price": 4.5
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Beef Enchilada",
+      "price": 2.55
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Cheese Enchilada",
+      "price": 2.55
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Chicken Enchilada",
+      "price": 2.55
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Bean Enchilada",
+      "price": 2.55
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Corn Tortillas",
+      "price": 1.5
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Flour Tortillas",
+      "price": 1.5
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Cheese Quesadilla",
+      "price": 3.5
+    },
+    {
+      "section": "A LA CARTE",
+      "name": "Chicken Quesadilla",
+      "price": 4.25
+    },
+    {
+      "section": "SIDE ORDERS",
+      "name": "Rice",
+      "price": 3.5
+    },
+    {
+      "section": "SIDE ORDERS",
+      "name": "Beans",
+      "price": 3.5
+    },
+    {
+      "section": "SIDE ORDERS",
+      "name": "Lettuce",
+      "price": 0.99
+    },
+    {
+      "section": "SIDE ORDERS",
+      "name": "Grated Cheese",
+      "price": 1.5
+    },
+    {
+      "section": "SIDE ORDERS",
+      "name": "Jalapeño",
+      "price": 0.99
+    },
+    {
+      "section": "SIDE ORDERS",
+      "name": "Tomatoes",
+      "price": 0.99
+    },
+    {
+      "section": "SIDE ORDERS",
+      "name": "Onions",
+      "price": 0.99
+    },
+    {
+      "section": "SIDE ORDERS",
+      "name": "Pico de Gallo",
+      "price": 2.5
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #1",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #2",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #3",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #4",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #5",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #6",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #7",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #8",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #9",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #10",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #11",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #12",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #13",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #14",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #15",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #16",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #17",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #18",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #19",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #20",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #21",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #22",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #23",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #24",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #25",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #26",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #27",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #28",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #29",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #30",
+      "price": 13.99
+    },
+    {
+      "section": "COMBINATION DINNERS",
+      "name": "Combination Dinner #31",
+      "price": 13.99
+    },
+    {
+      "section": "FAJITAS",
+      "name": "Fajitas Vegetarianas",
+      "price": 19.99
+    },
+    {
+      "section": "FAJITAS",
+      "name": "Fajitas",
+      "price": 21.99
+    },
+    {
+      "section": "FAJITAS",
+      "name": "Fajitas Texanas",
+      "price": 24.99
+    },
+    {
+      "section": "FAJITAS",
+      "name": "Fajitas Texanas for Two",
+      "price": 32.99
+    },
+    {
+      "section": "FAJITAS",
+      "name": "Shrimp Fajitas",
+      "price": 25.99
+    },
+    {
+      "section": "FAJITAS",
+      "name": "Taco Salad Fajitas",
+      "price": 16.25
+    },
+    {
+      "section": "FAJITAS",
+      "name": "Fajitas Vallarta",
+      "price": 26.99
+    },
+    {
+      "section": "FAJITAS",
+      "name": "Nachos Texanos",
+      "price": 17.99
+    },
+    {
+      "section": "FAJITAS",
+      "name": "Special Dinner for Two",
+      "price": 26.99
+    },
+    {
+      "section": "BURRITOS",
+      "name": "Burrito Mexicano",
+      "price": 10.99
+    },
+    {
+      "section": "BURRITOS",
+      "name": "Burrito Jalisco",
+      "price": 15.99
+    },
+    {
+      "section": "BURRITOS",
+      "name": "Burrito Deluxe",
+      "price": 15.5
+    },
+    {
+      "section": "BURRITOS",
+      "name": "Burrito Special",
+      "price": 10.99
+    },
+    {
+      "section": "SEAFOOD",
+      "name": "Mojarra Frita",
+      "price": 19.99
+    },
+    {
+      "section": "SEAFOOD",
+      "name": "Camarones Diablos",
+      "price": 19.99
+    },
+    {
+      "section": "SEAFOOD",
+      "name": "Camarones a la Mexicana",
+      "price": 19.99
+    },
+    {
+      "section": "SEAFOOD",
+      "name": "Camarones Rancheros",
+      "price": 19.99
+    },
+    {
+      "section": "SEAFOOD",
+      "name": "Shrimp Cocktail",
+      "price": 19.99
+    },
+    {
+      "section": "SEAFOOD",
+      "name": "Veracruz",
+      "price": 19.99
+    },
+    {
+      "section": "SEAFOOD",
+      "name": "Camarón Chimichangas",
+      "price": 17.5
+    },
+    {
+      "section": "SEAFOOD",
+      "name": "Camaron Yucatán",
+      "price": 19.99
+    },
+    {
+      "section": "SEAFOOD",
+      "name": "Arroz con Mariscos",
+      "price": 19.99
+    },
+    {
+      "section": "SEAFOOD",
+      "name": "Shrimp Salad",
+      "price": 16.99
+    },
+    {
+      "section": "SEAFOOD",
+      "name": "Pescado Empanizado",
+      "price": 19.99
+    },
+    {
+      "section": "SEAFOOD",
+      "name": "Shrimp Quesadilla",
+      "price": 16.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Chilaquiles Mexicanos",
+      "price": 17.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Mole Ranchero Red Gravy",
+      "price": 17.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Mole Poblano",
+      "price": 17.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "#F",
+      "price": 10.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Pollo Loco",
+      "price": 19.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Chori-Pollo",
+      "price": 19.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Pollo Sinaloa",
+      "price": 19.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Arroz con Pollo",
+      "price": 15.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "La Mexicana",
+      "price": 10.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Pollo Asado",
+      "price": 19.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Carnitas",
+      "price": 19.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Chile Verde",
+      "price": 19.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Chile Rojo",
+      "price": 19.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Special La Casa",
+      "price": 12.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Steak Ranchero",
+      "price": 22.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Quesadilla Rellena",
+      "price": 10.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Quesadilla Deluxe",
+      "price": 15.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Hamburger",
+      "price": 10.5
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "El Puerto",
+      "price": 22.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Steak a la Tampiquena",
+      "price": 22.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Carne Asada",
+      "price": 19.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "12oz T-bone Steak",
+      "price": 22.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Carne encebollada",
+      "price": 19.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Jalisco Special",
+      "price": 16.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Pollo Ranchero",
+      "price": 19.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Milanesa",
+      "price": 19.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Pollo Empanizado",
+      "price": 19.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Casuelon",
+      "price": 19.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Chilaquiles Deluxe",
+      "price": 19.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Nachos Deluxe",
+      "price": 16.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Enchiladas Verdes",
+      "price": 15.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Enchiladas Rojas",
+      "price": 15.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Enchiladas Poblanas",
+      "price": 15.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Yolandas",
+      "price": 15.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Enchiladas Super Rancheras",
+      "price": 16.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Enchiladas Supremas",
+      "price": 15.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Enchiladas Rancheras",
+      "price": 10.99
+    },
+    {
+      "section": "SPECIAL ORDERS",
+      "name": "Soft Chimichangas",
+      "price": 15.99
+    },
+    {
+      "section": "DESSERTS",
+      "name": "Churros",
+      "price": 6.5
+    },
+    {
+      "section": "DESSERTS",
+      "name": "Sopapillas",
+      "price": 4.5
+    },
+    {
+      "section": "DESSERTS",
+      "name": "Flan",
+      "price": 6.5
+    },
+    {
+      "section": "DESSERTS",
+      "name": "Mexican Fried Ice Cream",
+      "price": 6.5
+    }
+  ]
+}

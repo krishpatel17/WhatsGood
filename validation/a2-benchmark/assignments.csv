@@ -1,12 +1,12 @@
 restaurant_id,name,tier,source_type,menu_url,copied_by,checked_by,copied_on
-do12,Miller's Downtown,easy,html,https://millersdowntown.com/eat.html,Lara Mahajan,Krish Patel,
-co04,The Virginian,medium,pdf,https://www.thevirginiancville.com/s/Virginian-Menu-8-6-26.pdf,Lara Mahajan,Krish Patel,
-ba01,Sedona Taphouse,medium,pdf,https://sedonataphouse.com/wp-content/uploads/2019/01/Dinner_Summer2026_Cville_11x14_06.02.26_web.pdf,Lara Mahajan,Krish Patel,
-ba05,El Puerto Mexican Restaurant,medium,pdf,https://irp.cdn-website.com/d3c36932/files/uploaded/VA-2903_El+Puerto+Cville_9.5+x+14_113092+Web.pdf,Lara Mahajan,Krish Patel,
-do09,Afghan Kabob House,medium,html,https://afghankabob-house.com/our-menu/,Krish Patel,Shaunak Sinha,
-co02,Marco and Luca,hard,image-on-site,https://www.marcoandluca.com/menu,Krish Patel,Shaunak Sinha,
-co05,Crozet Pizza at Buddhist Biker Bar,hard,ordering-page,https://order.toasttab.com/online/crozet-pizza-cville-20-elliewood-ave,Krish Patel,Shaunak Sinha,
-do02,The Whiskey Jar,medium,html,https://www.thewhiskeyjarcville.com/menu,Shaunak Sinha,Lara Mahajan,
-co10,Boylan Heights,hard,ordering-page,https://ordering.chownow.com/order/27047/locations,Shaunak Sinha,Lara Mahajan,
-do06,Revolutionary Soup,hard,ordering-page,https://revsoupmenu.square.site/,Shaunak Sinha,Lara Mahajan,
-do04,Otto,hard,ordering-page,https://www.clover.com/online-ordering/otto-eats-catering-cville,Shaunak Sinha,Lara Mahajan,
+do12,Miller's Downtown,easy,html,https://millersdowntown.com/eat.html,Lara Mahajan,Krish Patel,2026-11-02
+co04,The Virginian,medium,pdf,https://www.thevirginiancville.com/s/Virginian-Menu-8-6-26.pdf,Lara Mahajan,Krish Patel,2026-11-02
+ba01,Sedona Taphouse,medium,pdf,https://sedonataphouse.com/wp-content/uploads/2019/01/Dinner_Summer2026_Cville_11x14_06.02.26_web.pdf,Lara Mahajan,Krish Patel,2026-11-02
+ba05,El Puerto Mexican Restaurant,medium,pdf,https://irp.cdn-website.com/d3c36932/files/uploaded/VA-2903_El+Puerto+Cville_9.5+x+14_113092+Web.pdf,Lara Mahajan,Krish Patel,2026-11-02
+do09,Afghan Kabob House,medium,html,https://afghankabob-house.com/our-menu/,Lara Mahajan,Krish Patel,2026-11-02
+co02,Marco and Luca,hard,image-on-site,https://www.marcoandluca.com/menu,Lara Mahajan,Krish Patel,2026-11-02
+co05,Crozet Pizza at Buddhist Biker Bar,hard,ordering-page,https://order.toasttab.com/online/crozet-pizza-cville-20-elliewood-ave,Lara Mahajan,Shaunak Sinha,2026-11-02
+do02,The Whiskey Jar,medium,html,https://www.thewhiskeyjarcville.com/menu,Lara Mahajan,Shaunak Sinha,2026-11-02
+co10,Boylan Heights,hard,ordering-page,https://ordering.chownow.com/order/27047/locations,Lara Mahajan,Shaunak Sinha,2026-11-02
+do06,Revolutionary Soup,hard,ordering-page,https://revsoupmenu.square.site/,Lara Mahajan,Shaunak Sinha,2026-11-02
+do04,Otto,hard,ordering-page,https://www.clover.com/online-ordering/otto-eats-catering-cville,Lara Mahajan,Shaunak Sinha,2026-11-02

@@ -1,0 +1,423 @@
+{
+  "restaurant_id": "do09",
+  "copied_by": "Lara Mahajan",
+  "copied_on": "2026-11-02",
+  "source_url": "https://afghankabob-house.com/our-menu/",
+  "dishes": [
+    {
+      "section": "Appetizers",
+      "name": "Vegetarian Samosa",
+      "price": 6.99
+    },
+    {
+      "section": "Appetizers",
+      "name": "Samosa Goshti",
+      "price": 6.99
+    },
+    {
+      "section": "Appetizers",
+      "name": "Bolanee Gandana",
+      "price": 4.99
+    },
+    {
+      "section": "Appetizers",
+      "name": "Bolanee Kadu",
+      "price": 4.99
+    },
+    {
+      "section": "Appetizers",
+      "name": "Bolanee Kachalow",
+      "price": 4.99
+    },
+    {
+      "section": "Appetizers",
+      "name": "Bolanee Mix",
+      "price": 5.5
+    },
+    {
+      "section": "Appetizers",
+      "name": "Borani Banjan",
+      "price": 4.99
+    },
+    {
+      "section": "Appetizers",
+      "name": "Aushak",
+      "price": 6.99
+    },
+    {
+      "section": "Appetizers",
+      "name": "Manto",
+      "price": 6.99
+    },
+    {
+      "section": "Appetizers",
+      "name": "Appetizer Sampler",
+      "price": 9.99
+    },
+    {
+      "section": "Soups",
+      "name": "Aush",
+      "price": 5.99
+    },
+    {
+      "section": "Soups",
+      "name": "Vegetable Soup",
+      "price": 5.99
+    },
+    {
+      "section": "Soups",
+      "name": "Maust-E-Khiar",
+      "price": 5.99
+    },
+    {
+      "section": "Kabob Meals",
+      "name": "Chicken Breast Kabob",
+      "price": 17.99
+    },
+    {
+      "section": "Kabob Meals",
+      "name": "Chicken Tandoori Kabob",
+      "price": 21.99
+    },
+    {
+      "section": "Kabob Meals",
+      "name": "Chicken Chaplee Kabob",
+      "price": 15.99
+    },
+    {
+      "section": "Kabob Meals",
+      "name": "Chicken Kofta Kabob",
+      "price": 14.99
+    },
+    {
+      "section": "Kabob Meals",
+      "name": "Lamb Tika Kabob",
+      "price": 17.99
+    },
+    {
+      "section": "Kabob Meals",
+      "name": "Chopan Kabob",
+      "price": 25.99
+    },
+    {
+      "section": "Kabob Meals",
+      "name": "Kabob-e-Berg",
+      "price": 18.99
+    },
+    {
+      "section": "Kabob Meals",
+      "name": "Sultani Kabob",
+      "price": 18.99
+    },
+    {
+      "section": "Kabob Meals",
+      "name": "Kofta Kabob",
+      "price": 14.99
+    },
+    {
+      "section": "Kabob Meals",
+      "name": "Kabob On Nan",
+      "price": 18.99
+    },
+    {
+      "section": "Kabob Meals",
+      "name": "Beef Chaplee Kabob",
+      "price": 14.95
+    },
+    {
+      "section": "Lunch Specials",
+      "name": "Kabob Salad",
+      "price": 14.99
+    },
+    {
+      "section": "Lunch Specials",
+      "name": "Kabob Wraps",
+      "price": 14.99
+    },
+    {
+      "section": "Lunch Specials",
+      "name": "Gyro Wrap",
+      "price": 14.99
+    },
+    {
+      "section": "Lunch Specials",
+      "name": "Lunch Buffet",
+      "price": 19.99
+    },
+    {
+      "section": "Lunch Specials",
+      "name": "Gyro Platter",
+      "price": 14.99
+    },
+    {
+      "section": "Lunch Specials",
+      "name": "Falafel",
+      "price": 14.99
+    },
+    {
+      "section": "Lunch Specials",
+      "name": "Hummus",
+      "price": 10.99
+    },
+    {
+      "section": "Complete Dinners",
+      "name": "Complete Dinner For Two",
+      "price": 60
+    },
+    {
+      "section": "Complete Dinners",
+      "name": "Complete Dinner For Four",
+      "price": 95
+    },
+    {
+      "section": "Complete Dinners",
+      "name": "Complete Dinner For Six",
+      "price": 130
+    },
+    {
+      "section": "Complete Dinners",
+      "name": "Complete Dinner For Eight",
+      "price": 170
+    },
+    {
+      "section": "Special Entrees",
+      "name": "Qabuli Palow",
+      "price": 18.99
+    },
+    {
+      "section": "Special Entrees",
+      "name": "Qurma Chalow",
+      "price": 18.99
+    },
+    {
+      "section": "Special Entrees",
+      "name": "Murgh Chalow",
+      "price": 18.99
+    },
+    {
+      "section": "Special Entrees",
+      "name": "Sabzi Chalow",
+      "price": 18.99
+    },
+    {
+      "section": "Special Entrees",
+      "name": "Afghan Red Beans",
+      "price": 18.99
+    },
+    {
+      "section": "Special Entrees",
+      "name": "Aushak Entree",
+      "price": 18.99
+    },
+    {
+      "section": "Special Entrees",
+      "name": "Manto Entree",
+      "price": 18.99
+    },
+    {
+      "section": "Special Entrees",
+      "name": "Afghan Chicken Meatball",
+      "price": 18.99
+    },
+    {
+      "section": "Special Entrees",
+      "name": "Afghan Beef Meatball",
+      "price": 18.99
+    },
+    {
+      "section": "Kid's Menu",
+      "name": "Chicken Breast Kabob",
+      "price": 9.99
+    },
+    {
+      "section": "Kid's Menu",
+      "name": "Gyro Platter",
+      "price": 9.9
+    },
+    {
+      "section": "Kid's Menu",
+      "name": "Chicken Fingers",
+      "price": 11.99
+    },
+    {
+      "section": "Kid's Menu",
+      "name": "French Fries",
+      "price": 6
+    },
+    {
+      "section": "Kabob Skewers",
+      "name": "Sultani",
+      "price": 13.95
+    },
+    {
+      "section": "Kabob Skewers",
+      "name": "Kabob-e-Barg",
+      "price": 10.95
+    },
+    {
+      "section": "Kabob Skewers",
+      "name": "Chicken Tandoori",
+      "price": 11.95
+    },
+    {
+      "section": "Kabob Skewers",
+      "name": "Chicken Chaplee",
+      "price": 7.95
+    },
+    {
+      "section": "Kabob Skewers",
+      "name": "Shrimp",
+      "price": 9.95
+    },
+    {
+      "section": "Kabob Skewers",
+      "name": "Salmon",
+      "price": 9.95
+    },
+    {
+      "section": "Kabob Skewers",
+      "name": "Kofta",
+      "price": 9.95
+    },
+    {
+      "section": "Kabob Skewers",
+      "name": "Spicy Fish",
+      "price": 9.95
+    },
+    {
+      "section": "Kabob Skewers",
+      "name": "Lamb",
+      "price": 9.95
+    },
+    {
+      "section": "Kabob Skewers",
+      "name": "Chicken",
+      "price": 7.95
+    },
+    {
+      "section": "Kabob Skewers",
+      "name": "Chopan",
+      "price": 10.95
+    },
+    {
+      "section": "Seafood Specials",
+      "name": "Spicy Fish Kabob",
+      "price": 19.99
+    },
+    {
+      "section": "Seafood Specials",
+      "name": "Salmon Kabob",
+      "price": 19.99
+    },
+    {
+      "section": "Seafood Specials",
+      "name": "Shrimp Kabob",
+      "price": 19.99
+    },
+    {
+      "section": "Kabob Combinations",
+      "name": "Combo #1",
+      "price": 18.99
+    },
+    {
+      "section": "Kabob Combinations",
+      "name": "Combo #2",
+      "price": 19.99
+    },
+    {
+      "section": "Kabob Combinations",
+      "name": "Combo #3",
+      "price": 20.99
+    },
+    {
+      "section": "Kabob Combinations",
+      "name": "Combo #4",
+      "price": 22.99
+    },
+    {
+      "section": "Vegetarian Delight",
+      "name": "Veggie Kabob",
+      "price": 17.99
+    },
+    {
+      "section": "Vegetarian Delight",
+      "name": "Kadu",
+      "price": 15.99
+    },
+    {
+      "section": "Vegetarian Delight",
+      "name": "Bamia",
+      "price": 15.99
+    },
+    {
+      "section": "Vegetarian Delight",
+      "name": "Kachalow",
+      "price": 15.99
+    },
+    {
+      "section": "Vegetarian Delight",
+      "name": "Vegetarian Combo",
+      "price": 15.95
+    },
+    {
+      "section": "Side Orders",
+      "name": "Quormey Gosht",
+      "price": 7.5
+    },
+    {
+      "section": "Side Orders",
+      "name": "Quormey Murgh",
+      "price": 7.5
+    },
+    {
+      "section": "Side Orders",
+      "name": "Kadu",
+      "price": 5.95
+    },
+    {
+      "section": "Side Orders",
+      "name": "Bamia",
+      "price": 5.95
+    },
+    {
+      "section": "Side Orders",
+      "name": "Kachalow",
+      "price": 5
+    },
+    {
+      "section": "Side Orders",
+      "name": "Sabzi",
+      "price": 5.95
+    },
+    {
+      "section": "Side Orders",
+      "name": "Nakhud",
+      "price": 5
+    },
+    {
+      "section": "Side Orders",
+      "name": "Salad",
+      "price": 4.95
+    },
+    {
+      "section": "Side Orders",
+      "name": "Nan",
+      "price": 4.5
+    },
+    {
+      "section": "Side Orders",
+      "name": "Rice",
+      "price": 4.5
+    },
+    {
+      "section": "Side Orders",
+      "name": "Raisins and Carrots",
+      "price": 4
+    },
+    {
+      "section": "Side Orders",
+      "name": "Afghan Red Beans",
+      "price": 7.95
+    }
+  ]
+}

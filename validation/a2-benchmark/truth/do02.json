@@ -1,0 +1,298 @@
+{
+  "restaurant_id": "do02",
+  "copied_by": "Lara Mahajan",
+  "copied_on": "2026-11-02",
+  "source_url": "https://www.thewhiskeyjarcville.com/menu",
+  "dishes": [
+    {
+      "section": "APPETIZERS",
+      "name": "FRIED OYSTERS",
+      "price": 16
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "PRETZEL – SALTED OR CINNAMON & SUGAR",
+      "price": 12
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "ALSTON’S BBQ MAC AND CHEESE",
+      "price": 12
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "SMOKED CHICKEN WINGS",
+      "price": 16
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "BBQ NACHOS",
+      "price": 13
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "CHICKEN AND DUMPLINGS SOUP",
+      "price": 8
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "V - BLACK–EYED PEA HUMMUS OR PIMENTO CHEESE",
+      "price": 10
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "V - HUSH PUPPIES AND GARLIC–CHEESE BISCUITS",
+      "price": 10
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "FRIED GREEN BEANS",
+      "price": 9
+    },
+    {
+      "section": "APPETIZERS",
+      "name": "FRIED Cauliflower",
+      "price": 9
+    },
+    {
+      "section": "ENTREES",
+      "name": "FRIED CHICKEN & BROWN SUGAR BACON COLLARD GREENS",
+      "price": 19
+    },
+    {
+      "section": "ENTREES",
+      "name": "COUNTRY FRIED PORK CHOPS",
+      "price": 23
+    },
+    {
+      "section": "ENTREES",
+      "name": "BLACKENED CATFISH",
+      "price": 19
+    },
+    {
+      "section": "ENTREES",
+      "name": "GRILLED TROUT",
+      "price": 26
+    },
+    {
+      "section": "ENTREES",
+      "name": "SHRIMP & GRITS",
+      "price": 20
+    },
+    {
+      "section": "ENTREES",
+      "name": "PULLED PORK & CHOICE OF 2 SIDES",
+      "price": 20
+    },
+    {
+      "section": "ENTREES",
+      "name": "1⁄2 RACK RIBS & CHOICE OF 2 SIDES",
+      "price": 22
+    },
+    {
+      "section": "ENTREES",
+      "name": "SMOKED SAUSAGE LINKS & CHOICE OF 2 SIDES",
+      "price": 20
+    },
+    {
+      "section": "ENTREES",
+      "name": "3 MEAT BBQ PLATTER & CHOICE OF A SIDE",
+      "price": 27
+    },
+    {
+      "section": "ENTREES",
+      "name": "SMOKED PORTOBELLO MUSHROOMS",
+      "price": 19
+    },
+    {
+      "section": "SIDES",
+      "name": "SIDE SALAD",
+      "price": 6
+    },
+    {
+      "section": "SIDES",
+      "name": "COLESLAW",
+      "price": 5
+    },
+    {
+      "section": "SIDES",
+      "name": "BROCCOLI SALAD",
+      "price": 5
+    },
+    {
+      "section": "SIDES",
+      "name": "MASHED POTATOES",
+      "price": 5
+    },
+    {
+      "section": "SIDES",
+      "name": "CORNBREAD",
+      "price": 4
+    },
+    {
+      "section": "SIDES",
+      "name": "MAC & CHEESE",
+      "price": 6
+    },
+    {
+      "section": "SIDES",
+      "name": "STEAMED BROCCOLI & CHEESE",
+      "price": 5
+    },
+    {
+      "section": "SIDES",
+      "name": "COLLARD GREENS",
+      "price": 6
+    },
+    {
+      "section": "SIDES",
+      "name": "BAKED BEANS",
+      "price": 6
+    },
+    {
+      "section": "SALAD ENTREES",
+      "name": "CHEESEBURGER SALAD",
+      "price": 16
+    },
+    {
+      "section": "SALAD ENTREES",
+      "name": "JAR SALAD",
+      "price": 16
+    },
+    {
+      "section": "SALAD ENTREES",
+      "name": "V - HOUSE SALAD",
+      "price": 10
+    },
+    {
+      "section": "SALAD ENTREES",
+      "name": "V - BERRY SALAD",
+      "price": 14
+    },
+    {
+      "section": "STAND–ALONES",
+      "name": "FRIED CHICKEN BISCUIT",
+      "price": 9
+    },
+    {
+      "section": "STAND–ALONES",
+      "name": "SAUSAGE BISCUIT",
+      "price": 8
+    },
+    {
+      "section": "STAND–ALONES",
+      "name": "HAM BISCUIT",
+      "price": 5
+    },
+    {
+      "section": "STAND–ALONES",
+      "name": "HUMMUS SANDWICH",
+      "price": 7
+    },
+    {
+      "section": "SANDWICHES",
+      "name": "THE CRUNCH BURGER",
+      "price": 16
+    },
+    {
+      "section": "SANDWICHES",
+      "name": "THE JAR CHEESE BURGER",
+      "price": 15
+    },
+    {
+      "section": "SANDWICHES",
+      "name": "THE JAR B–Q BURGER",
+      "price": 16
+    },
+    {
+      "section": "SANDWICHES",
+      "name": "SMOKE HOUSE BURGER",
+      "price": 15
+    },
+    {
+      "section": "SANDWICHES",
+      "name": "PULLED PORK BBQ",
+      "price": 15
+    },
+    {
+      "section": "SANDWICHES",
+      "name": "THe Jar Reuben",
+      "price": 16
+    },
+    {
+      "section": "SANDWICHES",
+      "name": "FRIED CHICKEN SANDWICH",
+      "price": 15
+    },
+    {
+      "section": "SANDWICHES",
+      "name": "PO’BOY – SAUSAGE, CATFISH, OR OYSTER",
+      "price": 16
+    },
+    {
+      "section": "SANDWICHES",
+      "name": "BLACKENED CATFISH SANDWICH",
+      "price": 15
+    },
+    {
+      "section": "SANDWICHES",
+      "name": "THE WILSON",
+      "price": 16
+    },
+    {
+      "section": "SANDWICHES",
+      "name": "2 LOADED H0T DOGS",
+      "price": 15
+    },
+    {
+      "section": "SANDWICHES",
+      "name": "V - NO–BULL VEGGIE BURGER",
+      "price": 16
+    },
+    {
+      "section": "KIDS",
+      "name": "GRILLED CHEDDAR or PIMENTO CHEESE SANDWICH",
+      "price": 4
+    },
+    {
+      "section": "KIDS",
+      "name": "PB & J SANDWHICH",
+      "price": 4
+    },
+    {
+      "section": "KIDS",
+      "name": "SMALL VEGGIE PLATTER WITH RANCH",
+      "price": 4
+    },
+    {
+      "section": "KIDS",
+      "name": "NATHAN'S ALL BEEF HOT DOG, PLAIN or KETCHUP AND MUSTARD",
+      "price": 4
+    },
+    {
+      "section": "KIDS",
+      "name": "HOUSE MADE CHICKEN TENDERS (4)",
+      "price": 6
+    },
+    {
+      "section": "DESSERTS",
+      "name": "DARK CHOCOLATE BROWNIE SUNDAE",
+      "price": 9
+    },
+    {
+      "section": "DESSERTS",
+      "name": "BOURBON BREAD PUDDING",
+      "price": 9
+    },
+    {
+      "section": "DESSERTS",
+      "name": "PECAN PIE",
+      "price": 9
+    },
+    {
+      "section": "DESSERTS",
+      "name": "MIXED BERRY COBBLER",
+      "price": 9
+    }
+  ]
+}
