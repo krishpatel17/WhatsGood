@@ -37,6 +37,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       window.removeEventListener("wg:profile", refresh);
     };
   }, [path]);
+  // A route that already shows this form gets focus on it, not a second copy in a dialog.
+  const open = (kind: "profile" | "scan") => {
+    if (path.startsWith(kind === "profile" ? "/setup" : "/scan"))
+      document.querySelector<HTMLElement>("main input, main textarea")?.focus();
+    else setModal(kind);
+  };
   const scanActive = modal === "scan" || path.startsWith("/scan");
   return (
     <>
@@ -52,7 +58,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <button
               type="button"
               aria-pressed={scanActive}
-              onClick={() => setModal("scan")}
+              onClick={() => open("scan")}
             >
               Scan Menu
             </button>
@@ -64,7 +70,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           )}
           <button
             className="profile-button"
-            onClick={() => setModal("profile")}
+            onClick={() => open("profile")}
           >
             My profile
             {profile && (

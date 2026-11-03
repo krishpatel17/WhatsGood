@@ -75,6 +75,7 @@ export function ResultsView({
         ))}
       </section>
     );
+  const reviewBacked = picks.picks.some((p) => p.mentionCount > 0);
   return (
     <section data-testid="results" data-mode={picks.mode}>
       <div className="section-heading">
@@ -89,12 +90,17 @@ export function ResultsView({
       </div>
       {picks.mode === "fallback" && generating && (
         <p className="notice" aria-busy="true" role="status">
-          Finding the best picks for you… Here are the top-rated dishes
-          meanwhile.
+          {reviewBacked
+            ? "Finding the best picks for you… Here are the top-rated dishes meanwhile."
+            : "Finding the best picks for you… Here are some menu matches meanwhile."}
         </p>
       )}
       {picks.mode === "fallback" && !generating && (
-        <p className="notice">Your menu matches, ranked by review sentiment.</p>
+        <p className="notice">
+          {reviewBacked
+            ? "Your menu matches, ranked by review sentiment."
+            : "Your menu matches, listed alphabetically."}
+        </p>
       )}
       {picks.explanation && <p className="explain">{picks.explanation}</p>}
       {picks.picks.length === 0 && (

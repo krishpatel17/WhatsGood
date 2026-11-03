@@ -1,6 +1,7 @@
 import type { IngredientTag } from "../menu/schema";
 import type { Diet, Profile } from "../profile/schema";
 import type { MenuDish, Pick } from "../recommend/types";
+import { ingredientsNamed } from "./dish-words";
 
 const MEAT: IngredientTag[] = ["pork", "beef", "lamb", "poultry", "meat"];
 
@@ -25,7 +26,7 @@ export type Flag = "ask_server" | "price_unknown";
 const money = (n: number) => `$${Number.isInteger(n) ? n : n.toFixed(2)}`;
 
 export function dishConflicts(dish: MenuDish, profile: Profile): string[] {
-  const tags = new Set(dish.tags.map((t) => t.tag));
+  const tags = new Set<IngredientTag>([...dish.tags.map((t) => t.tag), ...ingredientsNamed(dish)]);
   const conflicts = profile.allergies.filter((a) => tags.has(a)).map((a) => `allergy: ${a}`);
   for (const diet of profile.diets) {
     if (DIET_CONFLICTS[diet].some((t) => tags.has(t))) conflicts.push(`diet: ${diet}`);
