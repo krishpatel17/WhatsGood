@@ -1,1 +1,73 @@
 section,name,price
+STARTERS,House-Made Soup,5.90
+STARTERS,House-Made Soup,7.90
+STARTERS,Bread Basket,4.90
+STARTERS,Edamame,7.90
+STARTERS,Truffle Fries,8.90
+STARTERS,Desert Fire Jalapeños,9.90
+STARTERS,Goat Cheese + Tomato Jam Bruschetta,9.90
+STARTERS,Classic Hummus,9.90
+STARTERS,Guacamole,9.90
+STARTERS,Seared Ahi Tuna,16.90
+STARTERS,Steamed Shrimp,12.90
+STARTERS,Steamed Shrimp,20.90
+STARTERS,Canyon Crab Flatbread,13.90
+STARTERS,Spicy Thai Shrimp,13.90
+STARTERS,Canyon Nachos,14.90
+STARTERS,Fried Calamari,15.90
+STARTERS,Southwest Roasted Wings,15.90
+STARTERS,Fried Oysters,17.90
+PASTA,Primavera,16.90
+PASTA,Grilled Chicken Alfredo,21.90
+PASTA,French Quarter,22.90
+PASTA,Devil’s Pass,22.90
+PASTA,Shrimp Alfredo,22.90
+HOUSE SPECIALTIES,Chicken Marsala,22.90
+HOUSE SPECIALTIES,Chuckawalla Chicken,22.90
+HOUSE SPECIALTIES,Roman Parmesan-Crusted Chicken,22.90
+HOUSE SPECIALTIES,Pork Chop Marsala,23.90
+HOUSE SPECIALTIES,Crab-Stuffed Shrimp,24.90
+HOUSE SPECIALTIES,Wild Man Steak,27.90
+HOUSE SPECIALTIES,Land + Sea,32.90
+HOUSE SPECIALTIES,Shrimp + Grits,20.90
+HOUSE SPECIALTIES,Sedona Crab Cakes,28.90
+SIMPLY WOOD GRILLED,Hand-Cut NY Strip*,34.90
+SIMPLY WOOD GRILLED,Hand-Cut Filet Mignon*,34.90
+SIMPLY WOOD GRILLED,Black Angus Flat Iron Steak*,24.90
+SIMPLY WOOD GRILLED,Grilled Chicken,20.90
+SIMPLY WOOD GRILLED,Salmon*,25.90
+GREENS,Sedona House,5.90
+GREENS,Caesar,6.90
+GREENS,Gorgonzola Chopped,7.90
+GREENS,Strawberry + Beet,9.90
+GREENS,Julie’s Farmer,11.90
+GREENS,Ahi Tuna,20.90
+GREENS,Salmon* + Asparagus,25.90
+SIDES,Organic Greens,4.00
+SIDES,Garlic Whipped Potatoes,4.00
+SIDES,Steamed Broccoli,4.00
+SIDES,Shoestring French Fries,4.00
+SIDES,Steamed Spinach,4.00
+SIDES,Grilled Asparagus,4.00
+SIDES,Southwest Corn,4.00
+SIDES,Spanish Rice,4.00
+SIDES,Caprese,4.00
+SIDES,Fruit,4.00
+PREMIUM SIDES,Sweet Potato Fries,6.00
+PREMIUM SIDES,Roasted Brussels Sprouts,6.00
+"BURGER, SANDWICHES + SLIDERS",Cheeseburger,14.90
+"BURGER, SANDWICHES + SLIDERS",STH Burger,15.90
+"BURGER, SANDWICHES + SLIDERS",Alpine Burger,15.90
+"BURGER, SANDWICHES + SLIDERS",Hangover Burger,16.90
+"BURGER, SANDWICHES + SLIDERS",The Beyond Burger,15.90
+"BURGER, SANDWICHES + SLIDERS",Vegan Burger,16.90
+"BURGER, SANDWICHES + SLIDERS",Alpine Chicken Sandwich,15.90
+"BURGER, SANDWICHES + SLIDERS",Prime Rib Sandwich,15.90
+"BURGER, SANDWICHES + SLIDERS",‘Kobe Beef’ Sliders,12.00
+"BURGER, SANDWICHES + SLIDERS",‘Kobe Beef’ Sliders,16.00
+"BURGER, SANDWICHES + SLIDERS",Crab Cake Sliders,14.00
+FLATBREADS,South Rim Shrimp,9.90
+FLATBREADS,Meat Lovers,9.90
+FLATBREADS,BBQ Chicken,8.90
+FLATBREADS,Goat Cheese + Basil,7.90
+FLATBREADS,Margherita,7.90section,name,price
