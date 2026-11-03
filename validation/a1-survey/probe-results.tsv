@@ -1,0 +1,30 @@
+id	guess	url	evidence
+CO01	html	http://www.bodosbagels.com/menu/creamcheeses.html	13 prices in page text
+CO02	unclear	https://www.marcoandluca.com	0 prices, 3 images on best menu page
+CO03	ordering-page	http://take-it-away.square.site	online ordering link
+CO04	pdf	https://www.thevirginiancville.com/s/Virginian-Menu-8-6-26.pdf	3 pdf link(s)
+CO05	ordering-page	https://order.toasttab.com/online/crozet-pizza-cville-20-elliewood-ave	online ordering link
+CO07	unclear	https://www.thespotuva.com	4 prices, 14 images on best menu page
+CO08	unclear	https://www.pokesushibowl.com	0 prices, 0 images on best menu page
+CO09	unclear	https://www.inkagrill.pe	0 prices, 58 images on best menu page
+CO10	ordering-page	https://ordering.chownow.com/order/27047/locations?add_cn_ordering_class=true	online ordering link
+CO11	unclear	https://www.orderchristianspizza.com	0 prices, 0 images on best menu page
+CO12	ordering-page	https://order.chownow.com/order/30810/locations	online ordering link
+DO01	error	https://www.bangrestaurant.net/	<urlopen error [Errno 8] nodename nor servname provided, or not known>
+DO02	html	https://www.thewhiskeyjarcville.com/menu	108 prices in page text
+DO03	ordering-page	https://cvillebrightside.square.site	online ordering link
+DO04	pdf	https://static.spotapps.co/web/otto-cville--com/custom/wedding_menu.pdf	1 pdf link(s)
+DO05	unclear	https://alleylight.com	0 prices, 9 images on best menu page
+DO06	ordering-page	https://revsoupmenu.square.site/	online ordering link
+DO07	html	https://thebebedero.com/menu	102 prices in page text
+DO08	unclear	https://www.orderchristianspizza.com/	0 prices, 0 images on best menu page
+DO09	html	https://afghankabob-house.com/our-menu/	186 prices in page text
+DO10	ordering-page	https://www.toasttab.com/bizou/v2/online-order#!/	online ordering link
+DO11	ordering-page	https://www.toasttab.com/luce	online ordering link
+DO12	unclear	https://millersdowntown.com/	3 prices, 10 images on best menu page
+BA01	html	https://sedonataphouse.com/locations/charlottesville-va/	9 prices in page text
+BA02	unclear	https://www.pokesushibowl.com	0 prices, 0 images on best menu page
+BA03	pdf	https://fw-blogs.s3.us-east-1.amazonaws.com/First+Watch+Pursuit+of+Goodness.pdf	3 pdf link(s)
+BA04	error	https://brazostacos.com/	HTTP Error 403: Forbidden
+BA05	unclear	https://www.elpuertomexicancville.com	0 prices, 25 images on best menu page
+BA06	error	https://cava.com	HTTP Error 403: Forbidden

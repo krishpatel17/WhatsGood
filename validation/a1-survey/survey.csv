@@ -1,31 +1,31 @@
 id,area,name,address,source_type,url,notes
-CO01,The Corner,Bodo's Bagels,1609 University Avenue,,,
-CO02,The Corner,Marco and Luca,107 Elliewood Avenue,,,
-CO03,The Corner,Take It Away,115 Elliewood Avenue,,,
-CO04,The Corner,The Virginian,1521 University Avenue,,,
-CO05,The Corner,Crozet Pizza at Buddhist Biker Bar,20 Elliewood Avenue,,,
-CO06,The Corner,Kuma Sushi Noodles & Bar,12 Elliewood Avenue,,,
-CO07,The Corner,The Spot,1407 University Avenue,,,
-CO08,The Corner,Poke Sushi Bowl,101 14th Street Northwest,,,
-CO09,The Corner,Inka Grill,105 14th Street Northwest,,,
-CO10,The Corner,Boylan Heights,102 14th Street Northwest,,,
-CO11,The Corner,Christian's Pizza,100 14th Street Northwest,,,
-CO12,The Corner,Got Dumplings,1395 West Main Street,,,
-DO01,Downtown Mall,Bang!,213 2nd Street Southwest,,,
-DO02,Downtown Mall,The Whiskey Jar,225 West Main Street,,,
-DO03,Downtown Mall,Brightside Beach Pub,225 West Main Street,,,
-DO04,Downtown Mall,Otto,111 Water Street West,,,
-DO05,Downtown Mall,The Alley Light,108 2nd Street Southwest,,,
-DO06,Downtown Mall,Revolutionary Soup,108 2nd Street Southwest,,,
-DO07,Downtown Mall,The Bebedero,225 West Main Street,,,
-DO08,Downtown Mall,Christian's Pizza,118 West Main Street,,,
-DO09,Downtown Mall,Afghan Kabob House,200 West Market Street,,,
-DO10,Downtown Mall,Bizou,119 West Main Street,,,
-DO11,Downtown Mall,Luce,110 2nd Street Northwest,,,
-DO12,Downtown Mall,Miller's Downtown,109 West Main Street,,,
-BA01,Barracks Road,Sedona Taphouse,1035 Millmont Street,,,
-BA02,Barracks Road,Poke Sushi Bowl,1104 Emmet Street North,,,
-BA03,Barracks Road,First Watch,1114 Emmet Street North,,,
-BA04,Barracks Road,Brazos,1133 Emmet Street North,,,
-BA05,Barracks Road,El Puerto Mexican Restaurant,2045 Barracks Road,,,
-BA06,Barracks Road,CAVA,1200 Emmet Street North,,,
+CO01,The Corner,Bodo's Bagels,1609 University Avenue,html,http://www.bodosbagels.com/menu/creamcheeses.html,Menu pages on own site with prices
+CO02,The Corner,Marco and Luca,107 Elliewood Avenue,image-on-site,https://www.marcoandluca.com/menu,"Menu page shows one menu image, no text"
+CO03,The Corner,Take It Away,115 Elliewood Avenue,ordering-page,http://take-it-away.square.site,Own site links to Square ordering
+CO04,The Corner,The Virginian,1521 University Avenue,pdf,https://www.thevirginiancville.com/s/Virginian-Menu-8-6-26.pdf,Main and brunch menus as PDFs on own site
+CO05,The Corner,Crozet Pizza at Buddhist Biker Bar,20 Elliewood Avenue,ordering-page,https://order.toasttab.com/online/crozet-pizza-cville-20-elliewood-ave,Toast ordering linked from own site
+CO06,The Corner,Kuma Sushi Noodles & Bar,12 Elliewood Avenue,third-party-only,https://charlottesville.guide/restaurants/kuma-sushi-noodles-bar/,No own website found (OSM has none; searches found only directories). Sample menu on a city guide; phone orders only
+CO07,The Corner,The Spot,1407 University Avenue,third-party-only,https://www.tripadvisor.com/,Own site's See Menu link reloads the homepage; Order Ahead only offers the Elevate student app. Menu found only on Tripadvisor and Google
+CO08,The Corner,Poke Sushi Bowl,101 14th Street Northwest,ordering-page,https://ordering.chownow.com/order/17523/locations,ChowNow ordering linked from own site; on-page menu section has no items
+CO09,The Corner,Inka Grill,105 14th Street Northwest,html,https://www.inkagrill.pe/menu/,Own site (lists both Charlottesville locations) has dish names by category but no prices
+CO10,The Corner,Boylan Heights,102 14th Street Northwest,ordering-page,https://ordering.chownow.com/order/27047/locations,ChowNow ordering linked from own site
+CO11,The Corner,Christian's Pizza,100 14th Street Northwest,third-party-only,https://order.online/store/-462571/,Own domain orderchristianspizza.com is now a parked domain for sale; menu only on DoorDash storefront and Slice
+CO12,The Corner,Got Dumplings,1395 West Main Street,ordering-page,https://order.chownow.com/order/30810/locations,ChowNow ordering linked from own site
+DO01,Downtown Mall,Bang!,213 2nd Street Southwest,third-party-only,,Open (Google shows current hours) but bangrestaurant.net did not resolve on 2026-11-03 from two networks; menu only on Google
+DO02,Downtown Mall,The Whiskey Jar,225 West Main Street,html,https://www.thewhiskeyjarcville.com/menu,Full text menu with prices
+DO03,Downtown Mall,Brightside Beach Pub,225 West Main Street,ordering-page,https://cvillebrightside.square.site,Square ordering linked from own site
+DO04,Downtown Mall,Otto,111 Water Street West,ordering-page,https://www.clover.com/online-ordering/otto-eats-catering-cville,Own site's FOOD page is the catering menu; the regular menu is on Clover ordering
+DO05,Downtown Mall,The Alley Light,108 2nd Street Southwest,html,https://alleylight.com/#menus,Text menu in tabs on own site; prices are bare numbers
+DO06,Downtown Mall,Revolutionary Soup,108 2nd Street Southwest,ordering-page,https://revsoupmenu.square.site/,Square ordering linked from own site
+DO07,Downtown Mall,The Bebedero,225 West Main Street,html,https://thebebedero.com/menu,Full text menu with prices
+DO08,Downtown Mall,Christian's Pizza,118 West Main Street,third-party-only,https://order.online/store/-462571/,Same business as CO11: own domain is parked; menu only on third-party ordering sites
+DO09,Downtown Mall,Afghan Kabob House,200 West Market Street,html,https://afghankabob-house.com/our-menu/,Full text menu with prices
+DO10,Downtown Mall,Bizou,119 West Main Street,ordering-page,https://www.toasttab.com/bizou/v2/online-order,Toast ordering linked from own site
+DO11,Downtown Mall,Luce,110 2nd Street Northwest,ordering-page,https://www.toasttab.com/luce,Toast ordering linked from own site
+DO12,Downtown Mall,Miller's Downtown,109 West Main Street,html,https://millersdowntown.com/eat.html,Full text menu with prices
+BA01,Barracks Road,Sedona Taphouse,1035 Millmont Street,pdf,https://sedonataphouse.com/wp-content/uploads/2019/01/Dinner_Summer2026_Cville_11x14_06.02.26_web.pdf,Charlottesville lunch and dinner PDFs on own site
+BA02,Barracks Road,Poke Sushi Bowl,1104 Emmet Street North,ordering-page,https://ordering.chownow.com/order/17523/locations,Same chain as CO08: ChowNow ordering
+BA03,Barracks Road,First Watch,1114 Emmet Street North,html,https://firstwatch.com/menu,"Chain-wide text menu, no prices shown"
+BA04,Barracks Road,Brazos,1133 Emmet Street North,ordering-page,https://brazostacos.com/menu/brazos-tacos-barracks-1133-emmett-st-n,Own site is built on Toast; per-location menu page
+BA05,Barracks Road,El Puerto Mexican Restaurant,2045 Barracks Road,pdf,https://irp.cdn-website.com/d3c36932/files/uploaded/VA-2903_El+Puerto+Cville_9.5+x+14_113092+Web.pdf,Menu PDF linked from own site
+BA06,Barracks Road,CAVA,1200 Emmet Street North,html,https://cava.com/menu,"Chain-wide text menu, no prices shown"

@@ -37,3 +37,11 @@ For each restaurant, find the menu starting from its own website. If it has none
 | `none` | No menu found online | no |
 
 `url` is the link to the source. It is required for every readable type.
+
+## Who coded it and how
+
+Coded on 2026-11-03 by Claude (AI assistant), working for the team, from each restaurant's own website in a browser. `probe.py` made a first automatic guess (`probe-results.tsv`). Every guess that wasn't a clear text menu, PDF or ordering link was checked by hand, and the reason is in `notes`. Two OSM website tags were wrong or stale (Inka Grill, Christian's Pizza), so the right site was found by search.
+
+**A team member should spot-check at least 6 rows (20%) before the report is final.** Add your initials to `notes`.
+
+Caveat: "readable" means a source we can fetch. Whether the import gets the dishes right from it, especially from JavaScript ordering pages, is what A2 tests.
