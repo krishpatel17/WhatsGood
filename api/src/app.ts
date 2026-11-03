@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import type { Db } from "./db";
 import { profileRoutes } from "./profile/routes";
+import { restaurantRoutes } from "./restaurants/routes";
 
 export type Env = {
   DB: D1Database;
@@ -32,5 +33,6 @@ export function createApp(override: Partial<Deps> = {}) {
 
   app.get("/health", (c) => c.json({ ok: true }));
   app.route("/profiles", profileRoutes);
+  app.route("/restaurants", restaurantRoutes);
   return app;
 }
