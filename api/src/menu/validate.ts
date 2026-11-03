@@ -1,4 +1,5 @@
 import { normalize } from "../text/match";
+import { STRUCTURED_DATA_HEADING } from "./fetcher";
 import { type Dish, MenuSchema } from "./schema";
 import type { Validate } from "./import";
 
@@ -20,11 +21,34 @@ export function parsePrice(text: string): PriceResult {
   return { ok: true, value: Math.min(...values) };
 }
 
-const PRICE = /\$\s?\d+(\.\d{1,2})?|\b\d{1,3}\.\d{2}\b/;
+const PRICE = /\$\s?\d+(\.\d{1,2})?|\b\d{1,3}\.\d{2}\b/g;
+const BARE_NUMBER = /^\d{1,3}(\.\d)?$/;
+const ADD_ON = /^\+|\badd\b/i;
 
-/** Non-LLM item count: the number of page lines that carry a price. */
-export function layoutItemCount(text: string): number {
-  return text.split("\n").filter((line) => PRICE.test(line)).length;
+/**
+ * Non-LLM item count: the number of page lines that carry a price, or null when those lines don't
+ * map to dishes. Lines that could be off by more than the tolerance mean the count can't be held to it:
+ * bare numbers it can't tell from prices, prices printed twice, and lines with add-ons or several prices.
+ */
+export function layoutItemCount(text: string): number | null {
+  let priced = 0;
+  let bare = 0;
+  let unclear = 0;
+  let last: { line: string; at: number } | null = null;
+  text.split(STRUCTURED_DATA_HEADING)[0].split("\n").forEach((line, at) => {
+    if (BARE_NUMBER.test(line.trim())) bare++;
+    const prices = line.match(PRICE)?.length ?? 0;
+    if (prices === 0) return;
+    priced++;
+    if (last?.line === line && at - last.at <= 2) {
+      unclear++;
+      last = null;
+      return;
+    }
+    if (prices > 1 || ADD_ON.test(line)) unclear++;
+    last = { line, at };
+  });
+  return unclear + bare > (priced + bare) * COUNT_TOLERANCE + 1e-9 ? null : priced;
 }
 
 /** Null when the extracted count is within ±15% of the layout count (or no layout count exists). */
