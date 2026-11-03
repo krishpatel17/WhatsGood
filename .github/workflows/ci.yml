@@ -17,6 +17,10 @@ jobs:
       - run: npm ci
       - name: Run tests with coverage
         run: npm run coverage
+      - name: Install browser for e2e tests
+        run: npx playwright install --with-deps chromium
+      - name: Run e2e tests
+        run: npm run e2e -w web
       - name: Coverage summary
         if: always()
         run: node scripts/coverage-summary.mjs >> "$GITHUB_STEP_SUMMARY"

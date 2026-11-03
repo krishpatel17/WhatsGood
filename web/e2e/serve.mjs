@@ -2,8 +2,9 @@
 import { createServer } from "node:http";
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { extname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = new URL("../out/", import.meta.url).pathname;
+const root = fileURLToPath(new URL("../out/", import.meta.url));
 const types = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml", ".webmanifest": "application/manifest+json", ".txt": "text/plain" };
 createServer((req, res) => {
   let path = join(root, decodeURIComponent(new URL(req.url, "http://x").pathname));

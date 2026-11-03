@@ -43,7 +43,7 @@ describe("US-14 Results screen: pick card", () => {
     expect(screen.queryByText(/reviewer/)).toBeNull();
   });
 
-  it("[manual] T1 component: the card never says a dish is safe", () => {
+  it("[ai] T1 component: the card never says a dish is safe", () => {
     const { container } = render(<PickCard pick={{ ...pick, flags: ["ask_server"] }} rank={1} />);
     expect(container.textContent).not.toMatch(/\bsafe\b|allergen-free/i);
   });
