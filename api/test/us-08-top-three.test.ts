@@ -54,6 +54,47 @@ describe("US-08 Get my top 3 dishes", () => {
     expect(prompt).not.toContain("Vegetable Dumplings");
   });
 
+  describe("a dish listed in two sections", () => {
+    beforeEach(() => {
+      db.raw
+        .prepare("INSERT INTO dishes (id, menu_id, restaurant_id, name, section, price, description, tags) SELECT 'lunch-twin', menu_id, restaurant_id, name, 'Lunch', price, description, tags FROM dishes WHERE id = ?")
+        .run(seed.dishId("Dan Dan Noodles"));
+    });
+
+    it("[ai] T9 unit: the prompt offers it once, with its reviews", async () => {
+      const ctx = await loadContext(db, "r1", ProfileSchema.parse({}));
+      const prompt = (buildPrompt(ctx)[0] as { text: string }).text;
+      expect(prompt.match(/^- Dan Dan Noodles \(/gm)).toHaveLength(1);
+      expect(prompt.match(/^- Dan Dan Noodles: mentions: 3/gm)).toHaveLength(1);
+      expect(ctx.plan.candidates).toContain(seed.dishId("Dan Dan Noodles"));
+      expect(ctx.plan.candidates).not.toContain("lunch-twin");
+    });
+
+    it("[ai] T10 unit: plan counts it as one dish", async () => {
+      // Soy leaves Dan Dan and its twin plus one other dish, so three rows but two dishes.
+      db.raw.exec("UPDATE dishes SET tags = '[{\"tag\":\"soy\",\"source\":\"stated\"}]' WHERE restaurant_id = 'r1' AND name NOT IN ('Dan Dan Noodles', 'Cumin Lamb Noodles (Spicy)')");
+      const { plan, allowed } = await loadContext(db, "r1", ProfileSchema.parse({ allergies: ["soy"] }));
+      expect(allowed.map((d) => d.name).sort()).toEqual(["Cumin Lamb Noodles (Spicy)", "Dan Dan Noodles", "Dan Dan Noodles"]);
+      expect(plan.maxPicks).toBe(2);
+      expect(plan.explanation).toBe("Only 2 dishes on this menu fit your profile.");
+    });
+
+    it("[ai] T11 integration: the shown and stored picks never repeat it", async () => {
+      // Reviews landed on both listings, so both would rank in the top 3.
+      db.raw.prepare("INSERT INTO mentions (id, restaurant_id, review_id, dish_id, mention, sentiment, quote, score) VALUES ('m6', 'r1', ?, 'lunch-twin', 'x', 1, 'Loved the dan dan noodles', 1)").run(seed.reviewId("google:4"));
+      const llm = mockLlm([{ raw: "not json" }, { raw: "not json" }, { raw: "not json" }]);
+      const res = await createApp({ db, llm }).request(`/restaurants/r1/recommend`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ profileId }) });
+      expect(res.status).toBe(200);
+      const body = (await res.json()) as { mode: string; picks: { name: string }[] };
+      expect(body.mode).toBe("fallback");
+      const names = body.picks.map((p) => p.name);
+      expect(names).toContain("Dan Dan Noodles");
+      expect(new Set(names).size).toBe(names.length);
+      const stored = db.raw.prepare("SELECT picks FROM recommendations").get() as { picks: string };
+      expect((JSON.parse(stored.picks) as { name: string }[]).filter((p) => p.name === "Dan Dan Noodles")).toHaveLength(1);
+    });
+  });
+
   it("[ai] T2 unit: response parser accepts 1-3 picks and rejects 4", () => {
     expect(validatePicks({ picks: goodPicks.picks.slice(0, 1) }, context()).errors).toEqual([]);
     expect(validatePicks(goodPicks, context()).errors).toEqual([]);
