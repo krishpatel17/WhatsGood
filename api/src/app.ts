@@ -1,6 +1,9 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import type { Blobs } from "./blobs";
 import type { Db } from "./db";
+import { anthropicLlm } from "./llm/anthropic";
+import type { Llm } from "./llm/types";
 import { profileRoutes } from "./profile/routes";
 import { restaurantRoutes } from "./restaurants/routes";
 
@@ -13,13 +16,16 @@ export type Env = {
 
 export type Deps = {
   db: Db;
+  blobs: Blobs;
+  llm: Llm;
+  fetch: typeof fetch;
 };
 
 export type AppEnv = { Bindings: Env; Variables: { deps: Deps } };
 
 export function depsFromEnv(env: Env | undefined): Partial<Deps> {
   if (!env) return {};
-  return { db: env.DB };
+  return { db: env.DB, blobs: env.BUCKET, llm: anthropicLlm({ apiKey: env.ANTHROPIC_API_KEY }), fetch: (input, init) => fetch(input, init) };
 }
 
 /** Builds the API. Tests pass in-memory dependencies; production builds them from the Worker env. */
