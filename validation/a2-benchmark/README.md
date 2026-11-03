@@ -38,6 +38,8 @@ This checks every sheet. It lists rows to fix by spreadsheet row number, and sho
 
 ## Step 3 — Spot-check (AC5)
 
+**Deviation from the plan:** AC5 called for a second team member. For the Alpha, Lara Mahajan copied all 11 menus and also did the spot-checks, so they are self-checks, which are weaker than an independent check. `npm run truth` flags this, and the validation report states it.
+
 The checker opens `truth/spot-check/<id>.csv` beside the menu source:
 - Put `yes` or `no` in `correct` for each row.
 - For a `no`, write the right value in `fix`, then correct the row in `truth/sheets/<id>.csv`.
