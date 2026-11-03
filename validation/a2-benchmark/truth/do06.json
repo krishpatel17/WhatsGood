@@ -1,0 +1,98 @@
+{
+  "restaurant_id": "do06",
+  "copied_by": "Lara Mahajan",
+  "copied_on": "2026-11-02",
+  "source_url": "https://revsoupmenu.square.site/",
+  "dishes": [
+    {
+      "section": "Housemade Soups",
+      "name": "Loaded Potato",
+      "price": 6.5
+    },
+    {
+      "section": "Housemade Soups",
+      "name": "Peanut Tofu Soup",
+      "price": 5.5
+    },
+    {
+      "section": "Housemade Soups",
+      "name": "Tomato Basil Bisque",
+      "price": 5.5
+    },
+    {
+      "section": "Housemade Soups",
+      "name": "Spicy Chicken Tortilla",
+      "price": 6.5
+    },
+    {
+      "section": "Housemade Soups",
+      "name": "Potato Rosemary",
+      "price": 6
+    },
+    {
+      "section": "Housemade Soups",
+      "name": "Beef Chili",
+      "price": 7.5
+    },
+    {
+      "section": "Sandwiches & Wraps *Gluten Free Option*",
+      "name": "Adam's Apple",
+      "price": 8.25
+    },
+    {
+      "section": "Sandwiches & Wraps *Gluten Free Option*",
+      "name": "BLT",
+      "price": 7.95
+    },
+    {
+      "section": "Sandwiches & Wraps *Gluten Free Option*",
+      "name": "Cheesesteak Hoagie",
+      "price": 8.25
+    },
+    {
+      "section": "Sandwiches & Wraps *Gluten Free Option*",
+      "name": "Garlic Garden Club",
+      "price": 8.25
+    },
+    {
+      "section": "Sandwiches & Wraps *Gluten Free Option*",
+      "name": "Grilled Cheese",
+      "price": 4
+    },
+    {
+      "section": "Sandwiches & Wraps *Gluten Free Option*",
+      "name": "Ham & Brie",
+      "price": 8.25
+    },
+    {
+      "section": "Sandwiches & Wraps *Gluten Free Option*",
+      "name": "Kickin' Chicken",
+      "price": 9.25
+    },
+    {
+      "section": "Sandwiches & Wraps *Gluten Free Option*",
+      "name": "Local Grilled Tofu",
+      "price": 7.95
+    },
+    {
+      "section": "Sandwiches & Wraps *Gluten Free Option*",
+      "name": "Thai Wrap",
+      "price": 7.95
+    },
+    {
+      "section": "Sandwiches & Wraps *Gluten Free Option*",
+      "name": "Turkey Bacon Club",
+      "price": 8.25
+    },
+    {
+      "section": "Sandwiches & Wraps *Gluten Free Option*",
+      "name": "Pimento Grilled Cheese",
+      "price": 7.5
+    },
+    {
+      "section": "Sandwiches & Wraps *Gluten Free Option*",
+      "name": "90's Club",
+      "price": 8.25
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "restaurant_id": "do12",
+  "copied_by": "Lara Mahajan",
+  "copied_on": "2026-11-02",
+  "source_url": "https://millersdowntown.com/eat.html",
+  "dishes": [
+    {
+      "section": "Starters",
+      "name": "Fried Pretzel Bites",
+      "price": 9
+    },
+    {
+      "section": "Starters",
+      "name": "House Pimento Cheese",
+      "price": 9
+    },
+    {
+      "section": "Starters",
+      "name": "Wings",
+      "price": 10
+    },
+    {
+      "section": "Starters",
+      "name": "Mozzarella",
+      "price": 9
+    },
+    {
+      "section": "Starters",
+      "name": "C'ville Fries",
+      "price": 12
+    },
+    {
+      "section": "Salads",
+      "name": "Fried Green Tomato Salad",
+      "price": 11
+    },
+    {
+      "section": "Salads",
+      "name": "Downtown",
+      "price": 11
+    },
+    {
+      "section": "Salads",
+      "name": "Chopped Cobb",
+      "price": 11
+    },
+    {
+      "section": "Soups",
+      "name": "Lobster Bisque",
+      "price": 9.49
+    },
+    {
+      "section": "Soups",
+      "name": "House Chili",
+      "price": 7
+    },
+    {
+      "section": "Burgers",
+      "name": "Miller's Dry Aged Smash",
+      "price": 9.99
+    },
+    {
+      "section": "Burgers",
+      "name": "Miller's Double Double",
+      "price": 14
+    },
+    {
+      "section": "Burgers",
+      "name": "Black & Blue Ridge Burger",
+      "price": 13
+    },
+    {
+      "section": "Burgers",
+      "name": "The Palmetto",
+      "price": 13.75
+    },
+    {
+      "section": "Fried Fish",
+      "name": "Blue Ribbon Battered Cod",
+      "price": 20
+    },
+    {
+      "section": "Chicken Tenders",
+      "name": "Crispy Original",
+      "price": 12
+    },
+    {
+      "section": "Chicken Tenders",
+      "name": "Nashville Hot",
+      "price": 12
+    },
+    {
+      "section": "Chicken Tenders",
+      "name": "Chicken & Waffles",
+      "price": 13
+    },
+    {
+      "section": "Chicken Tenders",
+      "name": "Charlottesville's Nasty Chicken Biscuit",
+      "price": 13
+    },
+    {
+      "section": "Sandwiches",
+      "name": "Sandwich Number Nine",
+      "price": 13
+    },
+    {
+      "section": "Sandwiches",
+      "name": "Rib-Eye Steak & Cheese",
+      "price": 16
+    },
+    {
+      "section": "Sandwiches",
+      "name": "Dave's Reuben",
+      "price": 13
+    },
+    {
+      "section": "Sandwiches",
+      "name": "Fried Chicken Sandwich",
+      "price": 11.49
+    },
+    {
+      "section": "Hot Dogs",
+      "name": "Hand Dipped Jalapeño Corn Dog",
+      "price": 8
+    },
+    {
+      "section": "Hot Dogs",
+      "name": "Slaw Dog",
+      "price": 8.98
+    },
+    {
+      "section": "Hot Dogs",
+      "name": "Mouth of the South Frank",
+      "price": 9.25
+    },
+    {
+      "section": "Sides",
+      "name": "Kettle Cooked Chips",
+      "price": 2
+    },
+    {
+      "section": "Sides",
+      "name": "French Fries",
+      "price": 4
+    },
+    {
+      "section": "Sides",
+      "name": "Coleslaw",
+      "price": 3
+    },
+    {
+      "section": "Sides",
+      "name": "Side Caesar",
+      "price": 5
+    },
+    {
+      "section": "Sides",
+      "name": "Side Salad",
+      "price": 5
+    },
+    {
+      "section": "Desserts",
+      "name": "Seven Layer Chocolate Cake",
+      "price": 9
+    },
+    {
+      "section": "Desserts",
+      "name": "Peanut Butter & Strawberry Waffle Sundae",
+      "price": 9
+    }
+  ]
+}

@@ -1,0 +1,378 @@
+{
+  "restaurant_id": "co05",
+  "copied_by": "Lara Mahajan",
+  "copied_on": "2026-11-02",
+  "source_url": "https://order.toasttab.com/online/crozet-pizza-cville-20-elliewood-ave",
+  "dishes": [
+    {
+      "section": "Appetizers",
+      "name": "Garlic Knots",
+      "price": 5
+    },
+    {
+      "section": "Appetizers",
+      "name": "Buddha Belly",
+      "price": 5
+    },
+    {
+      "section": "Appetizers",
+      "name": "Hummus Plate",
+      "price": 5
+    },
+    {
+      "section": "Appetizers",
+      "name": "Focaccia + Beer Cheese",
+      "price": 5
+    },
+    {
+      "section": "Appetizers",
+      "name": "Spinach Artichoke Dip",
+      "price": 5
+    },
+    {
+      "section": "Wings",
+      "name": "8 PC Wings",
+      "price": 13.5
+    },
+    {
+      "section": "Wings",
+      "name": "20 PC Wings",
+      "price": 32
+    },
+    {
+      "section": "Calzones",
+      "name": "Veghead",
+      "price": 13
+    },
+    {
+      "section": "Calzones",
+      "name": "Meathead",
+      "price": 14
+    },
+    {
+      "section": "Calzones",
+      "name": "747 Calzone",
+      "price": 12
+    },
+    {
+      "section": "Calzones",
+      "name": "Cheese Calzone",
+      "price": 10
+    },
+    {
+      "section": "Calzones",
+      "name": "Buffalo Chicken Calzone",
+      "price": 11.73
+    },
+    {
+      "section": "Hoagies",
+      "name": "Meatball Parm",
+      "price": 15
+    },
+    {
+      "section": "Hoagies",
+      "name": "Chicken Parm",
+      "price": 15
+    },
+    {
+      "section": "Hoagies",
+      "name": "Veggie Parm",
+      "price": 14
+    },
+    {
+      "section": "Hoagies",
+      "name": "Yummus",
+      "price": 14
+    },
+    {
+      "section": "Hoagies",
+      "name": "BBQ Chicken",
+      "price": 15
+    },
+    {
+      "section": "Hoagies",
+      "name": "Buffalo Chicken",
+      "price": 15
+    },
+    {
+      "section": "Hoagies",
+      "name": "Pizza Hoagie",
+      "price": 15
+    },
+    {
+      "section": "Hoagies",
+      "name": "Big Tony",
+      "price": 12
+    },
+    {
+      "section": "Salads",
+      "name": "Caesar",
+      "price": 10
+    },
+    {
+      "section": "Salads",
+      "name": "Greek",
+      "price": 11
+    },
+    {
+      "section": "Salads",
+      "name": "Side Salad",
+      "price": 4.5
+    },
+    {
+      "section": "Sides",
+      "name": "Dipping Sauce",
+      "price": 1
+    },
+    {
+      "section": "Sides",
+      "name": "Beer Cheese",
+      "price": 3
+    },
+    {
+      "section": "Dessert",
+      "name": "Cinnamon Buddha Bites",
+      "price": 4
+    },
+    {
+      "section": "SML",
+      "name": "SML Create Your Own",
+      "price": 9
+    },
+    {
+      "section": "SML",
+      "name": "SML Cheese",
+      "price": 10
+    },
+    {
+      "section": "SML",
+      "name": "SML Pepperoni",
+      "price": 11.5
+    },
+    {
+      "section": "SML",
+      "name": "SML 747",
+      "price": 13
+    },
+    {
+      "section": "SML",
+      "name": "SML Big Yang",
+      "price": 14
+    },
+    {
+      "section": "SML",
+      "name": "SML Buddhist",
+      "price": 14
+    },
+    {
+      "section": "SML",
+      "name": "SML Capone",
+      "price": 14
+    },
+    {
+      "section": "SML",
+      "name": "SML Carnivore",
+      "price": 14
+    },
+    {
+      "section": "SML",
+      "name": "SML Emerald",
+      "price": 14
+    },
+    {
+      "section": "SML",
+      "name": "SML Feisty Italian",
+      "price": 14
+    },
+    {
+      "section": "SML",
+      "name": "SML Fun Guy",
+      "price": 14
+    },
+    {
+      "section": "SML",
+      "name": "SML Maui",
+      "price": 14
+    },
+    {
+      "section": "SML",
+      "name": "SML Outlaw",
+      "price": 14
+    },
+    {
+      "section": "SML",
+      "name": "SML Southern Thing",
+      "price": 14
+    },
+    {
+      "section": "SML",
+      "name": "SML Special",
+      "price": 14
+    },
+    {
+      "section": "SML",
+      "name": "SML Veggie",
+      "price": 13
+    },
+    {
+      "section": "MED",
+      "name": "MED Create Your Own",
+      "price": 14
+    },
+    {
+      "section": "MED",
+      "name": "MED Cheese",
+      "price": 14
+    },
+    {
+      "section": "MED",
+      "name": "MED Pepperoni",
+      "price": 15.75
+    },
+    {
+      "section": "MED",
+      "name": "MED 747",
+      "price": 20
+    },
+    {
+      "section": "MED",
+      "name": "MED Big Yang",
+      "price": 22
+    },
+    {
+      "section": "MED",
+      "name": "MED Buddhist",
+      "price": 21
+    },
+    {
+      "section": "MED",
+      "name": "MED Capone",
+      "price": 21
+    },
+    {
+      "section": "MED",
+      "name": "MED Carnivore",
+      "price": 21
+    },
+    {
+      "section": "MED",
+      "name": "MED Emerald",
+      "price": 21
+    },
+    {
+      "section": "MED",
+      "name": "MED Feisty Italian",
+      "price": 21
+    },
+    {
+      "section": "MED",
+      "name": "MED Fun Guy",
+      "price": 21
+    },
+    {
+      "section": "MED",
+      "name": "MED Maui",
+      "price": 21
+    },
+    {
+      "section": "MED",
+      "name": "MED Outlaw",
+      "price": 21
+    },
+    {
+      "section": "MED",
+      "name": "MED Southern Thing",
+      "price": 21
+    },
+    {
+      "section": "MED",
+      "name": "MED Special",
+      "price": 22
+    },
+    {
+      "section": "MED",
+      "name": "MED Veggie",
+      "price": 20
+    },
+    {
+      "section": "LRG",
+      "name": "LRG Create Your Own",
+      "price": 17
+    },
+    {
+      "section": "LRG",
+      "name": "LRG Cheese",
+      "price": 17
+    },
+    {
+      "section": "LRG",
+      "name": "LRG Pepperoni",
+      "price": 19
+    },
+    {
+      "section": "LRG",
+      "name": "LRG 747",
+      "price": 25
+    },
+    {
+      "section": "LRG",
+      "name": "LRG Big Yang",
+      "price": 29
+    },
+    {
+      "section": "LRG",
+      "name": "LRG Buddhist",
+      "price": 28
+    },
+    {
+      "section": "LRG",
+      "name": "LRG Capone",
+      "price": 26
+    },
+    {
+      "section": "LRG",
+      "name": "LRG Carnivore",
+      "price": 28
+    },
+    {
+      "section": "LRG",
+      "name": "LRG Emerald",
+      "price": 26
+    },
+    {
+      "section": "LRG",
+      "name": "LRG Feisty Italian",
+      "price": 28
+    },
+    {
+      "section": "LRG",
+      "name": "LRG Fun Guy",
+      "price": 28
+    },
+    {
+      "section": "LRG",
+      "name": "LRG Maui",
+      "price": 28
+    },
+    {
+      "section": "LRG",
+      "name": "LRG Outlaw",
+      "price": 28
+    },
+    {
+      "section": "LRG",
+      "name": "LRG Southern Thing",
+      "price": 28
+    },
+    {
+      "section": "LRG",
+      "name": "LRG Special",
+      "price": 29
+    },
+    {
+      "section": "LRG",
+      "name": "LRG Veggie",
+      "price": 25
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "restaurant_id": "co04",
+  "copied_by": "Lara Mahajan",
+  "copied_on": "2026-11-02",
+  "source_url": "https://www.thevirginiancville.com/s/Virginian-Menu-8-6-26.pdf",
+  "dishes": [
+    {
+      "section": "Starters",
+      "name": "CHICKEN QUESADILLA",
+      "price": 15
+    },
+    {
+      "section": "Starters",
+      "name": "SPINACH & ARTICHOKE DIP",
+      "price": 13
+    },
+    {
+      "section": "Starters",
+      "name": "CHICKEN TENDERS",
+      "price": 14
+    },
+    {
+      "section": "Starters",
+      "name": "HUMMUS PLATE",
+      "price": 12
+    },
+    {
+      "section": "Starters",
+      "name": "PORK BBQ NACHOS",
+      "price": 16
+    },
+    {
+      "section": "Starters",
+      "name": "STUMBLE DOWN MAC N’ CHEESE",
+      "price": 9
+    },
+    {
+      "section": "Starters",
+      "name": "FRENCH ONION SOUP",
+      "price": 8
+    },
+    {
+      "section": "Starters",
+      "name": "LOADED POTATO SOUP",
+      "price": 8
+    },
+    {
+      "section": "Salads",
+      "name": "HOUSE SALAD",
+      "price": 10
+    },
+    {
+      "section": "Salads",
+      "name": "CLASSIC CAESAR SALAD",
+      "price": 10
+    },
+    {
+      "section": "Salads",
+      "name": "BBQ CHICKEN SALAD",
+      "price": 17
+    },
+    {
+      "section": "Salads",
+      "name": "BUFFALO CHICKEN SALAD",
+      "price": 17
+    },
+    {
+      "section": "Salads",
+      "name": "GRILLED AHI TUNA SALAD",
+      "price": 18
+    },
+    {
+      "section": "Salads",
+      "name": "THE VIRGINIAN COBB SALAD",
+      "price": 17
+    },
+    {
+      "section": "Sandwiches",
+      "name": "THE VIRGINIAN BURGER*",
+      "price": 14
+    },
+    {
+      "section": "Sandwiches",
+      "name": "COAL MINER*",
+      "price": 17
+    },
+    {
+      "section": "Sandwiches",
+      "name": "LA CASA BURGER*",
+      "price": 17
+    },
+    {
+      "section": "Sandwiches",
+      "name": "CRAB CAKE SANDWICH",
+      "price": 18
+    },
+    {
+      "section": "Sandwiches",
+      "name": "GRILLED CHEESE",
+      "price": 13
+    },
+    {
+      "section": "Sandwiches",
+      "name": "STEAK & CHEESE",
+      "price": 15
+    },
+    {
+      "section": "Sandwiches",
+      "name": "PORK BBQ SANDWICH",
+      "price": 14
+    },
+    {
+      "section": "Sandwiches",
+      "name": "THE FAMOUS VIRGINIAN CLUB",
+      "price": 17
+    },
+    {
+      "section": "Sandwiches",
+      "name": "CHICKEN PHILLY",
+      "price": 15
+    },
+    {
+      "section": "Sandwiches",
+      "name": "PIMENTO CHEESE SANDWICH",
+      "price": 13
+    },
+    {
+      "section": "Sandwiches",
+      "name": "CLASSY BLT",
+      "price": 14
+    },
+    {
+      "section": "Sandwiches",
+      "name": "SOUTHWEST VEGGIE WRAP",
+      "price": 14
+    },
+    {
+      "section": "Sandwiches",
+      "name": "BUFFALO CHICKEN",
+      "price": 16
+    },
+    {
+      "section": "Sandwiches",
+      "name": "CHICKEN CAESAR WRAP",
+      "price": 14
+    },
+    {
+      "section": "Sandwiches",
+      "name": "CHIPOTLE CHICKEN WRAP",
+      "price": 16
+    },
+    {
+      "section": "Sandwiches",
+      "name": "CALIFORNIA VEGAN BURGER",
+      "price": 14
+    },
+    {
+      "section": "After 5 Entrées",
+      "name": "THE VIRGINIAN STEAK*",
+      "price": 30
+    },
+    {
+      "section": "After 5 Entrées",
+      "name": "APPLE BOURBON CHICKEN",
+      "price": 24
+    },
+    {
+      "section": "After 5 Entrées",
+      "name": "BABY BACK RIBS",
+      "price": 26
+    },
+    {
+      "section": "After 5 Entrées",
+      "name": "CREAMY GARDEN PASTA",
+      "price": 17
+    },
+    {
+      "section": "After 5 Entrées",
+      "name": "CRAB CAKES",
+      "price": 27
+    },
+    {
+      "section": "After 5 Entrées",
+      "name": "STUMBLE DOWN MAC N’ CHEESE",
+      "price": 15
+    },
+    {
+      "section": "After 5 Entrées",
+      "name": "SOUTHERN FRIED CHICKEN",
+      "price": 23
+    },
+    {
+      "section": "Desserts",
+      "name": "BROWNIE ICE CREAM SANDWICH",
+      "price": 7
+    },
+    {
+      "section": "Desserts",
+      "name": "ROOT-BEER FLOAT",
+      "price": 7
+    }
+  ]
+}

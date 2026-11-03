@@ -1,0 +1,163 @@
+{
+  "restaurant_id": "co10",
+  "copied_by": "Lara Mahajan",
+  "copied_on": "2026-11-02",
+  "source_url": "https://ordering.chownow.com/order/27047/locations",
+  "dishes": [
+    {
+      "section": "Registration | Appetizers",
+      "name": "BBQ Chicken Nachos",
+      "price": 14
+    },
+    {
+      "section": "Registration | Appetizers",
+      "name": "Gameday Wings",
+      "price": 14
+    },
+    {
+      "section": "Registration | Appetizers",
+      "name": "After School Special",
+      "price": 12
+    },
+    {
+      "section": "Registration | Appetizers",
+      "name": "Truffle Parmesan Fries",
+      "price": 12
+    },
+    {
+      "section": "Registration | Appetizers",
+      "name": "Mozz Sticks",
+      "price": 11
+    },
+    {
+      "section": "The Lawn | Salads",
+      "name": "Spanish Club Salad",
+      "price": 12
+    },
+    {
+      "section": "The Lawn | Salads",
+      "name": "Roman Philosophy Salad",
+      "price": 12
+    },
+    {
+      "section": "The Lawn | Salads",
+      "name": "Spin Class Salad",
+      "price": 12
+    },
+    {
+      "section": "The Lawn | Salads",
+      "name": "Home Room Salad",
+      "price": 11
+    },
+    {
+      "section": "Build-A-Bowl",
+      "name": "Build-A-Bowl",
+      "price": 8.99
+    },
+    {
+      "section": "The Lawn | Bowls",
+      "name": "Mediterranean Bowl",
+      "price": 14
+    },
+    {
+      "section": "The Lawn | Bowls",
+      "name": "Cobb Bowl",
+      "price": 14
+    },
+    {
+      "section": "The Lawn | Bowls",
+      "name": "Chicken Caesar Bowl",
+      "price": 14
+    },
+    {
+      "section": "The Range | Sandwiches",
+      "name": "Fried Chicken Sandwich",
+      "price": 13
+    },
+    {
+      "section": "Build-A-Burger",
+      "name": "Build-A-Burger",
+      "price": 11.99
+    },
+    {
+      "section": "Dean's List | Burgers",
+      "name": "Room 121 Burger",
+      "price": 15
+    },
+    {
+      "section": "Dean's List | Burgers",
+      "name": "Third Year Burger",
+      "price": 15
+    },
+    {
+      "section": "Dean's List | Burgers",
+      "name": "Double Trouble Burger",
+      "price": 17
+    },
+    {
+      "section": "Dean's List | Burgers",
+      "name": "All American Burger",
+      "price": 12
+    },
+    {
+      "section": "Dean's List | Burgers",
+      "name": "Varsity Burger",
+      "price": 15
+    },
+    {
+      "section": "Dean's List | Burgers",
+      "name": "Model UN Burger",
+      "price": 15
+    },
+    {
+      "section": "Dean's List | Burgers",
+      "name": "Meating Cancelled Burger",
+      "price": 16
+    },
+    {
+      "section": "Assistants | Sides",
+      "name": "Curly Fries",
+      "price": 5
+    },
+    {
+      "section": "Assistants | Sides",
+      "name": "Sweet Potato Fries",
+      "price": 6
+    },
+    {
+      "section": "Assistants | Sides",
+      "name": "Tater Tots",
+      "price": 5
+    },
+    {
+      "section": "Assistants | Sides",
+      "name": "Home Room Salad",
+      "price": 5
+    },
+    {
+      "section": "Handspun Shakes",
+      "name": "Vanilla Coffee Shake",
+      "price": 7
+    },
+    {
+      "section": "Handspun Shakes",
+      "name": "Cookies N' Cream Shake",
+      "price": 7
+    },
+    {
+      "section": "Handspun Shakes",
+      "name": "Strawberry Shake",
+      "price": 7
+    },
+    {
+      "section": "Handspun Shakes",
+      "name": "Vanilla Shake",
+      "price": 7
+    },
+    {
+      "section": "Handspun Shakes",
+      "name": "Chocolate Shake",
+      "price": 7
+    }
+  ]
+}

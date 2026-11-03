@@ -3,22 +3,35 @@ import { parsePrice } from "../menu/validate";
 import type { Truth } from "./benchmark-set";
 import { parseCsv } from "./csv";
 import { mulberry32 } from "./stats";
+import { normalize } from "../text/match";
 
 type Meta = Omit<Truth, "dishes">;
 type TruthDish = Truth["dishes"][number];
 
-/** A blank price cell means the menu shows no price; anything else must read as a price. */
-export function csvToTruth(csv: string, meta: Meta): { truth: Truth | null; errors: string[] } {
+// Add-ons are not dishes you order on their own: "Add chicken to any salad", "Extra topping".
+const ADD_ON = /^add\b|^(extra|sub(stitute)?)\b.*\b(topp?ings?|cheese|sauces?|dressings?|proteins?|chicken|meat|shots?|eggs?|avocado|bacon)\b/i;
+
+/**
+ * A blank price cell means the menu shows no price; anything else must read as a price.
+ * The copying rules are applied here: one row per dish at its lowest size price, no add-ons.
+ */
+export function csvToTruth(csv: string, meta: Meta): { truth: Truth | null; errors: string[]; notes: string[] } {
   const rows = parseCsv(csv);
-  if (rows.length === 0) return { truth: null, errors: ["no dishes copied yet"] };
+  if (rows.length === 0) return { truth: null, errors: ["no dishes copied yet"], notes: [] };
   const errors: string[] = [];
+  const notes: string[] = [];
   const dishes: TruthDish[] = [];
+  const seen = new Map<string, { dish: TruthDish; row: number }>();
   rows.forEach((r, i) => {
     const row = i + 2; // spreadsheet row: the header is row 1
     const name = (r.name ?? "").trim();
     const priceText = (r.price ?? "").trim();
     if (!name) {
       errors.push(`row ${row}: name is empty`);
+      return;
+    }
+    if (ADD_ON.test(name)) {
+      notes.push(`row ${row}: "${name}" is an add-on; left out`);
       return;
     }
     let price: number | null = null;
@@ -30,9 +43,19 @@ export function csvToTruth(csv: string, meta: Meta): { truth: Truth | null; erro
       }
       price = p.value;
     }
-    dishes.push({ section: (r.section ?? "").trim(), name, price });
+    const section = (r.section ?? "").trim();
+    const key = `${normalize(section)}|${normalize(name)}`;
+    const first = seen.get(key);
+    if (first) {
+      if (price !== null && (first.dish.price === null || price < first.dish.price)) first.dish.price = price;
+      notes.push(`row ${row}: "${name}" is another size of row ${first.row}; kept the lowest price`);
+      return;
+    }
+    const dish = { section, name, price };
+    seen.set(key, { dish, row });
+    dishes.push(dish);
   });
-  return errors.length ? { truth: null, errors } : { truth: { ...meta, dishes }, errors };
+  return errors.length ? { truth: null, errors, notes } : { truth: { ...meta, dishes }, errors, notes };
 }
 
 function seedOf(id: string): number {
