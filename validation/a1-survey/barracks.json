@@ -1,0 +1,136 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-03T03:47:23Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 1393864526,
+  "lat": 38.0519127,
+  "lon": -78.5005385,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1133",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "Emmet Street North",
+    "amenity": "restaurant",
+    "cuisine": "mexican",
+    "name": "Brazos",
+    "opening_hours": "Mo-We 08:00-20:00; Th-Sa 08:00-21:00; Su 08:00-20:00",
+    "source": "esri_Virginia",
+    "website": "https://brazostacos.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 3093102993,
+  "lat": 38.0519580,
+  "lon": -78.5018280,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1104",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "Emmet Street North",
+    "amenity": "restaurant",
+    "cuisine": "sushi",
+    "name": "Poke Sushi Bowl",
+    "opening_hours": "Mo-Su 11:00-21:00",
+    "phone": "+1-434-284-5466",
+    "source": "esri_Virginia",
+    "website": "https://www.pokesushibowl.com"
+  }
+},
+{
+  "type": "node",
+  "id": 3093117592,
+  "lat": 38.0514145,
+  "lon": -78.4988583,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "2045",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "Barracks Road",
+    "amenity": "restaurant",
+    "cuisine": "mexican",
+    "name": "El Puerto Mexican Restaurant",
+    "opening_hours": "Mo-Th 11:00-22:00; Fr 11:00-23:00; Sa 11:00-22:00; Su 11:30-21:00",
+    "website": "https://www.elpuertomexicancville.com"
+  }
+},
+{
+  "type": "node",
+  "id": 9807472495,
+  "lat": 38.0526820,
+  "lon": -78.4986030,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1200",
+    "addr:postcode": "22903-5090",
+    "addr:state": "VA",
+    "addr:street": "Emmet Street North",
+    "addr:unit": "110",
+    "amenity": "restaurant",
+    "brand": "CAVA",
+    "brand:wikidata": "Q85751038",
+    "check_date": "2023-04-27",
+    "cuisine": "mediterranean",
+    "name": "CAVA",
+    "opening_hours": "Mo-Su 10:45-22:00",
+    "phone": "+1-434-227-4800",
+    "website": "https://cava.com"
+  }
+},
+{
+  "type": "node",
+  "id": 11999821741,
+  "lat": 38.0509980,
+  "lon": -78.5056180,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1035",
+    "addr:postcode": "22903-4866",
+    "addr:state": "VA",
+    "addr:street": "Millmont Street",
+    "amenity": "restaurant",
+    "cuisine": "american",
+    "name": "Sedona Taphouse",
+    "opening_hours": "Mo-Th 11:30-21:00; Fr,Sa 11:30-22:00; Su 11:00-21:00",
+    "phone": "+1-434-296-2337",
+    "source": "esri_Virginia",
+    "website": "https://sedonataphouse.com/locations/charlottesville-va/"
+  }
+},
+{
+  "type": "node",
+  "id": 11999821754,
+  "lat": 38.0513820,
+  "lon": -78.5013140,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1114",
+    "addr:postcode": "22903-4841",
+    "addr:state": "VA",
+    "addr:street": "Emmet Street North",
+    "addr:unit": "B",
+    "amenity": "restaurant",
+    "brand": "First Watch",
+    "brand:wikidata": "Q5454064",
+    "cuisine": "american;breakfast",
+    "name": "First Watch",
+    "official_name": "First Watch The Daytime Cafe",
+    "opening_hours": "Mo-Su 07:00-14:30",
+    "phone": "+1-434-202-5383",
+    "source": "esri_Virginia",
+    "website": "https://firstwatch.com/locations/barracks/"
+  }
+}
+
+  ]
+}

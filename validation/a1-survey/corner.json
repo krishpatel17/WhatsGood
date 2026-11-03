@@ -1,0 +1,502 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-03T03:45:20Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 1523622997,
+  "lat": 38.0356530,
+  "lon": -78.5008070,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "107",
+    "addr:postcode": "22903-2605",
+    "addr:state": "VA",
+    "addr:street": "Elliewood Avenue",
+    "amenity": "restaurant",
+    "cuisine": "asian",
+    "name": "Marco and Luca",
+    "opening_hours": "Mo-Sa 10:30-15:00",
+    "phone": "+1-434-284-7963",
+    "website": "https://www.marcoandluca.com"
+  }
+},
+{
+  "type": "node",
+  "id": 2600843565,
+  "lat": 38.0336480,
+  "lon": -78.4986140,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1321",
+    "addr:postcode": "22903-2825",
+    "addr:state": "VA",
+    "addr:street": "West Main Street",
+    "amenity": "restaurant",
+    "brand": "Mellow Mushroom",
+    "brand:wikidata": "Q17021360",
+    "cuisine": "pizza",
+    "name": "Mellow Mushroom",
+    "opening_hours": "Su-Th 11:00-21:30; Fr-Sa 11:00-22:00",
+    "phone": "+1-434-972-9366",
+    "website": "https://www.mellowmushroom.com/locations/va/charlottesville/1321-w-main-st/"
+  }
+},
+{
+  "type": "node",
+  "id": 2633347585,
+  "lat": 38.0338776,
+  "lon": -78.4990809,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1327",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "West Main Street",
+    "amenity": "restaurant",
+    "bar": "yes",
+    "check_date": "2026-02-22",
+    "cuisine": "mexican;tex-mex",
+    "description": "Asado Wing & Taco Company, located in Charlottesville, VA, serves Albemarle, Fluvanna, Nelson, Louisa, and Greene Counties. Specializing in bold Tex-Mex cuisine, we feature hickory-smoked wings, jumbo tacos, creative starters, decadent desserts, and more.",
+    "email": "asadocharlottesville@gmail.com",
+    "mobile": "+1 703-981-7428",
+    "name": "Asado Wing & Taco Company",
+    "opening_hours": "Su 12:00-22:00; Mo-Fr 11:00-24:00; Sa 12:00-24:00",
+    "outdoor_seating": "yes",
+    "phone": "+1-434-234-3486",
+    "toilets": "yes",
+    "website": "https://asadocville.com"
+  }
+},
+{
+  "type": "node",
+  "id": 2633347587,
+  "lat": 38.0339888,
+  "lon": -78.4993007,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1395",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "West Main Street",
+    "amenity": "restaurant",
+    "check_date": "2026-02-22",
+    "cuisine": "asian",
+    "name": "Got Dumplings",
+    "opening_hours": "Su-Th 11:00-22:00; Fr-Sa 11:00-23:00",
+    "phone": "+1-434-244-3040",
+    "website": "http://www.gotdumplingsandtea.com"
+  }
+},
+{
+  "type": "node",
+  "id": 2633347588,
+  "lat": 38.0340790,
+  "lon": -78.4994140,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "102",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "14th Street Northwest",
+    "amenity": "restaurant",
+    "cuisine": "burger",
+    "name": "Boylan Heights",
+    "opening_hours": "Mo 17:00-02:00; Tu-Su 11:30-02:00",
+    "phone": "+1-434-984-5707",
+    "website": "https://boylanheights.co"
+  }
+},
+{
+  "type": "node",
+  "id": 2633347590,
+  "lat": 38.0342700,
+  "lon": -78.4997560,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1407",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "University Avenue",
+    "amenity": "restaurant",
+    "cuisine": "burger",
+    "name": "The Spot",
+    "opening_hours": "Mo 08:00-16:00; Tu-Sa 08:00-02:00; Su off",
+    "phone": "+1-434-295-9899",
+    "website": "https://www.thespotuva.com"
+  }
+},
+{
+  "type": "node",
+  "id": 2633347594,
+  "lat": 38.0341720,
+  "lon": -78.4993600,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "100",
+    "addr:postcode": "22903-2715",
+    "addr:state": "VA",
+    "addr:street": "14th Street Northwest",
+    "amenity": "restaurant",
+    "cuisine": "pizza",
+    "name": "Christian's Pizza",
+    "opening_hours": "Su-We 11:00-02:00, Th-Sa 11:00-03:00",
+    "phone": "+1-434-872-0436",
+    "website": "https://www.orderchristianspizza.com"
+  }
+},
+{
+  "type": "node",
+  "id": 2633347597,
+  "lat": 38.0339596,
+  "lon": -78.4992356,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1331",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "West Main Street",
+    "amenity": "restaurant",
+    "cuisine": "regional",
+    "name": "FIG Bistro & Bar",
+    "opening_hours": "Th-Fr 11:00-14:00; Th-Sa 17:00-21:00; Sa-Su 09:00-14:00",
+    "phone": "+1-434-995-5047",
+    "website": "https://www.figuva.com"
+  }
+},
+{
+  "type": "node",
+  "id": 2784023032,
+  "lat": 38.0352500,
+  "lon": -78.5007050,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1521",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "University Avenue",
+    "amenity": "restaurant",
+    "cuisine": "american",
+    "name": "The Virginian",
+    "opening_hours": "Mo-Sa 11:00-02:00; Su 10:00-02:00",
+    "phone": "+1-434-984-4667",
+    "website": "https://www.thevirginiancville.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 2784023035,
+  "lat": 38.0356609,
+  "lon": -78.5009338,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1609",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "University Avenue",
+    "amenity": "restaurant",
+    "cuisine": "bagel",
+    "name": "Bodo's Bagels",
+    "opening_hours": "Mo-Fr 07:00-15:00; Sa-Su 08:00-15:00",
+    "phone": "+1-434-293-6021",
+    "website": "http://www.bodosbagels.com"
+  }
+},
+{
+  "type": "node",
+  "id": 3327769594,
+  "lat": 38.0339050,
+  "lon": -78.4991470,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1329",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "West Main Street",
+    "amenity": "restaurant",
+    "cuisine": "salad",
+    "name": "Roots Natural Kitchen",
+    "opening_hours": "Mo-Fr 10:30-21:00; Sa-Su 11:00-21:00",
+    "phone": "+1-434-529-6229",
+    "website": "https://www.rootsnaturalkitchen.com/locations/charlottesville/"
+  }
+},
+{
+  "type": "node",
+  "id": 3994615705,
+  "lat": 38.0346300,
+  "lon": -78.4994250,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "109",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "14th Street Northwest",
+    "amenity": "restaurant",
+    "cuisine": "bubble_tea",
+    "name": "Moge Tee",
+    "opening_hours": "Mo-Su 11:00-21:00",
+    "phone": "+1-434-284-7941",
+    "website": "https://www.mogeteeusa.com"
+  }
+},
+{
+  "type": "node",
+  "id": 3994615709,
+  "lat": 38.0345726,
+  "lon": -78.4991709,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "104",
+    "addr:postcode": "22903-2765",
+    "addr:state": "VA",
+    "addr:street": "14th Street Northwest",
+    "addr:unit": "6",
+    "amenity": "restaurant",
+    "cuisine": "asian",
+    "name": "Lemongrass",
+    "opening_hours": "Tu-Fr 11:00-20:00; Sa 12:00-20:00",
+    "phone": "+1-434-244-8424",
+    "website": "https://lemongrasscharlottesville.hrpos.heartland.us/menu"
+  }
+},
+{
+  "type": "node",
+  "id": 6176835631,
+  "lat": 38.0327513,
+  "lon": -78.4961778,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1106",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "West Main Street",
+    "amenity": "restaurant",
+    "cuisine": "southern",
+    "name": "The Ridley",
+    "old_name": "Renewal",
+    "opening_hours": "Fr-Sa 07:00-24:00; Su-Th 07:00-22:00",
+    "outdoor_seating": "yes",
+    "phone": "+1-434-984-8010",
+    "website": "https://www.ridleyva.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 8148165917,
+  "lat": 38.0361840,
+  "lon": -78.5002460,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "12",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "Elliewood Avenue",
+    "amenity": "restaurant",
+    "cuisine": "sushi",
+    "name": "Kuma Sushi Noodles & Bar",
+    "phone": "+1-434-328-2741"
+  }
+},
+{
+  "type": "node",
+  "id": 9685605548,
+  "lat": 38.0343940,
+  "lon": -78.4992748,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "104",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "14th Street Northwest",
+    "addr:unit": "4",
+    "amenity": "restaurant",
+    "cuisine": "american",
+    "name": "7 Days Jr. Deli & Bar",
+    "opening_hours": "Th-Sa 15:00-03:00",
+    "phone": "+1-434-465-2460"
+  }
+},
+{
+  "type": "node",
+  "id": 10261529219,
+  "lat": 38.0357185,
+  "lon": -78.5007669,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "115",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "Elliewood Avenue",
+    "amenity": "restaurant",
+    "cuisine": "sandwich",
+    "name": "Take It Away",
+    "opening_hours": "Mo-Su 10:00-15:00",
+    "phone": "+1-434-295-1899",
+    "website": "https://www.takeitawaysandwichshop.com"
+  }
+},
+{
+  "type": "node",
+  "id": 10261535114,
+  "lat": 38.0344370,
+  "lon": -78.4995370,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "101",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "14th Street Northwest",
+    "amenity": "restaurant",
+    "cuisine": "sushi",
+    "name": "Poke Sushi Bowl",
+    "opening_hours": "Mo-Fr 11:00-20:30; Sa-Su 12:00-21:00",
+    "phone": "+1-434-328-8833",
+    "website": "https://www.pokesushibowl.com"
+  }
+},
+{
+  "type": "node",
+  "id": 10261535115,
+  "lat": 38.0343144,
+  "lon": -78.4998251,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1409",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "University Avenue",
+    "amenity": "restaurant",
+    "brand": "Insomnia Cookies",
+    "brand:wikidata": "Q16997024",
+    "cuisine": "dessert",
+    "name": "Insomnia Cookies",
+    "opening_hours": "Su 12:00-01:00; Mo-We 11:00-01:00; Th-Fr 11:00-03:00; Sa 12:00-03:00",
+    "phone": "+1-434-205-3513",
+    "shop": "pastry",
+    "website": "https://insomniacookies.com/store/charlottesville"
+  }
+},
+{
+  "type": "node",
+  "id": 10304868491,
+  "lat": 38.0328850,
+  "lon": -78.4950770,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1001",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "West Main Street",
+    "amenity": "restaurant",
+    "cuisine": "chinese;noodle",
+    "name": "Q Noodles",
+    "opening_hours": "Su-Th 11:00-21:00; Fr-Sa 11:00-21:30",
+    "phone": "+1-434-235-5055",
+    "website": "https://qnoodlesva.kwickmenu.com"
+  }
+},
+{
+  "type": "node",
+  "id": 10699983754,
+  "lat": 38.0332830,
+  "lon": -78.4971606,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "1209",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "West Main Street",
+    "amenity": "restaurant",
+    "cuisine": "southern",
+    "name": "Farm Bell Kitchen",
+    "opening_hours": "Mo-Su 08:00-14:00",
+    "phone": "+1-434-205-1538",
+    "website": "https://farmbellkitchen.com"
+  }
+},
+{
+  "type": "node",
+  "id": 11902531982,
+  "lat": 38.0345070,
+  "lon": -78.4994970,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "105",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "14th Street Northwest",
+    "amenity": "restaurant",
+    "cuisine": "peruvian",
+    "name": "Inka Grill",
+    "opening_hours": "Su-Tu 11:00-21:00; We 10:00-21:00; Th-Sa 11:00-22:00",
+    "phone": "+1-434-284-5494",
+    "website": "https://www.inkagrill.pe"
+  }
+},
+{
+  "type": "node",
+  "id": 11908119687,
+  "lat": 38.0342840,
+  "lon": -78.4990960,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "104",
+    "addr:postcode": "22903-2765",
+    "addr:state": "VA",
+    "addr:street": "14th Street Northwest",
+    "addr:unit": "2",
+    "amenity": "restaurant",
+    "cuisine": "lebanese",
+    "name": "Thyme and Co",
+    "opening_hours": "Mo-Sa 11:00-20:00; Su off",
+    "phone": "+1-434-282-2436",
+    "website": "https://www.thyme-co.com"
+  }
+},
+{
+  "type": "node",
+  "id": 11908119689,
+  "lat": 38.0366560,
+  "lon": -78.5004060,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "20",
+    "addr:postcode": "22903-2604",
+    "addr:state": "VA",
+    "addr:street": "Elliewood Avenue",
+    "amenity": "restaurant",
+    "cuisine": "pizza",
+    "name": "Crozet Pizza at Buddhist Biker Bar",
+    "opening_hours": "Tu-We,Su 15:00-21:00; Th 15:00-22:00; Fr-Sa 15:00-02:00",
+    "phone": "+1-434-202-0592",
+    "website": "https://www.crozetpizzacville.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 12230226145,
+  "lat": 38.0343334,
+  "lon": -78.4992618,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "104",
+    "addr:postcode": "22903",
+    "addr:state": "VA",
+    "addr:street": "14th Street Northwest",
+    "amenity": "restaurant",
+    "cuisine": "chinese",
+    "name": "Beijing Station",
+    "opening_hours": "Mo-Su 11:00-20:30",
+    "phone": "+1-434-234-3877",
+    "website": "https://beijingstation.com/"
+  }
+}
+
+  ]
+}

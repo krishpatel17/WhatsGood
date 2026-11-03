@@ -1,0 +1,67 @@
+area,map_rank,name,address,osm_cuisine,osm_id,status
+The Corner,1,Bodo's Bagels,1609 University Avenue,bagel,node/2784023035,sample
+The Corner,2,Marco and Luca,107 Elliewood Avenue,asian,node/1523622997,sample
+The Corner,3,Take It Away,115 Elliewood Avenue,sandwich,node/10261529219,sample
+The Corner,4,The Virginian,1521 University Avenue,american,node/2784023032,sample
+The Corner,5,Crozet Pizza at Buddhist Biker Bar,20 Elliewood Avenue,pizza,node/11908119689,sample
+The Corner,6,Kuma Sushi Noodles & Bar,12 Elliewood Avenue,sushi,node/8148165917,sample
+The Corner,,Insomnia Cookies,1409 University Avenue,dessert,node/10261535115,excluded: dessert
+The Corner,7,The Spot,1407 University Avenue,burger,node/2633347590,sample
+The Corner,8,Poke Sushi Bowl,101 14th Street Northwest,sushi,node/10261535114,sample
+The Corner,9,Inka Grill,105 14th Street Northwest,peruvian,node/11902531982,sample
+The Corner,,Moge Tee,109 14th Street Northwest,bubble_tea,node/3994615705,excluded: bubble_tea
+The Corner,10,Boylan Heights,102 14th Street Northwest,burger,node/2633347588,sample
+The Corner,11,Christian's Pizza,100 14th Street Northwest,pizza,node/2633347594,sample
+The Corner,12,Got Dumplings,1395 West Main Street,asian,node/2633347587,sample
+The Corner,13,7 Days Jr. Deli & Bar,104 14th Street Northwest,american,node/9685605548,backup
+The Corner,14,Beijing Station,104 14th Street Northwest,chinese,node/12230226145,backup
+The Corner,15,FIG Bistro & Bar,1331 West Main Street,regional,node/2633347597,backup
+The Corner,16,Lemongrass,104 14th Street Northwest,asian,node/3994615709,backup
+The Corner,17,Roots Natural Kitchen,1329 West Main Street,salad,node/3327769594,backup
+The Corner,18,Thyme and Co,104 14th Street Northwest,lebanese,node/11908119687,backup
+The Corner,19,Asado Wing & Taco Company,1327 West Main Street,mexican;tex-mex,node/2633347585,backup
+The Corner,20,Mellow Mushroom,1321 West Main Street,pizza,node/2600843565,backup
+The Corner,21,Farm Bell Kitchen,1209 West Main Street,southern,node/10699983754,backup
+The Corner,22,The Ridley,1106 West Main Street,southern,node/6176835631,backup
+The Corner,23,Q Noodles,1001 West Main Street,chinese;noodle,node/10304868491,backup
+Downtown Mall,1,Bang!,213 2nd Street Southwest,asian,node/12187362614,sample
+Downtown Mall,2,The Whiskey Jar,225 West Main Street,american;southern,node/3894530762,sample
+Downtown Mall,3,Brightside Beach Pub,225 West Main Street,seafood;american,node/10608571184,sample
+Downtown Mall,4,Otto,111 Water Street West,turkish,node/11018956305,sample
+Downtown Mall,5,The Alley Light,108 2nd Street Southwest,french,node/3893014172,sample
+Downtown Mall,6,Revolutionary Soup,108 2nd Street Southwest,soup,node/12117959541,sample
+Downtown Mall,7,The Bebedero,225 West Main Street,mexican,node/3894530756,sample
+Downtown Mall,8,Christian's Pizza,118 West Main Street,pizza,node/3893005455,sample
+Downtown Mall,9,Afghan Kabob House,200 West Market Street,kebab,way/386115143,sample
+Downtown Mall,10,Bizou,119 West Main Street,american,node/3894530755,sample
+Downtown Mall,11,Luce,110 2nd Street Northwest,italian,node/12102710890,sample
+Downtown Mall,12,Miller's Downtown,109 West Main Street,burger;american;grill;fries;fish_and_chips;dessert,node/2725380311,sample
+Downtown Mall,13,Monsoon Siam,113 West Market Street,thai,node/12031014569,backup
+Downtown Mall,14,Now and Zen,202 2nd Street Northwest,sushi,node/12460949551,backup
+Downtown Mall,15,Hamiltons' at First & Main,101 West Main Street,american,node/12136187514,backup
+Downtown Mall,16,Vu Noodles,111 Water Street East,vietnamese,node/12572264952,backup
+Downtown Mall,17,Jack Brown’s Beer & Burger Joint,109 2nd Street Southeast,burger,way/385964939,backup
+Downtown Mall,18,Ten,120 East Main Street,sushi,node/12117959539,backup
+Downtown Mall,19,Petit Pois,201 East Main Street,french,node/3894519555,backup
+Downtown Mall,20,Zocalo,201 East Main Street,american,node/3894520058,backup
+Downtown Mall,21,Citizen Burger Bar,212 East Main Street,burger,node/2448757807,backup
+Downtown Mall,22,Sal's Caffe Italia,221 East Main Street,italian,node/12117959537,backup
+Downtown Mall,23,Rapture,303 East Main Street,regional,node/3036989992,backup
+Downtown Mall,24,Café Frank,317 East Main Street,french;italian,node/3036989993,backup
+Downtown Mall,25,Vita Nova Pizza & Pasta Bar,310 East Main Street,italian,node/3893064885,backup
+Downtown Mall,26,Lazeez,401 East Main Street,indian,node/3894506452,backup
+Downtown Mall,27,The Nook,415 East Main Street,american,node/3036989994,backup
+Downtown Mall,28,Botanical Plant Based Fare,421 East Main Street,american,node/3036989990,backup
+Downtown Mall,29,The Melting Pot,501 East Water Street,fondue,node/5768259047,backup
+Downtown Mall,30,Thai Fresh,106 5th Street Southeast,thai,node/2727039026,backup
+Downtown Mall,31,C&O Restaurant,515 Water Street East,american,way/324126440,backup
+Downtown Mall,32,Baggby's Gourmet Sandwiches,512 East Main Street,sandwich,node/3894487063,backup
+Downtown Mall,33,Himalayan Fusion,520 East Main Street,indian,node/3894487065,backup
+Downtown Mall,34,Guadalajara,805 East Market Street,mexican,way/332914587,backup
+Downtown Mall,35,Taqueria El Comalito,905 East Market Street,mexican,node/13613154691,backup
+Barracks Road,1,Sedona Taphouse,1035 Millmont Street,american,node/11999821741,sample
+Barracks Road,2,Poke Sushi Bowl,1104 Emmet Street North,sushi,node/3093102993,sample
+Barracks Road,3,First Watch,1114 Emmet Street North,american;breakfast,node/11999821754,sample
+Barracks Road,4,Brazos,1133 Emmet Street North,mexican,node/1393864526,sample
+Barracks Road,5,El Puerto Mexican Restaurant,2045 Barracks Road,mexican,node/3093117592,sample
+Barracks Road,6,CAVA,1200 Emmet Street North,mediterranean,node/9807472495,sample
