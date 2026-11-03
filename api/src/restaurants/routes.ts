@@ -6,6 +6,8 @@ import { searchRestaurants } from "./search";
 import { scanMenu, validateUpload, VISION_TYPES } from "../menu/scan";
 import { fetchReviews } from "../reviews/collect";
 import { extractMentions } from "../reviews/mentions";
+import { getProfile } from "../profile/repo";
+import { quickFallback, recommend } from "../recommend/service";
 
 const NewRestaurantSchema = z.object({ name: z.string().min(1), address: z.string().min(1), area: z.string().optional(), mapsUrl: z.url().optional() });
 
@@ -29,6 +31,20 @@ export const restaurantRoutes = new Hono<AppEnv>()
     const { db, llm } = c.get("deps");
     if (!(await getRestaurant(db, c.req.param("id")))) return c.json({ error: "not found" }, 404);
     return c.json(await extractMentions({ db, llm }, c.req.param("id")));
+  })
+  .post("/:id/recommend", async (c) => {
+    const { db, llm } = c.get("deps");
+    const body = (await c.req.json().catch(() => ({}))) as { profileId?: string };
+    const [restaurant, profile] = await Promise.all([getRestaurant(db, c.req.param("id")), getProfile(db, body.profileId ?? "")]);
+    if (!restaurant || !profile) return c.json({ error: restaurant ? "profile not found" : "restaurant not found" }, 404);
+    if (!restaurant.has_menu) return c.json({ error: "no menu loaded", suggest: "scan_menu" }, 409);
+    return c.json(await recommend({ db, llm }, restaurant.id, body.profileId!, profile));
+  })
+  .get("/:id/fallback", async (c) => {
+    const { db } = c.get("deps");
+    const [restaurant, profile] = await Promise.all([getRestaurant(db, c.req.param("id")), getProfile(db, c.req.query("profileId") ?? "")]);
+    if (!restaurant || !profile) return c.json({ error: "not found" }, 404);
+    return c.json(await quickFallback(db, restaurant.id, profile));
   })
   .post("/:id/scan", async (c) => {
     const { db, blobs, llm } = c.get("deps");
