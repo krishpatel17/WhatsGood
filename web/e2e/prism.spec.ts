@@ -118,9 +118,7 @@ test("[ai] profile save reruns picks with the unchanged profile API contract", a
   await expect(page.getByRole("dialog")).toHaveCount(0);
   await expect.poll(() => recommendations).toBeGreaterThan(before);
   expect(budget).toBe(20);
-  await expect(page.getByRole("button", { name: /Max Budget/ })).toContainText(
-    "$20",
-  );
+  await expect(page.getByTestId("profile-summary")).toContainText("under $20");
 });
 test("[ai] hosted PDF import uses the existing URL endpoint", async ({
   page,

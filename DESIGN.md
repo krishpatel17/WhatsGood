@@ -1,7 +1,7 @@
 # What's Good — DoorDash Prism adaptation
 
 ## Direction and surface
-The web/ diner flow operates in Impeccable Operate mode. The task is choosing dinner at the table. Scanability, consistent controls and native expectations outrank expression. A white canvas, dark typography, red conversion pills and teal evidence signals carry the identity. At least 90% of the viewport stays neutral. The user-supplied reference is locked; do not introduce an alternate visual world.
+The web/ diner flow operates in Impeccable Operate mode. The task is choosing dinner at the table. Scanability, consistent controls and native expectations outrank expression. Dark typography, red conversion pills and teal evidence signals carry the identity, on white working surfaces. The home and results heroes, restaurant tiles and dish art are deliberately full of colour, per the Table pass below, which supersedes older neutral-only rules.
 
 ## Semantic tokens
 | Token | Value | Role and constraint |
@@ -41,7 +41,7 @@ Restaurant rows have no shadow, with hairline separators between entries. A comp
 
 ## Screen anatomy
 1. Source segmented control: Pick Restaurant / Scan Menu. Selected state is #191919 on #F7F7F7 track with white text.
-2. Profile filter bar: horizontally scrollable Allergies, Diet, Max Budget and Taste pills; inactive elevated fill, active primary-ink fill/white text. Open Profile Configurator for immediate editing.
+2. My profile button: the only preference entry point. Results echo the active profile as a plain, non-interactive middot line.
 3. Profile/scanner dialogs: grouped fields with hairline dividers, Required / Optional / Active status pills, scrollable middle and sticky red action footer. Profile CTA reflects budget. Retain standalone /setup/ and /scan/ routes.
 4. Verified dish card: left rank pill + teal “✦ Mentioned in X reviews”, right tabular price; 20px bold dish title; a single scannable middot metadata line when supported by returned data; one-line reason; 12px elevated well containing the exact review quote and teal verified-review footer. Preserve ingredient/price/thin-review warnings. Legacy tested mention-count wording remains accessible.
 5. Plain ranking: omit generated reason and quote entirely; compact hairline footer “Ranked by menu match & review sentiment • ✦ Verified on menu”. Final heading “Verified Menu Ranking”. Never keep a final fallback in a loading state.
@@ -64,7 +64,7 @@ Keyboard focus uses a visible primary-ink outline. Motion conveys state only, 15
 - No purple, indigo or multi-stop gradients on buttons, headers or badges.
 - No centered text in restaurant/dish cards.
 - No “safe”, “allergy-safe” or other medical certainty claims, or shield icons in rendered UI. Never fabricate allergy-free or diet-fit metadata from unavailable ingredient data.
-- No fabricated food photography, counts, menus, endorsements or matching attributes.
+- No fabricated food photography, counts, menus, endorsements or matching attributes. Original illustrations are allowed as set out in the Table pass.
 
 ## Verification
 Audit against this document at 390px and 1280px, including dialogs, loading/error/empty states and final fallback. Preserve all original tests and selectors. Test new modal interactions, imports, profile refresh and fallback completion where behavior changes.
@@ -90,3 +90,15 @@ These observations record the delivered web implementation; they do not replace 
 - Restaurant rows group identity, location and actual menu/review availability. The compact layout replaces repetitive empty plate illustrations. Skeletons follow the row geometry.
 - Results use a narrower reading column, a smaller mobile restaurant title, and inline rank/review metadata when it fits. Existing exact quotes, stored prices, warnings, fallback behavior, dialogs, and routes remain intact.
 - Validation for this pass: 148 unit tests, production build through the E2E setup, and all 10 Edge E2E tests passed. Desktop and mobile captures were inspected; live API data was unavailable in the local development screen, so populated-state checks use the existing mocked API fixtures.
+
+### Table pass — 2026-11-03
+
+User direction: the site read as bland, had no images, and its four filter pills all opened the same dialog. This pass supersedes earlier rules on the filter bar, the 90% neutral canvas, neutral initials, and the absence of plate illustrations.
+
+- The filter bar is gone. `My profile` is the only preference control; results show `Your profile: vegetarian · under $20`.
+- Concept: the table, seen from above. A mustard hero (`--color-mustard`) holds overhead dishes and ends in a red-and-white tablecloth check.
+- Display type is self-hosted Bricolage Grotesque through `next/font`; Inter is the body face.
+- `components/FoodArt.tsx` holds original SVG illustrations. Dish art is chosen by keywords in the dish name and falls back to a neutral place setting. Restaurant art uses the name only, with the initial on the plate when the name says nothing about the food. Art is decorative and hidden from assistive tech. It never stands in for a photo, ingredient claim or diet fit, and results carry a note saying so.
+- Tile colours (mustard, basil, coral, cream, aubergine) come from a stable hash of the name. Red stays reserved for actions and rank badges, apart from the tablecloth and food art.
+- The #1 pick is larger than #2 and #3. Motion is limited to dishes settling on load and tiles turning on hover, both visible from the first frame and removed for reduced motion.
+- PRODUCT.md's guardrails still govern all copy, counts, quotes, prices and warnings.

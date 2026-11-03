@@ -115,6 +115,9 @@ export function ResultsView({
           profile={profile}
         />
       ))}
+      {picks.picks.length > 0 && (
+        <p className="art-note">Illustrations set the mood. They aren’t photos of the dish.</p>
+      )}
       {picks.recommendationId && picks.picks.length > 0 && (
         <a
           className="button secondary"

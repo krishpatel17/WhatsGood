@@ -6,6 +6,7 @@ import {
   type Restaurant,
   type StoredRecommendation,
 } from "../lib/api";
+import { FoodArt, restaurantArt, tileClass } from "../components/FoodArt";
 export default function Home() {
   const [q, setQ] = useState("");
   const [results, setResults] = useState<Restaurant[] | null>(null);
@@ -71,6 +72,7 @@ export default function Home() {
         </div>
       )}
       <section className="hero">
+        <div className="hero-copy">
         <div className="hero-search">
           <h1>What should I order?</h1>
           <p className="sub">A menu full of choices. Three picks that fit you.</p>
@@ -97,15 +99,19 @@ export default function Home() {
           </div>
         </div>
         <aside className="scan-entry">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-            <path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M8 8h8M8 12h8M8 16h5" />
-          </svg>
           <h2>Menu in hand?</h2>
           <p>Start with a photo, web page or PDF link.</p>
           <a href="/scan/" className="button">
             Scan the menu <span aria-hidden="true">→</span>
           </a>
         </aside>
+        </div>
+        <div className="hero-table" aria-hidden="true">
+          <span className="table-dish dish-pizza"><FoodArt kind="pizza" /></span>
+          <span className="table-dish dish-noodles"><FoodArt kind="noodles" /></span>
+          <span className="table-dish dish-kabob"><FoodArt kind="kabob" /></span>
+          <span className="table-dish dish-drink"><FoodArt kind="drink" /></span>
+        </div>
       </section>
       {!profileId && (
         <p className="profile-prompt">
@@ -142,6 +148,7 @@ export default function Home() {
           >
             {[1, 2, 3].map((n) => (
               <div className="restaurant-skeleton" key={n} aria-hidden="true">
+                <div className="skeleton tile-skeleton" />
                 <div className="skeleton medium" />
                 <div className="skeleton short" />
               </div>
@@ -155,8 +162,8 @@ export default function Home() {
                   className="restaurant-card"
                   href={r.has_menu ? `/results/?r=${r.id}` : `/scan/?r=${r.id}`}
                 >
-                  <div className="restaurant-identity" aria-hidden="true">
-                    {r.name.trim().slice(0, 1)}
+                  <div className={`restaurant-identity ${tileClass(r.name)}`}>
+                    <FoodArt kind={restaurantArt(r.name)} initial={r.name.trim().slice(0, 1)} />
                   </div>
                   <div className="restaurant-details">
                     <div className="restaurant-card-title">
@@ -172,7 +179,6 @@ export default function Home() {
                       </span>
                     </div>
                   </div>
-                  <svg className="restaurant-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m9 5 7 7-7 7" /></svg>
                 </a>
               </li>
             ))}
