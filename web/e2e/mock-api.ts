@@ -31,6 +31,7 @@ export async function mockApi(page: Page, opts: Handlers = {}) {
     const url = new URL(route.request().url());
     const method = route.request().method();
     const json = (body: unknown, status = 200) => route.fulfill({ status, contentType: "application/json", body: JSON.stringify(body) });
+    if (url.pathname === "/profiles/p1") return json({ id: "p1", allergies: [], diets: [], budget: 25, tastes: ["spicy"], notes: "" });
     if (url.pathname === "/profiles/p1/pending-rating") return json({ recommendation: null });
     if (url.pathname === "/restaurants" && url.searchParams.get("q")?.toLowerCase().includes("noodle")) {
       return json({ results: [{ id: "r1", name: "Test Noodle House", address: "1 Main St", has_menu: true, has_reviews: true }] });
