@@ -1,6 +1,6 @@
-// Local-only: lets `wrangler dev` use the developer's own Claude login instead of an API key.
-// For one person trying the app on their own machine. Never deploy it or share it with other
-// users: real users, demos on other machines and the A2/A3 benchmarks need an API key.
+// Local-only: lets `wrangler dev` and the benchmark scripts use the developer's own Claude login
+// instead of an API key. For one person on their own machine. Never deploy it or share it with
+// other users. Validation results record that a run went through it.
 // Usage: npm run bridge -w api   (then set LLM_BRIDGE_URL=http://127.0.0.1:8790 in api/.dev.vars)
 import { createServer, type IncomingMessage } from "node:http";
 import { pathToFileURL } from "node:url";
@@ -12,6 +12,7 @@ export type BridgeRequest = {
   task: string;
   system: string;
   messages: LlmMessage[];
+  model?: string;
   jsonSchema: Record<string, unknown>;
   effort?: "low" | "medium" | "high";
 };
@@ -61,7 +62,7 @@ export function createBridge(run: (req: BridgeRequest) => Promise<LlmResponse>) 
 }
 
 /** One isolated model call: no tools, no project or user settings, no MCP connectors, nothing saved. */
-async function runWithSubscription(req: BridgeRequest): Promise<LlmResponse> {
+export async function runWithSubscription(req: BridgeRequest): Promise<LlmResponse> {
   const { query } = await import("@anthropic-ai/claude-agent-sdk");
   // An API key in the environment would take priority over the login.
   const { ANTHROPIC_API_KEY: _ignored, ...env } = process.env;
@@ -71,6 +72,7 @@ async function runWithSubscription(req: BridgeRequest): Promise<LlmResponse> {
   for await (const msg of query({
     prompt: prompt() as never,
     options: {
+      model: req.model,
       systemPrompt: req.system,
       tools: [],
       settingSources: [],
@@ -87,7 +89,7 @@ async function runWithSubscription(req: BridgeRequest): Promise<LlmResponse> {
     return {
       data: msg.structured_output ?? null,
       raw: msg.structured_output === undefined ? msg.result : JSON.stringify(msg.structured_output),
-      usage: { input_tokens: msg.usage.input_tokens, output_tokens: msg.usage.output_tokens },
+      usage: { input_tokens: msg.usage.input_tokens + msg.usage.cache_read_input_tokens + msg.usage.cache_creation_input_tokens, output_tokens: msg.usage.output_tokens },
     };
   }
   throw new Error("The model run ended without a result.");

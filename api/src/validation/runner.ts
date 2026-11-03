@@ -2,6 +2,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import type { Blobs } from "../blobs";
 import { MODEL } from "../llm/anthropic";
+import { type LlmPath, llmPath } from "../llm/select";
 import type { Llm } from "../llm/types";
 import { importMenu } from "../menu/import";
 import type { Dish } from "../menu/schema";
@@ -27,7 +28,7 @@ export type RestaurantResult = {
   dishes: Dish[];
 };
 
-export type BenchmarkResults = { promptTag: string; model: string; startedAt: string; restaurants: RestaurantResult[] };
+export type BenchmarkResults = { promptTag: string; model: string; llmPath: LlmPath; startedAt: string; restaurants: RestaurantResult[] };
 
 type Git = (args: string[]) => { ok: boolean; out: string };
 
@@ -128,7 +129,7 @@ export async function runBenchmark(opts: { root: string; llm: Llm; fetch: typeof
     }
   }
 
-  const results: BenchmarkResults = { promptTag, model: MODEL, startedAt, restaurants };
+  const results: BenchmarkResults = { promptTag, model: MODEL, llmPath: llmPath(llm), startedAt, restaurants };
   const dir = root + "validation/a2-benchmark/results/";
   mkdirSync(dir, { recursive: true });
   writeFileSync(`${dir}${startedAt.replace(/[:.]/g, "-")}.json`, JSON.stringify(results, null, 2));

@@ -2,8 +2,7 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import type { Blobs } from "./blobs";
 import type { Db } from "./db";
-import { anthropicLlm } from "./llm/anthropic";
-import { bridgeLlm, isLoopbackUrl } from "./llm/bridge";
+import { selectLlm } from "./llm/select";
 import type { Llm } from "./llm/types";
 import { profileRoutes } from "./profile/routes";
 import { restaurantRoutes } from "./restaurants/routes";
@@ -31,7 +30,7 @@ export type AppEnv = { Bindings: Env; Variables: { deps: Deps } };
 
 export function depsFromEnv(env: Env | undefined): Partial<Deps> {
   if (!env) return {};
-  const llm = env.LLM_BRIDGE_URL && isLoopbackUrl(env.LLM_BRIDGE_URL) ? bridgeLlm({ url: env.LLM_BRIDGE_URL, fetch: (input, init) => fetch(input, init) }) : anthropicLlm({ apiKey: env.ANTHROPIC_API_KEY });
+  const llm = selectLlm({ apiKey: env.ANTHROPIC_API_KEY, bridgeUrl: env.LLM_BRIDGE_URL });
   return { db: env.DB, blobs: env.BUCKET, llm, fetch: (input, init) => fetch(input, init), apifyToken: env.APIFY_TOKEN };
 }
 
