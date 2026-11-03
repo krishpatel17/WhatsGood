@@ -75,9 +75,11 @@ export function checkRestrictions(picks: Pick[], resolved: (MenuDish | null)[], 
       const budget = overBudget(dish, profile);
       if (budget) errors.push(`item[${i}] "${p.dish}" ${budget}`);
       // Rewording alone isn't enough if the model believes the dish has it, so the error says so.
-      for (const { tag, word } of ingredientsInReason(p.reason, dish)) {
-        for (const c of tagConflicts(new Set([tag]), profile)) errors.push(`item[${i}] "${p.dish}" reason names "${word}", which conflicts with user ${c}. If the dish contains it, pick another dish`);
-      }
+      const named = ingredientsInReason(p.reason, dish).flatMap(({ tag, word }) =>
+        tagConflicts(new Set([tag]), profile).map((c) => `item[${i}] "${p.dish}" reason names "${word}", which conflicts with user ${c}. If the dish contains it, pick another dish`),
+      );
+      // One word can carry two tags, as gelatin does.
+      errors.push(...new Set(named));
     }
     for (const re of BANNED) {
       const hit = p.reason.match(re);

@@ -140,6 +140,8 @@ describe("US-10 Guardrail: restrictions and budget", () => {
   it("[ai] T16 unit: lookalikes of the added words do not conflict", () => {
     const cases: [string, Partial<Profile>][] = [
       ["root beer", { diets: ["halal"] }],
+      ["root-beer float", { diets: ["halal"] }],
+      ["shrimp cocktail", { diets: ["halal"] }],
       ["ginger ale", { diets: ["halal"] }],
       ["ginger", { diets: ["halal"] }],
       ["aleppo pepper", { diets: ["halal"] }],
