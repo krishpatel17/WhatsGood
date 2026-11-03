@@ -33,6 +33,7 @@ describe("US-19 Benchmark runner", () => {
     expect(saved).toEqual(out);
     expect(saved.promptTag).toBe("prompts-test");
     expect(saved.model).toBe("claude-opus-5-5");
+    expect(saved.llmPath).toBe("anthropic-api");
     expect(saved.restaurants).toHaveLength(2);
     for (const r of saved.restaurants) {
       expect(Object.keys(r).sort()).toEqual(["costUsd", "dishes", "failure", "id", "inputTokens", "outputTokens", "retries", "seconds", "snapshot", "sourceType", "status", "tier"]);
