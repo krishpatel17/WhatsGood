@@ -1,13 +1,13 @@
 import { type Db, newId, nowIso } from "../db";
 import type { RestaurantRow } from "./search";
 
-export type NewRestaurant = { id?: string; name: string; address: string; area?: string };
+export type NewRestaurant = { id?: string; name: string; address: string; area?: string; mapsUrl?: string };
 
 export async function createRestaurant(db: Db, r: NewRestaurant): Promise<string> {
   const id = r.id ?? newId();
   await db
-    .prepare("INSERT INTO restaurants (id, name, address, area, created_at) VALUES (?, ?, ?, ?, ?)")
-    .bind(id, r.name, r.address, r.area ?? null, nowIso())
+    .prepare("INSERT INTO restaurants (id, name, address, area, maps_url, created_at) VALUES (?, ?, ?, ?, ?, ?)")
+    .bind(id, r.name, r.address, r.area ?? null, r.mapsUrl ?? null, nowIso())
     .run();
   return id;
 }

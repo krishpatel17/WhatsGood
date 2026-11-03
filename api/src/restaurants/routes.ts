@@ -4,8 +4,9 @@ import type { AppEnv } from "../app";
 import { createRestaurant, getRestaurant, listRestaurants } from "./repo";
 import { searchRestaurants } from "./search";
 import { scanMenu, validateUpload, VISION_TYPES } from "../menu/scan";
+import { fetchReviews } from "../reviews/collect";
 
-const NewRestaurantSchema = z.object({ name: z.string().min(1), address: z.string().min(1), area: z.string().optional() });
+const NewRestaurantSchema = z.object({ name: z.string().min(1), address: z.string().min(1), area: z.string().optional(), mapsUrl: z.url().optional() });
 
 export const restaurantRoutes = new Hono<AppEnv>()
   .get("/", async (c) => {
@@ -17,6 +18,11 @@ export const restaurantRoutes = new Hono<AppEnv>()
   .get("/:id", async (c) => {
     const row = await getRestaurant(c.get("deps").db, c.req.param("id"));
     return row ? c.json(row) : c.json({ error: "not found" }, 404);
+  })
+  .post("/:id/reviews/fetch", async (c) => {
+    const { db, fetch, apifyToken } = c.get("deps");
+    if (!(await getRestaurant(db, c.req.param("id")))) return c.json({ error: "not found" }, 404);
+    return c.json(await fetchReviews({ db, fetch, apifyToken }, c.req.param("id")));
   })
   .post("/:id/scan", async (c) => {
     const { db, blobs, llm } = c.get("deps");
