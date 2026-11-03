@@ -1,10 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { existsSync, readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
 import { parse } from "yaml";
 import app from "../src/index";
 
-const root = fileURLToPath(new URL("../../", import.meta.url));
+const root = import.meta.dirname + "/../../";
 const read = (p: string) => readFileSync(root + p, "utf8");
 
 type Step = { name?: string; run?: string; uses?: string; with?: Record<string, unknown>; "continue-on-error"?: boolean; if?: string };
