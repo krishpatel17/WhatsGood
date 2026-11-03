@@ -1,0 +1,747 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-03T03:46:20Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 2448757807,
+  "lat": 38.0303074,
+  "lon": -78.4803858,
+  "tags": {
+    "addr:housenumber": "212",
+    "addr:street": "East Main Street",
+    "amenity": "restaurant",
+    "cuisine": "burger",
+    "name": "Citizen Burger Bar",
+    "opening_hours": "Mo-Su 08:00-21:00",
+    "phone": "+1-434-979-9944",
+    "website": "http://citizenburgerbar.com"
+  }
+},
+{
+  "type": "node",
+  "id": 2725380311,
+  "lat": 38.0309930,
+  "lon": -78.4817970,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "109",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "West Main Street",
+    "amenity": "restaurant",
+    "check_date": "2026-05-19",
+    "cuisine": "burger;american;grill;fries;fish_and_chips;dessert",
+    "name": "Miller's Downtown",
+    "opening_hours": "Mo-Su 17:00-02:00",
+    "opening_hours:kitchen": "Mo-Su 17:00-01:30",
+    "phone": "+1-434-971-8511",
+    "website": "https://millersdowntown.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 2727039026,
+  "lat": 38.0295300,
+  "lon": -78.4785560,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "106",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "5th Street Southeast",
+    "amenity": "restaurant",
+    "cuisine": "thai",
+    "name": "Thai Fresh",
+    "opening_hours": "Mo-Sa 11:00-20:00",
+    "phone": "+1-434-249-5291",
+    "website": "https://thaifreshva.wixsite.com/website"
+  }
+},
+{
+  "type": "node",
+  "id": 3036989990,
+  "lat": 38.0300270,
+  "lon": -78.4787000,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "421",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "East Main Street",
+    "amenity": "restaurant",
+    "cuisine": "american",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "name": "Botanical Plant Based Fare",
+    "opening_hours": "Tu 09:00-15:00; We-Th 09:00-20:00; Fr 09:00-21:00; Sa 09:00-15:00",
+    "phone": "+1-434-217-4496",
+    "website": "https://www.botanicalfare.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 3036989992,
+  "lat": 38.0303730,
+  "lon": -78.4798340,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "303",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "East Main Street",
+    "amenity": "restaurant",
+    "check_date": "2025-05-15",
+    "contact:website": "https://www.rapturerestaurant.com/",
+    "cuisine": "regional",
+    "name": "Rapture",
+    "opening_hours": "Tu-Sa 11:00-26:00; Su 11:00-15:00; Mo off",
+    "phone": "+1-434-293-9526",
+    "website": "https://rapturecville.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 3036989993,
+  "lat": 38.0302870,
+  "lon": -78.4795510,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "317",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "East Main Street",
+    "amenity": "restaurant",
+    "check_date": "2026-05-18",
+    "contact:website": "https://www.cafefrankcville.com/",
+    "cuisine": "french;italian",
+    "description": "A Franco-Italian restaurant and cocktail bar located on Charlottesville, Virginia’s historic downtown pedestrian mall.",
+    "name": "Café Frank",
+    "opening_hours": "Tu-Su 16:00-22:00; Mo off",
+    "phone": "+1-434-825-9496",
+    "website": "https://www.cafefrankcville.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 3036989994,
+  "lat": 38.0300560,
+  "lon": -78.4787880,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "415",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "East Main Street",
+    "amenity": "restaurant",
+    "check_date": "2026-05-18",
+    "contact:email": "since1951@thenookcville.com",
+    "contact:website": "https://thenookcville.com/",
+    "cuisine": "american",
+    "name": "The Nook",
+    "opening_hours": "Mo-Su 08:00-15:00",
+    "phone": "+1-434-295-6665",
+    "website": "https://www.thenookcville.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 3893005455,
+  "lat": 38.0308900,
+  "lon": -78.4822030,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "118",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "West Main Street",
+    "amenity": "restaurant",
+    "check_date": "2026-05-18",
+    "cuisine": "pizza",
+    "name": "Christian's Pizza",
+    "opening_hours": "Mo-Th 11:00-21:00; Fr-Sa 11:00-22:00; Su 11:00-21:00",
+    "phone": "+1-434-977-9688",
+    "website": "https://www.orderchristianspizza.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 3893014172,
+  "lat": 38.0305259,
+  "lon": -78.4823920,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "108",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "2nd Street Southwest",
+    "amenity": "restaurant",
+    "check_date": "2023-04-27",
+    "cuisine": "french",
+    "name": "The Alley Light",
+    "not:brand:wikidata": "Q126456355",
+    "opening_hours": "Mo-Tu off; We-Su 17:00-22:00",
+    "phone": "+1 434-296-5003",
+    "website": "https://alleylight.com"
+  }
+},
+{
+  "type": "node",
+  "id": 3893064885,
+  "lat": 38.0302550,
+  "lon": -78.4793160,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "310",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "East Main Street",
+    "amenity": "restaurant",
+    "check_date": "2026-05-18",
+    "cuisine": "italian",
+    "name": "Vita Nova Pizza & Pasta Bar",
+    "phone": "+1-434-977-0162",
+    "website": "http://www.vitanovapizzapasta.com"
+  }
+},
+{
+  "type": "node",
+  "id": 3894487063,
+  "lat": 38.0296183,
+  "lon": -78.4781342,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "512",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "East Main Street",
+    "amenity": "restaurant",
+    "check_date": "2026-05-18",
+    "contact:phone": "+1 434-984-1862",
+    "contact:website": "https://www.baggbys.com/",
+    "cuisine": "sandwich",
+    "name": "Baggby's Gourmet Sandwiches",
+    "opening_hours": "Mo-Fr 11:00-15:00",
+    "payment:apple_pay": "yes",
+    "payment:credit_cards": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3894487065,
+  "lat": 38.0295670,
+  "lon": -78.4779740,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "520",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "East Main Street",
+    "amenity": "restaurant",
+    "check_date": "2024-05-15",
+    "contact:website": "https://himalayanfusion.com/",
+    "cuisine": "indian",
+    "name": "Himalayan Fusion",
+    "opening_hours": "Mo-Fr 11:30-14:00,16:00-20:00; Sa 14:00-20:00; Su off",
+    "payment:apple_pay": "yes",
+    "payment:credit_cards": "yes",
+    "payment:diners_club": "yes",
+    "payment:google_pay": "yes",
+    "payment:jcb": "yes",
+    "payment:samsung_pay": "yes",
+    "phone": "+1-434-293-3120",
+    "website": "https://www.himalayanfusion.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 3894506452,
+  "lat": 38.0301678,
+  "lon": -78.4791134,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "401",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "East Main Street",
+    "amenity": "restaurant",
+    "check_date": "2026-05-18",
+    "cuisine": "indian",
+    "name": "Lazeez",
+    "opening_hours": "Tu-Th 11:30-14:30,16:00-21:00; Fr-Sa 11:30-14:30,16:00-21:30; Su 11:30-14:30,16:00-21:00",
+    "website": "https://www.lazeezrva.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 3894519555,
+  "lat": 38.0308010,
+  "lon": -78.4804930,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "201",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "East Main Street",
+    "amenity": "restaurant",
+    "cuisine": "french",
+    "name": "Petit Pois",
+    "opening_hours": "Tu-Th 11:30-16:00,17:00-20:00; Fr-Sa 11:30-16:00,17:00-21:00",
+    "phone": "+1-434-979-7647",
+    "website": "https://www.petitpoisrestaurant.com"
+  }
+},
+{
+  "type": "node",
+  "id": 3894520058,
+  "lat": 38.0307660,
+  "lon": -78.4803890,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "201",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "East Main Street",
+    "amenity": "restaurant",
+    "check_date": "2024-05-15",
+    "contact:email": "zocalogm@gmail.com",
+    "contact:website": "https://www.zocalo-restaurant.com/",
+    "cuisine": "american",
+    "name": "Zocalo",
+    "opening_hours": "Mo-We 17:00-21:30; Th-Fr 17:00-26:00; Sa 10:30-14:30,17:00-26:00; Su 10:30-14:30,17:00-21:30",
+    "phone": "+1-434-977-4944"
+  }
+},
+{
+  "type": "node",
+  "id": 3894530755,
+  "lat": 38.0310720,
+  "lon": -78.4820610,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "119",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "West Main Street",
+    "amenity": "restaurant",
+    "check_date": "2026-05-18",
+    "contact:email": "bizoudowntown@gmail.com",
+    "contact:website": "https://www.bizoudowntown.com/",
+    "cuisine": "american",
+    "name": "Bizou",
+    "opening_hours": "Mo-Th 11:30-14:00,17:00-21:00; Fr 11:30-14:00,17:00-22:00; Sa 11:00-14:00,17:00-22:00; Su 11:00-14:00,17:00-21:00",
+    "phone": "+1-434-977-1818",
+    "website": "https://www.bizoudowntown.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 3894530756,
+  "lat": 38.0311414,
+  "lon": -78.4822809,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "225",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "West Main Street",
+    "amenity": "restaurant",
+    "check_date": "2026-05-18",
+    "cuisine": "mexican",
+    "name": "The Bebedero",
+    "opening_hours": "Mo-Sa 12:00-02:00",
+    "website": "https://thebebedero.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 3894530762,
+  "lat": 38.0313598,
+  "lon": -78.4828246,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "225",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "West Main Street",
+    "amenity": "restaurant",
+    "check_date": "2026-05-18",
+    "cuisine": "american;southern",
+    "name": "The Whiskey Jar",
+    "opening_hours": "Mo-We 11:00-23:00; Th 11:00-24:00; Fr-Sa 11:00-02:00",
+    "website": "https://www.thewhiskeyjarcville.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 5768259047,
+  "lat": 38.0292135,
+  "lon": -78.4786073,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "501",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "East Water Street",
+    "alt_name": "Melting Pot",
+    "amenity": "restaurant",
+    "brand": "The Melting Pot",
+    "brand:wikidata": "Q7750948",
+    "check_date": "2026-05-18",
+    "cuisine": "fondue",
+    "name": "The Melting Pot",
+    "opening_hours": "Mo-Th 17:00-22:00; Fr 17:00-23:00; Sa 12:00-23:00; Su 12:00-21:00",
+    "phone": "+1-434-244-3463",
+    "website": "https://www.meltingpot.com/charlottesville-va"
+  }
+},
+{
+  "type": "node",
+  "id": 10608571184,
+  "lat": 38.0313080,
+  "lon": -78.4827710,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "225",
+    "addr:postcode": "22902-5047",
+    "addr:state": "VA",
+    "addr:street": "West Main Street",
+    "amenity": "restaurant",
+    "bar": "yes",
+    "check_date": "2026-05-18",
+    "cuisine": "seafood;american",
+    "level": "2",
+    "name": "Brightside Beach Pub",
+    "opening_hours": "Mo-Su 16:00-01:00",
+    "phone": "+1-434-202-8122",
+    "website": "https://cvillebrightside.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 11018956305,
+  "lat": 38.0303406,
+  "lon": -78.4824757,
+  "tags": {
+    "addr:housenumber": "111",
+    "addr:street": "Water Street West",
+    "amenity": "restaurant",
+    "check_date": "2026-05-18",
+    "cuisine": "turkish",
+    "name": "Otto",
+    "opening_hours": "Su-Th 11:00-20:00; Fr-Sa 11:00-21:00",
+    "website": "https://otto-cville.com"
+  }
+},
+{
+  "type": "node",
+  "id": 12031014569,
+  "lat": 38.0318410,
+  "lon": -78.4817150,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "113",
+    "addr:postcode": "22902-5024",
+    "addr:state": "VA",
+    "addr:street": "West Market Street",
+    "amenity": "restaurant",
+    "cuisine": "thai",
+    "name": "Monsoon Siam",
+    "opening_hours": "Mo-Fr 11:30-14:30,17:00-21:00; Sa-Su 12:00-14:30,16:30-21:00",
+    "phone": "+1-434-971-1515",
+    "website": "https://www.monsoonsiamcville.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 12102710890,
+  "lat": 38.0313760,
+  "lon": -78.4819670,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "110",
+    "addr:postcode": "22902-5014",
+    "addr:state": "VA",
+    "addr:street": "2nd Street Northwest",
+    "amenity": "restaurant",
+    "cuisine": "italian",
+    "name": "Luce",
+    "opening_hours": "Mo-Su 16:00-21:00",
+    "phone": "+1-434-293-9537",
+    "website": "https://www.lucepasta.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 12117959537,
+  "lat": 38.0305020,
+  "lon": -78.4801540,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "221",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "East Main Street",
+    "amenity": "restaurant",
+    "check_date": "2024-05-15",
+    "contact:email": "salscharlottesville@gmail.com",
+    "contact:website": "https://www.salscaffeitalia.com/",
+    "cuisine": "italian",
+    "name": "Sal's Caffe Italia",
+    "opening_hours": "Mo-Th 17:00-21:00; Fr 17:00-21:30; Sa 12:00-14:30,17:00-21:30; Su 16:00-20:00",
+    "phone": "+1-434-295-8484",
+    "website": "https://www.salscaffeitalia.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 12117959539,
+  "lat": 38.0304390,
+  "lon": -78.4810310,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "120",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "East Main Street",
+    "addr:unit": "2nd floor",
+    "amenity": "restaurant",
+    "cuisine": "sushi",
+    "name": "Ten",
+    "opening_hours": "Tu-Th 17:00-20:15; Fr-Sa 17:00-21:15",
+    "phone": "+1-434-295-6691",
+    "website": "https://ten-sushi.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 12117959541,
+  "lat": 38.0306820,
+  "lon": -78.4823250,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "108",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "2nd Street Southwest",
+    "amenity": "restaurant",
+    "cuisine": "soup",
+    "name": "Revolutionary Soup",
+    "opening_hours": "Mo-Fr 10:00-20:00",
+    "phone": "+1-434-296-7687",
+    "website": "https://revolutionarysoup.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 12136187514,
+  "lat": 38.0309220,
+  "lon": -78.4815320,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "101",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "West Main Street",
+    "amenity": "restaurant",
+    "check_date": "2026-05-18",
+    "cuisine": "american",
+    "name": "Hamiltons' at First & Main",
+    "opening_hours": "Tu 16:00-20:00; We-Sa 11:30-14:30,16:00-20:00; Su 11:00-14:00",
+    "phone": "+1-434-295-6649",
+    "website": "https://www.hamiltonsrestaurant.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 12187362614,
+  "lat": 38.0297430,
+  "lon": -78.4830500,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "213",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "2nd Street Southwest",
+    "amenity": "restaurant",
+    "cuisine": "asian",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "name": "Bang!",
+    "opening_hours": "Su-Th 17:00-21:30; Fr-Sa 17:00-22:00",
+    "phone": "+1-434-984-2264",
+    "source": "esri/USA_NAD_Addresses",
+    "website": "https://www.bangrestaurant.net/"
+  }
+},
+{
+  "type": "node",
+  "id": 12460949551,
+  "lat": 38.0319990,
+  "lon": -78.4817030,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "202",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "2nd Street Northwest",
+    "amenity": "restaurant",
+    "cuisine": "sushi",
+    "name": "Now and Zen",
+    "opening_hours": "Tu-Th 17:00-21:00; Fr-Sa 17:00-22:00; Su 17:00-21:00",
+    "phone": "+1-434-971-1177",
+    "website": "https://nowandzencville.square.site/"
+  }
+},
+{
+  "type": "node",
+  "id": 12572264952,
+  "lat": 38.0306000,
+  "lon": -78.4812670,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "111",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "Water Street East",
+    "addr:unit": "A",
+    "amenity": "restaurant",
+    "cuisine": "vietnamese",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "email": "julie@vunoodles.com",
+    "name": "Vu Noodles",
+    "opening_hours": "Tu-Sa 11:00-15:00",
+    "phone": "+1-434-465-1267",
+    "website": "https://www.vunoodles.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 13613154691,
+  "lat": 38.0298771,
+  "lon": -78.4746551,
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "905",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "East Market Street",
+    "amenity": "restaurant",
+    "cuisine": "mexican",
+    "name": "Taqueria El Comalito",
+    "opening_hours": "Tu-Fr 11:00-20:00; Sa 09:00-20:00; Su 09:00-18:00",
+    "phone": "+1-434-227-1936"
+  }
+},
+{
+  "type": "way",
+  "id": 324126440,
+  "center": {
+    "lat": 38.0290313,
+    "lon": -78.4781685
+  },
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "515",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "Water Street East",
+    "amenity": "restaurant",
+    "bar": "yes",
+    "building": "commercial",
+    "building:levels": "2",
+    "check_date": "2026-05-18",
+    "cocktails": "yes",
+    "cuisine": "american",
+    "delivery": "no",
+    "name": "C&O Restaurant",
+    "opening_hours": "17:00-22:00,22:30-01:00",
+    "outdoor_seating": "no",
+    "phone": "+1 434 971 7044",
+    "smoking": "no",
+    "website": "https://www.candorestaurant.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 332914587,
+  "center": {
+    "lat": 38.0299505,
+    "lon": -78.4754497
+  },
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "805",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "East Market Street",
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "mexican",
+    "delivery": "no",
+    "name": "Guadalajara",
+    "opening_hours": "Mo-Fr 11:00-22:00; Sa 11:30-22:00; Su 11:30-21:00",
+    "phone": "+1-434-977-2676",
+    "smoking": "no",
+    "website": "https://www.guadalajaramexicanva.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 385964939,
+  "center": {
+    "lat": 38.0301895,
+    "lon": -78.4810929
+  },
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "109",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "2nd Street Southeast",
+    "amenity": "restaurant",
+    "building": "yes",
+    "check_date": "2024-05-15",
+    "contact:website": "https://www.jackbrownsjoint.com/locations/charlottesville/",
+    "cuisine": "burger",
+    "internet_access": "no",
+    "name": "Jack Brown’s Beer & Burger Joint",
+    "opening_hours": "Mo-Su 00:00-02:00,11:00-24:00",
+    "payment:credit_cards": "yes",
+    "phone": "+1-434-244-0073",
+    "smoking": "no",
+    "website": "https://www.jackbrownsjoint.com/locations/charlottesville/"
+  }
+},
+{
+  "type": "way",
+  "id": 386115143,
+  "center": {
+    "lat": 38.0316679,
+    "lon": -78.4820783
+  },
+  "tags": {
+    "addr:city": "Charlottesville",
+    "addr:housenumber": "200",
+    "addr:postcode": "22902",
+    "addr:state": "VA",
+    "addr:street": "West Market Street",
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "kebab",
+    "disused:amenity": "restaurant",
+    "name": "Afghan Kabob House",
+    "opening_hours": "Mo-Th 11:00-21:00; Fr-Sa 11:30-21:30; Su 11:30-20:00",
+    "phone": "+1-434-202-2545",
+    "website": "https://afghankabob-house.com/"
+  }
+}
+
+  ]
+}
