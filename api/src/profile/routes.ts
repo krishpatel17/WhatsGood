@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import type { AppEnv } from "../app";
 import { ProfilePatchSchema, ProfileSchema } from "./schema";
 import { createProfile, getProfile, updateProfile } from "./repo";
+import { pendingRating } from "../feedback/prompt";
 
 export const profileRoutes = new Hono<AppEnv>()
   .post("/", async (c) => {
@@ -13,6 +14,9 @@ export const profileRoutes = new Hono<AppEnv>()
   .get("/:id", async (c) => {
     const profile = await getProfile(c.get("deps").db, c.req.param("id"));
     return profile ? c.json({ id: c.req.param("id"), ...profile }) : c.json({ error: "not found" }, 404);
+  })
+  .get("/:id/pending-rating", async (c) => {
+    return c.json({ recommendation: await pendingRating(c.get("deps").db, c.req.param("id")) });
   })
   .patch("/:id", async (c) => {
     const parsed = ProfilePatchSchema.safeParse(await c.req.json().catch(() => ({})));
