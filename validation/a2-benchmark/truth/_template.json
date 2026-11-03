@@ -1,0 +1,10 @@
+{
+  "restaurant_id": "do12",
+  "copied_by": "Full name of the team member who copied it",
+  "copied_on": "2026-11-04",
+  "source_url": "The exact page or PDF you copied from",
+  "dishes": [
+    { "name": "Dish name exactly as printed", "section": "Menu heading", "price": 12.5 },
+    { "name": "Market-price dish", "section": "Mains", "price": null }
+  ]
+}

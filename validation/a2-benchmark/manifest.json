@@ -1,0 +1,127 @@
+{
+  "created": "2026-11-03",
+  "rule": "easy = clean HTML menu with prices; medium = text PDF or long (60+ item) HTML; hard = image-only or JavaScript ordering page. Chosen only from restaurants marked readable in the A1 survey.",
+  "restaurants": [
+    {
+      "id": "do12",
+      "survey_id": "DO12",
+      "name": "Miller's Downtown",
+      "tier": "easy",
+      "source_type": "html",
+      "menu_url": "https://millersdowntown.com/eat.html",
+      "why": "clean HTML menu with prices",
+      "review_source": "google-maps (Apify compass~google-maps-reviews-scraper)",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Miller%27s+Downtown+109+West+Main+Street+Charlottesville+VA"
+    },
+    {
+      "id": "co04",
+      "survey_id": "CO04",
+      "name": "The Virginian",
+      "tier": "medium",
+      "source_type": "pdf",
+      "menu_url": "https://www.thevirginiancville.com/s/Virginian-Menu-8-6-26.pdf",
+      "why": "text PDF",
+      "review_source": "google-maps (Apify compass~google-maps-reviews-scraper)",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=The+Virginian+1521+University+Avenue+Charlottesville+VA"
+    },
+    {
+      "id": "ba01",
+      "survey_id": "BA01",
+      "name": "Sedona Taphouse",
+      "tier": "medium",
+      "source_type": "pdf",
+      "menu_url": "https://sedonataphouse.com/wp-content/uploads/2019/01/Dinner_Summer2026_Cville_11x14_06.02.26_web.pdf",
+      "why": "text PDF (dinner menu)",
+      "review_source": "google-maps (Apify compass~google-maps-reviews-scraper)",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Sedona+Taphouse+1035+Millmont+Street+Charlottesville+VA"
+    },
+    {
+      "id": "ba05",
+      "survey_id": "BA05",
+      "name": "El Puerto Mexican Restaurant",
+      "tier": "medium",
+      "source_type": "pdf",
+      "menu_url": "https://irp.cdn-website.com/d3c36932/files/uploaded/VA-2903_El+Puerto+Cville_9.5+x+14_113092+Web.pdf",
+      "why": "PDF",
+      "review_source": "google-maps (Apify compass~google-maps-reviews-scraper)",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=El+Puerto+Mexican+Restaurant+2045+Barracks+Road+Charlottesville+VA"
+    },
+    {
+      "id": "do09",
+      "survey_id": "DO09",
+      "name": "Afghan Kabob House",
+      "tier": "medium",
+      "source_type": "html",
+      "menu_url": "https://afghankabob-house.com/our-menu/",
+      "why": "long multi-section HTML (180+ prices)",
+      "review_source": "google-maps (Apify compass~google-maps-reviews-scraper)",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Afghan+Kabob+House+200+West+Market+Street+Charlottesville+VA"
+    },
+    {
+      "id": "do02",
+      "survey_id": "DO02",
+      "name": "The Whiskey Jar",
+      "tier": "medium",
+      "source_type": "html",
+      "menu_url": "https://www.thewhiskeyjarcville.com/menu",
+      "why": "long multi-section HTML (100+ prices)",
+      "review_source": "google-maps (Apify compass~google-maps-reviews-scraper)",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=The+Whiskey+Jar+225+West+Main+Street+Charlottesville+VA"
+    },
+    {
+      "id": "co02",
+      "survey_id": "CO02",
+      "name": "Marco and Luca",
+      "tier": "hard",
+      "source_type": "image-on-site",
+      "menu_url": "https://www.marcoandluca.com/menu",
+      "why": "image-only menu",
+      "review_source": "google-maps (Apify compass~google-maps-reviews-scraper)",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Marco+and+Luca+107+Elliewood+Avenue+Charlottesville+VA"
+    },
+    {
+      "id": "co05",
+      "survey_id": "CO05",
+      "name": "Crozet Pizza at Buddhist Biker Bar",
+      "tier": "hard",
+      "source_type": "ordering-page",
+      "menu_url": "https://order.toasttab.com/online/crozet-pizza-cville-20-elliewood-ave",
+      "why": "JavaScript ordering page (Toast)",
+      "review_source": "google-maps (Apify compass~google-maps-reviews-scraper)",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Crozet+Pizza+at+Buddhist+Biker+Bar+20+Elliewood+Avenue+Charlottesville+VA"
+    },
+    {
+      "id": "co10",
+      "survey_id": "CO10",
+      "name": "Boylan Heights",
+      "tier": "hard",
+      "source_type": "ordering-page",
+      "menu_url": "https://ordering.chownow.com/order/27047/locations",
+      "why": "JavaScript ordering page (ChowNow)",
+      "review_source": "google-maps (Apify compass~google-maps-reviews-scraper)",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Boylan+Heights+102+14th+Street+Northwest+Charlottesville+VA"
+    },
+    {
+      "id": "do06",
+      "survey_id": "DO06",
+      "name": "Revolutionary Soup",
+      "tier": "hard",
+      "source_type": "ordering-page",
+      "menu_url": "https://revsoupmenu.square.site/",
+      "why": "JavaScript ordering page (Square)",
+      "review_source": "google-maps (Apify compass~google-maps-reviews-scraper)",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Revolutionary+Soup+108+2nd+Street+Southwest+Charlottesville+VA"
+    },
+    {
+      "id": "do04",
+      "survey_id": "DO04",
+      "name": "Otto",
+      "tier": "hard",
+      "source_type": "ordering-page",
+      "menu_url": "https://www.clover.com/online-ordering/otto-eats-catering-cville",
+      "why": "JavaScript ordering page (Clover)",
+      "review_source": "google-maps (Apify compass~google-maps-reviews-scraper)",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Otto+111+Water+Street+West+Charlottesville+VA"
+    }
+  ]
+}
