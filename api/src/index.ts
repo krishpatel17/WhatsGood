@@ -1,17 +1,5 @@
-import { Hono } from "hono";
-import { cors } from "hono/cors";
+import { createApp } from "./app";
 
-export type Env = {
-  DB: D1Database;
-  BUCKET: R2Bucket;
-  ANTHROPIC_API_KEY?: string;
-  APIFY_TOKEN?: string;
-};
+export type { Env } from "./app";
 
-const app = new Hono<{ Bindings: Env }>();
-
-app.use("*", cors());
-
-app.get("/health", (c) => c.json({ ok: true }));
-
-export default app;
+export default createApp();

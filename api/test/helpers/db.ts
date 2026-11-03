@@ -2,10 +2,9 @@
 // backed by an in-memory node:sqlite database with every migration applied.
 import { DatabaseSync } from "node:sqlite";
 import { readdirSync, readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
 import type { Db } from "../../src/db";
 
-const migrationsDir = fileURLToPath(new URL("../../migrations/", import.meta.url));
+const migrationsDir = import.meta.dirname + "/../../migrations/";
 
 export function testDb(): Db & { raw: DatabaseSync } {
   const raw = new DatabaseSync(":memory:");

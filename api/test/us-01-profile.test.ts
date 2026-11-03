@@ -33,14 +33,14 @@ describe("US-01 Set up my profile once", () => {
   it("[ai] T2 integration: POST then GET returns the same profile", async () => {
     const created = await app.request("/profiles", json("POST", full));
     expect(created.status).toBe(201);
-    const { id } = await created.json();
+    const { id } = (await created.json()) as { id: string };
     const got = await app.request(`/profiles/${id}`);
     expect(got.status).toBe(200);
     expect(await got.json()).toMatchObject({ id, ...full });
   });
 
   it("[ai] T3 integration: PATCH of one field leaves the other fields unchanged", async () => {
-    const { id } = await (await app.request("/profiles", json("POST", full))).json();
+    const { id } = (await (await app.request("/profiles", json("POST", full))).json()) as { id: string };
     const patched = await app.request(`/profiles/${id}`, json("PATCH", { budget: 25 }));
     expect(patched.status).toBe(200);
     const got = await (await app.request(`/profiles/${id}`)).json();
