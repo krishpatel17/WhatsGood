@@ -1,0 +1,11 @@
+{
+  "name": "whats-good",
+  "private": true,
+  "workspaces": [
+    "api"
+  ],
+  "scripts": {
+    "test": "npm test --workspaces --if-present",
+    "coverage": "npm run coverage --workspaces --if-present"
+  }
+}
