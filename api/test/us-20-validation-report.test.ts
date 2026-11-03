@@ -89,3 +89,23 @@ describe("US-20 Validation scoring and report (A1-A3 verdict)", () => {
     expect(md).toContain("Verdict: Pending");
   });
 });
+
+describe("US-20 report from the repository's data files", () => {
+  it("[ai] AC7 integration: the report reads the real A1 survey and marks A2/A3 pending until their results exist", async () => {
+    const { assembleInputs } = await import("../src/validation/assemble");
+    const inputs = assembleInputs(import.meta.dirname + "/../../");
+    expect(inputs.a1).toMatchObject({ readable: 25, n: 30 });
+    const md = buildReport(inputs);
+    expect(md).toContain("A1 Sources exist: PASS");
+  });
+
+  it("[ai] AC1/AC6 unit: A2 results are scored against the hand-copied menus", async () => {
+    const { scoreA2 } = await import("../src/validation/assemble");
+    const truth = { restaurant_id: "aa", copied_by: "T", copied_on: "x", source_url: "x", dishes: [{ name: "Dan Dan Noodles", section: "", price: 14 }] };
+    const results = { promptTag: "t", model: "m", startedAt: "x", restaurants: [{ id: "aa", tier: "hard", sourceType: "pdf", status: "active", failure: null, seconds: 30, retries: 1, inputTokens: 1, outputTokens: 1, costUsd: 0, snapshot: null, dishes: [d("Dan Dan Noodles", 14)] }] };
+    const a2 = scoreA2(results as never, new Map([["aa", truth]]), new Map([["aa", "Restaurant AA"]]));
+    expect(a2.restaurants[0]).toMatchObject({ name: "Restaurant AA", pass: true, retries: 1 });
+    expect(a2.restaurants[0].score.accuracy).toBe(1);
+    expect(a2.bootstrap.lo).toBe(1);
+  });
+});

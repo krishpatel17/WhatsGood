@@ -53,6 +53,16 @@ function dishTokens(s: string): string[] {
  * ("noodles") does not match a specific dish ("Dan Dan Noodles").
  */
 export function dishScore(a: string, b: string): number {
+  // A bracketed note on one side only ("Cumin Lamb Noodles (Spicy)" vs "Cumin Lamb Noodles") is ignored.
+  // When both sides have one ("Dumplings (Pork)" vs "Dumplings (Tofu)") it still has to match.
+  const paren = /\([^)]*\)/g;
+  const pa = paren.test(a);
+  const pb = /\([^)]*\)/.test(b);
+  if (pa !== pb) return Math.max(rawDishScore(a, b), rawDishScore(a.replace(paren, " "), b.replace(paren, " ")));
+  return rawDishScore(a, b);
+}
+
+function rawDishScore(a: string, b: string): number {
   const ta = dishTokens(a);
   const tb = dishTokens(b);
   const sortedA = [...ta].sort();

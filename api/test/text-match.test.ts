@@ -20,6 +20,11 @@ describe("text matching helpers", () => {
     expect(dishScore("pork dumpling", "Pork Dumplings")).toBe(1);
   });
 
+  it("[ai] dishScore ignores a bracketed note on one side only", () => {
+    expect(dishScore("Cumin Lamb Noodles (Spicy)", "Cumin Lamb Noodles")).toBeGreaterThanOrEqual(0.9);
+    expect(dishScore("Dumplings (Pork)", "Dumplings (Tofu)")).toBeLessThan(0.9);
+  });
+
   it("[ai] dishScore keeps different dishes apart", () => {
     expect(dishScore("noodles", "Dumplings")).toBeLessThan(0.9);
     expect(dishScore("noodles", "Dan Dan Noodles")).toBeLessThan(0.9);
