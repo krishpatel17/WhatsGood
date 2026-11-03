@@ -93,6 +93,91 @@
       "section": "Sandwiches & Wraps *Gluten Free Option*",
       "name": "90's Club",
       "price": 8.25
+    },
+    {
+      "section": "Salads",
+      "name": "Curried Chicken Salad",
+      "price": 9
+    },
+    {
+      "section": "Salads",
+      "name": "Greek Salad",
+      "price": 7.75
+    },
+    {
+      "section": "Salads",
+      "name": "Gulf Coast Salad",
+      "price": 13
+    },
+    {
+      "section": "Salads",
+      "name": "House Salad",
+      "price": 7.75
+    },
+    {
+      "section": "Salads",
+      "name": "Caesar Salad",
+      "price": 7.25
+    },
+    {
+      "section": "Burgers",
+      "name": "Nak Attack Burger",
+      "price": 12.95
+    },
+    {
+      "section": "Burgers",
+      "name": "Classic Burger",
+      "price": 12
+    },
+    {
+      "section": "Grain Bowls",
+      "name": "Cibo Salutare",
+      "price": 8.5
+    },
+    {
+      "section": "Grain Bowls",
+      "name": "Sano Sabor",
+      "price": 8.5
+    },
+    {
+      "section": "Grain Bowls",
+      "name": "Buddha Bowl",
+      "price": 8.5
+    },
+    {
+      "section": "Quesadillas *Gluten Free Option*",
+      "name": "Classic Quesadilla",
+      "price": 11
+    },
+    {
+      "section": "Quesadillas *Gluten Free Option*",
+      "name": "Lisa Quesadilla",
+      "price": 11
+    },
+    {
+      "section": "Quesadillas *Gluten Free Option*",
+      "name": "Kid’s Quesadilla",
+      "price": 4.5
+    },
+    {
+      "section": "Who Doesn't Love Combos?",
+      "name": "Classic Combo",
+      "price": 9
+    },
+    {
+      "section": "Who Doesn't Love Combos?",
+      "name": "Pick Two Combo",
+      "price": 13.75
+    },
+    {
+      "section": "Sides, Limited Release Gear, and Other Goodies",
+      "name": "Chips on Chips on Chips",
+      "price": 2
+    },
+    {
+      "section": "Sides, Limited Release Gear, and Other Goodies",
+      "name": "Cookies",
+      "price": 1.25
     }
   ]
 }
