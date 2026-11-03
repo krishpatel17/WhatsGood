@@ -1,2 +1,12 @@
 restaurant_id,checked_by,dishes_checked,errors_found,errors_fixed
 ba01,Lara Mahajan,14,0,0
+ba05,Lara Mahajan,40,0,0
+co02,Lara Mahajan,6,0,0
+co04,Lara Mahajan,8,0,0
+co05,Lara Mahajan,15,0,0
+co10,Lara Mahajan,7,0,0
+do02,Lara Mahajan,12,0,0
+do04,Lara Mahajan,43,0,0
+do09,Lara Mahajan,86,0,0
+do12,Lara Mahajan,35,0,0
+do06,Lara Mahajan,59,25,25
