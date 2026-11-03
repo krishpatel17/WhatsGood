@@ -2,8 +2,9 @@ import type { Blobs } from "../blobs";
 import { type Db, newId, nowIso } from "../db";
 import type { Llm, LlmContent, LlmMessage, LlmUsage } from "../llm/types";
 import { MENU_IMPORT_SYSTEM } from "../prompts/menu-import";
-import { fetchSource, sourceContent } from "./fetcher";
+import { fetchSource, sourceContent, textOf } from "./fetcher";
 import { type Menu, MenuSchema } from "./schema";
+import { layoutItemCount, validateMenu } from "./validate";
 
 export const MAX_ATTEMPTS = 3;
 
@@ -36,16 +37,19 @@ export function retryMessage(attempt: number, errors: string[]): string {
   ].join("\n");
 }
 
+export type OnAttempt = (attempt: number, errors: string[]) => Promise<void>;
+
 /** Run the model with up to MAX_ATTEMPTS tries, feeding validation errors back each time. */
-export async function extractWithRetry(llm: Llm, content: LlmContent[], validate: Validate, task = "menu_import") {
+export async function extractWithRetry(llm: Llm, content: LlmContent[], validate: Validate, onAttempt: OnAttempt = async () => {}) {
   const messages: LlmMessage[] = [{ role: "user", content }];
   const usage: LlmUsage = { input_tokens: 0, output_tokens: 0 };
   const failures: string[][] = [];
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
-    const res = await llm.json({ task, system: MENU_IMPORT_SYSTEM, messages, schema: MenuSchema, effort: "medium" });
+    const res = await llm.json({ task: "menu_import", system: MENU_IMPORT_SYSTEM, messages, schema: MenuSchema, effort: "medium" });
     usage.input_tokens += res.usage.input_tokens;
     usage.output_tokens += res.usage.output_tokens;
     const { menu, errors } = validate(res.data);
+    await onAttempt(attempt, errors);
     if (menu && errors.length === 0) return { menu, attempts: attempt, usage, failures };
     failures.push(errors);
     messages.push({ role: "assistant", content: res.raw }, { role: "user", content: retryMessage(attempt, errors) });
@@ -74,12 +78,23 @@ export async function storeMenu(
   return menuId;
 }
 
-export async function importMenu(deps: ImportDeps, input: { restaurantId: string; url: string }, validate: Validate = schemaOnly): Promise<ImportResult> {
+export function attemptLogger(db: Db, restaurantId: string, sourceUrl: string | null): OnAttempt {
+  return async (attempt, errors) => {
+    await db
+      .prepare("INSERT INTO menu_import_attempts (id, restaurant_id, source_url, attempt, ok, failed_checks, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)")
+      .bind(newId(), restaurantId, sourceUrl, attempt, errors.length === 0 ? 1 : 0, JSON.stringify(errors), nowIso())
+      .run();
+  };
+}
+
+export async function importMenu(deps: ImportDeps, input: { restaurantId: string; url: string }, validate?: Validate): Promise<ImportResult> {
   const src = await fetchSource(deps.fetch, input.url);
   const snapshotKey = `snapshots/${input.restaurantId}/${Date.now()}`;
   await deps.blobs.put(snapshotKey, src.bytes, { httpMetadata: { contentType: src.contentType } });
 
-  const run = await extractWithRetry(deps.llm, sourceContent(src), validate);
+  const text = textOf(src);
+  const check = validate ?? validateMenu(text === null ? null : layoutItemCount(text));
+  const run = await extractWithRetry(deps.llm, sourceContent(src), check, attemptLogger(deps.db, input.restaurantId, input.url));
   const status = run.menu ? "active" : "needs_review";
   const dishes = run.menu?.dishes ?? [];
   const menuId = await storeMenu(deps.db, {
