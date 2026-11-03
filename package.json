@@ -2,7 +2,8 @@
   "name": "whats-good",
   "private": true,
   "workspaces": [
-    "api"
+    "api",
+    "web"
   ],
   "scripts": {
     "test": "npm test --workspaces --if-present",
