@@ -98,6 +98,64 @@ describe("US-10 Guardrail: restrictions and budget", () => {
     expect(checkRestrictions([pick("Chef's Special", "Crispy tenders.")], [special], vegetarian)).toHaveLength(1);
   });
 
+  it("[ai] T15 unit: added words conflict in a reason and in a dish's own name", () => {
+    const cases: [string, Partial<Profile>][] = [
+      ["cheesy", { allergies: ["dairy"] }],
+      ["buttery", { diets: ["dairy_free"] }],
+      ["paneer", { allergies: ["dairy"] }],
+      ["pesto", { allergies: ["dairy"] }],
+      ["pesto", { allergies: ["tree_nut"] }],
+      ["nutty", { allergies: ["tree_nut"] }],
+      ["nutty", { allergies: ["peanut"] }],
+      ["satay", { allergies: ["peanut"] }],
+      ["naan", { allergies: ["gluten"] }],
+      ["tempura", { diets: ["gluten_free"] }],
+      ["seitan", { allergies: ["gluten"] }],
+      ["couscous", { allergies: ["gluten"] }],
+      ["flour tortilla", { allergies: ["gluten"] }],
+      ["aioli", { allergies: ["egg"] }],
+      ["mayo", { allergies: ["egg"] }],
+      ["miso", { allergies: ["soy"] }],
+      ["lard", { diets: ["no_pork"] }],
+      ["gelatin", { diets: ["vegetarian"] }],
+      ["gelatin", { diets: ["halal"] }],
+      ["foie gras", { diets: ["vegetarian"] }],
+      ["goose", { diets: ["pescatarian"] }],
+      ["sushi", { allergies: ["fish"] }],
+      ["from the sea", { allergies: ["fish"] }],
+      ["from the sea", { allergies: ["shellfish"] }],
+      ["seafood", { allergies: ["fish"] }],
+      ["pig", { diets: ["no_pork"] }],
+      ["red wine", { diets: ["halal"] }],
+      ["beer", { diets: ["halal"] }],
+      ["bourbon", { diets: ["halal"] }],
+      ["sake", { diets: ["halal"] }],
+    ];
+    for (const [word, p] of cases) {
+      expect(checkRestrictions([pick("Chef's Special", `Great with ${word}.`)], [special], profile(p)), word).toHaveLength(1);
+      expect(dishConflicts(dish(`House ${word}`, []), profile(p)), word).toHaveLength(1);
+    }
+  });
+
+  it("[ai] T16 unit: lookalikes of the added words do not conflict", () => {
+    const cases: [string, Partial<Profile>][] = [
+      ["root beer", { diets: ["halal"] }],
+      ["ginger ale", { diets: ["halal"] }],
+      ["ginger", { diets: ["halal"] }],
+      ["aleppo pepper", { diets: ["halal"] }],
+      ["corn flour", { allergies: ["gluten"] }],
+      ["rice flour", { allergies: ["gluten"] }],
+      ["flourless", { allergies: ["gluten"] }],
+    ];
+    for (const [word, p] of cases) {
+      expect(checkRestrictions([pick("Chef's Special", `Great with ${word}.`)], [special], profile(p)), word).toEqual([]);
+      expect(dishConflicts(dish(`House ${word}`, []), profile(p)), word).toEqual([]);
+    }
+    expect(checkRestrictions([pick("Chef's Special", "Worth ordering for the sake of the sauce.")], [special], profile({ diets: ["halal"] }))).toEqual([]);
+    // Sushi usually has fish, but a plant-based roll says so.
+    expect(dishConflicts(dish("Veggie Sushi", []), profile({ allergies: ["fish"] }))).toEqual([]);
+  });
+
   it("[ai] AC1/AC3 unit: a conflicting or over-budget pick fails validation with the reason", () => {
     const p = profile({ diets: ["no_pork"], budget: 15 });
     expect(checkRestrictions([pick("Dan Dan Noodles"), pick("Cumin Lamb Noodles")], [danDan, lamb], p)).toEqual([
