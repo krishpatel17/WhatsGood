@@ -1,3 +1,5 @@
 # Copy to .dev.vars (git-ignored) and fill in your own values.
 ANTHROPIC_API_KEY=
 APIFY_TOKEN=
+# Optional, local only: use your own Claude login instead of ANTHROPIC_API_KEY. Run `npm run bridge -w api` first.
+# LLM_BRIDGE_URL=http://127.0.0.1:8790

@@ -3,6 +3,7 @@ import { cors } from "hono/cors";
 import type { Blobs } from "./blobs";
 import type { Db } from "./db";
 import { anthropicLlm } from "./llm/anthropic";
+import { bridgeLlm, isLoopbackUrl } from "./llm/bridge";
 import type { Llm } from "./llm/types";
 import { profileRoutes } from "./profile/routes";
 import { restaurantRoutes } from "./restaurants/routes";
@@ -14,6 +15,8 @@ export type Env = {
   BUCKET: R2Bucket;
   ANTHROPIC_API_KEY?: string;
   APIFY_TOKEN?: string;
+  /** Local development only: see scripts/subscription-bridge.ts. */
+  LLM_BRIDGE_URL?: string;
 };
 
 export type Deps = {
@@ -28,7 +31,8 @@ export type AppEnv = { Bindings: Env; Variables: { deps: Deps } };
 
 export function depsFromEnv(env: Env | undefined): Partial<Deps> {
   if (!env) return {};
-  return { db: env.DB, blobs: env.BUCKET, llm: anthropicLlm({ apiKey: env.ANTHROPIC_API_KEY }), fetch: (input, init) => fetch(input, init), apifyToken: env.APIFY_TOKEN };
+  const llm = env.LLM_BRIDGE_URL && isLoopbackUrl(env.LLM_BRIDGE_URL) ? bridgeLlm({ url: env.LLM_BRIDGE_URL, fetch: (input, init) => fetch(input, init) }) : anthropicLlm({ apiKey: env.ANTHROPIC_API_KEY });
+  return { db: env.DB, blobs: env.BUCKET, llm, fetch: (input, init) => fetch(input, init), apifyToken: env.APIFY_TOKEN };
 }
 
 /** Builds the API. Tests pass in-memory dependencies; production builds them from the Worker env. */

@@ -66,6 +66,16 @@ node scripts/seed-demo.mjs http://localhost:8787
 NEXT_PUBLIC_API_URL=http://localhost:8787 npm run dev -w web
 ```
 
+### Try it with your own Claude login (optional)
+
+To try the app by yourself on your own machine without an API key, log in with `claude` and run the bridge in its own terminal:
+
+```bash
+npm run bridge -w api
+```
+
+Then add `LLM_BRIDGE_URL=http://127.0.0.1:8790` to `api/.dev.vars` and restart `wrangler dev`. Calls count against your own plan's limits. This is for one developer only: use an API key for anything deployed, shared with other people, or measured by the A2 and A3 benchmarks. Reviews still need `APIFY_TOKEN`.
+
 ## Deploy (US-22)
 
 ```bash

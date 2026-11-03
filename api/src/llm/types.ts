@@ -27,5 +27,6 @@ export type LlmResponse = {
 };
 
 export interface Llm {
+  kind?: "bridge";
   json(req: LlmRequest): Promise<LlmResponse>;
 }
