@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
-import { countCheck, layoutItemCount, mergeDuplicates, parsePrice, validateMenu } from "../src/menu/validate";
+import { countCheck, layoutItemCount, mergeDuplicates, NO_DISHES, parsePrice, validateMenu } from "../src/menu/validate";
 import { importMenu, retryMessage } from "../src/menu/import";
 import { createRestaurant, getRestaurant } from "../src/restaurants/repo";
 import type { Dish } from "../src/menu/schema";
@@ -54,6 +54,12 @@ describe("US-05 Validate imported menus", () => {
   it("[ai] AC1 unit: validateMenu flags a price outside $0-$500 with the dish index", () => {
     const { errors } = validateMenu(null)({ dishes: [dish(), dish({ name: "Caviar Tower", price: 900 })] });
     expect(errors).toEqual(['dishes[1] "Caviar Tower": price 900 is outside $0-$500']);
+  });
+
+  it("[ai] an empty menu fails validation: as no dishes when the page has no layout count, as a count mismatch when it has one", () => {
+    expect(validateMenu(null)({ dishes: [] }).errors).toEqual([NO_DISHES]);
+    expect(validateMenu(0)({ dishes: [] }).errors).toEqual([NO_DISHES]);
+    expect(validateMenu(5)({ dishes: [] }).errors).toEqual(["item count 0 is not within 15% of the page layout count 5"]);
   });
 
   it("[ai] T5 unit: the retry message lists each failed check", () => {
