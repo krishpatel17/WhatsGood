@@ -1,0 +1,44 @@
+[
+  {
+    "survey_id": "DO12",
+    "name": "Miller's Downtown",
+    "address": "109 West Main Street, Charlottesville, VA",
+    "menu_url": "https://millersdowntown.com/eat.html",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Miller%27s+Downtown+109+West+Main+Street+Charlottesville+VA"
+  },
+  {
+    "survey_id": "DO09",
+    "name": "Afghan Kabob House",
+    "address": "200 West Market Street, Charlottesville, VA",
+    "menu_url": "https://afghankabob-house.com/our-menu/",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Afghan+Kabob+House+200+West+Market+Street+Charlottesville+VA"
+  },
+  {
+    "survey_id": "DO02",
+    "name": "The Whiskey Jar",
+    "address": "225 West Main Street, Charlottesville, VA",
+    "menu_url": "https://www.thewhiskeyjarcville.com/menu",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=The+Whiskey+Jar+225+West+Main+Street+Charlottesville+VA"
+  },
+  {
+    "survey_id": "CO04",
+    "name": "The Virginian",
+    "address": "1521 University Avenue, Charlottesville, VA",
+    "menu_url": "https://www.thevirginiancville.com/s/Virginian-Menu-8-6-26.pdf",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=The+Virginian+1521+University+Avenue+Charlottesville+VA"
+  },
+  {
+    "survey_id": "CO01",
+    "name": "Bodo's Bagels",
+    "address": "1609 University Avenue, Charlottesville, VA",
+    "menu_url": "http://www.bodosbagels.com/menu/creamcheeses.html",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Bodo%27s+Bagels+1609+University+Avenue+Charlottesville+VA"
+  },
+  {
+    "survey_id": "DO07",
+    "name": "The Bebedero",
+    "address": "225 West Main Street, Charlottesville, VA",
+    "menu_url": "https://thebebedero.com/menu",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=The+Bebedero+225+West+Main+Street+Charlottesville+VA"
+  }
+]
