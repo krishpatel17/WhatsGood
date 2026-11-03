@@ -6,6 +6,7 @@
     "test": "vitest run",
     "coverage": "vitest run --coverage",
     "dev": "wrangler dev",
+    "bridge": "tsx scripts/subscription-bridge.ts",
     "deploy": "wrangler deploy",
     "typecheck": "tsc --noEmit",
     "benchmark": "tsx scripts/benchmark.ts",
@@ -19,6 +20,7 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.3.211",
     "@cloudflare/workers-types": "^5.20261103.1",
     "@types/node": "^26.6.6",
     "@vitest/coverage-v8": "^5.1.0",
