@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon-gold-64.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon-black-64.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon-gold-64.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" sizes="128x128" href="/favicon-gold-128.png">
+    <meta charset="UTF-8">
+    <meta name="description" content="Full kitchen open late — burgers, salads, apps, and more at Miller's Downtown in Charlottesville, VA.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Menu | Miller's Downtown</title>
+    <link rel="canonical" href="https://millersdowntown.com/eat.html">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #1a1a1a; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; min-height: 100vh; }
+        header { background: #000; padding: 20px; text-align: center; border-bottom: 2px solid #c8a45a; }
+        header h1 { font-size: 2.5em; color: #c8a45a; text-transform: uppercase; letter-spacing: 3px; }
+        .order-banner { background: #c8a45a; color: #000; text-align: center; padding: 12px; font-weight: bold; }
+        .order-banner a { color: #000; text-decoration: none; font-size: 1.1em; }
+        .order-banner a:hover { text-decoration: underline; }
+        /* Allergen reference link (2026-09-04): a lone link above and below the menu; static siblings of <main>, so renderMenu() never wipes them */
+        .allergen-ref { max-width: 1400px; margin: 0 auto; padding: 16px 20px 0; text-align: right; }
+        .allergen-ref.allergen-ref-end { padding: 0 20px 4px; }
+        .allergen-ref a { display: inline-block; min-height: 44px; padding: 11px 6px; border-radius: 4px; color: #c8a45a; font-size: 0.95em; font-weight: bold; text-decoration: underline; text-underline-offset: 3px; }
+        .allergen-ref a:hover { color: #d4b56a; }
+        .allergen-ref a:focus-visible { outline: 3px solid #99c8ff; outline-offset: 3px; }
+        
+        /* Floating Nav */
+        .floating-nav { position: fixed; top: 50%; right: 20px; transform: translateY(-50%); z-index: 100; }
+        .floating-nav-toggle { background: #c8a45a; color: #000; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.2em; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .floating-nav-toggle:hover { background: #d4b56a; }
+        .floating-nav-menu { display: none; position: absolute; right: 50px; top: 50%; transform: translateY(-50%); background: #252525; border-radius: 8px; padding: 10px; min-width: 180px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
+        .floating-nav.open .floating-nav-menu { display: block; }
+        .floating-nav-menu a { display: block; color: #fff; text-decoration: none; padding: 8px 12px; border-radius: 4px; font-size: 0.9em; }
+        .floating-nav-menu a:hover { background: #333; color: #c8a45a; }
+        
+        .category-section { padding: 40px 20px; max-width: 1400px; margin: 0 auto; scroll-margin-top: 20px; }
+        .category-title { font-size: 2em; color: #c8a45a; margin-bottom: 30px; padding-bottom: 10px; border-bottom: 1px solid #333; text-transform: uppercase; letter-spacing: 2px; }
+        .masonry-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .menu-item { background: #252525; border-radius: 8px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; }
+        .menu-item:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(200, 164, 90, 0.2); }
+        .menu-item.featured { grid-column: span 2; grid-row: span 2; }
+        .menu-item-image { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: #333; }
+        .menu-item.featured .menu-item-image { aspect-ratio: 1/1; }
+        .menu-item-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .menu-item-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+        .menu-item-name { font-size: 1.2em; font-weight: bold; color: #fff; flex: 1; }
+        .menu-item.featured .menu-item-name { font-size: 1.5em; }
+        .menu-item-price { color: #c8a45a; font-weight: bold; font-size: 1.1em; white-space: nowrap; margin-left: 10px; }
+        .menu-item-description { color: #aaa; font-size: 0.9em; line-height: 1.5; flex-grow: 1; }
+        .menu-item-order { margin-top: 15px; background: #c8a45a; color: #000; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; text-decoration: none; text-align: center; transition: background 0.3s ease; }
+        .menu-item-order:hover { background: #d4b56a; }
+        .no-image { background: linear-gradient(135deg, #333 0%, #252525 100%); display: flex; align-items: center; justify-content: center; color: #888; font-size: 3em; }
+        footer { background: #000; padding: 40px 20px; text-align: center; border-top: 2px solid #c8a45a; margin-top: 40px; }
+        footer p { color: #777; }
+        @media (max-width: 768px) {
+            .masonry-grid { grid-template-columns: 1fr; }
+            .menu-item.featured { grid-column: span 1; grid-row: span 1; }
+            header h1 { font-size: 1.8em; }
+            .floating-nav { right: 10px; }
+            .floating-nav-menu { right: 45px; }
+        }
+    </style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Miller's Downtown","url":"https://millersdowntown.com","telephone":"+1-434-971-8511","image":"https://millersdowntown.com/images/photos/millersmainbar-9.jpg","address":{"@type":"PostalAddress","streetAddress":"109 W Main St","addressLocality":"Charlottesville","addressRegion":"VA","postalCode":"22902","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":38.0294,"longitude":-78.4788},"priceRange":"$$","servesCuisine":["American","Bar Food","Cocktails"],"acceptsReservations":false,"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"17:00","closes":"02:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"15:00","closes":"02:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Sunday"],"opens":"12:00","closes":"02:00"}],"hasMenu":[{"@type":"Menu","name":"Food","url":"https://millersdowntown.com/eat.html"},{"@type":"Menu","name":"Cocktails","url":"https://millersdowntown.com/cocktail.html"},{"@type":"Menu","name":"Beer","url":"https://millersdowntown.com/beer.html"},{"@type":"Menu","name":"Wine","url":"https://millersdowntown.com/wine.html"},{"@type":"Menu","name":"Whiskey","url":"https://millersdowntown.com/whiskey.html"},{"@type":"Menu","name":"Espresso & Coffee","url":"https://millersdowntown.com/espresso.html"}]}</script>
+  <script defer src="/site-chat.v1.js"></script>
+  <link rel="stylesheet" href="/site-focus.v2.css?v=20260808">
+</head>
+<body>
+    <header><h1>The Food</h1></header>
+    <nav class="floating-nav" id="floatingNav">
+        <button class="floating-nav-toggle" onclick="toggleNav()">☰</button>
+        <div class="floating-nav-menu" id="navMenu">
+            <!-- Populated by JS -->
+        </div>
+    </nav>
+    
+    <section aria-label="Allergen information"><p class="allergen-ref"><a href="/millers-downtown-allergen-reference-guide.pdf" type="application/pdf">Allergen Reference Guide (PDF, 204 KB)</a></p></section>
+
+    <main id="menu-container"></main>
+    <section aria-label="Allergen information, end of menu"><p class="allergen-ref allergen-ref-end"><a href="/millers-downtown-allergen-reference-guide.pdf" type="application/pdf">Allergen Reference Guide (PDF, 204 KB)</a></p></section>
+    <footer><p>Miller's Downtown | Eat. Drink. Listen. | Since 1981</p></footer>
+    <script>
+        const IMAGE_BASE = 'images/menu/';
+        const ORDER_URL = 'order.html';
+        const FEATURED_ITEMS = ['Chicken & Waffles', 'Wings', 'Fried Green Tomato Salad', 'Black & Blue Ridge Burger', 'Rib-Eye Steak & Cheese', 'Seven Layer Chocolate Cake'];
+        
+        function toggleNav() {
+            document.getElementById('floatingNav').classList.toggle('open');
+        }
+        
+        // Close nav when clicking outside
+        document.addEventListener('click', (e) => {
+            const nav = document.getElementById('floatingNav');
+            if (!nav.contains(e.target)) {
+                nav.classList.remove('open');
+            }
+        });
+        
+        async function loadMenu() {
+            try {
+                // Fetch from /api/menu (public-api; server-side lunch time-filter in ET; Phase-3 seam to the Focus cache).
+                // Pass through _test_hour from URL so we can preview the lunch render without waiting for Friday 3pm.
+                const testHour = new URLSearchParams(window.location.search).get('_test_hour');
+                let url = '/api/menu?t=' + Date.now();
+                if (testHour) url += '&_test_hour=' + encodeURIComponent(testHour);
+                const response = await fetch(url);
+                const data = await response.json();
+                renderMenu(data);
+                buildNav(data);
+            } catch (error) {
+                console.error('Error loading menu:', error);
+                document.getElementById('menu-container').innerHTML = '<p style="text-align:center;padding:40px;color:#c8a45a;">Menu loading...</p>';
+            }
+        }
+        
+        function buildNav(data) {
+            const navMenu = document.getElementById('navMenu');
+            if (!navMenu) return;
+            navMenu.textContent = '';
+            data.categories.forEach(function(cat, i) {
+                var a = document.createElement('a');
+                a.href = '#section-' + i;
+                a.textContent = cat.name;
+                a.addEventListener('click', toggleNav);
+                navMenu.appendChild(a);
+            });
+        }
+        
+        function renderMenu(data) {
+            const container = document.getElementById('menu-container');
+            container.innerHTML = '';
+            data.categories.forEach((category, index) => {
+                const section = document.createElement('section');
+                section.className = 'category-section';
+                section.id = 'section-' + index;
+                const title = document.createElement('h2');
+                title.className = 'category-title';
+                title.textContent = category.name;
+                section.appendChild(title);
+                const grid = document.createElement('div');
+                grid.className = 'masonry-grid';
+                category.items.forEach(item => {
+                    const card = createMenuCard(item);
+                    grid.appendChild(card);
+                });
+                section.appendChild(grid);
+                container.appendChild(section);
+            });
+        }
+        
+        function createMenuCard(item) {
+            const card = document.createElement('div');
+            card.className = 'menu-item';
+            if (FEATURED_ITEMS.includes(item.name)) card.classList.add('featured');
+            
+            if (item.image) {
+                const img = document.createElement('img');
+                img.className = 'menu-item-image';
+                img.src = IMAGE_BASE + item.image;
+                img.alt = item.name;
+                img.loading = 'lazy';
+                card.appendChild(img);
+            } else {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'menu-item-image no-image';
+                placeholder.innerHTML = '🍽️';
+                card.appendChild(placeholder);
+            }
+            
+            const content = document.createElement('div');
+            content.className = 'menu-item-content';
+            const header = document.createElement('div');
+            header.className = 'menu-item-header';
+            const name = document.createElement('h3');
+            name.className = 'menu-item-name';
+            name.textContent = item.name;
+            header.appendChild(name);
+            const price = document.createElement('span');
+            price.className = 'menu-item-price';
+            price.textContent = item.price;
+            header.appendChild(price);
+            content.appendChild(header);
+            
+            if (item.description) {
+                const desc = document.createElement('p');
+                desc.className = 'menu-item-description';
+                desc.textContent = item.description;
+                content.appendChild(desc);
+            }
+            
+            // Only show Order button if carryout is available
+            if (item.carryout) {
+                const orderBtn = document.createElement('a');
+                orderBtn.className = 'menu-item-order';
+                orderBtn.href = ORDER_URL + '?item=' + item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                orderBtn.target = '_blank';
+                orderBtn.textContent = 'Order for Carryout';
+                content.appendChild(orderBtn);
+            }
+            
+            card.appendChild(content);
+            return card;
+        }
+        
+        document.addEventListener('DOMContentLoaded', loadMenu);
+    </script>
+    <script src="/site-header.js?v=20260907"></script>
+    <script src="/site-footer.js?v=20260907"></script>
+    <script src="/site-nav.js?v=20260907"></script>
+</body>
+</html>
