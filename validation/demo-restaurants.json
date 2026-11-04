@@ -1,10 +1,10 @@
 [
   {
-    "survey_id": "DO12",
-    "name": "Miller's Downtown",
-    "address": "109 West Main Street, Charlottesville, VA",
-    "menu_url": "https://millersdowntown.com/eat.html",
-    "maps_url": "https://www.google.com/maps/search/?api=1&query=Miller%27s+Downtown+109+West+Main+Street+Charlottesville+VA"
+    "survey_id": "DO05",
+    "name": "The Alley Light",
+    "address": "108 2nd Street Southwest, Charlottesville, VA",
+    "menu_url": "https://alleylight.com/#menus",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=The+Alley+Light+108+2nd+Street+Southwest+Charlottesville+VA"
   },
   {
     "survey_id": "DO09",
@@ -26,13 +26,6 @@
     "address": "1521 University Avenue, Charlottesville, VA",
     "menu_url": "https://www.thevirginiancville.com/s/Virginian-Menu-8-6-26.pdf",
     "maps_url": "https://www.google.com/maps/search/?api=1&query=The+Virginian+1521+University+Avenue+Charlottesville+VA"
-  },
-  {
-    "survey_id": "CO01",
-    "name": "Bodo's Bagels",
-    "address": "1609 University Avenue, Charlottesville, VA",
-    "menu_url": "http://www.bodosbagels.com/menu/creamcheeses.html",
-    "maps_url": "https://www.google.com/maps/search/?api=1&query=Bodo%27s+Bagels+1609+University+Avenue+Charlottesville+VA"
   },
   {
     "survey_id": "DO07",
