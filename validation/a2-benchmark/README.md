@@ -51,3 +51,7 @@ When a menu is done, add a line to `truth/spot-checks.csv` (`restaurant_id,check
 1. Freeze the prompts: `git tag prompts-alpha-v1` on the commit you benchmark. The runner refuses to run if `api/src/prompts/` differs from that tag.
 2. Put `ANTHROPIC_API_KEY` in `api/.dev.vars` and run `npm run benchmark -w api`. This writes `results/<timestamp>.json`. To use a Claude login instead, set `LLM_BRIDGE_URL` there and keep `npm run bridge -w api` running; the report states this as a deviation.
 3. Run `npm run validation:report -w api` to score the import against your copies and update `validation/REPORT.md`.
+
+## Deviation: the demo restaurants
+
+`manifest.json` names Miller's Downtown (`do12`) as the easy demo restaurant. Its menu loads with JavaScript, and it imported 0 dishes in the benchmark. The manifest stays as it was committed before any run. For the live demo, `validation/demo-restaurants.json` uses The Alley Light (`do05`) instead, plus four menus that are text or PDF: Afghan Kabob House, The Whiskey Jar, The Virginian and The Bebedero. The Alley Light and The Bebedero are not among the 10 scored restaurants. Bodo's Bagels was dropped because its link pointed only at a cream-cheese sub-page.
