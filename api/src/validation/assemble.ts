@@ -41,7 +41,7 @@ export function scoreA2(results: BenchmarkResults, truths: Map<string, Truth>, n
       };
     });
   const boot = clusterBootstrap(restaurants.map((r) => ({ correct: r.score.correct, total: r.score.truthCount })), { resamples: 10_000 });
-  return { promptTag: results.promptTag, llmPath: results.llmPath, restaurants, bootstrap: { lo: boot.lo, hi: boot.hi } };
+  return { promptTag: results.promptTag, llmPath: results.llmPath, importer: results.importer ?? "v1", restaurants, bootstrap: { lo: boot.lo, hi: boot.hi } };
 }
 
 function latestJson<T>(dir: string): T | null {
