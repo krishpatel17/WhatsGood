@@ -1,0 +1,3316 @@
+{
+  "promptTag": "prompts-alpha-v1",
+  "model": "claude-opus-5-5",
+  "llmPath": "claude-login-bridge",
+  "startedAt": "2026-11-04T01:32:24.903Z",
+  "restaurants": [
+    {
+      "id": "do12",
+      "tier": "easy",
+      "sourceType": "html",
+      "status": "needs_review",
+      "failure": "validation failed after 1 attempts: no dishes found in the source",
+      "seconds": 5.132061625,
+      "retries": 0,
+      "inputTokens": 2980,
+      "outputTokens": 68,
+      "costUsd": 0.01328,
+      "snapshot": "do12.html",
+      "dishes": []
+    },
+    {
+      "id": "co04",
+      "tier": "medium",
+      "sourceType": "pdf",
+      "status": "active",
+      "failure": null,
+      "seconds": 60.08934841700001,
+      "retries": 0,
+      "inputTokens": 13866,
+      "outputTokens": 8611,
+      "costUsd": 0.227684,
+      "snapshot": "co04.pdf",
+      "dishes": [
+        {
+          "name": "CHICKEN QUESADILLA",
+          "section": "Starters",
+          "price": 15,
+          "description": "A flour tortilla filled with grilled onions, peppers, melted cheddar jack cheese, and grilled chicken. Served with housemade pico de gallo and sour cream.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "SPINACH & ARTICHOKE DIP",
+          "section": "Starters",
+          "price": 13,
+          "description": "Creamy and cheesy, served hot with crispy housemade tortilla chips. Sub pita bread +$2",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "CHICKEN TENDERS",
+          "section": "Starters",
+          "price": 14,
+          "description": "Crispy strips of chicken cooked golden brown, served with honey mustard. Add fries +$2",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "HUMMUS PLATE",
+          "section": "Starters",
+          "price": 12,
+          "description": "Traditional chickpea hummus served with carrots and grilled pita sprinkled with parmesan.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "sesame",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "PORK BBQ NACHOS",
+          "section": "Starters",
+          "price": 16,
+          "description": "Housemade tortilla chips covered in melted cheddar jack, corn, black beans, pulled pork BBQ, fresh jalapeños, pico de gallo, and sour cream.",
+          "tags": [
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "spicy",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "STUMBLE DOWN MAC N’ CHEESE",
+          "section": "Starters",
+          "price": 9,
+          "description": "Made to order and from scratch, a truly beloved favorite here at the Virginian Creamy pepper jack macaroni and cheese topped with a housemade cheddar potato cake.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "FRENCH ONION SOUP",
+          "section": "Starters",
+          "price": 8,
+          "description": "Classic beef-broth french onion soup with garlic croutons and Swiss cheese melted on top.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "LOADED POTATO SOUP",
+          "section": "Starters",
+          "price": 8,
+          "description": "Housemade creamy potato soup with cheddar and bacon, topped with sour cream.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "pork",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "HOUSE SALAD",
+          "section": "Salads",
+          "price": 10,
+          "description": "Fresh spring mix with red onions, cucumbers, grape tomatoes, garlic croutons, and cheddar jack cheese.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "CLASSIC CAESAR SALAD",
+          "section": "Salads",
+          "price": 10,
+          "description": "Fresh romaine tossed in zesty Caesar dressing with parmesan cheese and garlic croutons.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "BBQ CHICKEN SALAD",
+          "section": "Salads",
+          "price": 17,
+          "description": "Chicken breast tossed in BBQ sauce over spring mix with roasted corn, black beans, pepper jack cheese, red onions, cucumbers, grape tomatoes, and garlic croutons.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "BUFFALO CHICKEN SALAD",
+          "section": "Salads",
+          "price": 17,
+          "description": "Crispy chicken tenders tossed in a spicy buffalo sauce over romaine with sliced red onion, cheddar jack cheese, cucumber, grape tomatoes, and garlic croutons.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "spicy",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "GRILLED AHI TUNA SALAD",
+          "section": "Salads",
+          "price": 18,
+          "description": "Served over spring mix with pico, red onions, cucumbers, and garlic croutons.",
+          "tags": [
+            {
+              "tag": "fish",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "THE VIRGINIAN COBB SALAD",
+          "section": "Salads",
+          "price": 17,
+          "description": "Sliced grilled chicken over romaine with bleu cheese, mushrooms, bacon, tomato, red onions, cucumber, and hard-boiled egg.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "egg",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Coke",
+          "section": "$3.5 Beverages (Free Refills)",
+          "price": 3.5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Diet Coke",
+          "section": "$3.5 Beverages (Free Refills)",
+          "price": 3.5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Root Beer",
+          "section": "$3.5 Beverages (Free Refills)",
+          "price": 3.5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Sprite",
+          "section": "$3.5 Beverages (Free Refills)",
+          "price": 3.5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Ginger Ale",
+          "section": "$3.5 Beverages (Free Refills)",
+          "price": 3.5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Dr. Pepper",
+          "section": "$3.5 Beverages (Free Refills)",
+          "price": 3.5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Tonic",
+          "section": "$3.5 Beverages (Free Refills)",
+          "price": 3.5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Lemonade",
+          "section": "$3.5 Beverages (Free Refills)",
+          "price": 3.5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Arnold Palmer",
+          "section": "$3.5 Beverages (Free Refills)",
+          "price": 3.5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Coffee",
+          "section": "$3.5 Beverages (Free Refills)",
+          "price": 3.5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Sweet or Unsweetened Tea",
+          "section": "$3.5 Beverages (Free Refills)",
+          "price": 3.5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Juices",
+          "section": "$3.5 Beverages (No Refills)",
+          "price": 3.5,
+          "description": "Orange, Cranberry, Grapefruit, or Pineapple",
+          "tags": []
+        },
+        {
+          "name": "Hot Cider",
+          "section": "$3.5 Beverages (No Refills)",
+          "price": 3.5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Hot Chocolate",
+          "section": "$3.5 Beverages (No Refills)",
+          "price": 3.5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Hot Tea",
+          "section": "$3.5 Beverages (No Refills)",
+          "price": 3.5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Milk",
+          "section": "$3.5 Beverages (No Refills)",
+          "price": 3.5,
+          "description": null,
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "THE VIRGINIAN BURGER*",
+          "section": "Sandwiches",
+          "price": 14,
+          "description": "Our half pound burger with cheddar or American, lettuce, tomato, and onion. +$2 for mushrooms or sautéed onions +$3 for smoked bacon",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "inferred"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "COAL MINER*",
+          "section": "Sandwiches",
+          "price": 17,
+          "description": "A half-pounder topped with cheddar, crisp bacon, BBQ sauce, lettuce, tomato, and onion on a kaiser roll.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "inferred"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "LA CASA BURGER*",
+          "section": "Sandwiches",
+          "price": 17,
+          "description": "A half-pounder topped with house pimento cheese, jalapeños, pico, black beans, corn and Texas Pete.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "inferred"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "spicy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "CRAB CAKE SANDWICH",
+          "section": "Sandwiches",
+          "price": 18,
+          "description": "Our signature Virginian crab cake served with lettuce, tomato, and onion on a kaiser roll with a side of our spicy house remoulade and cole slaw.",
+          "tags": [
+            {
+              "tag": "shellfish",
+              "source": "stated"
+            },
+            {
+              "tag": "spicy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "GRILLED CHEESE",
+          "section": "Sandwiches",
+          "price": 13,
+          "description": "Melted cheddar, provolone, and Swiss between two slices of grilled sourdough.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "STEAK & CHEESE",
+          "section": "Sandwiches",
+          "price": 15,
+          "description": "Thinly-sliced steak and grilled onions covered in American cheese on a sub roll.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "PORK BBQ SANDWICH",
+          "section": "Sandwiches",
+          "price": 14,
+          "description": "Hickory-smoked and hand-pulled pork BBQ served on a kaiser roll with a side of cole slaw.",
+          "tags": [
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "THE FAMOUS VIRGINIAN CLUB",
+          "section": "Sandwiches",
+          "price": 17,
+          "description": "A generous portion of smoked turkey, ham, crisp bacon, American cheese, lettuce, mayo and tomato, piled high on white toast.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "CHICKEN PHILLY",
+          "section": "Sandwiches",
+          "price": 15,
+          "description": "Grilled chicken, green peppers, and grilled white onion covered in provolone cheese on a sub roll.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "PIMENTO CHEESE SANDWICH",
+          "section": "Sandwiches",
+          "price": 13,
+          "description": "Housemade pimento cheese and fresh tomato on grilled sourdough.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "CLASSY BLT",
+          "section": "Sandwiches",
+          "price": 14,
+          "description": "A generous portion of crisp applewood smoked bacon, lettuce, tomato, and mayo on toasted white.",
+          "tags": [
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "SOUTHWEST VEGGIE WRAP",
+          "section": "Sandwiches",
+          "price": 14,
+          "description": "Spring mix, pico de gallo, corn, black beans, grilled mushrooms, red onion, and green pepper with shredded cheddar-jack and house made chipotle ranch wrapped in a flour tortilla.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "BUFFALO CHICKEN",
+          "section": "Sandwiches",
+          "price": 16,
+          "description": "Crispy chicken strips tossed in buffalo sauce topped with melted provolone, on a sub roll.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "spicy",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "CHICKEN CAESAR WRAP",
+          "section": "Sandwiches",
+          "price": 14,
+          "description": "Our own chicken Caesar salad wrapped in a soft flour tortilla.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "CHIPOTLE CHICKEN WRAP",
+          "section": "Sandwiches",
+          "price": 16,
+          "description": "Crispy chicken tenders with fresh pico, pepper jack, mixed greens, and chipotle ranch.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "CALIFORNIA VEGAN BURGER",
+          "section": "Sandwiches",
+          "price": 14,
+          "description": "Served with lettuce, tomato, and onion. Add any burger topping for an upcharge.",
+          "tags": []
+        },
+        {
+          "name": "THE VIRGINIAN STEAK*",
+          "section": "After 5 Entrées",
+          "price": 30,
+          "description": "The house selection is hand cut and served with your choice of two sides.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "APPLE BOURBON CHICKEN",
+          "section": "After 5 Entrées",
+          "price": 24,
+          "description": "Two chicken breasts topped with fresh apples & covered in our house bourbon sauce.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "alcohol",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "BABY BACK RIBS",
+          "section": "After 5 Entrées",
+          "price": 26,
+          "description": "Half-rack of baby backs covered with our house BBQ sauce. Double Portion +$6",
+          "tags": [
+            {
+              "tag": "pork",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "CREAMY GARDEN PASTA",
+          "section": "After 5 Entrées",
+          "price": 17,
+          "description": "Cavatappi with roasted green peppers, broccoli, grape tomatoes, zucchini, and yellow squash tossed in a spinach and artichoke parmesan cream sauce.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "CRAB CAKES",
+          "section": "After 5 Entrées",
+          "price": 27,
+          "description": "Two signature Virginian crab cakes served with a side of our spicy house remoulade.",
+          "tags": [
+            {
+              "tag": "shellfish",
+              "source": "stated"
+            },
+            {
+              "tag": "spicy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "STUMBLE DOWN MAC N’ CHEESE",
+          "section": "After 5 Entrées",
+          "price": 15,
+          "description": "A beloved favorite here at the Virginian! A large portion of creamy pepper jack macaroni and cheese topped with a housemade cheddar potato cake.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "SOUTHERN FRIED CHICKEN",
+          "section": "After 5 Entrées",
+          "price": 23,
+          "description": "Two hand-breaded chicken breasts fried until golden, topped with white pepper gravy.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "BROWNIE ICE CREAM SANDWICH",
+          "section": "Desserts",
+          "price": 7,
+          "description": "Two housemade brownies with vanilla ice cream, chocolate sauce, and whipped cream.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "ROOT-BEER FLOAT",
+          "section": "Desserts",
+          "price": 7,
+          "description": "A soda shop classic. Served with a take home logo pint glass! $15",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "VIOGNIER",
+          "section": "Virginia Wines - Whites",
+          "price": 12,
+          "description": "Eastwood Farm and Winery (6.1 miles) Charlottesville, VA",
+          "tags": [
+            {
+              "tag": "alcohol",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "VERMENTINO",
+          "section": "Virginia Wines - Whites",
+          "price": 12,
+          "description": "Barboursville Vineyards (15.3 miles) Barboursville, VA",
+          "tags": [
+            {
+              "tag": "alcohol",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "CHARDONNAY",
+          "section": "Virginia Wines - Whites",
+          "price": 11,
+          "description": "Barboursville Vineyards (15.3 miles) Barboursville, VA",
+          "tags": [
+            {
+              "tag": "alcohol",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "BARBERA RESERVE",
+          "section": "Virginia Wines - Reds",
+          "price": 13,
+          "description": "Barboursville Vineyards (15.3 miles) Barboursville, VA",
+          "tags": [
+            {
+              "tag": "alcohol",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "ROTUNDA RED",
+          "section": "Virginia Wines - Reds",
+          "price": 12,
+          "description": "Lovingston Winery (31.8 miles) Lovingston, VA",
+          "tags": [
+            {
+              "tag": "alcohol",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "MERITAGE",
+          "section": "Virginia Wines - Reds",
+          "price": 11,
+          "description": "Rappahannock Cellars (65.8 miles) Huntly, VA",
+          "tags": [
+            {
+              "tag": "alcohol",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "SHY OX ROSÉ",
+          "section": "Virginia Wines - Rosé",
+          "price": 10,
+          "description": "Ox-Eye Vineyards (38.4 miles) Staunton, VA",
+          "tags": [
+            {
+              "tag": "alcohol",
+              "source": "inferred"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ba01",
+      "tier": "medium",
+      "sourceType": "pdf",
+      "status": "failed",
+      "failure": "timed out after 120 s",
+      "seconds": 120.003674042,
+      "retries": 0,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "costUsd": 0,
+      "snapshot": "ba01.pdf",
+      "dishes": []
+    },
+    {
+      "id": "ba05",
+      "tier": "medium",
+      "sourceType": "pdf",
+      "status": "failed",
+      "failure": "timed out after 120 s",
+      "seconds": 120.0120425,
+      "retries": 0,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "costUsd": 0,
+      "snapshot": "ba05.pdf",
+      "dishes": []
+    },
+    {
+      "id": "do09",
+      "tier": "medium",
+      "sourceType": "html",
+      "status": "active",
+      "failure": null,
+      "seconds": 67.60128595799999,
+      "retries": 0,
+      "inputTokens": 7707,
+      "outputTokens": 10146,
+      "costUsd": 0.233748,
+      "snapshot": "do09.html",
+      "dishes": [
+        {
+          "name": "Vegetarian Samosa",
+          "section": "Appetizers",
+          "price": 6.99,
+          "description": "Four pastry shells with potatoes, peas, onions, and spices. Served with garlic yogurt.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Samosa Goshti",
+          "section": "Appetizers",
+          "price": 6.99,
+          "description": "Four pastry shells filled with seasoned ground beef. Served with garlic yogurt.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Bolanee Gandana",
+          "section": "Appetizers",
+          "price": 4.99,
+          "description": "Turnover filled with chopped leeks, cilantro, and spices.",
+          "tags": [
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Bolanee Kadu",
+          "section": "Appetizers",
+          "price": 4.99,
+          "description": "Turnover filled with butternut squash, onions, and spices.",
+          "tags": [
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Bolanee Kachalow",
+          "section": "Appetizers",
+          "price": 4.99,
+          "description": "Turnover filled with mashed potatoes, onions, and spices.",
+          "tags": [
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Bolanee Mix",
+          "section": "Appetizers",
+          "price": 5.5,
+          "description": "A combination of gandana and kachalow bolanees.",
+          "tags": [
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Borani Banjan",
+          "section": "Appetizers",
+          "price": 4.99,
+          "description": "Fried eggplant in tomato sauce with garlic yogurt and dry mint.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Aushak",
+          "section": "Appetizers",
+          "price": 6.99,
+          "description": "Leek dumplings topped with meat or vegetarian sauce, garlic yogurt, and mint.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Manto",
+          "section": "Appetizers",
+          "price": 6.99,
+          "description": "Beef dumplings steamed and topped with garlic yogurt and vegetables.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Appetizer Sampler",
+          "section": "Appetizers",
+          "price": 9.99,
+          "description": "Two each of vegetarian samosa, samosa goshti, bolanee gandana, and bolanee kadu.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Aush",
+          "section": "Soups",
+          "price": 5.99,
+          "description": "Traditional Afghan noodles with vegetables and ground beef, topped with garlic yogurt and mint.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Vegetable Soup",
+          "section": "Soups",
+          "price": 5.99,
+          "description": "Freshly made vegetables with herbs.",
+          "tags": []
+        },
+        {
+          "name": "Maust-E-Khiar",
+          "section": "Soups",
+          "price": 5.99,
+          "description": "Homemade yogurt mixed with diced cucumbers and dried mint.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Chicken Breast Kabob",
+          "section": "Kabob Meals",
+          "price": 17.99,
+          "description": "Tender chicken breast chunks seasoned with special spices and herbs.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Chicken Tandoori Kabob",
+          "section": "Kabob Meals",
+          "price": 21.99,
+          "description": "Half chicken marinated in special tandoori spices.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Chicken Chaplee Kabob",
+          "section": "Kabob Meals",
+          "price": 15.99,
+          "description": "Ground chicken mixed with onion, tomato, cilantro, hot pepper, and seasoning.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "spicy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Chicken Kofta Kabob",
+          "section": "Kabob Meals",
+          "price": 14.99,
+          "description": "Ground chicken seasoned with special spices and herbs.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Lamb Tika Kabob",
+          "section": "Kabob Meals",
+          "price": 17.99,
+          "description": "Chunks of tender lamb marinated in special spices and herbs.",
+          "tags": [
+            {
+              "tag": "lamb",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Chopan Kabob",
+          "section": "Kabob Meals",
+          "price": 25.99,
+          "description": "Tender lamb chops marinated in special spices and herbs.",
+          "tags": [
+            {
+              "tag": "lamb",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Kabob-e-Berg",
+          "section": "Kabob Meals",
+          "price": 18.99,
+          "description": "Top sirloin marinated in a special blend of spices with broiled tomatoes and onions.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Sultani Kabob",
+          "section": "Kabob Meals",
+          "price": 18.99,
+          "description": "A skewer of bargh and a skewer of kofta with broiled tomatoes and onions.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Kofta Kabob",
+          "section": "Kabob Meals",
+          "price": 14.99,
+          "description": "Ground sirloin seasoned with special spices and onions.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Kabob On Nan",
+          "section": "Kabob Meals",
+          "price": 18.99,
+          "description": "Marinated chicken, lamb, or beef kabob served on Afghan bread.",
+          "tags": [
+            {
+              "tag": "meat",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Beef Chaplee Kabob",
+          "section": "Kabob Meals",
+          "price": 14.95,
+          "description": "Thin ground beef patties made with aromatics and spices.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Kabob Salad",
+          "section": "Lunch Specials",
+          "price": 14.99,
+          "description": "Large entree salad with your choice of chicken breast, lamb tika, or kofta kabob.",
+          "tags": [
+            {
+              "tag": "meat",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Kabob Wraps",
+          "section": "Lunch Specials",
+          "price": 14.99,
+          "description": "Your choice of kabob wrapped with lettuce, tomatoes, onions, and homemade dressing with fries.",
+          "tags": [
+            {
+              "tag": "meat",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Gyro Wrap",
+          "section": "Lunch Specials",
+          "price": 14.99,
+          "description": "Gyro with lettuce, tomatoes, onions, and tzatziki sauce served with fries.",
+          "tags": [
+            {
+              "tag": "meat",
+              "source": "inferred"
+            },
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Lunch Buffet",
+          "section": "Lunch Specials",
+          "price": 19.99,
+          "description": "All you can eat buffet, open from 11am to 4pm.",
+          "tags": []
+        },
+        {
+          "name": "Gyro Platter",
+          "section": "Lunch Specials",
+          "price": 14.99,
+          "description": "Gyro with lettuce, tomatoes, onions, and tzatziki sauce served with homemade nan.",
+          "tags": [
+            {
+              "tag": "meat",
+              "source": "inferred"
+            },
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Falafel",
+          "section": "Lunch Specials",
+          "price": 14.99,
+          "description": "Veggie balls of fava beans, parsley, onions, mint, romaine, tomatoes, and tahini.",
+          "tags": [
+            {
+              "tag": "sesame",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Hummus",
+          "section": "Lunch Specials",
+          "price": 10.99,
+          "description": "Classic puree of chickpeas with tahini sesame butter and lemon juice, served with nan.",
+          "tags": [
+            {
+              "tag": "sesame",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Complete Dinner For Two",
+          "section": "Complete Dinners",
+          "price": 60,
+          "description": "Bolanee, samosa, borani badenjan, chicken kabob, qabuli palow, salad, nan, fimee, and baklawa.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "lamb",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            },
+            {
+              "tag": "tree_nut",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Complete Dinner For Four",
+          "section": "Complete Dinners",
+          "price": 95,
+          "description": "Kabobs, dumplings, qabuli palow, appetizers, salad, nan, fimee, and baklawa.",
+          "tags": [
+            {
+              "tag": "meat",
+              "source": "inferred"
+            },
+            {
+              "tag": "lamb",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            },
+            {
+              "tag": "tree_nut",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Complete Dinner For Six",
+          "section": "Complete Dinners",
+          "price": 130,
+          "description": "A generous spread of bolanee, badenjan, palow, kabobs, salad, nan, fimee, and baklawa.",
+          "tags": [
+            {
+              "tag": "meat",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            },
+            {
+              "tag": "tree_nut",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Complete Dinner For Eight",
+          "section": "Complete Dinners",
+          "price": 170,
+          "description": "Large aushak, borani badenjan, samosa, bolanee, qabuli palow, tandoori chicken, manto, kabobs, salad, nan, fimee, and baklawa.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "beef",
+              "source": "inferred"
+            },
+            {
+              "tag": "lamb",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            },
+            {
+              "tag": "tree_nut",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Qabuli Palow",
+          "section": "Special Entrees",
+          "price": 18.99,
+          "description": "Traditional Afghan brown rice over lamb, topped with raisins and carrots.",
+          "tags": [
+            {
+              "tag": "lamb",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Qurma Chalow",
+          "section": "Special Entrees",
+          "price": 18.99,
+          "description": "Afghan rice served with richly seasoned curry.",
+          "tags": []
+        },
+        {
+          "name": "Murgh Chalow",
+          "section": "Special Entrees",
+          "price": 18.99,
+          "description": "Afghan white rice served with chicken curry.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Sabzi Chalow",
+          "section": "Special Entrees",
+          "price": 18.99,
+          "description": "Afghan white rice served with sauteed spinach and tender lamb.",
+          "tags": [
+            {
+              "tag": "lamb",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Afghan Red Beans",
+          "section": "Special Entrees",
+          "price": 18.99,
+          "description": "Traditional seasoned Afghan red beans served with white or brown rice.",
+          "tags": []
+        },
+        {
+          "name": "Aushak Entree",
+          "section": "Special Entrees",
+          "price": 18.99,
+          "description": "Leek dumplings topped with garlic yogurt and meat sauce, also available vegetarian.",
+          "tags": [
+            {
+              "tag": "meat",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Manto Entree",
+          "section": "Special Entrees",
+          "price": 18.99,
+          "description": "Beef dumplings topped with garlic yogurt and mixed vegetables.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Afghan Chicken Meatball",
+          "section": "Special Entrees",
+          "price": 18.99,
+          "description": "Traditional seasoned Afghan chicken meatball served with brown or white rice.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Afghan Beef Meatball",
+          "section": "Special Entrees",
+          "price": 18.99,
+          "description": "Traditional seasoned Afghan beef meatball served with brown or white rice.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Chicken Breast Kabob",
+          "section": "Kid's Menu",
+          "price": 9.99,
+          "description": "Served with rice or French fries.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Gyro Platter",
+          "section": "Kid's Menu",
+          "price": 9.9,
+          "description": "Gyro with tzatziki sauce served with French fries.",
+          "tags": [
+            {
+              "tag": "meat",
+              "source": "inferred"
+            },
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Chicken Fingers",
+          "section": "Kid's Menu",
+          "price": 11.99,
+          "description": "Served with French fries.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "French Fries",
+          "section": "Kid's Menu",
+          "price": 6,
+          "description": "Classic fries.",
+          "tags": []
+        },
+        {
+          "name": "Sultani",
+          "section": "Kabob Skewers",
+          "price": 13.95,
+          "description": null,
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Kabob-e-Barg",
+          "section": "Kabob Skewers",
+          "price": 10.95,
+          "description": null,
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Chicken Tandoori",
+          "section": "Kabob Skewers",
+          "price": 11.95,
+          "description": null,
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Chicken Chaplee",
+          "section": "Kabob Skewers",
+          "price": 7.95,
+          "description": null,
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "spicy",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Shrimp",
+          "section": "Kabob Skewers",
+          "price": 9.95,
+          "description": null,
+          "tags": [
+            {
+              "tag": "shellfish",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Salmon",
+          "section": "Kabob Skewers",
+          "price": 9.95,
+          "description": null,
+          "tags": [
+            {
+              "tag": "fish",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Kofta",
+          "section": "Kabob Skewers",
+          "price": 9.95,
+          "description": null,
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Spicy Fish",
+          "section": "Kabob Skewers",
+          "price": 9.95,
+          "description": null,
+          "tags": [
+            {
+              "tag": "fish",
+              "source": "stated"
+            },
+            {
+              "tag": "spicy",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Lamb",
+          "section": "Kabob Skewers",
+          "price": 9.95,
+          "description": null,
+          "tags": [
+            {
+              "tag": "lamb",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Chicken",
+          "section": "Kabob Skewers",
+          "price": 7.95,
+          "description": null,
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Chopan",
+          "section": "Kabob Skewers",
+          "price": 10.95,
+          "description": null,
+          "tags": [
+            {
+              "tag": "lamb",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Spicy Fish Kabob",
+          "section": "Seafood Specials",
+          "price": 19.99,
+          "description": "Chunks of codfish marinated in fresh spices and herbs.",
+          "tags": [
+            {
+              "tag": "fish",
+              "source": "stated"
+            },
+            {
+              "tag": "spicy",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Salmon Kabob",
+          "section": "Seafood Specials",
+          "price": 19.99,
+          "description": "Chunks of salmon marinated in special spices and herbs.",
+          "tags": [
+            {
+              "tag": "fish",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Shrimp Kabob",
+          "section": "Seafood Specials",
+          "price": 19.99,
+          "description": "Jumbo shrimp marinated in special spices, served with grilled onions and tomatoes.",
+          "tags": [
+            {
+              "tag": "shellfish",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Combo #1",
+          "section": "Kabob Combinations",
+          "price": 18.99,
+          "description": "Chicken breast kabob and kofta kabob.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "beef",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Combo #2",
+          "section": "Kabob Combinations",
+          "price": 19.99,
+          "description": "Lamb tika kabob and kofta kabob.",
+          "tags": [
+            {
+              "tag": "lamb",
+              "source": "stated"
+            },
+            {
+              "tag": "beef",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Combo #3",
+          "section": "Kabob Combinations",
+          "price": 20.99,
+          "description": "Lamb tika kabob and chicken breast kabob.",
+          "tags": [
+            {
+              "tag": "lamb",
+              "source": "stated"
+            },
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Combo #4",
+          "section": "Kabob Combinations",
+          "price": 22.99,
+          "description": "Lamb tika kabob, chicken breast kabob, and kofta kabob.",
+          "tags": [
+            {
+              "tag": "lamb",
+              "source": "stated"
+            },
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "beef",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Veggie Kabob",
+          "section": "Vegetarian Delight",
+          "price": 17.99,
+          "description": "A skewer of grilled vegetables served with white rice and fresh nan.",
+          "tags": [
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Kadu",
+          "section": "Vegetarian Delight",
+          "price": 15.99,
+          "description": "Butternut squash simmered in a sweet and spicy sauce with garlic yogurt.",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "spicy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Bamia",
+          "section": "Vegetarian Delight",
+          "price": 15.99,
+          "description": "Okra sauteed with onions and plum tomatoes in a light tomato sauce.",
+          "tags": [
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Kachalow",
+          "section": "Vegetarian Delight",
+          "price": 15.99,
+          "description": "Potatoes sauteed with olive oil, turmeric, onions, and tomato sauce.",
+          "tags": [
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Vegetarian Combo",
+          "section": "Vegetarian Delight",
+          "price": 15.95,
+          "description": "Your choice of three vegetable sides.",
+          "tags": [
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Quormey Gosht",
+          "section": "Side Orders",
+          "price": 7.5,
+          "description": "Lamb curry.",
+          "tags": [
+            {
+              "tag": "lamb",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Quormey Murgh",
+          "section": "Side Orders",
+          "price": 7.5,
+          "description": "Chicken curry.",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "Kadu",
+          "section": "Side Orders",
+          "price": 5.95,
+          "description": "Butternut squash.",
+          "tags": []
+        },
+        {
+          "name": "Bamia",
+          "section": "Side Orders",
+          "price": 5.95,
+          "description": "Okra.",
+          "tags": []
+        },
+        {
+          "name": "Kachalow",
+          "section": "Side Orders",
+          "price": 5,
+          "description": "Potato.",
+          "tags": []
+        },
+        {
+          "name": "Sabzi",
+          "section": "Side Orders",
+          "price": 5.95,
+          "description": "Spinach.",
+          "tags": []
+        },
+        {
+          "name": "Nakhud",
+          "section": "Side Orders",
+          "price": 5,
+          "description": "Chickpeas.",
+          "tags": []
+        },
+        {
+          "name": "Salad",
+          "section": "Side Orders",
+          "price": 4.95,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Nan",
+          "section": "Side Orders",
+          "price": 4.5,
+          "description": "Bread.",
+          "tags": [
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Rice",
+          "section": "Side Orders",
+          "price": 4.5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Raisins and Carrots",
+          "section": "Side Orders",
+          "price": 4,
+          "description": "Qabuli topping.",
+          "tags": []
+        },
+        {
+          "name": "Afghan Red Beans",
+          "section": "Side Orders",
+          "price": 7.95,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Coffee",
+          "section": "Beverages",
+          "price": 2.99,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Tea",
+          "section": "Beverages",
+          "price": 2.99,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Soft Drinks",
+          "section": "Beverages",
+          "price": 2.99,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Doogh",
+          "section": "Beverages",
+          "price": 4,
+          "description": null,
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "Zafran Tea",
+          "section": "Beverages",
+          "price": 4,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Rohabza Sharbat",
+          "section": "Beverages",
+          "price": 4,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "Dood Pati Chai",
+          "section": "Beverages",
+          "price": 4,
+          "description": null,
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "do02",
+      "tier": "medium",
+      "sourceType": "html",
+      "status": "active",
+      "failure": null,
+      "seconds": 74.13569700000005,
+      "retries": 0,
+      "inputTokens": 6776,
+      "outputTokens": 10644,
+      "costUsd": 0.239984,
+      "snapshot": "do02.html",
+      "dishes": [
+        {
+          "name": "FRIED OYSTERS",
+          "section": "APPETIZERS",
+          "price": 16,
+          "description": "With Remoulade",
+          "tags": [
+            {
+              "tag": "shellfish",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "PRETZEL – SALTED OR CINNAMON & SUGAR",
+          "section": "APPETIZERS",
+          "price": 12,
+          "description": "Cheese Sauce or Maple Bourbon Glaze",
+          "tags": [
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "ALSTON’S BBQ MAC AND CHEESE",
+          "section": "APPETIZERS",
+          "price": 12,
+          "description": "Papa Weaver's Pork, Hickory Smoked Pork, House BBQ Sauce, Breadcrumbs",
+          "tags": [
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "SMOKED CHICKEN WINGS",
+          "section": "APPETIZERS",
+          "price": 16,
+          "description": "Hickory Smoked Wings, Goat Cheese Ranch, Celery, Choice of Sauce: Peach–Chipotle Glaze, Buffalo, House BBQ Sauce or Dry Rub",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "BBQ NACHOS",
+          "section": "APPETIZERS",
+          "price": 13,
+          "description": "Hickory Smoked Pulled Pork, Cheese Sauce, House BBQ Sauce, Jalapeños, Scallions",
+          "tags": [
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "spicy",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "CHICKEN AND DUMPLINGS SOUP",
+          "section": "APPETIZERS",
+          "price": 8,
+          "description": null,
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "V - BLACK–EYED PEA HUMMUS OR PIMENTO CHEESE",
+          "section": "APPETIZERS",
+          "price": 10,
+          "description": "Vegetables, Sunflower Wheat Toast",
+          "tags": [
+            {
+              "tag": "gluten",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "V - HUSH PUPPIES AND GARLIC–CHEESE BISCUITS",
+          "section": "APPETIZERS",
+          "price": 10,
+          "description": "Sorghum Butter, Apple Butter",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "FRIED GREEN BEANS",
+          "section": "APPETIZERS",
+          "price": 9,
+          "description": "Dusted Dry Rub, Goat Cheese Ranch",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "FRIED Cauliflower",
+          "section": "APPETIZERS",
+          "price": 9,
+          "description": "Dusted Dry Rub, Goat Cheese Ranch",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "FRIED CHICKEN & BROWN SUGAR BACON COLLARD GREENS",
+          "section": "ENTREES",
+          "price": 19,
+          "description": "Choice of Garlic Jalapeño Honey or Chicken Gravy on the Side",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "COUNTRY FRIED PORK CHOPS",
+          "section": "ENTREES",
+          "price": 23,
+          "description": "Two Breaded Smoked Pork Chops, Mashed Potatoes, Steamed Broccoli and Cheese, Caramelized Onions, Chicken Gravy",
+          "tags": [
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "BLACKENED CATFISH",
+          "section": "ENTREES",
+          "price": 19,
+          "description": "Collards, Tomato Jam (Substitute Grits to Make it Pescatarian)",
+          "tags": [
+            {
+              "tag": "fish",
+              "source": "stated"
+            },
+            {
+              "tag": "pork",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "GRILLED TROUT",
+          "section": "ENTREES",
+          "price": 26,
+          "description": "Roasted Potatoes, Red and Yellow Bell Peppers, Shallots, Leeks, Garlic, Smoked Lemon Aioli",
+          "tags": [
+            {
+              "tag": "fish",
+              "source": "stated"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "SHRIMP & GRITS",
+          "section": "ENTREES",
+          "price": 20,
+          "description": "Woodson Mills Grits, Creole Cream Reduction, Leeks, Sautéed Peppers and Onions",
+          "tags": [
+            {
+              "tag": "shellfish",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "PULLED PORK & CHOICE OF 2 SIDES",
+          "section": "ENTREES",
+          "price": 20,
+          "description": "Papa Weaver's Pulled Pork Served with House BBQ Sauce",
+          "tags": [
+            {
+              "tag": "pork",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "1⁄2 RACK RIBS & CHOICE OF 2 SIDES",
+          "section": "ENTREES",
+          "price": 22,
+          "description": "Served with House BBQ Sauce",
+          "tags": [
+            {
+              "tag": "pork",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "SMOKED SAUSAGE LINKS & CHOICE OF 2 SIDES",
+          "section": "ENTREES",
+          "price": 20,
+          "description": "Papa Weaver's Sausage Served with BBQ Dust & House BBQ Sauce",
+          "tags": [
+            {
+              "tag": "meat",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "3 MEAT BBQ PLATTER & CHOICE OF A SIDE",
+          "section": "ENTREES",
+          "price": 27,
+          "description": "Smoked Sausage Link, ¼ Rack of Ribs, Smoked Pulled Pork, House BBQ Sauce",
+          "tags": [
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "meat",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "SMOKED PORTOBELLO MUSHROOMS",
+          "section": "ENTREES",
+          "price": 19,
+          "description": "Roasted Potatoes, Red and Yellow Bell Peppers, Shallots, Leeks, Garlic, Goat Cheese, Panko, La Saba",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "SIDE SALAD",
+          "section": "SIDES",
+          "price": 6,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "COLESLAW",
+          "section": "SIDES",
+          "price": 5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "FRENCH FRIES",
+          "section": "SIDES",
+          "price": null,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "BROCCOLI SALAD",
+          "section": "SIDES",
+          "price": 5,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "MASHED POTATOES",
+          "section": "SIDES",
+          "price": 5,
+          "description": null,
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "GRITS",
+          "section": "SIDES",
+          "price": null,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "CORNBREAD",
+          "section": "SIDES",
+          "price": 4,
+          "description": null,
+          "tags": [
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "MAC & CHEESE",
+          "section": "SIDES",
+          "price": 6,
+          "description": null,
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "STEAMED BROCCOLI & CHEESE",
+          "section": "SIDES",
+          "price": 5,
+          "description": null,
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "COLLARD GREENS",
+          "section": "SIDES",
+          "price": 6,
+          "description": "Brown Sugar, Bacon",
+          "tags": [
+            {
+              "tag": "pork",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "BAKED BEANS",
+          "section": "SIDES",
+          "price": 6,
+          "description": null,
+          "tags": []
+        },
+        {
+          "name": "CHEESEBURGER SALAD",
+          "section": "SALAD ENTREES",
+          "price": 16,
+          "description": "Timbercreek Farm Grass–fed Beef* (Medium Rare), Baby Arugula, Red Onion, Radish, Cheddar, Goat Cheese Ranch. (Make it Vegetarian with a NO BULL BURGER)",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "JAR SALAD",
+          "section": "SALAD ENTREES",
+          "price": 16,
+          "description": "Romaine, Fried Chicken Breast, Dried Cranberries, Red Onions, Farm Egg, Bacon, Cheddar, Goat Cheese Ranch",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "egg",
+              "source": "stated"
+            },
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "V - HOUSE SALAD",
+          "section": "SALAD ENTREES",
+          "price": 10,
+          "description": "Mixed Greens, Cucumbers, Carrots, Cheddar, Diced Onions, Radish, Biscuit Croutons, Goat Cheese Ranch",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "V - BERRY SALAD",
+          "section": "SALAD ENTREES",
+          "price": 14,
+          "description": "Arugula, Strawberries, Blueberries, Goat Cheese, Toasted Walnuts, Red Onion, Cranberry Vinaigrette",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "tree_nut",
+              "source": "stated"
+            }
+          ]
+        },
+        {
+          "name": "FRIED CHICKEN BISCUIT",
+          "section": "STAND–ALONES",
+          "price": 9,
+          "description": "Buttermilk Biscuit, Coleslaw and Carolina Mustard BBQ",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "SAUSAGE BISCUIT",
+          "section": "STAND–ALONES",
+          "price": 8,
+          "description": "Buttermilk Biscuit, Cajun Smoked Sausage, White Cheddar, House BBQ Sauce",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "meat",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "HAM BISCUIT",
+          "section": "STAND–ALONES",
+          "price": 5,
+          "description": null,
+          "tags": [
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "HUMMUS SANDWICH",
+          "section": "STAND–ALONES",
+          "price": 7,
+          "description": "Hummus, Romaine, Local Tomato on Sunflower Wheat Bread",
+          "tags": [
+            {
+              "tag": "gluten",
+              "source": "stated"
+            },
+            {
+              "tag": "sesame",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "THE CRUNCH BURGER",
+          "section": "SANDWICHES",
+          "price": 16,
+          "description": "Timbercreek Farm Grass–Fed Beef* (Medium Rare), Duke’s Mayo, Ketchup, Shredded Lettuce, Red Onion, Local Tomato, Pickles, Fried Chicken Skins, and Pimento Cheese on a Brioche Bun.",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            },
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "THE JAR CHEESE BURGER",
+          "section": "SANDWICHES",
+          "price": 15,
+          "description": "Timbercreek Farm Grass–Fed Beef* (Medium Rare), Duke’s Mayo, Ketchup, Shedded Lettuce, Red Onion, Local Tomato, Pickles and Cheddar Cheese on a Brioche Bun V Make it Vegetarian with a NO BULL BURGER",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "THE JAR B–Q BURGER",
+          "section": "SANDWICHES",
+          "price": 16,
+          "description": "Grass–Fed Beef* (Medium Rare), Duke’s Mayo, Shredded Lettuce, Green Tomato, Pickles, Caramelized Onions, Virginia Bourbon BBQ Sauce (Contains Bacon) and Swiss Cheese on a Brioche Bun",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            },
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "alcohol",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "SMOKE HOUSE BURGER",
+          "section": "SANDWICHES",
+          "price": 15,
+          "description": "100% Pork, Bacon, Virginia Bourbon BBQ Sauce (Contains Bacon), White Cheddar, Fried Onions, Coleslaw on a Brioche Bun. Make it Vegetarian with a NO BULL BURGER",
+          "tags": [
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "alcohol",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "PULLED PORK BBQ",
+          "section": "SANDWICHES",
+          "price": 15,
+          "description": "Hickory Smoked Pork, House BBQ Sauce and Coleslaw on a Brioche Bun",
+          "tags": [
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "THe Jar Reuben",
+          "section": "SANDWICHES",
+          "price": 16,
+          "description": "Corned Beef, Sauerkraut, House 1000 Island and Swiss Cheese on Marble Rye",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "FRIED CHICKEN SANDWICH",
+          "section": "SANDWICHES",
+          "price": 15,
+          "description": "Chicken Breast, Shredded Lettuce, Pickles, Local Tomato, and Duke’s Mayo on a Brioche Bun",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "PO’BOY – SAUSAGE, CATFISH, OR OYSTER",
+          "section": "SANDWICHES",
+          "price": 16,
+          "description": "Shredded Lettuce, Red Onion, Local Tomato, and Remoulade on a Po’Boy Roll",
+          "tags": [
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "BLACKENED CATFISH SANDWICH",
+          "section": "SANDWICHES",
+          "price": 15,
+          "description": "Local Tomato, Pickles, Shedded Lettuce, Housemade Remoulade, on a Brioche Bun",
+          "tags": [
+            {
+              "tag": "fish",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "THE WILSON",
+          "section": "SANDWICHES",
+          "price": 16,
+          "description": "Sylvanaqua Farms Roasted Chicken, Griddled Swiss, Bacon, Coleslaw, Pickles, Duke’s Mayo, and Texas Pete on Sunflower Wheat Bread",
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "pork",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "stated"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            },
+            {
+              "tag": "spicy",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "2 LOADED H0T DOGS",
+          "section": "SANDWICHES",
+          "price": 15,
+          "description": "Nathan’s All Beef Hot Dogs, Baked Beans, Slaw, Red Onion and Whole Grain Mustard on Hot Dog Buns",
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "V - NO–BULL VEGGIE BURGER",
+          "section": "SANDWICHES",
+          "price": 16,
+          "description": "NoBull Savory Mushroom, Duke’s Mayo, Ketchup, Shedded Lettuce, Red Onion, Local Tomato, Pickles on a Brioche Bun",
+          "tags": [
+            {
+              "tag": "egg",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "GRILLED CHEDDAR or PIMENTO CHEESE SANDWICH",
+          "section": "KIDS",
+          "price": 4,
+          "description": null,
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "PB & J SANDWHICH",
+          "section": "KIDS",
+          "price": 4,
+          "description": null,
+          "tags": [
+            {
+              "tag": "peanut",
+              "source": "inferred"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "SMALL VEGGIE PLATTER WITH RANCH",
+          "section": "KIDS",
+          "price": 4,
+          "description": null,
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "NATHAN'S ALL BEEF HOT DOG, PLAIN or KETCHUP AND MUSTARD",
+          "section": "KIDS",
+          "price": 4,
+          "description": null,
+          "tags": [
+            {
+              "tag": "beef",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "HOUSE MADE CHICKEN TENDERS (4)",
+          "section": "KIDS",
+          "price": 6,
+          "description": null,
+          "tags": [
+            {
+              "tag": "poultry",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "DARK CHOCOLATE BROWNIE SUNDAE",
+          "section": "DESSERTS",
+          "price": 9,
+          "description": "With Vanilla Ice Cream, Sorghum Molasses Whipped Cream, Chocolate Syrup",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "BOURBON BREAD PUDDING",
+          "section": "DESSERTS",
+          "price": 9,
+          "description": "With Maple Vanilla Sauce",
+          "tags": [
+            {
+              "tag": "alcohol",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            },
+            {
+              "tag": "dairy",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "PECAN PIE",
+          "section": "DESSERTS",
+          "price": 9,
+          "description": "With Vanilla Ice Cream, Sorghum Molasses Whipped Cream",
+          "tags": [
+            {
+              "tag": "tree_nut",
+              "source": "stated"
+            },
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            },
+            {
+              "tag": "egg",
+              "source": "inferred"
+            }
+          ]
+        },
+        {
+          "name": "MIXED BERRY COBBLER",
+          "section": "DESSERTS",
+          "price": 9,
+          "description": "With Vanilla Ice Cream",
+          "tags": [
+            {
+              "tag": "dairy",
+              "source": "stated"
+            },
+            {
+              "tag": "gluten",
+              "source": "inferred"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "co02",
+      "tier": "hard",
+      "sourceType": "image-on-site",
+      "status": "needs_review",
+      "failure": "validation failed after 1 attempts: no dishes found in the source",
+      "seconds": 4.57581387500005,
+      "retries": 0,
+      "inputTokens": 2328,
+      "outputTokens": 66,
+      "costUsd": 0.010632,
+      "snapshot": "co02.html",
+      "dishes": []
+    },
+    {
+      "id": "co05",
+      "tier": "hard",
+      "sourceType": "ordering-page",
+      "status": "failed",
+      "failure": "Fetching https://order.toasttab.com/online/crozet-pizza-cville-20-elliewood-ave failed with HTTP 403",
+      "seconds": 0.11386804100003792,
+      "retries": 0,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "costUsd": 0,
+      "snapshot": null,
+      "dishes": []
+    },
+    {
+      "id": "co10",
+      "tier": "hard",
+      "sourceType": "ordering-page",
+      "status": "needs_review",
+      "failure": "validation failed after 1 attempts: no dishes found in the source",
+      "seconds": 3.1671545410000252,
+      "retries": 0,
+      "inputTokens": 3303,
+      "outputTokens": 77,
+      "costUsd": 0.014752,
+      "snapshot": "co10.html",
+      "dishes": []
+    },
+    {
+      "id": "do06",
+      "tier": "hard",
+      "sourceType": "ordering-page",
+      "status": "needs_review",
+      "failure": "validation failed after 1 attempts: no dishes found in the source",
+      "seconds": 6.503287750000018,
+      "retries": 0,
+      "inputTokens": 2195,
+      "outputTokens": 73,
+      "costUsd": 0.01024,
+      "snapshot": "do06.html",
+      "dishes": []
+    },
+    {
+      "id": "do04",
+      "tier": "hard",
+      "sourceType": "ordering-page",
+      "status": "needs_review",
+      "failure": "validation failed after 1 attempts: no dishes found in the source",
+      "seconds": 6.739761666999955,
+      "retries": 0,
+      "inputTokens": 2208,
+      "outputTokens": 73,
+      "costUsd": 0.010292,
+      "snapshot": "do04.html",
+      "dishes": []
+    }
+  ]
+}
