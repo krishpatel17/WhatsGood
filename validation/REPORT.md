@@ -3,7 +3,7 @@
 ## Verdict: Invalidated
 
 - **A1 Sources exist: PASS** — 25/30 restaurants have a readable menu source (83.3%, 95% CI [0.653, 0.944]); threshold >= 24/30
-- **A2 Import works: FAIL** — 2/10 restaurants imported easily (95% CI [0.025, 0.556]); dish-accuracy bootstrap lower bound 0.0%; thresholds >= 8/10 and >= 90%
+- **A2 Import works: FAIL** — 3/10 restaurants imported easily (95% CI [0.067, 0.652]); dish-accuracy bootstrap lower bound 0.0%; thresholds >= 8/10 and >= 90%
 - **A3 Reviews mention dishes: PASS** — 9/10 restaurants have at least 3 dishes with >= 3 matched mentions (95% CI [0.555, 0.997]); threshold >= 8/10
 
 ### Pivot
@@ -22,7 +22,7 @@
 
 ## A2 — Menu import benchmark
 
-Prompts frozen at `prompts-alpha-v1`. Dish-accuracy cluster bootstrap (10,000 resamples of restaurants): 95% interval [0.0%, 66.8%]. Deviation: model calls went through a developer's Claude login with the local bridge rather than the API, so seconds include the CLI's overhead and token costs are not meaningful.
+Prompts frozen at `prompts-alpha-v1`. Dish-accuracy cluster bootstrap (10,000 resamples of restaurants): 95% interval [0.0%, 67.0%]. Deviation: model calls went through a developer's Claude login with the local bridge rather than the API, so seconds include the CLI's overhead and token costs are not meaningful.
 
 | Restaurant | Tier | Source | Accuracy | Invented | Missed | Seconds | Retries | Pass |
 |---|---|---|---|---|---|---|---|---|
@@ -30,7 +30,7 @@ Prompts frozen at `prompts-alpha-v1`. Dish-accuracy cluster bootstrap (10,000 re
 | Sedona Taphouse | medium | pdf | 0.0% | 0 | 69 | 120.0 | 0 | no |
 | El Puerto Mexican Restaurant | medium | pdf | 0.0% | 0 | 200 | 120.0 | 0 | no |
 | Afghan Kabob House | medium | html | 100.0% | 0 | 0 | 67.6 | 0 | yes |
-| The Whiskey Jar | medium | html | 100.0% | 2 | 0 | 74.1 | 0 | no |
+| The Whiskey Jar | medium | html | 100.0% | 0 | 0 | 74.1 | 0 | yes |
 | Marco and Luca | hard | image-on-site | 0.0% | 0 | 27 | 4.6 | 0 | no |
 | Crozet Pizza at Buddhist Biker Bar | hard | ordering-page | 0.0% | 0 | 74 | 0.1 | 0 | no |
 | Boylan Heights | hard | ordering-page | 0.0% | 0 | 31 | 3.2 | 0 | no |
@@ -39,13 +39,13 @@ Prompts frozen at `prompts-alpha-v1`. Dish-accuracy cluster bootstrap (10,000 re
 
 | Tier | Passed |
 |---|---|
-| medium | 2/5 |
+| medium | 3/5 |
 | hard | 0/5 |
 
 | Source type | Passed |
 |---|---|
 | pdf | 1/3 |
-| html | 1/2 |
+| html | 2/2 |
 | image-on-site | 0/1 |
 | ordering-page | 0/4 |
 
@@ -320,8 +320,6 @@ Prompts frozen at `prompts-alpha-v1`. Dish-accuracy cluster bootstrap (10,000 re
 - El Puerto Mexican Restaurant: missed "Sopapillas"
 - El Puerto Mexican Restaurant: missed "Flan"
 - El Puerto Mexican Restaurant: missed "Mexican Fried Ice Cream"
-- The Whiskey Jar: invented "FRENCH FRIES"
-- The Whiskey Jar: invented "GRITS"
 - Marco and Luca: missed "Fried Dumplings (7)"
 - Marco and Luca: missed "Steamed Pork Dumpling (7)"
 - Marco and Luca: missed "Fried Pork Dumplings (10) - Portion & a half"

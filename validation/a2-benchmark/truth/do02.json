@@ -293,6 +293,16 @@
       "section": "DESSERTS",
       "name": "MIXED BERRY COBBLER",
       "price": 9
+    },
+    {
+      "section": "SIDES",
+      "name": "FRENCH FRIES",
+      "price": null
+    },
+    {
+      "section": "SIDES",
+      "name": "GRITS",
+      "price": null
     }
   ]
 }
