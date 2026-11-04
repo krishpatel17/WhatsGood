@@ -97,7 +97,7 @@ describe("US-20 report from the repository's data files", () => {
     expect(inputs.a1).toMatchObject({ readable: 25, n: 30 });
     const md = buildReport(inputs);
     expect(md).toContain("A1 Sources exist: PASS");
-  });
+  }, 30_000); // scores the real benchmark data, which takes a few seconds on CI
 
   it("[ai] AC1/AC6 unit: A2 results are scored against the hand-copied menus", async () => {
     const { scoreA2 } = await import("../src/validation/assemble");
