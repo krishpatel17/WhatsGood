@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { MODEL } from "./anthropic";
 import type { Llm, LlmRequest, LlmResponse } from "./types";
 
 /** The subscription bridge is for one developer's own machine, so only loopback addresses count. */
@@ -22,7 +23,7 @@ export function bridgeLlm(opts: { url: string; fetch?: typeof fetch }): Llm {
       const res = await send(`${opts.url}/json`, {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ ...rest, jsonSchema }),
+        body: JSON.stringify({ ...rest, model: MODEL, jsonSchema }),
       });
       const body = (await res.json().catch(() => ({}))) as LlmResponse & { error?: string };
       if (!res.ok) throw new Error(body.error ?? `Bridge returned HTTP ${res.status}`);

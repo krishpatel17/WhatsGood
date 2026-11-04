@@ -49,5 +49,5 @@ When a menu is done, add a line to `truth/spot-checks.csv` (`restaurant_id,check
 ## Step 4 — Run the benchmark (US-19)
 
 1. Freeze the prompts: `git tag prompts-alpha-v1` on the commit you benchmark. The runner refuses to run if `api/src/prompts/` differs from that tag.
-2. Run `ANTHROPIC_API_KEY=... npm run benchmark -w api`. This writes `results/<timestamp>.json`.
+2. Put `ANTHROPIC_API_KEY` in `api/.dev.vars` and run `npm run benchmark -w api`. This writes `results/<timestamp>.json`. To use a Claude login instead, set `LLM_BRIDGE_URL` there and keep `npm run bridge -w api` running; the report states this as a deviation.
 3. Run `npm run validation:report -w api` to score the import against your copies and update `validation/REPORT.md`.

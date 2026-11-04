@@ -1,8 +1,8 @@
 // A2 benchmark: npm run benchmark -w api [-- --snapshots]
-//   ANTHROPIC_API_KEY  required
+//   ANTHROPIC_API_KEY, or LLM_BRIDGE_URL with `npm run bridge -w api` running (read from api/.dev.vars)
 //   PROMPT_TAG         frozen prompts tag (default prompts-alpha-v1)
 import { execFileSync } from "node:child_process";
-import { anthropicLlm } from "../src/llm/anthropic";
+import { selectLlm } from "../src/llm/select";
 import { checkPromptsFrozen, runBenchmark, snapshotFetch } from "../src/validation/runner";
 
 const root = execFileSync("git", ["rev-parse", "--show-toplevel"], { encoding: "utf8" }).trim() + "/";
@@ -19,7 +19,7 @@ checkPromptsFrozen(tag, git);
 const fromSnapshots = process.argv.includes("--snapshots");
 const results = await runBenchmark({
   root,
-  llm: anthropicLlm({ apiKey: process.env.ANTHROPIC_API_KEY }),
+  llm: selectLlm({ apiKey: process.env.ANTHROPIC_API_KEY, bridgeUrl: process.env.LLM_BRIDGE_URL }),
   fetch: fromSnapshots ? snapshotFetch(root) : fetch,
   promptTag: tag,
 });

@@ -74,7 +74,7 @@ To try the app by yourself on your own machine without an API key, log in with `
 npm run bridge -w api
 ```
 
-Then add `LLM_BRIDGE_URL=http://127.0.0.1:8790` to `api/.dev.vars` and restart `wrangler dev`. Calls count against your own plan's limits. This is for one developer only: use an API key for anything deployed, shared with other people, or measured by the A2 and A3 benchmarks. Reviews still need `APIFY_TOKEN`.
+Then add `LLM_BRIDGE_URL=http://127.0.0.1:8790` to `api/.dev.vars` and restart `wrangler dev`. Calls count against your own plan's limits. This is for one developer only: use an API key for anything deployed or shared with other people. The A2 and A3 commands use the bridge too when `LLM_BRIDGE_URL` is set, and their results and report say so. Reviews still need `APIFY_TOKEN`.
 
 ## Deploy (US-22)
 
