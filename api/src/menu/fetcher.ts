@@ -42,7 +42,7 @@ export async function fetchSource(fetcher: typeof fetch, url: string): Promise<F
   return { url, contentType, kind: pickExtractor(url, contentType), bytes: new Uint8Array(await res.arrayBuffer()) };
 }
 
-function base64(bytes: Uint8Array): string {
+export function base64(bytes: Uint8Array): string {
   let s = "";
   for (let i = 0; i < bytes.length; i += 0x8000) s += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
   return btoa(s);

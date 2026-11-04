@@ -3,7 +3,9 @@ import { type Db, newId, nowIso } from "../db";
 import type { Llm, LlmContent, LlmMessage, LlmUsage } from "../llm/types";
 import { MENU_IMPORT_SYSTEM } from "../prompts/menu-import";
 import { type FetchedSource, fetchSource, sourceContent, textOf } from "./fetcher";
+import { fetchMenuImages, findPageImages } from "./page-images";
 import { mapLimited, PDF_PAGE_CONCURRENCY, pdfPageInputs } from "./pdf-pages";
+import { MIN_PRICES, priceCount } from "./render";
 import { type Menu, MenuSchema } from "./schema";
 import { layoutItemCount, NO_DISHES, validateMenu } from "./validate";
 
@@ -131,10 +133,14 @@ export async function importMenu(deps: ImportDeps, input: { restaurantId: string
   await deps.blobs.put(snapshotKey, src.bytes, { httpMetadata: { contentType: src.contentType } });
 
   const text = textOf(src);
-  const check = validate ?? validateMenu(text === null ? null : layoutItemCount(text));
+  // A web page with almost no menu text may post its menu as a picture: send its largest images too.
+  const html = text === null ? "" : new TextDecoder().decode(src.bytes);
+  const images = text !== null && priceCount(html) < MIN_PRICES ? await fetchMenuImages(deps.fetch, findPageImages(html, src.url)) : [];
+  // The layout count comes from page text, which says nothing about a menu in an image.
+  const check = validate ?? validateMenu(text === null || images.length ? null : layoutItemCount(text));
   const log = attemptLogger(deps.db, input.restaurantId, input.url);
   const pages = src.kind === "pdf" ? await pdfPageInputs(src.bytes) : [];
-  const run = pages.length > 1 ? await extractPdfPages(deps.llm, src, pages, check, log) : await extractWithRetry(deps.llm, sourceContent(src), check, log);
+  const run = pages.length > 1 ? await extractPdfPages(deps.llm, src, pages, check, log) : await extractWithRetry(deps.llm, [...images, ...sourceContent(src)], check, log);
   const status = run.menu ? "active" : "needs_review";
   const dishes = run.menu?.dishes ?? [];
   const menuId = await storeMenu(deps.db, {
