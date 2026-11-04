@@ -168,3 +168,21 @@ Score history:
 | v4 | 5/10 |
 
 Seven different menus have passed in at least one of v3 and v4, but never more than five in one run. The pass rule and thresholds were never changed.
+
+## Exploratory: food dishes only (2026-11-04, after v4)
+
+This is **not** the pre-registered test. It does not change the A2 result (5/10, FAIL) or the verdict.
+
+The MVP ranks food dishes, and most of v3's and v4's errors were drinks, sauces and toppings. So the report now also scores the v4 results with those left out of both the answer key and the import. The rule (`api/src/validation/food-only.ts`) was written down before the score was computed:
+- An item is left out if its section contains a generic drink, sauce or topping word: wine, whites, reds, rosé, sparkling, beer, draft, drink, beverage, cocktail, spirit, liquor, bar, happy hour, juice, soda, soft drink, coffee, tea, topping, sauce, dressing, condiment, add-on or extra.
+- An item is also left out if its own name contains wine, beer, juice, soda, beverage, sauce, dressing or topping.
+- No restaurant-specific words were added.
+
+The rule was chosen after seeing the results. No model was called again.
+
+**Exploratory result: 6/10.** The Virginian passes in this view.
+- Revolutionary Soup still lists two drinks whose names have no generic drink word ("Dasani", "Maine Root").
+- Sedona lists "Seasonal Catch", which is not in its key.
+- El Puerto and Crozet Pizza are unchanged.
+
+A narrower "food dishes only" hypothesis is a candidate for the Beta. It would need to be pre-registered and tested on new restaurants before it counts.

@@ -10,7 +10,7 @@ const IMPORTERS: Record<string, string> = {
   v4: "v4 (v3 plus pages scrolled a screen at a time, and unpriced ordering-site items left out)",
 };
 
-export type A2Input = { promptTag: string; llmPath?: string; importer?: string; restaurants: A2Restaurant[]; bootstrap: { lo: number; hi: number } };
+export type A2Input = { promptTag: string; llmPath?: string; importer?: string; restaurants: A2Restaurant[]; foodOnly?: A2Restaurant[]; bootstrap: { lo: number; hi: number } };
 export type A3Restaurant = { id: string; name: string; reviews: number; atLeast1: number; atLeast3: number; atLeast10: number; enough: boolean };
 export type A3Input = { restaurants: A3Restaurant[]; precision: number | null; recall: number | null };
 
@@ -77,6 +77,21 @@ export function buildReport(input: { a1: A1Input | null; a2: A2Input | null; a3:
       ...rows.flatMap((r) => [...r.score.inventedNames.map((n) => `- ${r.name}: invented "${n}"`), ...r.score.missedNames.map((n) => `- ${r.name}: missed "${n}"`)]),
       "",
     );
+    const food = input.a2.foodOnly;
+    if (food?.length) {
+      out.push(
+        "### Exploratory, not the pre-registered test: food dishes only",
+        "",
+        `Added after the v4 run, so it does not change the A2 result or the verdict. The MVP ranks food dishes, so this view leaves drinks, sauces and toppings out of both the answer key and the import (generic section and name words, src/validation/food-only.ts). ${food.filter((r) => r.pass).length}/${food.length} restaurants pass when drinks, sauces and toppings are left out. A pre-registered Beta test on new restaurants is needed before this counts.`,
+        "",
+        "| Restaurant | Accuracy | Invented | Missed | Pass |",
+        "|---|---|---|---|---|",
+        ...food.map((r) => `| ${r.name} | ${pct(r.score.accuracy)} | ${r.score.invented} | ${r.score.missed} | ${r.pass ? "yes" : "no"} |`),
+        "",
+        ...food.flatMap((r) => [...r.score.inventedNames.map((n) => `- ${r.name}: invented "${n}"`), ...r.score.missedNames.map((n) => `- ${r.name}: missed "${n}"`)]),
+        "",
+      );
+    }
   }
   if (input.a3) {
     out.push(
