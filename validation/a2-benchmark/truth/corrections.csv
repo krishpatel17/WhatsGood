@@ -1,0 +1,4 @@
+restaurant_id,date,checked_by,dishes_added,source_checked,reason
+co04,2026-11-04,Lara Mahajan,23,validation/a2-benchmark/snapshots/co04.pdf (the PDF the benchmark read),Priced drinks and wines were missing from the copy; the copying rule only skips drinks without prices. Found while reviewing items the A2 v1 import returned that were not in the key.
+do09,2026-11-04,Lara Mahajan,7,https://afghankabob-house.com/our-menu/,Priced drinks were missing from the copy; same reason as co04.
+do02,2026-11-04,Lara Mahajan,0,https://www.thewhiskeyjarcville.com/menu,French Fries and Grits checked: listed under Sides with no individual price; not added.
