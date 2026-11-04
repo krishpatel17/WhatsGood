@@ -115,5 +115,6 @@ describe("US-20 report: which importer ran", () => {
     const a2 = { promptTag: "t", importer: "v2-render", restaurants: [], bootstrap: { lo: 0, hi: 0 } };
     expect(buildReport({ a1: null, a2, a3: null })).toContain("Importer: v2 (JavaScript pages rendered in a local browser before import)");
     expect(buildReport({ a1: null, a2: { ...a2, importer: "v1" }, a3: null })).toContain("Importer: v1 (plain download)");
+    expect(buildReport({ a1: null, a2: { ...a2, importer: "v3" }, a3: null })).toContain("Importer: v3 (v2 plus add-ons such as \"Extra sauce\" left out, by the answer keys' rule)");
   });
 });
