@@ -281,38 +281,93 @@
     },
     {
       "section": "Virginia Wines",
-      "name": "VIOGNIER",
+      "name": "VIOGNIER - Eastwood Farm and Winery",
       "price": 12
     },
     {
       "section": "Virginia Wines",
-      "name": "VERMENTINO",
+      "name": "VERMENTINO - Barboursville Vineyards",
       "price": 12
     },
     {
       "section": "Virginia Wines",
-      "name": "CHARDONNAY",
+      "name": "CHARDONNAY - Barboursville Vineyards",
       "price": 11
     },
     {
       "section": "Virginia Wines",
-      "name": "BARBERA RESERVE",
+      "name": "BARBERA RESERVE - Barboursville Vineyards",
       "price": 13
     },
     {
       "section": "Virginia Wines",
-      "name": "ROTUNDA RED",
+      "name": "ROTUNDA RED - Lovingston Winery",
       "price": 12
     },
     {
       "section": "Virginia Wines",
-      "name": "MERITAGE",
+      "name": "MERITAGE - Rappahannock Cellars",
       "price": 11
     },
     {
       "section": "Virginia Wines",
-      "name": "SHY OX ROSÉ",
+      "name": "SHY OX ROSÉ - Ox-Eye Vineyards",
       "price": 10
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Double Flavored Hard Bodies",
+      "price": 6
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Domestic Bottles",
+      "price": 3
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Surfsides",
+      "price": 5
+    },
+    {
+      "section": "Daily Specials",
+      "name": "32oz pitchers",
+      "price": 8
+    },
+    {
+      "section": "Daily Specials",
+      "name": "featured pitcher",
+      "price": 4
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Rails",
+      "price": 2
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Surprise Shooters",
+      "price": 5
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Trash Cans",
+      "price": 10
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Mimosas",
+      "price": 5
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Bloody Marys",
+      "price": 7
+    },
+    {
+      "section": "Happy Hour",
+      "name": "Drafts",
+      "price": 4
     }
   ]
 }

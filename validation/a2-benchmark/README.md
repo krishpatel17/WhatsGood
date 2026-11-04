@@ -80,3 +80,34 @@ After v1, the importer got three general fixes, all with prompts unchanged at `p
 - Marco and Luca: 0%. The image the benchmark reads has no prices, but its key was copied with prices from another source.
 
 Nobody has checked these extra items against the sources yet. The pass rule and thresholds were not changed.
+
+## Correction: answer keys after the v2 run (2026-11-04)
+
+This correction was made **after** the v2 results were seen, so it is post-hoc. The v2 results file was re-scored. The importer was not run again and no model was called.
+
+Lara Mahajan checked the 138 items the v2 run listed beyond the keys for The Virginian, Sedona, Boylan Heights and Otto. She checked each item against the restaurant's own menu (`truth/extras-v2-to-check.xlsx`):
+- 116 were on the menu and were added with the menu's price and section:
+  - Sedona: 60
+  - Otto: 29
+  - The Virginian: 11 bar specials
+  - Boylan Heights: 9
+- The Virginian's 7 wine names were changed to the full printed name, which includes the winery.
+- 22 were not on the menu and stay counted as invented (Sedona 9, Otto 13).
+- Marco and Luca's key was re-copied from the menu image the restaurant's site shows. That image prints no prices, so its prices are blank.
+
+Every change is logged in `truth/corrections.csv`. The pass rule and thresholds were not changed.
+
+**Re-scored result: 3/10 imported easily (still FAIL).**
+- The Virginian, Afghan Kabob House and The Whiskey Jar pass.
+- Marco and Luca and Boylan Heights are 100% accurate. Each fails on one item, "Extra sauce", an add-on that the copying rule leaves out of the key.
+- Sedona (9) and Otto (13 + 1 missed) fail on items Lara confirmed are not on the menu.
+- El Puerto (77.0%), Revolutionary Soup (51.4%) and Crozet Pizza (blocked) are unchanged.
+
+Score history:
+
+| Run | Score |
+|---|---|
+| v1 | 0/10 |
+| v1 after the first key correction | 3/10 |
+| v2 | 2/10 |
+| v2 after this correction | 3/10 |

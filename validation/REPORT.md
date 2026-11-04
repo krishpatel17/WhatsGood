@@ -3,7 +3,7 @@
 ## Verdict: Invalidated
 
 - **A1 Sources exist: PASS** — 25/30 restaurants have a readable menu source (83.3%, 95% CI [0.653, 0.944]); threshold >= 24/30
-- **A2 Import works: FAIL** — 2/10 restaurants imported easily (95% CI [0.025, 0.556]); dish-accuracy bootstrap lower bound 50.5%; thresholds >= 8/10 and >= 90%
+- **A2 Import works: FAIL** — 3/10 restaurants imported easily (95% CI [0.067, 0.652]); dish-accuracy bootstrap lower bound 60.5%; thresholds >= 8/10 and >= 90%
 - **A3 Reviews mention dishes: PASS** — 9/10 restaurants have at least 3 dishes with >= 3 matched mentions (95% CI [0.555, 0.997]); threshold >= 8/10
 
 ### Pivot
@@ -22,60 +22,35 @@
 
 ## A2 — Menu import benchmark
 
-Prompts frozen at `prompts-alpha-v1`. Importer: v2 (JavaScript pages rendered in a local browser before import). Dish-accuracy cluster bootstrap (10,000 resamples of restaurants): 95% interval [50.5%, 92.8%]. Deviation: model calls went through a developer's Claude login with the local bridge rather than the API, so seconds include the CLI's overhead and token costs are not meaningful.
+Prompts frozen at `prompts-alpha-v1`. Importer: v2 (JavaScript pages rendered in a local browser before import). Dish-accuracy cluster bootstrap (10,000 resamples of restaurants): 95% interval [60.5%, 99.6%]. Deviation: model calls went through a developer's Claude login with the local bridge rather than the API, so seconds include the CLI's overhead and token costs are not meaningful.
 
 | Restaurant | Tier | Source | Accuracy | Invented | Missed | Seconds | Retries | Pass |
 |---|---|---|---|---|---|---|---|---|
-| The Virginian | medium | pdf | 88.7% | 18 | 7 | 28.8 | 0 | no |
-| Sedona Taphouse | medium | pdf | 100.0% | 69 | 0 | 66.1 | 0 | no |
+| The Virginian | medium | pdf | 100.0% | 0 | 0 | 28.8 | 0 | yes |
+| Sedona Taphouse | medium | pdf | 100.0% | 9 | 0 | 66.1 | 0 | no |
 | El Puerto Mexican Restaurant | medium | pdf | 77.0% | 108 | 45 | 69.5 | 0 | no |
 | Afghan Kabob House | medium | html | 100.0% | 0 | 0 | 74.4 | 0 | yes |
 | The Whiskey Jar | medium | html | 100.0% | 0 | 0 | 74.7 | 0 | yes |
-| Marco and Luca | hard | image-on-site | 0.0% | 7 | 14 | 24.7 | 0 | no |
+| Marco and Luca | hard | image-on-site | 100.0% | 1 | 0 | 24.7 | 0 | no |
 | Crozet Pizza at Buddhist Biker Bar | hard | ordering-page | 0.0% | 0 | 74 | 30.1 | 0 | no |
-| Boylan Heights | hard | ordering-page | 100.0% | 9 | 0 | 67.3 | 0 | no |
+| Boylan Heights | hard | ordering-page | 100.0% | 1 | 0 | 67.3 | 0 | no |
 | Revolutionary Soup | hard | ordering-page | 51.4% | 0 | 17 | 30.8 | 0 | no |
-| Otto | hard | ordering-page | 97.7% | 42 | 1 | 74.7 | 0 | no |
+| Otto | hard | ordering-page | 98.6% | 13 | 1 | 74.7 | 0 | no |
 
 | Tier | Passed |
 |---|---|
-| medium | 2/5 |
+| medium | 3/5 |
 | hard | 0/5 |
 
 | Source type | Passed |
 |---|---|
-| pdf | 0/3 |
+| pdf | 1/3 |
 | html | 2/2 |
 | image-on-site | 0/1 |
 | ordering-page | 0/4 |
 
 ### Invented and missed dishes
 
-- The Virginian: invented "Double Flavored Hard Bodies"
-- The Virginian: invented "Domestic Bottles"
-- The Virginian: invented "Surfsides"
-- The Virginian: invented "32oz pitchers"
-- The Virginian: invented "featured pitcher"
-- The Virginian: invented "Rails"
-- The Virginian: invented "Surprise Shooters"
-- The Virginian: invented "Trash Cans"
-- The Virginian: invented "Mimosas"
-- The Virginian: invented "Bloody Marys"
-- The Virginian: invented "Drafts"
-- The Virginian: invented "VIOGNIER - Eastwood Farm and Winery"
-- The Virginian: invented "VERMENTINO - Barboursville Vineyards"
-- The Virginian: invented "CHARDONNAY - Barboursville Vineyards"
-- The Virginian: invented "BARBERA RESERVE - Barboursville Vineyards"
-- The Virginian: invented "ROTUNDA RED - Lovingston Winery"
-- The Virginian: invented "MERITAGE - Rappahannock Cellars"
-- The Virginian: invented "SHY OX ROSÉ - Ox-Eye Vineyards"
-- The Virginian: missed "VIOGNIER"
-- The Virginian: missed "VERMENTINO"
-- The Virginian: missed "CHARDONNAY"
-- The Virginian: missed "BARBERA RESERVE"
-- The Virginian: missed "ROTUNDA RED"
-- The Virginian: missed "MERITAGE"
-- The Virginian: missed "SHY OX ROSÉ"
 - Sedona Taphouse: invented "Seasonal Catch"
 - Sedona Taphouse: invented "Seasoned Butter"
 - Sedona Taphouse: invented "Herb Butter"
@@ -85,66 +60,6 @@ Prompts frozen at `prompts-alpha-v1`. Importer: v2 (JavaScript pages rendered in
 - Sedona Taphouse: invented "Marsala"
 - Sedona Taphouse: invented "Wild Man"
 - Sedona Taphouse: invented "Citrus Tomato Garlic Sauce"
-- Sedona Taphouse: invented "Crab-Stuffed Shrimp (3)"
-- Sedona Taphouse: invented "Seared Shrimp"
-- Sedona Taphouse: invented "Shrimp Scampi"
-- Sedona Taphouse: invented "Jumbo Lump Crab Cake"
-- Sedona Taphouse: invented "Sedona White Sangria"
-- Sedona Taphouse: invented "Sedona Red Sangria"
-- Sedona Taphouse: invented "STH Mule"
-- Sedona Taphouse: invented "Orange Crush"
-- Sedona Taphouse: invented "Prickly Pear Margarita"
-- Sedona Taphouse: invented "Blood Orange Margarita"
-- Sedona Taphouse: invented "El Patrón Margarita"
-- Sedona Taphouse: invented "Fireside Chat"
-- Sedona Taphouse: invented "STH Aperol Spritz"
-- Sedona Taphouse: invented "Smoked Old Fashioned"
-- Sedona Taphouse: invented "Father's Old Fashioned"
-- Sedona Taphouse: invented "T2T Lemon Basil"
-- Sedona Taphouse: invented "Red Rock"
-- Sedona Taphouse: invented "Pomegranate-Blueberry"
-- Sedona Taphouse: invented "Havana Coconut"
-- Sedona Taphouse: invented "Lemon Drop"
-- Sedona Taphouse: invented "The Sedona"
-- Sedona Taphouse: invented "Espresso in Dublin"
-- Sedona Taphouse: invented "Dirty Goose"
-- Sedona Taphouse: invented "Cactus Lemonade"
-- Sedona Taphouse: invented "Blueberry Blitz"
-- Sedona Taphouse: invented "Strawberry + Basil Refresher"
-- Sedona Taphouse: invented "Apple Crisp"
-- Sedona Taphouse: invented "Coca-Cola Products"
-- Sedona Taphouse: invented "Craft Root Beer"
-- Sedona Taphouse: invented "Artisan Teas"
-- Sedona Taphouse: invented "French Press Coffee"
-- Sedona Taphouse: invented "Saratoga Water"
-- Sedona Taphouse: invented "Chardonnay"
-- Sedona Taphouse: invented "Pinot Grigio"
-- Sedona Taphouse: invented "Pinot Noir"
-- Sedona Taphouse: invented "Cabernet Sauvignon"
-- Sedona Taphouse: invented "Maschio"
-- Sedona Taphouse: invented "Mumm"
-- Sedona Taphouse: invented "Mumm Sparkling Brut Prestige"
-- Sedona Taphouse: invented "J Vineyards California"
-- Sedona Taphouse: invented "Villa Pozzi"
-- Sedona Taphouse: invented "Barone Fini"
-- Sedona Taphouse: invented "Heinz Eifel"
-- Sedona Taphouse: invented "Brancott"
-- Sedona Taphouse: invented "'Conundrum' by Caymus"
-- Sedona Taphouse: invented "Joel Gott Unoaked"
-- Sedona Taphouse: invented "Bezel by Cakebread"
-- Sedona Taphouse: invented "Bieler Père & Fils, Sabine"
-- Sedona Taphouse: invented "Acrobat"
-- Sedona Taphouse: invented "Alexander Valley Vineyards"
-- Sedona Taphouse: invented "Trapiche"
-- Sedona Taphouse: invented "Double Trouble by Charles & Charles"
-- Sedona Taphouse: invented "Columbia Crest 'Grand Estates'"
-- Sedona Taphouse: invented "Bonanza by Caymus"
-- Sedona Taphouse: invented "Josh Craftsman's Select"
-- Sedona Taphouse: invented "King Family 'Crosé'"
-- Sedona Taphouse: invented "King Family 'Verde'"
-- Sedona Taphouse: invented "King Family"
-- Sedona Taphouse: invented "Michael Shaps"
-- Sedona Taphouse: invented "Barboursville"
 - El Puerto Mexican Restaurant: invented "Soft Shell"
 - El Puerto Mexican Restaurant: invented "Hard Shell"
 - El Puerto Mexican Restaurant: invented "Beef"
@@ -298,27 +213,7 @@ Prompts frozen at `prompts-alpha-v1`. Importer: v2 (JavaScript pages rendered in
 - El Puerto Mexican Restaurant: missed "Combination Dinner #29"
 - El Puerto Mexican Restaurant: missed "Combination Dinner #30"
 - El Puerto Mexican Restaurant: missed "Combination Dinner #31"
-- Marco and Luca: invented "Fried Pork Dumplings (7pieces)"
-- Marco and Luca: invented "Vegetarian Dumplings (6 pieces)"
-- Marco and Luca: invented "Fried Pork Dumplings Portion & a Half (10 pieces)"
-- Marco and Luca: invented "Steamed Pork Dumplings (7pieces)"
-- Marco and Luca: invented "Steamed Vegetarian Dumplings (6 pieces)"
-- Marco and Luca: invented "Vegetarian Hot Bun"
 - Marco and Luca: invented "Extra Sauce"
-- Marco and Luca: missed "Fried Dumplings (7)"
-- Marco and Luca: missed "Steamed Pork Dumpling (7)"
-- Marco and Luca: missed "Fried Pork Dumplings (10) - Portion & a half"
-- Marco and Luca: missed "Steamed Vegetarian Dumplings (6)"
-- Marco and Luca: missed "Fried Vegetarian Dumplings (6)"
-- Marco and Luca: missed "Steamed Vegetarian Dumplings (9) - Portion & a half"
-- Marco and Luca: missed "Fried Vegetarian Dumplings (9)- Portion & a half"
-- Marco and Luca: missed "Steamed Pork Dumpling (10) - Portion & a half"
-- Marco and Luca: missed "Veggie Hot Bun"
-- Marco and Luca: missed "Marco & Luca Sauce"
-- Marco and Luca: missed "Peanut Butter Sauce"
-- Marco and Luca: missed "Large Tray"
-- Marco and Luca: missed "Large Hot And Sour Soup"
-- Marco and Luca: missed "Small Wonton Soup"
 - Crozet Pizza at Buddhist Biker Bar: missed "Garlic Knots"
 - Crozet Pizza at Buddhist Biker Bar: missed "Buddha Belly"
 - Crozet Pizza at Buddhist Biker Bar: missed "Hummus Plate"
@@ -394,14 +289,6 @@ Prompts frozen at `prompts-alpha-v1`. Importer: v2 (JavaScript pages rendered in
 - Crozet Pizza at Buddhist Biker Bar: missed "LRG Special"
 - Crozet Pizza at Buddhist Biker Bar: missed "LRG Veggie"
 - Boylan Heights: invented "Extra sauce"
-- Boylan Heights: invented "Coke"
-- Boylan Heights: invented "Diet Coke"
-- Boylan Heights: invented "Sprite"
-- Boylan Heights: invented "Ginger Ale"
-- Boylan Heights: invented "Root Beer"
-- Boylan Heights: invented "Lemonade"
-- Boylan Heights: invented "The Wahoo"
-- Boylan Heights: invented "Cavalier Crush"
 - Revolutionary Soup: missed "Curried Chicken Salad"
 - Revolutionary Soup: missed "Greek Salad"
 - Revolutionary Soup: missed "Gulf Coast Salad"
@@ -420,47 +307,18 @@ Prompts frozen at `prompts-alpha-v1`. Importer: v2 (JavaScript pages rendered in
 - Revolutionary Soup: missed "Chips on Chips on Chips"
 - Revolutionary Soup: missed "Cookies"
 - Otto: invented "Vegan Wrap,"
-- Otto: invented "Extra Feta"
-- Otto: invented "Side Sauce"
-- Otto: invented "Extra Brussel Sprouts"
-- Otto: invented "Soda"
-- Otto: invented "Ayran"
-- Otto: invented "Iced Tea"
-- Otto: invented "Bottled Water"
-- Otto: invented "Gazoz (Turkish Sprite)"
-- Otto: invented "San Pellegrino"
-- Otto: invented "Cherry Juice"
-- Otto: invented "Turkish Coffee"
-- Otto: invented "Poppi Drink"
-- Otto: invented "Natural Minarel Water"
-- Otto: invented "Turkish Tea"
-- Otto: invented "Peach Juice-"
-- Otto: invented "Cherry Juice."
 - Otto: invented "Kadayif Tatlisi ( Contains Gluten and Nuts)"
 - Otto: invented "Meomi Pinot Noir- California-2021 Doluca Wine-"
-- Otto: invented "Cabernet Sauvignon- Turkish Doluca Wine-"
-- Otto: invented "Villa Doluca White Blend – Turkey"
 - Otto: invented "Shower Pilsner"
-- Otto: invented "Star Hill Pale Ale"
 - Otto: invented "Villa Doluca White"
 - Otto: invented "Vodka Crush"
 - Otto: invented "Full Nelson Pale Ale"
 - Otto: invented "Gin Lemon Crush"
-- Otto: invented "Hopwork Orange Blue Mountain IPA"
 - Otto: invented "Lamberti Prosecco"
 - Otto: invented "Sangria"
-- Otto: invented "Sauvignon Blanc"
 - Otto: invented "Sauvignon Blanc – Villa Maria- Marlborough, New Zealand 2021"
-- Otto: invented "Andre Brut Rosé – Spain"
-- Otto: invented "Andre Rose Brut"
-- Otto: invented "Bold Rock Cider"
-- Otto: invented "DB Hooray Juicy Wheat Ipa"
-- Otto: invented "Devils Backbone Vienna Lager"
 - Otto: invented "Missile Ipa"
-- Otto: invented "Efes Pilsener"
-- Otto: invented "Angora Red Blend – Turkey"
 - Otto: invented "Kavaklidere Turkish White Wine"
-- Otto: invented "Highnoon"
 - Otto: missed "Lemon Pepper Grilled Chicken"
 
 ## A3 — Review dish coverage

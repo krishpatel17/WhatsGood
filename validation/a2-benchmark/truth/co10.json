@@ -158,6 +158,46 @@
       "section": "Handspun Shakes",
       "name": "Chocolate Shake",
       "price": 7
+    },
+    {
+      "section": "Soft Drinks",
+      "name": "Coke",
+      "price": 3
+    },
+    {
+      "section": "Soft Drinks",
+      "name": "Diet Coke",
+      "price": 3
+    },
+    {
+      "section": "Soft Drinks",
+      "name": "Sprite",
+      "price": 3
+    },
+    {
+      "section": "Soft Drinks",
+      "name": "Ginger Ale",
+      "price": 3
+    },
+    {
+      "section": "Soft Drinks",
+      "name": "Root Beer",
+      "price": 3
+    },
+    {
+      "section": "Soft Drinks",
+      "name": "Lemonade",
+      "price": 3
+    },
+    {
+      "section": "Boylan Featured Cocktails | 21 & Up Only",
+      "name": "The Wahoo",
+      "price": 8
+    },
+    {
+      "section": "Boylan Featured Cocktails | 21 & Up Only",
+      "name": "Cavalier Crush",
+      "price": 8
     }
   ]
 }
