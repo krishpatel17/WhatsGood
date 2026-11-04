@@ -1,7 +1,7 @@
 // A3 review coverage: npm run coverage:a3 -w api
-//   ANTHROPIC_API_KEY, APIFY_TOKEN required; PROMPT_TAG defaults to prompts-alpha-v1
+//   APIFY_TOKEN, and ANTHROPIC_API_KEY or LLM_BRIDGE_URL, required (read from api/.dev.vars); PROMPT_TAG defaults to prompts-alpha-v1
 import { execFileSync } from "node:child_process";
-import { anthropicLlm } from "../src/llm/anthropic";
+import { selectLlm } from "../src/llm/select";
 import { runCoverage } from "../src/validation/coverage";
 import { checkPromptsFrozen } from "../src/validation/runner";
 
@@ -14,6 +14,6 @@ checkPromptsFrozen(tag, (args) => {
     return { ok: false, out: "" };
   }
 });
-const out = await runCoverage({ root, llm: anthropicLlm({ apiKey: process.env.ANTHROPIC_API_KEY }), fetch, apifyToken: process.env.APIFY_TOKEN, promptTag: tag });
+const out = await runCoverage({ root, llm: selectLlm({ apiKey: process.env.ANTHROPIC_API_KEY, bridgeUrl: process.env.LLM_BRIDGE_URL }), fetch, apifyToken: process.env.APIFY_TOKEN, promptTag: tag });
 console.table(out.restaurants);
 console.log("Next: fill in validation/a3-coverage/to-label.csv by hand and save it as labels.csv");

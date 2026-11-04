@@ -1,5 +1,6 @@
 // Node-only: A3, whether reviews mention specific dishes often enough to back picks with real quotes.
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { type LlmPath, llmPath } from "../llm/select";
 import type { Llm } from "../llm/types";
 import { storeMenu } from "../menu/import";
 import type { Dish } from "../menu/schema";
@@ -66,6 +67,7 @@ function latestA2Dishes(root: string, id: string): Dish[] | null {
 
 export type CoverageResults = {
   promptTag: string;
+  llmPath: LlmPath;
   restaurants: A3Restaurant[];
   predictedMentions: { restaurant_id: string; source_id: string; dish: string }[];
 };
@@ -115,7 +117,7 @@ export async function runCoverage(opts: { root: string; llm: Llm; fetch: typeof 
 
   const sample = sampleForLabeling(allReviews, 50, seed).map((r) => ({ ...r, dishes_mentioned: "", labeled_by: "" }));
   writeFileSync(outDir + "to-label.csv", toCsv(sample, ["source_id", "restaurant_id", "text", "dishes_mentioned", "labeled_by"]));
-  const results: CoverageResults = { promptTag, restaurants, predictedMentions };
+  const results: CoverageResults = { promptTag, llmPath: llmPath(llm), restaurants, predictedMentions };
   writeFileSync(outDir + "results.json", JSON.stringify(results, null, 2));
   return results;
 }

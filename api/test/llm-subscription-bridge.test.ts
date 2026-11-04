@@ -3,7 +3,11 @@ import { afterEach, describe, expect, it } from "vitest";
 import { z } from "zod";
 import { createBridge, toUserContent } from "../scripts/subscription-bridge";
 import { depsFromEnv } from "../src/app";
+import { MODEL } from "../src/llm/anthropic";
 import { bridgeLlm, isLoopbackUrl } from "../src/llm/bridge";
+import { llmPath, selectLlm } from "../src/llm/select";
+import { buildReport } from "../src/validation/report";
+import { readFileSync } from "node:fs";
 
 const schema = z.object({ picks: z.array(z.string()) });
 const answer = { data: { picks: ["Dan Dan Noodles"] }, raw: '{"picks":["Dan Dan Noodles"]}', usage: { input_tokens: 10, output_tokens: 5 } };
@@ -103,5 +107,37 @@ describe("Local subscription bridge", () => {
       { type: "text", text: 'Your previous answer was:\n{"picks":[]}' },
       { type: "text", text: "VALIDATION FAILED" },
     ]);
+  });
+
+  it("[ai] T9 unit: the bridge asks for the same model as the API path", async () => {
+    let body: Record<string, unknown> = {};
+    const llm = bridgeLlm({
+      url: "http://127.0.0.1:8790",
+      fetch: async (_url, init) => {
+        body = JSON.parse(String(init?.body));
+        return Response.json(answer);
+      },
+    });
+    await llm.json({ task: "t", system: "s", messages: [], schema });
+    expect(body.model).toBe(MODEL);
+  });
+
+  it("[ai] T10 unit: scripts and the Worker pick the path the same way, and name it", () => {
+    const bridge = selectLlm({ bridgeUrl: "http://127.0.0.1:8790" });
+    const api = selectLlm({ apiKey: "test" });
+    const remote = selectLlm({ apiKey: "test", bridgeUrl: "https://bridge.example.com" });
+    expect([llmPath(bridge), llmPath(api), llmPath(remote)]).toEqual(["claude-login-bridge", "anthropic-api", "anthropic-api"]);
+  });
+
+  it("[ai] T11 unit: the validation report says when a run used a Claude login", () => {
+    const a2 = { promptTag: "prompts-test", restaurants: [], bootstrap: { lo: 0, hi: 0 } };
+    expect(buildReport({ a1: null, a2: { ...a2, llmPath: "claude-login-bridge" }, a3: null } as never)).toContain("developer's Claude login");
+    expect(buildReport({ a1: null, a2: { ...a2, llmPath: "anthropic-api" }, a3: null } as never)).not.toContain("developer's Claude login");
+  });
+
+  it("[ai] T12 unit: the benchmark commands load api/.dev.vars", () => {
+    const { scripts } = JSON.parse(readFileSync("package.json", "utf8"));
+    expect(scripts.benchmark).toContain("--env-file-if-exists=.dev.vars");
+    expect(scripts["coverage:a3"]).toContain("--env-file-if-exists=.dev.vars");
   });
 });
