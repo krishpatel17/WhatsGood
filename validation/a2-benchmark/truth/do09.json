@@ -418,6 +418,41 @@
       "section": "Side Orders",
       "name": "Afghan Red Beans",
       "price": 7.95
+    },
+    {
+      "section": "Beverages",
+      "name": "Coffee",
+      "price": 2.99
+    },
+    {
+      "section": "Beverages",
+      "name": "Tea",
+      "price": 2.99
+    },
+    {
+      "section": "Beverages",
+      "name": "Soft Drinks",
+      "price": 2.99
+    },
+    {
+      "section": "Beverages",
+      "name": "Doogh",
+      "price": 4
+    },
+    {
+      "section": "Beverages",
+      "name": "Zafran Tea",
+      "price": 4
+    },
+    {
+      "section": "Beverages",
+      "name": "Rohabza Sharbat",
+      "price": 4
+    },
+    {
+      "section": "Beverages",
+      "name": "Dood Pati Chai",
+      "price": 4
     }
   ]
 }
