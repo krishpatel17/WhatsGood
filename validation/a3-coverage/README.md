@@ -11,6 +11,6 @@
 
 ## Hand check of the extraction (AC3)
 
-- `to-label.csv` is a seeded random sample of 50 reviews. Lara Mahajan labelled the dishes each one mentions, by hand and without seeing the model's output. Her labels are in `labels.csv`.
+- `to-label.csv` is a seeded random sample of 50 reviews. Shaunak Sinha labelled the dishes each one mentions, by hand and without seeing the model's output. His labels are in `labels.csv`.
 - Against those labels the model's extraction had **precision 78.9%** and **recall 71.4%**.
-- Lara Mahajan also copied and spot-checked the A2 menus, so one person did all the hand coding for the Alpha.
+- Hand work for the Alpha: Krish Patel copied the A2 menus, Shaunak Sinha spot-checked them and labelled these reviews, and Lara Mahajan checked the answer-key corrections. The team worked on one laptop, so the commits show a single account.
