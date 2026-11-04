@@ -19,7 +19,8 @@ const dish = (name: string, price: number) => ({ name, section: "Mains", price, 
 /** Answers with the dishes for whichever page the request carries. */
 function byPage(pages: Record<number, ReturnType<typeof dish>[] | "garbage">, gate?: { active: number; max: number; delayMs: number }) {
   return async (req: LlmRequest) => {
-    const page = Number(JSON.stringify(req.messages).match(/PAGE: (\d+) of/)?.[1] ?? 0);
+    // A single-page PDF is sent whole, with no page label: that is page 1.
+    const page = Number(JSON.stringify(req.messages).match(/PAGE: (\d+) of/)?.[1] ?? 1);
     if (gate) {
       gate.active++;
       gate.max = Math.max(gate.max, gate.active);
