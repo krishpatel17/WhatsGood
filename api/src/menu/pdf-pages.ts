@@ -24,6 +24,28 @@ export async function splitPdfPages(bytes: Uint8Array): Promise<Uint8Array[]> {
   }
 }
 
+/** Page count from the raw file's page objects, for PDFs pdf-lib can't parse. */
+export function pdfPageCount(bytes: Uint8Array): number {
+  let raw = "";
+  for (let i = 0; i < bytes.length; i += 0x8000) raw += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  return Math.max(1, (raw.match(/\/Type\s*\/Page(?![s\w])/g) ?? []).length);
+}
+
+/**
+ * What each page call is sent: its own single-page PDF when the file can be split, otherwise the
+ * whole PDF with an instruction to list only that page's dishes. One entry means "read it in one call".
+ */
+export async function pdfPageInputs(bytes: Uint8Array): Promise<{ bytes: Uint8Array; note: string }[]> {
+  const pages = await splitPdfPages(bytes);
+  if (pages.length > 1) return pages.map((p, i) => ({ bytes: p, note: `PAGE: ${i + 1} of ${pages.length}` }));
+  const count = pdfPageCount(bytes);
+  if (count <= 1) return [{ bytes, note: "" }];
+  return Array.from({ length: count }, (_, i) => ({
+    bytes,
+    note: `PAGE: ${i + 1} of ${count}. List only the dishes printed on page ${i + 1} of ${count}.`,
+  }));
+}
+
 /** Runs tasks with at most `limit` in flight, keeping results in input order. */
 export async function mapLimited<T, R>(items: T[], limit: number, fn: (item: T, index: number) => Promise<R>): Promise<R[]> {
   const out = new Array<R>(items.length);
