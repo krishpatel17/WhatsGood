@@ -109,3 +109,11 @@ describe("US-20 report from the repository's data files", () => {
     expect(a2.bootstrap.lo).toBe(1);
   });
 });
+
+describe("US-20 report: which importer ran", () => {
+  it("[ai] AC7 unit: the A2 section names the importer version, so v1 and v2 runs can't be confused", () => {
+    const a2 = { promptTag: "t", importer: "v2-render", restaurants: [], bootstrap: { lo: 0, hi: 0 } };
+    expect(buildReport({ a1: null, a2, a3: null })).toContain("Importer: v2 (JavaScript pages rendered in a local browser before import)");
+    expect(buildReport({ a1: null, a2: { ...a2, importer: "v1" }, a3: null })).toContain("Importer: v1 (plain download)");
+  });
+});
