@@ -4,13 +4,11 @@
 
 - **A1 Sources exist: PASS** — 25/30 restaurants have a readable menu source (83.3%, 95% CI [0.653, 0.944]); threshold >= 24/30
 - **A2 Import works: FAIL** — 0/10 restaurants imported easily (95% CI [0.000, 0.308]); dish-accuracy bootstrap lower bound 0.0%; thresholds >= 8/10 and >= 90%
-- **A3 Reviews mention dishes: NOT RUN YET**
+- **A3 Reviews mention dishes: PASS** — 9/10 restaurants have at least 3 dishes with >= 3 matched mentions (95% CI [0.555, 0.997]); threshold >= 8/10
 
 ### Pivot
 
 - A2 failed: Narrow import to the source types that passed and move the rest to the Beta.
-
-Still to run: A3. The verdict is final only when all three have results.
 
 ## A1 — Menu source availability
 
@@ -564,3 +562,20 @@ Prompts frozen at `prompts-alpha-v1`. Dish-accuracy cluster bootstrap (10,000 re
 - Otto: missed "Baklava (Contains Nuts, Gluten &Dairy))"
 - Otto: missed "Customize Your Family Plan"
 - Otto: missed "Lemon Pepper Grilled Chicken"
+
+## A3 — Review dish coverage
+
+Extraction against the hand-labeled sample: precision 78.9%, recall 71.4%.
+
+| Restaurant | Reviews | Dishes >=1 | >=3 | >=10 | Enough for top 3 |
+|---|---|---|---|---|---|
+| The Virginian | 202 | 30 | 13 | 2 | yes |
+| Sedona Taphouse | 210 | 42 | 13 | 0 | yes |
+| El Puerto Mexican Restaurant | 186 | 27 | 3 | 0 | yes |
+| Afghan Kabob House | 228 | 42 | 15 | 2 | yes |
+| The Whiskey Jar | 212 | 40 | 19 | 0 | yes |
+| Marco and Luca | 424 | 18 | 10 | 5 | yes |
+| Crozet Pizza at Buddhist Biker Bar | 147 | 12 | 1 | 0 | no |
+| Boylan Heights | 166 | 12 | 5 | 0 | yes |
+| Revolutionary Soup | 201 | 25 | 14 | 1 | yes |
+| Otto | 235 | 26 | 12 | 1 | yes |
