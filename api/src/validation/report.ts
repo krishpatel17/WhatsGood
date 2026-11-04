@@ -3,6 +3,12 @@ import { judgeA1, judgeA2, judgeA3, type Judgement, verdict } from "./verdict";
 
 export type A1Input = { readable: number; n: number; bySourceType: Record<string, number> };
 export type A2Restaurant = { id: string; name: string; tier: string; sourceType: string; seconds: number; retries: number; manualFixes: number; score: MenuScore; pass: boolean };
+const IMPORTERS: Record<string, string> = {
+  v1: "v1 (plain download)",
+  "v2-render": "v2 (JavaScript pages rendered in a local browser before import)",
+  v3: 'v3 (v2 plus add-ons such as "Extra sauce" left out, by the answer keys\' rule)',
+};
+
 export type A2Input = { promptTag: string; llmPath?: string; importer?: string; restaurants: A2Restaurant[]; bootstrap: { lo: number; hi: number } };
 export type A3Restaurant = { id: string; name: string; reviews: number; atLeast1: number; atLeast3: number; atLeast10: number; enough: boolean };
 export type A3Input = { restaurants: A3Restaurant[]; precision: number | null; recall: number | null };
@@ -51,7 +57,7 @@ export function buildReport(input: { a1: A1Input | null; a2: A2Input | null; a3:
     out.push(
       "## A2 — Menu import benchmark",
       "",
-      `Prompts frozen at \`${input.a2.promptTag}\`. Importer: ${input.a2.importer === "v2-render" ? "v2 (JavaScript pages rendered in a local browser before import)" : "v1 (plain download)"}. Dish-accuracy cluster bootstrap (10,000 resamples of restaurants): 95% interval [${pct(input.a2.bootstrap.lo)}, ${pct(input.a2.bootstrap.hi)}].${input.a2.llmPath === "claude-login-bridge" ? " Deviation: model calls went through a developer's Claude login with the local bridge rather than the API, so seconds include the CLI's overhead and token costs are not meaningful." : ""}`,
+      `Prompts frozen at \`${input.a2.promptTag}\`. Importer: ${IMPORTERS[input.a2.importer ?? "v1"] ?? IMPORTERS.v1}. Dish-accuracy cluster bootstrap (10,000 resamples of restaurants): 95% interval [${pct(input.a2.bootstrap.lo)}, ${pct(input.a2.bootstrap.hi)}].${input.a2.llmPath === "claude-login-bridge" ? " Deviation: model calls went through a developer's Claude login with the local bridge rather than the API, so seconds include the CLI's overhead and token costs are not meaningful." : ""}`,
       "",
       "| Restaurant | Tier | Source | Accuracy | Invented | Missed | Seconds | Retries | Pass |",
       "|---|---|---|---|---|---|---|---|---|",

@@ -3,6 +3,7 @@ import { type Db, newId, nowIso } from "../db";
 import type { Llm, LlmContent, LlmMessage, LlmUsage } from "../llm/types";
 import { MENU_IMPORT_SYSTEM } from "../prompts/menu-import";
 import { type FetchedSource, fetchSource, sourceContent, textOf } from "./fetcher";
+import { isAddOn } from "./add-ons";
 import { fetchMenuImages, findPageImages } from "./page-images";
 import { mapLimited, PDF_PAGE_CONCURRENCY, pdfPageInputs } from "./pdf-pages";
 import { MIN_PRICES, priceCount } from "./render";
@@ -141,8 +142,9 @@ export async function importMenu(deps: ImportDeps, input: { restaurantId: string
   const log = attemptLogger(deps.db, input.restaurantId, input.url);
   const pages = src.kind === "pdf" ? await pdfPageInputs(src.bytes) : [];
   const run = pages.length > 1 ? await extractPdfPages(deps.llm, src, pages, check, log) : await extractWithRetry(deps.llm, [...images, ...sourceContent(src)], check, log);
-  const status = run.menu ? "active" : "needs_review";
-  const dishes = run.menu?.dishes ?? [];
+  // Add-ons the model listed ("Extra sauce") are not dishes on their own.
+  const dishes = (run.menu?.dishes ?? []).filter((d) => !isAddOn(d.name));
+  const status = dishes.length ? "active" : "needs_review";
   const menuId = await storeMenu(deps.db, {
     restaurantId: input.restaurantId,
     sourceUrl: input.url,

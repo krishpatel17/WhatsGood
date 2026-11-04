@@ -3,7 +3,7 @@
 ## Verdict: Invalidated
 
 - **A1 Sources exist: PASS** — 25/30 restaurants have a readable menu source (83.3%, 95% CI [0.653, 0.944]); threshold >= 24/30
-- **A2 Import works: FAIL** — 3/10 restaurants imported easily (95% CI [0.067, 0.652]); dish-accuracy bootstrap lower bound 60.5%; thresholds >= 8/10 and >= 90%
+- **A2 Import works: FAIL** — 5/10 restaurants imported easily (95% CI [0.187, 0.813]); dish-accuracy bootstrap lower bound 60.3%; thresholds >= 8/10 and >= 90%
 - **A3 Reviews mention dishes: PASS** — 9/10 restaurants have at least 3 dishes with >= 3 matched mentions (95% CI [0.555, 0.997]); threshold >= 8/10
 
 ### Pivot
@@ -22,32 +22,32 @@
 
 ## A2 — Menu import benchmark
 
-Prompts frozen at `prompts-alpha-v1`. Importer: v2 (JavaScript pages rendered in a local browser before import). Dish-accuracy cluster bootstrap (10,000 resamples of restaurants): 95% interval [60.5%, 99.6%]. Deviation: model calls went through a developer's Claude login with the local bridge rather than the API, so seconds include the CLI's overhead and token costs are not meaningful.
+Prompts frozen at `prompts-alpha-v1`. Importer: v3 (v2 plus add-ons such as "Extra sauce" left out, by the answer keys' rule). Dish-accuracy cluster bootstrap (10,000 resamples of restaurants): 95% interval [60.3%, 98.4%]. Deviation: model calls went through a developer's Claude login with the local bridge rather than the API, so seconds include the CLI's overhead and token costs are not meaningful.
 
 | Restaurant | Tier | Source | Accuracy | Invented | Missed | Seconds | Retries | Pass |
 |---|---|---|---|---|---|---|---|---|
-| The Virginian | medium | pdf | 100.0% | 0 | 0 | 28.8 | 0 | yes |
-| Sedona Taphouse | medium | pdf | 100.0% | 9 | 0 | 66.1 | 0 | no |
-| El Puerto Mexican Restaurant | medium | pdf | 77.0% | 108 | 45 | 69.5 | 0 | no |
-| Afghan Kabob House | medium | html | 100.0% | 0 | 0 | 74.4 | 0 | yes |
-| The Whiskey Jar | medium | html | 100.0% | 0 | 0 | 74.7 | 0 | yes |
-| Marco and Luca | hard | image-on-site | 100.0% | 1 | 0 | 24.7 | 0 | no |
-| Crozet Pizza at Buddhist Biker Bar | hard | ordering-page | 0.0% | 0 | 74 | 30.1 | 0 | no |
-| Boylan Heights | hard | ordering-page | 100.0% | 1 | 0 | 67.3 | 0 | no |
-| Revolutionary Soup | hard | ordering-page | 51.4% | 0 | 17 | 30.8 | 0 | no |
-| Otto | hard | ordering-page | 98.6% | 13 | 1 | 74.7 | 0 | no |
+| The Virginian | medium | pdf | 100.0% | 0 | 0 | 44.9 | 0 | yes |
+| Sedona Taphouse | medium | pdf | 96.9% | 10 | 4 | 62.0 | 0 | no |
+| El Puerto Mexican Restaurant | medium | pdf | 77.0% | 108 | 45 | 65.7 | 0 | no |
+| Afghan Kabob House | medium | html | 100.0% | 0 | 0 | 70.0 | 0 | yes |
+| The Whiskey Jar | medium | html | 100.0% | 0 | 0 | 71.3 | 0 | yes |
+| Marco and Luca | hard | image-on-site | 100.0% | 0 | 0 | 23.7 | 0 | yes |
+| Crozet Pizza at Buddhist Biker Bar | hard | ordering-page | 0.0% | 0 | 74 | 30.2 | 0 | no |
+| Boylan Heights | hard | ordering-page | 100.0% | 0 | 0 | 53.5 | 0 | yes |
+| Revolutionary Soup | hard | ordering-page | 51.4% | 0 | 17 | 37.3 | 0 | no |
+| Otto | hard | ordering-page | 98.6% | 13 | 1 | 82.4 | 0 | no |
 
 | Tier | Passed |
 |---|---|
 | medium | 3/5 |
-| hard | 0/5 |
+| hard | 2/5 |
 
 | Source type | Passed |
 |---|---|
 | pdf | 1/3 |
 | html | 2/2 |
-| image-on-site | 0/1 |
-| ordering-page | 0/4 |
+| image-on-site | 1/1 |
+| ordering-page | 1/4 |
 
 ### Invented and missed dishes
 
@@ -60,6 +60,11 @@ Prompts frozen at `prompts-alpha-v1`. Importer: v2 (JavaScript pages rendered in
 - Sedona Taphouse: invented "Marsala"
 - Sedona Taphouse: invented "Wild Man"
 - Sedona Taphouse: invented "Citrus Tomato Garlic Sauce"
+- Sedona Taphouse: invented "Chardonnay | Pinot Grigio | Pinot Noir | Cabernet Sauvignon"
+- Sedona Taphouse: missed "Chardonnay"
+- Sedona Taphouse: missed "Pinot Grigio"
+- Sedona Taphouse: missed "Pinot Noir"
+- Sedona Taphouse: missed "Cabernet Sauvignon"
 - El Puerto Mexican Restaurant: invented "Soft Shell"
 - El Puerto Mexican Restaurant: invented "Hard Shell"
 - El Puerto Mexican Restaurant: invented "Beef"
@@ -213,7 +218,6 @@ Prompts frozen at `prompts-alpha-v1`. Importer: v2 (JavaScript pages rendered in
 - El Puerto Mexican Restaurant: missed "Combination Dinner #29"
 - El Puerto Mexican Restaurant: missed "Combination Dinner #30"
 - El Puerto Mexican Restaurant: missed "Combination Dinner #31"
-- Marco and Luca: invented "Extra Sauce"
 - Crozet Pizza at Buddhist Biker Bar: missed "Garlic Knots"
 - Crozet Pizza at Buddhist Biker Bar: missed "Buddha Belly"
 - Crozet Pizza at Buddhist Biker Bar: missed "Hummus Plate"
@@ -288,7 +292,6 @@ Prompts frozen at `prompts-alpha-v1`. Importer: v2 (JavaScript pages rendered in
 - Crozet Pizza at Buddhist Biker Bar: missed "LRG Southern Thing"
 - Crozet Pizza at Buddhist Biker Bar: missed "LRG Special"
 - Crozet Pizza at Buddhist Biker Bar: missed "LRG Veggie"
-- Boylan Heights: invented "Extra sauce"
 - Revolutionary Soup: missed "Curried Chicken Salad"
 - Revolutionary Soup: missed "Greek Salad"
 - Revolutionary Soup: missed "Gulf Coast Salad"

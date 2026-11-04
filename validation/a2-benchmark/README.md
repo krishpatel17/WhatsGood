@@ -111,3 +111,30 @@ Score history:
 | v1 after the first key correction | 3/10 |
 | v2 | 2/10 |
 | v2 after this correction | 3/10 |
+
+## A2 v3: add-ons left out (2026-11-04)
+
+After the corrected v2 score, the only error left on Marco and Luca and Boylan Heights was "Extra sauce". The copying rules leave add-ons out of the answer keys, and the converter has done that with one rule since US-18. The importer never applied that rule.
+
+v3 moves the rule to `api/src/menu/add-ons.ts` and uses it in both places. The rule itself is unchanged: we did not widen it to catch Sedona's toppings, because that would also remove real dishes from the keys. Prompts are unchanged at `prompts-alpha-v1`.
+
+This fix was chosen after seeing the v2 results. It is a general importer change, but it is still post-hoc.
+
+`npm run benchmark -w api -- --render` re-ran all 11 menus with fresh model calls. The answer keys are the same as for the corrected v2 score. **Result: 5/10 imported easily (still FAIL).**
+
+- **Pass:** The Virginian, Afghan Kabob House, The Whiskey Jar, Marco and Luca, Boylan Heights.
+- **Sedona (96.9%):** still lists its 8 sauce and butter toppings and "Seasonal Catch". This run also merged four wines into one line.
+- **Otto (98.6%):** still lists 13 drinks Lara confirmed are not on its menu.
+- **Unchanged:** El Puerto (77.0%), Revolutionary Soup (51.4%) and Crozet Pizza (Toast blocks it, HTTP 403).
+
+Score history:
+
+| Run | Score |
+|---|---|
+| v1 | 0/10 |
+| v1 after the first key correction | 3/10 |
+| v2 | 2/10 |
+| v2 after the second key correction | 3/10 |
+| v3 | 5/10 |
+
+The pass rule and thresholds were never changed.
