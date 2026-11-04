@@ -61,3 +61,22 @@ Because this correction came after seeing the v1 output, the report states both 
 ## Deviation: the demo restaurants
 
 `manifest.json` names Miller's Downtown (`do12`) as the easy demo restaurant. Its menu loads with JavaScript, and it imported 0 dishes in the benchmark. The manifest stays as it was committed before any run. For the live demo, `validation/demo-restaurants.json` uses The Alley Light (`do05`) instead, plus four menus that are text or PDF: Afghan Kabob House, The Whiskey Jar, The Virginian and The Bebedero. The Alley Light and The Bebedero are not among the 10 scored restaurants. Bodo's Bagels was dropped because its link pointed only at a cream-cheese sub-page.
+
+## A2 v2: importer fixes (2026-11-04)
+
+After v1, the importer got three general fixes, all with prompts unchanged at `prompts-alpha-v1`:
+- JavaScript ordering pages are rendered in a local browser before import.
+- Long PDFs are read page by page. Sedona's malformed PDF is sent whole once per page with "list only the dishes printed on page i of n".
+- Image-only pages send their largest images to the vision model.
+
+`npm run benchmark -w api -- --render` ran all 11 menus. **Result: 2/10 imported easily (FAIL).**
+
+- **Every menu except Crozet Pizza imported** (Toast still blocks the browser, HTTP 403). In v1 only 3 did.
+- Afghan Kabob House and The Whiskey Jar pass.
+- Sedona (100% of its key), Boylan Heights (100%) and Otto (97.7%) fail only because the model also listed items that aren't in the hand-copied key: 69, 9 and 42 items, which look like a second PDF page and drinks.
+- The Virginian falls to 88.7%. Reading page by page found bar specials not in the key, and listed the wines with their winery ("VIOGNIER - Eastwood Farm and Winery"), which the name matcher does not equate with "VIOGNIER".
+- El Puerto: 77.0%, with many naming differences across 200 dishes.
+- Revolutionary Soup: 51.4%; only part of the rendered page was read.
+- Marco and Luca: 0%. The image the benchmark reads has no prices, but its key was copied with prices from another source.
+
+Nobody has checked these extra items against the sources yet. The pass rule and thresholds were not changed.
