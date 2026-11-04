@@ -74,3 +74,18 @@ describe("US-19 Benchmark runner", () => {
     expect(out.restaurants[0]).toMatchObject({ status: "failed", failure: expect.stringMatching(/404/) });
   });
 });
+
+describe("US-19 Benchmark runner: which importer ran", () => {
+  it("[ai] AC1 integration: the results record the importer version (v1 plain download, v2 rendered pages)", async () => {
+    const root = fixtureRoot();
+    try {
+      const pages = { "https://aa.example/menu": { body: html, contentType: "text/html" }, "https://bb.example/menu": { body: html, contentType: "text/html" } };
+      const v1 = await runBenchmark({ root, llm: mockLlm([easyMenu, easyMenu]), fetch: fakeFetch(pages), promptTag: "t", timeoutMs: 5000 });
+      expect(v1.importer).toBe("v1");
+      const v2 = await runBenchmark({ root, llm: mockLlm([easyMenu, easyMenu]), fetch: fakeFetch(pages), promptTag: "t", timeoutMs: 5000, importer: "v2-render" });
+      expect(v2.importer).toBe("v2-render");
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+});
