@@ -9,7 +9,9 @@ const sh = (cmd, args, cwd) => spawnSync(cmd, args, { cwd, encoding: "utf8", max
 const stories = new Set(readFileSync("PLAN.md", "utf8").match(/\| US-\d{2} \|/g).map((s) => s.slice(2, 7)));
 
 // Issues in the Alpha milestone
-const issues = JSON.parse(execFileSync("gh", ["issue", "list", "--milestone", "Alpha", "--state", "all", "--limit", "200", "--json", "number,state"], { encoding: "utf8" }));
+// The repo was renamed; ask GitHub for its current name instead of trusting the local remote.
+const repo = execFileSync("gh", ["repo", "view", "--json", "nameWithOwner", "-q", ".nameWithOwner"], { encoding: "utf8" }).trim();
+const issues = JSON.parse(execFileSync("gh", ["issue", "list", "-R", repo, "--milestone", "Alpha", "--state", "all", "--limit", "200", "--json", "number,state"], { encoding: "utf8" }));
 const closed = issues.filter((i) => i.state === "CLOSED").length;
 
 // Unit and integration tests (vitest JSON reporter)
