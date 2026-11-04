@@ -7,6 +7,7 @@ const IMPORTERS: Record<string, string> = {
   v1: "v1 (plain download)",
   "v2-render": "v2 (JavaScript pages rendered in a local browser before import)",
   v3: 'v3 (v2 plus add-ons such as "Extra sauce" left out, by the answer keys\' rule)',
+  v4: "v4 (v3 plus pages scrolled a screen at a time, and unpriced ordering-site items left out)",
 };
 
 export type A2Input = { promptTag: string; llmPath?: string; importer?: string; restaurants: A2Restaurant[]; bootstrap: { lo: number; hi: number } };

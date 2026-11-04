@@ -116,5 +116,6 @@ describe("US-20 report: which importer ran", () => {
     expect(buildReport({ a1: null, a2, a3: null })).toContain("Importer: v2 (JavaScript pages rendered in a local browser before import)");
     expect(buildReport({ a1: null, a2: { ...a2, importer: "v1" }, a3: null })).toContain("Importer: v1 (plain download)");
     expect(buildReport({ a1: null, a2: { ...a2, importer: "v3" }, a3: null })).toContain("Importer: v3 (v2 plus add-ons such as \"Extra sauce\" left out, by the answer keys' rule)");
+    expect(buildReport({ a1: null, a2: { ...a2, importer: "v4" }, a3: null })).toContain("Importer: v4 (v3 plus pages scrolled a screen at a time, and unpriced ordering-site items left out)");
   });
 });

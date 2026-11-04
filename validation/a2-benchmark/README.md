@@ -138,3 +138,33 @@ Score history:
 | v3 | 5/10 |
 
 The pass rule and thresholds were never changed.
+
+## A2 v4: full ordering pages, unpriced ordering items left out (2026-11-04)
+
+v4 adds two general importer fixes. Both were chosen after seeing v3, so they are post-hoc. Prompts are unchanged.
+
+1. **Scrolling.** The renderer scrolls one screen at a time until the page stops growing. Before, it made 8 big jumps that skipped lazy sections; Revolutionary Soup's salads, burgers, bowls, quesadillas, combos and drinks never loaded. See `api/src/menu/scroll.ts`.
+2. **Unpriced items on ordering sites.** On an ordering site every orderable item shows a price, so an item with no price is sold out or unavailable and is left out. All 13 of Otto's "invented" items were marked Sold Out with no price. Clover, Otto's ordering site, was added to the list of ordering sites; the A1 survey already classed Otto as an ordering page. No ordering-page answer key has an unpriced item.
+
+`npm run benchmark -w api -- --render` re-ran all 11 menus with fresh model calls, against the same keys as v3. **Result: 5/10 imported easily (still FAIL).**
+
+- **Pass:** Afghan Kabob House, The Whiskey Jar, Marco and Luca, Boylan Heights, Otto (98.6%, 0 invented).
+- **Revolutionary Soup:** went from 51.4% to 100% of its key. It fails on 7 items the old page never showed and the key does not have: six priced drinks and "Dressing and sauces 2oz". Nobody has checked these against the menu.
+- **The Virginian** passed in v3 and fails in v4 (89.0%):
+  - This run named the wines without their winery ("VIOGNIER"). v2 named them with it, and the key now does too, so the name matcher misses them.
+  - This run also split "Juices" into four flavours.
+  - This is run-to-run variation in the model's output, not a change in the importer.
+- **Sedona** (100% of its key, 9 toppings), **El Puerto** (92.5%, up from 77.0%) and **Crozet Pizza** (blocked) still fail.
+
+Score history:
+
+| Run | Score |
+|---|---|
+| v1 | 0/10 |
+| v1 after the first key correction | 3/10 |
+| v2 | 2/10 |
+| v2 after the second key correction | 3/10 |
+| v3 | 5/10 |
+| v4 | 5/10 |
+
+Seven different menus have passed in at least one of v3 and v4, but never more than five in one run. The pass rule and thresholds were never changed.

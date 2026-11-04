@@ -27,7 +27,7 @@ const results = await runBenchmark({
   llm: selectLlm({ apiKey: process.env.ANTHROPIC_API_KEY, bridgeUrl: process.env.LLM_BRIDGE_URL }),
   fetch: render && !fromSnapshots ? renderingFetch(baseFetch, render) : baseFetch,
   promptTag: tag,
-  importer: render ? "v3" : "v1",
+  importer: render ? "v4" : "v1",
 });
 await render?.close();
 for (const r of results.restaurants) {
