@@ -6,6 +6,7 @@ import type { CoverageResults } from "./coverage";
 import { precisionRecall } from "./coverage";
 import type { A1Input, A2Input, A3Input } from "./report";
 import type { BenchmarkResults } from "./runner";
+import { isFoodDish } from "./food-only";
 import { a2Passes, scoreMenu } from "./score";
 import { clusterBootstrap } from "./stats";
 import { isReadable, parseSurvey } from "./survey";
@@ -22,11 +23,13 @@ export function a1FromSurvey(root: string): A1Input | null {
 
 /** Scores benchmark results against the hand-copied menus. Only medium-hard restaurants with a correct menu count. */
 export function scoreA2(results: BenchmarkResults, truths: Map<string, Truth>, names: Map<string, string>): A2Input {
-  const restaurants = results.restaurants
+  const score = (foodOnly: boolean) =>
+    results.restaurants
     .filter((r) => r.tier !== "easy" && truths.has(r.id))
     .map((r) => {
-      const truth = truths.get(r.id)!.dishes.map((d) => ({ ...d, description: null, tags: [] }));
-      const score = scoreMenu(r.dishes, truth);
+      const keep = <T extends { name: string; section: string }>(ds: T[]) => (foodOnly ? ds.filter(isFoodDish) : ds);
+      const truth = keep(truths.get(r.id)!.dishes).map((d) => ({ ...d, description: null, tags: [] }));
+      const score = scoreMenu(keep(r.dishes), truth);
       const manualFixes = 0;
       return {
         id: r.id,
@@ -40,8 +43,9 @@ export function scoreA2(results: BenchmarkResults, truths: Map<string, Truth>, n
         pass: r.status === "active" && a2Passes({ accuracy: score.accuracy, invented: score.invented, seconds: r.seconds, manualFixes }),
       };
     });
+  const restaurants = score(false);
   const boot = clusterBootstrap(restaurants.map((r) => ({ correct: r.score.correct, total: r.score.truthCount })), { resamples: 10_000 });
-  return { promptTag: results.promptTag, llmPath: results.llmPath, importer: results.importer ?? "v1", restaurants, bootstrap: { lo: boot.lo, hi: boot.hi } };
+  return { promptTag: results.promptTag, llmPath: results.llmPath, importer: results.importer ?? "v1", restaurants, foodOnly: score(true), bootstrap: { lo: boot.lo, hi: boot.hi } };
 }
 
 function latestJson<T>(dir: string): T | null {
