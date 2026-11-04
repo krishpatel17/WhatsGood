@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { PDFDocument } from "pdf-lib";
 import { importMenu } from "../src/menu/import";
-import { splitPdfPages, PDF_PAGE_CONCURRENCY } from "../src/menu/pdf-pages";
+import { splitPdfPages, PDF_PAGE_CONCURRENCY, pdfPageCount } from "../src/menu/pdf-pages";
 import { createRestaurant } from "../src/restaurants/repo";
 import type { LlmRequest } from "../src/llm/types";
 import { testDb } from "./helpers/db";
@@ -87,5 +87,21 @@ describe("US-03 Import a menu: long PDFs are read page by page (A2 v2)", () => {
     const llm = mockLlm([answer]);
     expect(await run(await pdfWithPages(1), llm)).toMatchObject({ status: "active", dishCount: 1 });
     expect(llm.calls).toHaveLength(1);
+  });
+
+  it("[ai] AC1 integration: a multi-page PDF that can't be split is sent whole once per page, each call asked for one page only", async () => {
+    // Malformed: pdf-lib can't parse it, but the raw file marks two pages.
+    const broken = new TextEncoder().encode("%PDF-1.4\n1 0 obj << /Type /Page >> endobj\n2 0 obj << /Type /Page >> endobj\n%%EOF");
+    expect(await splitPdfPages(broken)).toHaveLength(1);
+    expect(pdfPageCount(broken)).toBe(2);
+    const answer = byPage({ 1: [dish("Ahi Tuna", 16.9)], 2: [dish("Cheeseburger", 14.9)] });
+    const llm = mockLlm([answer, answer]);
+    expect(await run(broken, llm)).toMatchObject({ status: "active", dishCount: 2 });
+    expect(llm.calls).toHaveLength(2);
+    for (const call of llm.calls) {
+      const sent = JSON.stringify(call.messages);
+      expect(sent).toContain('"type":"pdf"');
+      expect(sent).toMatch(/List only the dishes printed on page \d of 2/);
+    }
   });
 });
