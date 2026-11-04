@@ -54,9 +54,108 @@ describe("US-10 Guardrail: restrictions and budget", () => {
 
   it("[ai] T5 unit: output text containing 'safe' or 'allergen-free' fails validation", () => {
     const p = profile({ allergies: ["peanut"] });
-    expect(checkRestrictions([pick("Cumin Lamb Noodles", "Safe for your peanut allergy.")], [lamb], p)).toEqual(['item[0] "Cumin Lamb Noodles" reason says "safe"']);
+    expect(checkRestrictions([pick("Cumin Lamb Noodles", "Safe for your peanut allergy.")], [lamb], p)).toEqual([
+      'item[0] "Cumin Lamb Noodles" reason names "peanut", which conflicts with user allergy: peanut. If the dish contains it, pick another dish',
+      'item[0] "Cumin Lamb Noodles" reason says "safe"',
+    ]);
     expect(checkRestrictions([pick("Cumin Lamb Noodles", "Totally allergen-free!")], [lamb], p)).toEqual(['item[0] "Cumin Lamb Noodles" reason says "allergen-free"']);
     expect(checkRestrictions([pick("Cumin Lamb Noodles", "Spicy and fragrant.")], [lamb], p)).toEqual([]);
+  });
+
+  it("[ai] T10 unit: a reason naming a conflicting ingredient fails validation and names the word", () => {
+    expect(checkRestrictions([pick("Chef's Special", "Topped with crispy bacon.")], [special], profile({ diets: ["vegetarian"] }))).toEqual([
+      'item[0] "Chef\'s Special" reason names "bacon", which conflicts with user diet: vegetarian. If the dish contains it, pick another dish',
+    ]);
+    expect(checkRestrictions([pick("Chef's Special", "Rich peanut sauce.")], [special], profile({ allergies: ["peanut"] }))).toEqual([
+      'item[0] "Chef\'s Special" reason names "peanut", which conflicts with user allergy: peanut. If the dish contains it, pick another dish',
+    ]);
+    // Accents don't hide a word.
+    expect(checkRestrictions([pick("Chef's Special", "Loaded with camarón.")], [special], profile({ allergies: ["shellfish"] }))).toHaveLength(1);
+  });
+
+  it("[ai] T11 unit: a reason's ingredient only fails for a diner it conflicts with", () => {
+    const reason = "Topped with crispy bacon.";
+    expect(checkRestrictions([pick("Chef's Special", reason)], [special], profile({}))).toEqual([]);
+    expect(checkRestrictions([pick("Chef's Special", reason)], [special], profile({ allergies: ["peanut"], diets: ["no_beef"] }))).toEqual([]);
+  });
+
+  it("[ai] T12 unit: saying a dish lacks the ingredient still fails, since that is a safety claim", () => {
+    expect(checkRestrictions([pick("Chef's Special", "No pork in sight.")], [special], profile({ diets: ["no_pork"] }))).toHaveLength(1);
+    expect(checkRestrictions([pick("Chef's Special", "A pork-free favorite.")], [special], profile({ diets: ["no_pork"] }))).toHaveLength(1);
+  });
+
+  it("[ai] T13 unit: a plant-based dish can say burger, and only the dish's own words make it plant-based", () => {
+    const vegetarian = profile({ diets: ["vegetarian"] });
+    const veggie = dish("Veggie Burger", ["soy"]);
+    expect(checkRestrictions([pick("Veggie Burger", "The best burger in town.")], [veggie], vegetarian)).toEqual([]);
+    expect(checkRestrictions([pick("Chef's Special", "The best burger in town.")], [special], vegetarian)).toHaveLength(1);
+    expect(checkRestrictions([pick("Chef's Special", "A burger beyond compare.")], [special], vegetarian)).toHaveLength(1);
+  });
+
+  it("[ai] T14 unit: 'tender' as an adjective is not chicken tenders", () => {
+    const vegetarian = profile({ diets: ["vegetarian"] });
+    expect(checkRestrictions([pick("Chef's Special", "Tender eggplant in a bright sauce.")], [special], vegetarian)).toEqual([]);
+    expect(checkRestrictions([pick("Chef's Special", "Crispy tenders.")], [special], vegetarian)).toHaveLength(1);
+  });
+
+  it("[ai] T15 unit: added words conflict in a reason and in a dish's own name", () => {
+    const cases: [string, Partial<Profile>][] = [
+      ["cheesy", { allergies: ["dairy"] }],
+      ["buttery", { diets: ["dairy_free"] }],
+      ["paneer", { allergies: ["dairy"] }],
+      ["pesto", { allergies: ["dairy"] }],
+      ["pesto", { allergies: ["tree_nut"] }],
+      ["nutty", { allergies: ["tree_nut"] }],
+      ["nutty", { allergies: ["peanut"] }],
+      ["satay", { allergies: ["peanut"] }],
+      ["naan", { allergies: ["gluten"] }],
+      ["tempura", { diets: ["gluten_free"] }],
+      ["seitan", { allergies: ["gluten"] }],
+      ["couscous", { allergies: ["gluten"] }],
+      ["flour tortilla", { allergies: ["gluten"] }],
+      ["aioli", { allergies: ["egg"] }],
+      ["mayo", { allergies: ["egg"] }],
+      ["miso", { allergies: ["soy"] }],
+      ["lard", { diets: ["no_pork"] }],
+      ["gelatin", { diets: ["vegetarian"] }],
+      ["gelatin", { diets: ["halal"] }],
+      ["foie gras", { diets: ["vegetarian"] }],
+      ["goose", { diets: ["pescatarian"] }],
+      ["sushi", { allergies: ["fish"] }],
+      ["from the sea", { allergies: ["fish"] }],
+      ["from the sea", { allergies: ["shellfish"] }],
+      ["seafood", { allergies: ["fish"] }],
+      ["pig", { diets: ["no_pork"] }],
+      ["red wine", { diets: ["halal"] }],
+      ["beer", { diets: ["halal"] }],
+      ["bourbon", { diets: ["halal"] }],
+      ["sake", { diets: ["halal"] }],
+    ];
+    for (const [word, p] of cases) {
+      expect(checkRestrictions([pick("Chef's Special", `Great with ${word}.`)], [special], profile(p)), word).toHaveLength(1);
+      expect(dishConflicts(dish(`House ${word}`, []), profile(p)), word).toHaveLength(1);
+    }
+  });
+
+  it("[ai] T16 unit: lookalikes of the added words do not conflict", () => {
+    const cases: [string, Partial<Profile>][] = [
+      ["root beer", { diets: ["halal"] }],
+      ["root-beer float", { diets: ["halal"] }],
+      ["shrimp cocktail", { diets: ["halal"] }],
+      ["ginger ale", { diets: ["halal"] }],
+      ["ginger", { diets: ["halal"] }],
+      ["aleppo pepper", { diets: ["halal"] }],
+      ["corn flour", { allergies: ["gluten"] }],
+      ["rice flour", { allergies: ["gluten"] }],
+      ["flourless", { allergies: ["gluten"] }],
+    ];
+    for (const [word, p] of cases) {
+      expect(checkRestrictions([pick("Chef's Special", `Great with ${word}.`)], [special], profile(p)), word).toEqual([]);
+      expect(dishConflicts(dish(`House ${word}`, []), profile(p)), word).toEqual([]);
+    }
+    expect(checkRestrictions([pick("Chef's Special", "Worth ordering for the sake of the sauce.")], [special], profile({ diets: ["halal"] }))).toEqual([]);
+    // Sushi usually has fish, but a plant-based roll says so.
+    expect(dishConflicts(dish("Veggie Sushi", []), profile({ allergies: ["fish"] }))).toEqual([]);
   });
 
   it("[ai] AC1/AC3 unit: a conflicting or over-budget pick fails validation with the reason", () => {

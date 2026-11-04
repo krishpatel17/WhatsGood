@@ -37,7 +37,9 @@ export function validatePicks(data: unknown, ctx: PickContext): { errors: string
 
   const errors: string[] = [];
   if (picks.length < 1 || picks.length > ctx.plan.maxPicks) errors.push(`returned ${picks.length} picks; expected 1 to ${ctx.plan.maxPicks}`);
-  const { errors: menuErrors, resolved } = checkOnMenu(picks, ctx.menu);
+  // A name listed twice resolves to the listing the model was offered, whose price and evidence it saw.
+  const offeredFirst = [...ctx.menu].sort((a, b) => Number(ctx.plan.candidates.includes(b.id)) - Number(ctx.plan.candidates.includes(a.id)));
+  const { errors: menuErrors, resolved } = checkOnMenu(picks, offeredFirst);
   errors.push(...menuErrors);
   resolved.forEach((dish, i) => {
     const allowed = dish && ctx.allowed.some((a) => a.id === dish.id);

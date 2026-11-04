@@ -34,4 +34,18 @@ describe("US-09 Guardrail: every dish is on the menu", () => {
     const { errors } = checkOnMenu([pick("Pork Dumplings"), pick("pork dumpling")], thisMenu);
     expect(errors).toEqual(['item[1] "pork dumpling" repeats item[0]']);
   });
+
+  it("[ai] T5 unit: one dish listed in two sections under different spellings is a repeat", () => {
+    const menu = [{ ...dish("a", "Pad Thai"), section: "Dinner" }, { ...dish("b", "Pad Thai (Lunch)"), section: "Lunch" }];
+    const { errors } = checkOnMenu([pick("Pad Thai"), pick("Pad Thai (Lunch)")], menu);
+    expect(errors).toEqual(['item[1] "Pad Thai (Lunch)" repeats item[0]']);
+  });
+
+  it("[ai] T6 unit: dishes with similar names are not repeats", () => {
+    const names = ["Dumplings (Pork)", "Dumplings (Tofu)", "Spicy Chicken Sandwich #1", "Spicy Chicken Sandwich #2", "宫保鸡丁", "麻婆豆腐"];
+    const menu = names.map((n, i) => dish(`s${i}`, n));
+    const { errors, resolved } = checkOnMenu(names.map(pick), menu);
+    expect(errors).toEqual([]);
+    expect(resolved.map((d) => d?.id)).toEqual(menu.map((d) => d.id));
+  });
 });

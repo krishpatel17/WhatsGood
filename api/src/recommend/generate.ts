@@ -1,3 +1,4 @@
+import { uniqueDishes } from "../guardrails/menu";
 import type { Llm, LlmContent, LlmMessage, LlmResponse, LlmUsage } from "../llm/types";
 import { RECOMMEND_SYSTEM } from "../prompts/recommend";
 import { labelsFor, MAX_PICKS } from "./plan";
@@ -16,11 +17,11 @@ export function feedbackMessage(attempt: number, errors: string[]): string {
 
 /**
  * Plain ranking with no generated text: allowed dishes by average sentiment x mention count.
- * Dishes reviewers dislike are left out.
+ * Dishes reviewers dislike are left out, and a dish listed twice is ranked once.
  */
 export function fallbackRanking(ctx: PickContext): Recommended[] {
   const limit = Math.min(MAX_PICKS, Math.max(ctx.plan.maxPicks, 0) || MAX_PICKS);
-  return ctx.allowed
+  return uniqueDishes(ctx.allowed, ctx.evidence)
     .map((d) => {
       const e = ctx.evidence.byDish.get(d.id);
       return { d, count: e?.count ?? 0, score: e ? e.avgSentiment * e.count : 0 };
