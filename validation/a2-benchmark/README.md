@@ -52,6 +52,12 @@ When a menu is done, add a line to `truth/spot-checks.csv` (`restaurant_id,check
 2. Put `ANTHROPIC_API_KEY` in `api/.dev.vars` and run `npm run benchmark -w api`. This writes `results/<timestamp>.json`. To use a Claude login instead, set `LLM_BRIDGE_URL` there and keep `npm run bridge -w api` running; the report states this as a deviation.
 3. Run `npm run validation:report -w api` to score the import against your copies and update `validation/REPORT.md`.
 
+## Correction: answer keys after the v1 run
+
+The v1 import of The Virginian, Afghan Kabob House and The Whiskey Jar returned 32 items that were not in the hand-copied keys. The copying rule only skipped drinks *without* prices, so Lara Mahajan checked each item against the source. She checked The Virginian against `snapshots/co04.pdf`, the exact PDF the benchmark read, and typed every price herself rather than taking it from the model's output. She added 30 priced drinks and wines (23 at The Virginian, 7 at Afghan Kabob House). At The Whiskey Jar she added French Fries and Grits with a blank price: they are listed under Vegetarian Sides with no price printed, and the copying rule keeps orderable dishes with a blank price. `truth/corrections.csv` logs this.
+
+Because this correction came after seeing the v1 output, the report states both scores. Against the original keys v1 scored 0/10; against the corrected keys it scores 3/10. Either way A2 fails.
+
 ## Deviation: the demo restaurants
 
 `manifest.json` names Miller's Downtown (`do12`) as the easy demo restaurant. Its menu loads with JavaScript, and it imported 0 dishes in the benchmark. The manifest stays as it was committed before any run. For the live demo, `validation/demo-restaurants.json` uses The Alley Light (`do05`) instead, plus four menus that are text or PDF: Afghan Kabob House, The Whiskey Jar, The Virginian and The Bebedero. The Alley Light and The Bebedero are not among the 10 scored restaurants. Bodo's Bagels was dropped because its link pointed only at a cream-cheese sub-page.

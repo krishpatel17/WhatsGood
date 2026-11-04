@@ -3,7 +3,7 @@
 ## Verdict: Invalidated
 
 - **A1 Sources exist: PASS** — 25/30 restaurants have a readable menu source (83.3%, 95% CI [0.653, 0.944]); threshold >= 24/30
-- **A2 Import works: FAIL** — 0/10 restaurants imported easily (95% CI [0.000, 0.308]); dish-accuracy bootstrap lower bound 0.0%; thresholds >= 8/10 and >= 90%
+- **A2 Import works: FAIL** — 3/10 restaurants imported easily (95% CI [0.067, 0.652]); dish-accuracy bootstrap lower bound 0.0%; thresholds >= 8/10 and >= 90%
 - **A3 Reviews mention dishes: PASS** — 9/10 restaurants have at least 3 dishes with >= 3 matched mentions (95% CI [0.555, 0.997]); threshold >= 8/10
 
 ### Pivot
@@ -22,15 +22,15 @@
 
 ## A2 — Menu import benchmark
 
-Prompts frozen at `prompts-alpha-v1`. Dish-accuracy cluster bootstrap (10,000 resamples of restaurants): 95% interval [0.0%, 63.9%]. Deviation: model calls went through a developer's Claude login with the local bridge rather than the API, so seconds include the CLI's overhead and token costs are not meaningful.
+Prompts frozen at `prompts-alpha-v1`. Dish-accuracy cluster bootstrap (10,000 resamples of restaurants): 95% interval [0.0%, 67.0%]. Deviation: model calls went through a developer's Claude login with the local bridge rather than the API, so seconds include the CLI's overhead and token costs are not meaningful.
 
 | Restaurant | Tier | Source | Accuracy | Invented | Missed | Seconds | Retries | Pass |
 |---|---|---|---|---|---|---|---|---|
-| The Virginian | medium | pdf | 100.0% | 23 | 0 | 60.1 | 0 | no |
+| The Virginian | medium | pdf | 100.0% | 0 | 0 | 60.1 | 0 | yes |
 | Sedona Taphouse | medium | pdf | 0.0% | 0 | 69 | 120.0 | 0 | no |
 | El Puerto Mexican Restaurant | medium | pdf | 0.0% | 0 | 200 | 120.0 | 0 | no |
-| Afghan Kabob House | medium | html | 100.0% | 7 | 0 | 67.6 | 0 | no |
-| The Whiskey Jar | medium | html | 100.0% | 2 | 0 | 74.1 | 0 | no |
+| Afghan Kabob House | medium | html | 100.0% | 0 | 0 | 67.6 | 0 | yes |
+| The Whiskey Jar | medium | html | 100.0% | 0 | 0 | 74.1 | 0 | yes |
 | Marco and Luca | hard | image-on-site | 0.0% | 0 | 27 | 4.6 | 0 | no |
 | Crozet Pizza at Buddhist Biker Bar | hard | ordering-page | 0.0% | 0 | 74 | 0.1 | 0 | no |
 | Boylan Heights | hard | ordering-page | 0.0% | 0 | 31 | 3.2 | 0 | no |
@@ -39,41 +39,18 @@ Prompts frozen at `prompts-alpha-v1`. Dish-accuracy cluster bootstrap (10,000 re
 
 | Tier | Passed |
 |---|---|
-| medium | 0/5 |
+| medium | 3/5 |
 | hard | 0/5 |
 
 | Source type | Passed |
 |---|---|
-| pdf | 0/3 |
-| html | 0/2 |
+| pdf | 1/3 |
+| html | 2/2 |
 | image-on-site | 0/1 |
 | ordering-page | 0/4 |
 
 ### Invented and missed dishes
 
-- The Virginian: invented "Coke"
-- The Virginian: invented "Diet Coke"
-- The Virginian: invented "Root Beer"
-- The Virginian: invented "Sprite"
-- The Virginian: invented "Ginger Ale"
-- The Virginian: invented "Dr. Pepper"
-- The Virginian: invented "Tonic"
-- The Virginian: invented "Lemonade"
-- The Virginian: invented "Arnold Palmer"
-- The Virginian: invented "Coffee"
-- The Virginian: invented "Sweet or Unsweetened Tea"
-- The Virginian: invented "Juices"
-- The Virginian: invented "Hot Cider"
-- The Virginian: invented "Hot Chocolate"
-- The Virginian: invented "Hot Tea"
-- The Virginian: invented "Milk"
-- The Virginian: invented "VIOGNIER"
-- The Virginian: invented "VERMENTINO"
-- The Virginian: invented "CHARDONNAY"
-- The Virginian: invented "BARBERA RESERVE"
-- The Virginian: invented "ROTUNDA RED"
-- The Virginian: invented "MERITAGE"
-- The Virginian: invented "SHY OX ROSÉ"
 - Sedona Taphouse: missed "House-Made Soup"
 - Sedona Taphouse: missed "Bread Basket"
 - Sedona Taphouse: missed "Edamame"
@@ -343,15 +320,6 @@ Prompts frozen at `prompts-alpha-v1`. Dish-accuracy cluster bootstrap (10,000 re
 - El Puerto Mexican Restaurant: missed "Sopapillas"
 - El Puerto Mexican Restaurant: missed "Flan"
 - El Puerto Mexican Restaurant: missed "Mexican Fried Ice Cream"
-- Afghan Kabob House: invented "Coffee"
-- Afghan Kabob House: invented "Tea"
-- Afghan Kabob House: invented "Soft Drinks"
-- Afghan Kabob House: invented "Doogh"
-- Afghan Kabob House: invented "Zafran Tea"
-- Afghan Kabob House: invented "Rohabza Sharbat"
-- Afghan Kabob House: invented "Dood Pati Chai"
-- The Whiskey Jar: invented "FRENCH FRIES"
-- The Whiskey Jar: invented "GRITS"
 - Marco and Luca: missed "Fried Dumplings (7)"
 - Marco and Luca: missed "Steamed Pork Dumpling (7)"
 - Marco and Luca: missed "Fried Pork Dumplings (10) - Portion & a half"

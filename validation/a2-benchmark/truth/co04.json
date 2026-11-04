@@ -198,6 +198,121 @@
       "section": "Desserts",
       "name": "ROOT-BEER FLOAT",
       "price": 7
+    },
+    {
+      "section": "Beverages",
+      "name": "Coke",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Diet Coke",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Root Beer",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Sprite",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Ginger Ale",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Dr. Pepper",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Tonic",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Lemonade",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Arnold Palmer",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Coffee",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Sweet or Unsweetened Tea",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Juices",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Hot Cider",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Hot Chocolate",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Hot Tea",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Milk",
+      "price": 3.5
+    },
+    {
+      "section": "Virginia Wines",
+      "name": "VIOGNIER",
+      "price": 12
+    },
+    {
+      "section": "Virginia Wines",
+      "name": "VERMENTINO",
+      "price": 12
+    },
+    {
+      "section": "Virginia Wines",
+      "name": "CHARDONNAY",
+      "price": 11
+    },
+    {
+      "section": "Virginia Wines",
+      "name": "BARBERA RESERVE",
+      "price": 13
+    },
+    {
+      "section": "Virginia Wines",
+      "name": "ROTUNDA RED",
+      "price": 12
+    },
+    {
+      "section": "Virginia Wines",
+      "name": "MERITAGE",
+      "price": 11
+    },
+    {
+      "section": "Virginia Wines",
+      "name": "SHY OX ROSÉ",
+      "price": 10
     }
   ]
 }
