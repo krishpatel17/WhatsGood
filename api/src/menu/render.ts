@@ -11,7 +11,8 @@ export const MIN_PRICES = 5;
 const BLOCKED = [401, 403, 429, 503];
 const PRICE = /\$\s?\d{1,3}(\.\d{2})?|\b\d{1,3}\.\d{2}\b/g;
 
-const priceCount = (html: string) => (htmlToText(html).match(PRICE) ?? []).length;
+/** Prices in a page's text: how much of a menu a page shows. */
+export const priceCount = (html: string) => (htmlToText(html).match(PRICE) ?? []).length;
 
 /** Render when the page is a known ordering site, was blocked, or shows almost no prices. */
 export function needsRender(url: string, status: number, html: string): boolean {
