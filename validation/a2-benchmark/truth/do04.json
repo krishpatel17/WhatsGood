@@ -218,6 +218,151 @@
       "section": "UNCATEGORIZED",
       "name": "Lemon Pepper Grilled Chicken",
       "price": 61.35
+    },
+    {
+      "section": "SIDES",
+      "name": "Extra Feta",
+      "price": 1
+    },
+    {
+      "section": "SIDES",
+      "name": "Side Sauce",
+      "price": 0.8
+    },
+    {
+      "section": "SIDES",
+      "name": "Extra Brussel Sprouts",
+      "price": 1.45
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "Soda",
+      "price": 0
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "Ayran",
+      "price": 3.9
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "Iced Tea",
+      "price": 0
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "Bottled Water",
+      "price": 3.25
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "Gazoz (Turkish Sprite)",
+      "price": 3.65
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "San Pellegrino",
+      "price": 3.4
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "Cherry Juice",
+      "price": 3.65
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "Turkish Coffee",
+      "price": 4.2
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "Poppi Drink",
+      "price": 3.15
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "Natural Minarel Water",
+      "price": 3.4
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "Turkish Tea",
+      "price": 3.6
+    },
+    {
+      "section": "YOUNG BITES",
+      "name": "Peach Juice-",
+      "price": 3.15
+    },
+    {
+      "section": "YOUNG BITES",
+      "name": "Cherry Juice.",
+      "price": 3.15
+    },
+    {
+      "section": "WINES AND BEERS OF MEDITERRANEAN",
+      "name": "Cabernet Sauvignon- Turkish Doluca Wine-",
+      "price": 42
+    },
+    {
+      "section": "WINES AND BEERS OF MEDITERRANEAN",
+      "name": "Villa Doluca White Blend – Turkey",
+      "price": 30
+    },
+    {
+      "section": "WINES AND BEERS OF MEDITERRANEAN",
+      "name": "Star Hill Pale Ale",
+      "price": 8.85
+    },
+    {
+      "section": "WINES AND BEERS OF MEDITERRANEAN",
+      "name": "Hopwork Orange Blue Mountain IPA",
+      "price": 5.7
+    },
+    {
+      "section": "WINES AND BEERS OF MEDITERRANEAN",
+      "name": "Sauvignon Blanc",
+      "price": 8.8
+    },
+    {
+      "section": "WINES AND BEERS OF MEDITERRANEAN",
+      "name": "Andre Brut Rosé – Spain",
+      "price": 32
+    },
+    {
+      "section": "WINES AND BEERS OF MEDITERRANEAN",
+      "name": "Andre Rose Brut",
+      "price": 7.25
+    },
+    {
+      "section": "WINES AND BEERS OF MEDITERRANEAN",
+      "name": "Bold Rock Cider",
+      "price": 6.2
+    },
+    {
+      "section": "WINES AND BEERS OF MEDITERRANEAN",
+      "name": "DB Hooray Juicy Wheat Ipa",
+      "price": 8.85
+    },
+    {
+      "section": "WINES AND BEERS OF MEDITERRANEAN",
+      "name": "Devils Backbone Vienna Lager",
+      "price": 5.7
+    },
+    {
+      "section": "WINES AND BEERS OF MEDITERRANEAN",
+      "name": "Efes Pilsener",
+      "price": 6.85
+    },
+    {
+      "section": "WINES AND BEERS OF MEDITERRANEAN",
+      "name": "Angora Red Blend – Turkey",
+      "price": 33
+    },
+    {
+      "section": "WINES AND BEERS OF MEDITERRANEAN",
+      "name": "Highnoon",
+      "price": 7.75
     }
   ]
 }

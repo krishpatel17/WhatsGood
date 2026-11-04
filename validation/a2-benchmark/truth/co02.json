@@ -5,139 +5,99 @@
   "source_url": "https://www.marcoandluca.com/menu",
   "dishes": [
     {
-      "section": "DUMPLINGS",
-      "name": "Fried Dumplings (7)",
-      "price": 6.5
+      "section": "Fried Dumplings",
+      "name": "Fried Pork Dumplings (7pieces)",
+      "price": null
     },
     {
-      "section": "DUMPLINGS",
-      "name": "Steamed Pork Dumpling (7)",
-      "price": 6.5
+      "section": "Fried Dumplings",
+      "name": "Vegetarian Dumplings (6 pieces)",
+      "price": null
     },
     {
-      "section": "DUMPLINGS",
-      "name": "Fried Pork Dumplings (10) - Portion & a half",
-      "price": 9
+      "section": "Fried Dumplings",
+      "name": "Fried Pork Dumplings Portion & a Half (10 pieces)",
+      "price": null
     },
     {
-      "section": "DUMPLINGS",
-      "name": "Steamed Vegetarian Dumplings (6)",
-      "price": 6.5
+      "section": "Steamed Dumplings",
+      "name": "Steamed Pork Dumplings (7pieces)",
+      "price": null
     },
     {
-      "section": "DUMPLINGS",
-      "name": "Fried Vegetarian Dumplings (6)",
-      "price": 6.5
+      "section": "Steamed Dumplings",
+      "name": "Steamed Vegetarian Dumplings (6 pieces)",
+      "price": null
     },
     {
-      "section": "DUMPLINGS",
-      "name": "Steamed Vegetarian Dumplings (9) - Portion & a half",
-      "price": 9
-    },
-    {
-      "section": "DUMPLINGS",
-      "name": "Fried Vegetarian Dumplings (9)- Portion & a half",
-      "price": 9
-    },
-    {
-      "section": "DUMPLINGS",
-      "name": "Steamed Pork Dumpling (10) - Portion & a half",
-      "price": 9
-    },
-    {
-      "section": "NOODLES",
-      "name": "Sesame Noodles",
-      "price": 6.5
-    },
-    {
-      "section": "NOODLES",
-      "name": "Sweet and Sour Spicy Noodles",
-      "price": 6.5
-    },
-    {
-      "section": "HOT BUNS",
-      "name": "Veggie Hot Bun",
-      "price": 2.75
-    },
-    {
-      "section": "HOT BUNS",
-      "name": "Pork Hot Bun",
-      "price": 2.75
-    },
-    {
-      "section": "CHICKEN CURRY",
-      "name": "Chicken Curry with Rice",
-      "price": 11
-    },
-    {
-      "section": "CHICKEN CURRY",
-      "name": "Chicken Curry Combo",
-      "price": 15
-    },
-    {
-      "section": "CHICKEN CURRY",
-      "name": "Side of Chicken Curry",
-      "price": 7
-    },
-    {
-      "section": "CHICKEN CURRY",
-      "name": "Small Chicken Curry and Rice",
-      "price": 6.5
-    },
-    {
-      "section": "SOUP",
-      "name": "Hot and Sour Soup Small",
-      "price": 4.5
-    },
-    {
-      "section": "SOUP",
+      "section": "Soup",
       "name": "Wonton Soup Small",
-      "price": 7
+      "price": null
     },
     {
-      "section": "SOUP",
+      "section": "Soup",
+      "name": "Hot And Sour Soup Small",
+      "price": null
+    },
+    {
+      "section": "Soup",
       "name": "Wonton Soup Large",
-      "price": 11.5
+      "price": null
     },
     {
-      "section": "SOUP",
-      "name": "Hot and Sour Soup Large",
-      "price": 8.75
+      "section": "Soup",
+      "name": "Hot And Sour Soup Large",
+      "price": null
     },
     {
-      "section": "EXTRAS",
-      "name": "Marco & Luca Sauce",
-      "price": 0.4
-    },
-    {
-      "section": "EXTRAS",
-      "name": "Peanut Butter Sauce",
-      "price": 0.75
-    },
-    {
-      "section": "SIDES",
-      "name": "White Rice",
-      "price": 3.25
-    },
-    {
-      "section": "DESSERTS",
+      "section": "Dessert",
       "name": "Sesame Balls",
-      "price": 5
+      "price": null
     },
     {
-      "section": "UNCATEGORIZED",
-      "name": "Large Tray",
-      "price": 120
+      "section": "Noodles",
+      "name": "Sesame Noodles",
+      "price": null
     },
     {
-      "section": "UNCATEGORIZED",
-      "name": "Large Hot And Sour Soup",
-      "price": 8
+      "section": "Noodles",
+      "name": "Sweet and Sour Spicy Noodles",
+      "price": null
     },
     {
-      "section": "UNCATEGORIZED",
-      "name": "Small Wonton Soup",
-      "price": 6
+      "section": "Chicken Curry",
+      "name": "Chicken Curry with Rice",
+      "price": null
+    },
+    {
+      "section": "Chicken Curry",
+      "name": "Chicken Curry Combo",
+      "price": null
+    },
+    {
+      "section": "Chicken Curry",
+      "name": "Side of Chicken Curry",
+      "price": null
+    },
+    {
+      "section": "Chicken Curry",
+      "name": "Small Chicken Curry and Rice",
+      "price": null
+    },
+    {
+      "section": "Hot Buns",
+      "name": "Pork Hot Bun",
+      "price": null
+    },
+    {
+      "section": "Hot Buns",
+      "name": "Vegetarian Hot Bun",
+      "price": null
+    },
+    {
+      "section": "Sides",
+      "name": "White Rice",
+      "price": null
     }
   ]
 }
