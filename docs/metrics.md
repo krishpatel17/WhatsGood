@@ -4,11 +4,11 @@
 |---|---|
 | User stories | 24 |
 | GitHub issues logged / closed | 24 / 24 |
-| Automated tests | 209 (187 API, 10 web unit, 12 browser e2e) |
-| Average tests per issue | 7.6 (over 24 issues with tests) |
-| Pass rate (unit + integration, this run) | 197/197 = 100.0% |
-| Line coverage | API 95.84%, web 29.41% |
-| AI-generated : manually written tests | 209 : 0 |
+| Automated tests | 240 (218 API, 10 web unit, 12 browser e2e) |
+| Average tests per issue | 8.9 (over 24 issues with tests) |
+| Pass rate (unit + integration, this run) | 228/228 = 100.0% |
+| Line coverage | API 95.09%, web 29.41% |
+| AI-generated : manually written tests | 240 : 0 |
 
 ## Tests per story
 
@@ -16,7 +16,7 @@
 |---|---|
 | US-01 | 6 |
 | US-02 | 5 |
-| US-03 | 12 |
+| US-03 | 38 |
 | US-04 | 5 |
 | US-05 | 16 |
 | US-06 | 5 |
@@ -32,8 +32,8 @@
 | US-16 | 5 |
 | US-17 | 3 |
 | US-18 | 12 |
-| US-19 | 5 |
-| US-20 | 10 |
+| US-19 | 6 |
+| US-20 | 14 |
 | US-21 | 4 |
 | US-22 | 5 |
 | US-23 | 5 |
