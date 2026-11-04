@@ -28,8 +28,8 @@ export type RestaurantResult = {
   dishes: Dish[];
 };
 
-/** v1: plain download. v2-render: JavaScript pages rendered in a local browser first (src/menu/render.ts). v3: v2 plus add-ons left out (src/menu/add-ons.ts). */
-export type Importer = "v1" | "v2-render" | "v3";
+/** v1: plain download. v2-render: JavaScript pages rendered in a local browser first (src/menu/render.ts). v3: v2 plus add-ons left out (src/menu/add-ons.ts). v4: v3 plus step-by-step scrolling and unpriced ordering-site items left out. */
+export type Importer = "v1" | "v2-render" | "v3" | "v4";
 
 export type BenchmarkResults = { promptTag: string; model: string; llmPath: LlmPath; importer?: Importer; startedAt: string; restaurants: RestaurantResult[] };
 

@@ -142,8 +142,9 @@ export async function importMenu(deps: ImportDeps, input: { restaurantId: string
   const log = attemptLogger(deps.db, input.restaurantId, input.url);
   const pages = src.kind === "pdf" ? await pdfPageInputs(src.bytes) : [];
   const run = pages.length > 1 ? await extractPdfPages(deps.llm, src, pages, check, log) : await extractWithRetry(deps.llm, [...images, ...sourceContent(src)], check, log);
-  // Add-ons the model listed ("Extra sauce") are not dishes on their own.
-  const dishes = (run.menu?.dishes ?? []).filter((d) => !isAddOn(d.name));
+  // Add-ons the model listed ("Extra sauce") are not dishes on their own. On an ordering site every
+  // item you can order shows a price, so one without a price is sold out or unavailable.
+  const dishes = (run.menu?.dishes ?? []).filter((d) => !isAddOn(d.name) && !(src.kind === "ordering-page" && d.price === null));
   const status = dishes.length ? "active" : "needs_review";
   const menuId = await storeMenu(deps.db, {
     restaurantId: input.restaurantId,

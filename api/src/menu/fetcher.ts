@@ -2,7 +2,7 @@ import type { LlmContent } from "../llm/types";
 
 export type SourceKind = "html" | "pdf" | "ordering-page" | "image";
 
-const ORDERING_HOSTS = [/(^|\.)toasttab\.com$/, /(^|\.)square\.site$/, /(^|\.)squareup\.com$/, /(^|\.)chownow\.com$/];
+const ORDERING_HOSTS = [/(^|\.)toasttab\.com$/, /(^|\.)square\.site$/, /(^|\.)squareup\.com$/, /(^|\.)chownow\.com$/, /(^|\.)clover\.com$/];
 
 export function pickExtractor(url: string, contentType: string): SourceKind {
   const type = contentType.toLowerCase();
