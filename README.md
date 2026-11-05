@@ -10,18 +10,7 @@ Pick a restaurant or import its menu. Get up to three dishes for your preference
 
 **Choose / scan → set allergies, diet, budget & taste → get picks → rate your meal**
 
-```mermaid
-flowchart LR
-  Web["Next.js + React<br/>Restaurant · scan · profile · results"] --> API["Hono API<br/>Cloudflare Worker"]
-  API <--> DB["D1 · SQLite<br/>Menus, reviews, profiles, ratings"]
-  API --> R2["R2<br/>Source snapshots + photos"]
-  API <--> LLM["Claude<br/>Extract · mine · recommend"]
-  Reviews["Apify<br/>Restaurant reviews"] --> API
-  classDef frontend fill:#F8CF59,stroke:#191919,color:#191919
-  classDef backend fill:#E1F0EF,stroke:#00838A,color:#191919
-  class Web frontend
-  class API backend
-```
+![Architecture: Next.js frontend calls the Hono Worker, which uses D1, R2 and Claude; Apify supplies restaurant reviews.](docs/assets/architecture.svg)
 
 | Frontend · [`web/`](web/) | Backend · [`api/src/`](api/src/) |
 |---|---|
