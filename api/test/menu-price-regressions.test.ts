@@ -4,9 +4,20 @@ import { localDb } from "../src/validation/localdb";
 import { createRestaurant } from "../src/restaurants/repo";
 import { fakeFetch, memoryBlobs } from "./helpers/blobs";
 import { mockLlm } from "./helpers/llm";
+import { layoutItemCount, validateMenu } from "../src/menu/validate";
 
 const dish = (name: string, price: number | null) => ({ name, price, section: "Mains", description: null, tags: [] });
 describe("menu price preservation", () => {
+  it.each(["MP", "M.P.", "MKT", "Market Price", "Price on request", "A.Q."])("[ai] counts a %s item alongside numeric prices", (marker) => {
+    const count = layoutItemCount(`Soup $6\nFish ${marker}`);
+    expect(count).toBe(2);
+    expect(validateMenu(count)({ dishes: [dish("Soup", 6), dish("Fish", null)] }).errors).toEqual([]);
+    expect(validateMenu(count)({ dishes: [dish("Soup", 6)] }).errors).toContainEqual(expect.stringMatching(/item count/));
+  });
+  it("[ai] counts a standalone market-price line but not an explanatory legend", () => {
+    expect(layoutItemCount("Soup $6\nFish\nMP")).toBe(2);
+    expect(layoutItemCount("Soup $6\nMP = Market Price")).toBe(1);
+  });
   it("[ai] keeps an orderable market-price item on an ordering page with its price unknown", async () => {
     const db = localDb();
     await createRestaurant(db, { id: "r1", name: "Cafe", address: "Main" });

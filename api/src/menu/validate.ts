@@ -24,9 +24,11 @@ export function parsePrice(text: string): PriceResult {
 const PRICE = /\$\s?\d+(\.\d{1,2})?|\b\d{1,3}\.\d{2}\b/g;
 const BARE_NUMBER = /^\d{1,3}(\.\d)?$/;
 const ADD_ON = /^\+|\badd\b/i;
+const MARKET_PRICE = /(?:^|[\s:—–-])(?:m\.?p\.?|mkt|market\s+price|price\s+on\s+request|a\.?q\.?)[)*!]?$/i;
+const PRICE_LEGEND = /^\s*(?:m\.?p\.?|mkt|a\.?q\.?)\s*(?:=|:|means\b)/i;
 
 /**
- * Non-LLM item count: the number of page lines that carry a price, or null when those lines don't
+ * Non-LLM item count: lines with numeric or explicit market prices, or null when those lines don't
  * map to dishes. Lines that could be off by more than the tolerance mean the count can't be held to it:
  * bare numbers it can't tell from prices, prices printed twice, and lines with add-ons or several prices.
  */
@@ -38,14 +40,15 @@ export function layoutItemCount(text: string): number | null {
   text.split(STRUCTURED_DATA_HEADING)[0].split("\n").forEach((line, at) => {
     if (BARE_NUMBER.test(line.trim())) bare++;
     const prices = line.match(PRICE)?.length ?? 0;
-    if (prices === 0) return;
+    const market = MARKET_PRICE.test(line.trim()) && !PRICE_LEGEND.test(line);
+    if (prices === 0 && !market) return;
     priced++;
     if (last?.line === line && at - last.at <= 2) {
       unclear++;
       last = null;
       return;
     }
-    if (prices > 1 || ADD_ON.test(line)) unclear++;
+    if (prices > 1 || (prices > 0 && market) || ADD_ON.test(line)) unclear++;
     last = { line, at };
   });
   return unclear + bare > (priced + bare) * COUNT_TOLERANCE + 1e-9 ? null : priced;

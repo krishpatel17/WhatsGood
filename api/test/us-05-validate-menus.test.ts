@@ -34,7 +34,7 @@ describe("US-05 Validate imported menus", () => {
   });
 
   it("[ai] T2b unit: the layout count counts lines with a price, without the model", () => {
-    expect(layoutItemCount("Noodles\nDan Dan $14\nwheat noodles\nLamb $16.50\nMP\nTea 4.00")).toBe(3);
+    expect(layoutItemCount("Noodles\nDan Dan $14\nwheat noodles\nLamb $16.50\nTea 4.00")).toBe(3);
   });
 
   it("[ai] T3 unit: duplicate merge keeps one dish per normalized name and section", () => {
