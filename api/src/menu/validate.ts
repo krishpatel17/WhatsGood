@@ -72,7 +72,7 @@ export function mergeDuplicates(dishes: Dish[]): Dish[] {
       continue;
     }
     for (const t of d.tags) if (!seen.tags.some((s) => s.tag === t.tag)) seen.tags.push(t);
-    seen.price ??= d.price;
+    if (d.price !== null && (seen.price === null || d.price < seen.price)) seen.price = d.price;
     seen.description ??= d.description;
   }
   return [...byKey.values()];

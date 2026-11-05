@@ -4,10 +4,23 @@ import { localDb } from "../src/validation/localdb";
 import { createRestaurant } from "../src/restaurants/repo";
 import { fakeFetch, memoryBlobs } from "./helpers/blobs";
 import { mockLlm } from "./helpers/llm";
-import { layoutItemCount, validateMenu } from "../src/menu/validate";
+import { layoutItemCount, mergeDuplicates, validateMenu } from "../src/menu/validate";
 
 const dish = (name: string, price: number | null) => ({ name, price, section: "Mains", description: null, tags: [] });
 describe("menu price preservation", () => {
+  it.each([
+    { prices: [12, 6], expected: 6 }, { prices: [6, 12], expected: 6 },
+    { prices: [null, 6], expected: 6 }, { prices: [12, null, 6], expected: 6 },
+    { prices: [null, null], expected: null }, { prices: [6, 0], expected: 0 },
+  ])("[ai] keeps the lowest known size price for $prices", ({ prices, expected }) => {
+    const rows = prices.map((price) => dish("Soup", price));
+    const original = structuredClone(rows);
+    expect(mergeDuplicates(rows)).toMatchObject([{ name: "Soup", price: expected }]);
+    expect(rows).toEqual(original);
+  });
+  it("[ai] does not merge separate lunch/dinner prices into one listing", () => {
+    expect(mergeDuplicates([{ ...dish("Soup", 6), section: "Lunch" }, { ...dish("Soup", 12), section: "Dinner" }])).toHaveLength(2);
+  });
   it.each(["MP", "M.P.", "MKT", "Market Price", "Price on request", "A.Q."])("[ai] counts a %s item alongside numeric prices", (marker) => {
     const count = layoutItemCount(`Soup $6\nFish ${marker}`);
     expect(count).toBe(2);
