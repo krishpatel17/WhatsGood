@@ -57,6 +57,9 @@ describe("local Codex bridge runner", () => {
     const fixture = join(dir, "fixture.cjs");
     writeFileSync(fixture, `process.stdin.resume();process.stdin.on('end',()=>{process.stdout.write(${JSON.stringify(event({ name: "Soup" }))});});`);
     expect((await runWithCodex(request, undefined, { cliPath: fixture })).data).toEqual({ name: "Soup" });
+    const unicode = event({ name: "Jalapeño" });
+    writeFileSync(fixture, `process.stdin.resume();process.stdin.on('end',()=>{const b=Buffer.from(${JSON.stringify(unicode)});const at=b.indexOf(Buffer.from('ñ'))+1;process.stdout.write(b.subarray(0,at));setTimeout(()=>process.stdout.end(b.subarray(at)),20);});`);
+    expect((await runWithCodex(request, undefined, { cliPath: fixture })).data).toEqual({ name: "Jalapeño" });
     writeFileSync(fixture, "process.stdin.resume();setInterval(()=>{},1000);");
     await expect(runWithCodex(request, undefined, { cliPath: fixture, timeoutMs: 200 })).rejects.toThrow(/timed out/i);
   });

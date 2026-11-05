@@ -10,6 +10,7 @@ import type { LlmMessage, LlmResponse } from "../src/llm/types";
 export const BRIDGE_PORT = 8790;
 
 export type BridgeRequest = {
+  provider?: "claude" | "codex";
   task: string;
   system: string;
   messages: LlmMessage[];
@@ -43,6 +44,7 @@ const blockSchema = z.discriminatedUnion("type", [
   z.object({type:z.literal("pdf"),data:z.string()}),
 ]);
 const requestSchema = z.object({
+  provider:z.enum(["claude","codex"]).optional(),
   task:z.string().min(1), system:z.string(),
   messages:z.array(z.object({role:z.enum(["user","assistant"]),content:z.union([z.string(),z.array(blockSchema)])})),
   model:z.string().min(1).optional(), jsonSchema:z.record(z.string(),z.unknown()),
@@ -69,7 +71,7 @@ function readBody(req: IncomingMessage): Promise<string> {
  * Requiring JSON and no Origin stops a web page from spending the subscription: browsers
  * add Origin to cross-site POSTs, and a JSON body needs a preflight this server never grants.
  */
-export function createBridge(run: (req: BridgeRequest, signal: AbortSignal) => Promise<LlmResponse>) {
+export function createBridge(run: (req: BridgeRequest, signal: AbortSignal) => Promise<LlmResponse>, options: { provider?: "claude" | "codex" } = {}) {
   return createServer(async (req, res) => {
     const controller = new AbortController();
     res.once("close", () => { if (!res.writableEnded) controller.abort(); });
@@ -78,7 +80,9 @@ export function createBridge(run: (req: BridgeRequest, signal: AbortSignal) => P
       res.writeHead(status, { "content-type": "application/json" });
       res.end(JSON.stringify(body));
     };
-    if (req.headers.origin || req.headers["content-type"]?.split(";")[0].trim().toLowerCase() !== "application/json") return reply(403, { error: "Local API calls only." });
+    if (req.headers.origin) return reply(403, { error: "Local API calls only." });
+    if (req.method === "GET" && req.url === "/health") return reply(200, { ok: true, provider: options.provider ?? "claude" });
+    if (req.headers["content-type"]?.split(";")[0].trim().toLowerCase() !== "application/json") return reply(403, { error: "Local API calls only." });
     if (req.method !== "POST" || req.url !== "/json") return reply(404, { error: "Not found." });
     try {
       const body = await readBody(req);
@@ -86,8 +90,11 @@ export function createBridge(run: (req: BridgeRequest, signal: AbortSignal) => P
       try { parsed = JSON.parse(body); } catch { throw new RequestError(400, "Malformed JSON."); }
       const valid = requestSchema.safeParse(parsed);
       if (!valid.success) throw new RequestError(400, "Invalid bridge request.");
+      const provider = options.provider ?? "claude";
+      if ((valid.data.provider && valid.data.provider !== provider) || (provider === "codex" && valid.data.provider !== "codex")) throw new RequestError(400, "Bridge provider mismatch. Set LLM_BRIDGE_PROVIDER to the server's provider.");
       if (controller.signal.aborted) return;
-      reply(200, await run(valid.data, controller.signal));
+      const result = await run(valid.data, controller.signal);
+      reply(200, options.provider ? { ...result, provider } : result);
     } catch (e) {
       reply(e instanceof RequestError ? e.status : 502, { error: e instanceof Error ? e.message : String(e) });
     }
@@ -139,5 +146,5 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   createBridge((req, signal) => {
     console.log(`${new Date().toISOString()} ${req.task}`);
     return runWithSubscription(req, signal);
-  }).listen(BRIDGE_PORT, "127.0.0.1", () => console.log(`Subscription bridge on http://127.0.0.1:${BRIDGE_PORT} (local use only)`));
+  }, { provider: "claude" }).listen(BRIDGE_PORT, "127.0.0.1", () => console.log(`Claude subscription bridge on http://127.0.0.1:${BRIDGE_PORT} (local use only)`));
 }
