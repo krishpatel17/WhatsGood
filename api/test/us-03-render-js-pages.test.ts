@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { renderingFetch, needsRender, type Render } from "../src/menu/render";
+import { copySourceUrl, fetchSource } from "../src/menu/fetcher";
+import { findPageImages } from "../src/menu/page-images";
 
 const menuHtml = "<h1>Menu</h1>" + ["Burger $12", "Fries $4", "Salad $9.50", "Soup $6", "Wrap $10", "Tacos $11"].map((d) => `<p>${d}</p>`).join("");
 const emptyShell = '<html><body><div id="root"></div><script>window.app()</script></body></html>';
@@ -24,6 +26,27 @@ function fakeRender(html: string | Error): Render & { calls: string[] } {
 }
 
 describe("US-03 Import a menu: render JavaScript pages before reading them (A2 v2)", () => {
+  it.each([false, true])("[ai] preserves browser redirects through response wrappers (%s)", async (wrap) => {
+    const url = "https://cafe.example/menu";
+    const finalUrl = "https://cafe.square.site/dinner/";
+    const f = renderingFetch(fakeFetch({ [url]: { body: emptyShell } }), async () => ({
+      html: menuHtml + '<img src="menu.png" width="1200" height="1800">', finalUrl,
+    }));
+    const wrapped: typeof fetch = async (input, init) => {
+      const response = await f(input, init);
+      return copySourceUrl(response, new Response(await response.arrayBuffer(), { headers: response.headers }));
+    };
+    const src = await fetchSource(wrap ? wrapped : f, url);
+    expect(src).toMatchObject({ url: finalUrl, kind: "ordering-page" });
+    expect(findPageImages(new TextDecoder().decode(src.bytes), src.url)).toContain("https://cafe.square.site/dinner/menu.png");
+  });
+  it("[ai] rejects private browser destinations and retains the original page", async () => {
+    const url = "https://cafe.example/menu";
+    const f = renderingFetch(fakeFetch({ [url]: { body: emptyShell } }), async () => ({ html: menuHtml, finalUrl: "http://127.0.0.1/menu" }));
+    const src = await fetchSource(f, url);
+    expect(src.url).toBe(url);
+    expect(new TextDecoder().decode(src.bytes)).toBe(emptyShell);
+  });
   it("[ai] AC1 unit: decides to render known ordering sites, blocked pages and pages with almost no prices", () => {
     expect(needsRender("https://order.chownow.com/order/1/locations", 200, emptyShell)).toBe(true);
     expect(needsRender("https://cafe.example/menu", 403, "Forbidden")).toBe(true);

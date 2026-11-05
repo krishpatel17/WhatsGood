@@ -35,6 +35,17 @@ export function htmlToText(html: string): string {
 
 export type FetchedSource = { url: string; kind: SourceKind; contentType: string; bytes: Uint8Array };
 
+// Only trusted local wrappers can attach a browser URL; remote HTTP headers cannot spoof it.
+const responseUrls = new WeakMap<Response, string>();
+export function withSourceUrl(response: Response, url: string): Response {
+  responseUrls.set(response, publicSourceUrl(url).href);
+  return response;
+}
+export function copySourceUrl(from: Response, to: Response): Response {
+  const url = responseUrls.get(from);
+  return url ? withSourceUrl(to, url) : to;
+}
+
 export const MAX_SOURCE_BYTES = 10 * 1024 * 1024;
 export const SOURCE_TIMEOUT_MS = 15_000;
 
@@ -105,7 +116,8 @@ export async function fetchSource(fetcher: typeof fetch, url: string): Promise<F
           void res.body?.cancel(); throw new Error('Menu source has an unsupported or missing Content-Type.');
         }
         const bytes = await sourceBytes(res, controller.signal);
-        return { url: current.href, contentType, kind: pickExtractor(current.href, contentType), bytes };
+        const finalUrl = responseUrls.get(res) ?? current.href;
+        return { url: finalUrl, contentType, kind: pickExtractor(finalUrl, contentType), bytes };
       }
       throw new Error('Too many redirects.');
     })()]);

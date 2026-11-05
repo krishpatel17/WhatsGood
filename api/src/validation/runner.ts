@@ -5,7 +5,7 @@ import { MODEL } from "../llm/anthropic";
 import { type LlmPath, llmPath } from "../llm/select";
 import type { Llm } from "../llm/types";
 import { importMenu } from "../menu/import";
-import { sourceBytes } from "../menu/fetcher";
+import { copySourceUrl, sourceBytes } from "../menu/fetcher";
 import type { Dish } from "../menu/schema";
 import { createRestaurant } from "../restaurants/repo";
 import { loadManifest } from "./benchmark-set";
@@ -61,7 +61,7 @@ function recordingFetch(root: string, inner: typeof fetch, idFor: Map<string, st
     const file = `${id}.${extFor(contentType)}`;
     writeFileSync(dir + file, bytes);
     saved.set(id, file);
-    return new Response(bytes, { status: res.status, headers: { "content-type": contentType } });
+    return copySourceUrl(res, new Response(bytes, { status: res.status, headers: { "content-type": contentType } }));
   }) as typeof fetch;
 }
 
