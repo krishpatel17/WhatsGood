@@ -68,19 +68,19 @@ export async function storeMenu(
   m: { restaurantId: string; sourceUrl: string | null; sourceType: string; snapshotKey: string; status: "active" | "needs_review"; attempts: number; dishes: Menu["dishes"] },
 ): Promise<string> {
   const menuId = newId();
-  await db
+  const statements = [db
     .prepare("INSERT INTO menus (id, restaurant_id, source_url, source_type, snapshot_key, status, attempts, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
-    .bind(menuId, m.restaurantId, m.sourceUrl, m.sourceType, m.snapshotKey, m.status, m.attempts, nowIso())
-    .run();
-  if (m.status === "active") {
-    await db.prepare("UPDATE menus SET status = 'replaced' WHERE restaurant_id = ? AND status = 'active' AND id != ?").bind(m.restaurantId, menuId).run();
-  }
+    .bind(menuId, m.restaurantId, m.sourceUrl, m.sourceType, m.snapshotKey, m.status, m.attempts, nowIso())];
   for (const d of m.dishes) {
-    await db
+    statements.push(db
       .prepare("INSERT INTO dishes (id, menu_id, restaurant_id, name, section, price, description, tags) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
-      .bind(newId(), menuId, m.restaurantId, d.name, d.section, d.price, d.description, JSON.stringify(d.tags))
-      .run();
+      .bind(newId(), menuId, m.restaurantId, d.name, d.section, d.price, d.description, JSON.stringify(d.tags)));
   }
+  if (m.status === "active") {
+    statements.push(db.prepare("UPDATE menus SET status = 'replaced' WHERE restaurant_id = ? AND status = 'active' AND id != ?").bind(m.restaurantId, menuId));
+  }
+  // D1 batches commit every statement together or roll back the entire replacement.
+  await db.batch(statements);
   return menuId;
 }
 

@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { mkdtempSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { checkPromptsFrozen, runBenchmark, snapshotFetch } from "../src/validation/runner";
@@ -52,21 +52,37 @@ describe("US-19 Benchmark runner", () => {
     expect(rerun.restaurants.every((r) => r.status === "active")).toBe(true);
   });
 
-  it("[ai] T2 unit: the run aborts if the working tree's prompts differ from the frozen tag", () => {
-    const git = (args: string[]) => (args[0] === "rev-parse" ? { ok: true, out: "abc" } : { ok: false, out: "" });
-    expect(() => checkPromptsFrozen("prompts-alpha-v1", git)).toThrow(/differ from tag prompts-alpha-v1/);
-    const missing = () => ({ ok: false, out: "" });
-    expect(() => checkPromptsFrozen("prompts-alpha-v1", missing)).toThrow(/tag prompts-alpha-v1 does not exist/);
-    const clean = () => ({ ok: true, out: "" });
-    expect(() => checkPromptsFrozen("prompts-alpha-v1", clean)).not.toThrow();
+  it("[manual] US19-R01 prompt freeze uses the exact tag and prompt path", () => {
+    const git=vi.fn((args: string[])=>({ok:true,out:args[0] === "ls-files" ? "" : "abc"}));
+    checkPromptsFrozen("prompts-alpha-v1",git);
+    expect(git.mock.calls).toEqual([
+      [["rev-parse","--verify","refs/tags/prompts-alpha-v1"]],
+      [["ls-files","--others","--","api/src/prompts"]],
+      [["diff","--quiet","prompts-alpha-v1","--","api/src/prompts"]],
+    ]);
+    git.mockReset().mockReturnValue({ok:false,out:""});
+    expect(()=>checkPromptsFrozen("missing",git)).toThrow(/tag missing does not exist/);
+    expect(git).toHaveBeenCalledTimes(1);
   });
-
-  it("[ai] T3 unit: a restaurant that times out is recorded as failed, not skipped", async () => {
-    const slow = mockLlm([() => new Promise((r) => setTimeout(() => r(easyMenu), 500)), easyMenu]);
-    const out = await runBenchmark({ root, llm: slow, fetch: fakeFetch(pages), promptTag: "t", timeoutMs: 50 });
-    expect(out.restaurants.map((r) => r.id)).toEqual(["aa", "bb"]);
-    expect(out.restaurants[0]).toMatchObject({ status: "failed", failure: "timed out after 0.05 s", dishes: [] });
-    expect(out.restaurants[1].status).toBe("active");
+  it("[manual] US19-R02 timeout records failure; late completion cannot rewrite returned or saved results", async () => {
+    vi.useFakeTimers();
+    try {
+      let release!: (v: unknown)=>void; let started!: ()=>void; let completed=false;
+      const entered=new Promise<void>(r=>{started=r;});
+      const slow=mockLlm([async()=>{started();const value=await new Promise(r=>{release=r;});completed=true;return value;},easyMenu]);
+      const running=runBenchmark({root,llm:slow,fetch:fakeFetch(pages),promptTag:"t",timeoutMs:50});
+      await entered;
+      await vi.advanceTimersByTimeAsync(50);
+      const out=await running;
+      expect(out.restaurants.map(r=>r.id)).toEqual(["aa","bb"]);
+      expect(out.restaurants[0]).toMatchObject({status:"failed",failure:"timed out after 0.05 s",dishes:[]});
+      expect(out.restaurants[1].status).toBe("active");
+      const file=root+"validation/a2-benchmark/results/"+readdirSync(root+"validation/a2-benchmark/results")[0];
+      const saved=readFileSync(file,"utf8");const snapshot=structuredClone(out);
+      // Current contract is timeout-only: model work is not cancelled. Record late completion explicitly.
+      expect(completed).toBe(false);release(easyMenu);await vi.advanceTimersByTimeAsync(0);
+      expect(completed).toBe(true);expect(out).toEqual(snapshot);expect(readFileSync(file,"utf8")).toBe(saved);
+    } finally {vi.clearAllTimers();vi.useRealTimers();}
   });
 
   it("[ai] a fetch error is recorded as failed with its reason", async () => {

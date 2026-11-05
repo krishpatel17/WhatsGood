@@ -101,7 +101,7 @@ export async function runCoverage(opts: { root: string; llm: Llm; fetch: typeof 
     await extractMentions({ db, llm }, r.id);
     const { results: rows } = await db
       .prepare(
-        `SELECT d.id AS dish_id, (SELECT COUNT(*) FROM mentions m WHERE m.dish_id = d.id) AS n
+        `SELECT d.id AS dish_id, (SELECT COUNT(DISTINCT m.review_id) FROM mentions m WHERE m.dish_id = d.id) AS n
          FROM dishes d JOIN menus mn ON mn.id = d.menu_id WHERE mn.restaurant_id = ? AND mn.status = 'active'`,
       )
       .bind(r.id)

@@ -82,14 +82,21 @@ describe("US-07 Extract dish mentions and sentiment from reviews", () => {
       expect(db.raw.prepare("SELECT dish_id, mention FROM mentions").all()).toEqual([{ dish_id: null, mention: "patio" }]);
     });
 
-    it("[ai] AC1 integration: sentiment outside -1..1 is rejected and re-running replaces old mentions", async () => {
-      const once = respond({ "Loved the dan dan": [{ dish: "Dan Dan Noodles", sentiment: 3, quote: "Loved the dan dan noodles" }] });
-      await extractMentions({ db, llm: mockLlm([once]) }, "r1");
-      expect(db.raw.prepare("SELECT COUNT(*) AS n FROM mentions").get()).toEqual({ n: 0 });
-      const ok = respond({ "Loved the dan dan": [{ dish: "Dan Dan Noodles", sentiment: 0.9, quote: "Loved the dan dan noodles" }] });
-      await extractMentions({ db, llm: mockLlm([ok]) }, "r1");
-      await extractMentions({ db, llm: mockLlm([ok]) }, "r1");
-      expect(db.raw.prepare("SELECT COUNT(*) AS n FROM mentions").get()).toEqual({ n: 1 });
+    // Manually reviewed boundary and replacement cases.
+    it.each([-1.01, 1.01])("[manual] US07-R01 rejects out-of-range sentiment %s", async (sentiment) => {
+      const llm = mockLlm([respond({ "Loved the dan dan": [{ dish: "Dan Dan Noodles", sentiment, quote: "Loved the dan dan noodles" }] })]);
+      expect(await extractMentions({db,llm}, "r1")).toMatchObject({invalid:1,mentions:0});
+      expect(db.raw.prepare("SELECT COUNT(*) AS n FROM mentions").get()).toEqual({n:0});
+    });
+    it.each([-1, 0, 1])("[manual] US07-R02 accepts boundary sentiment %s", async (sentiment) => {
+      const llm = mockLlm([respond({ "Loved the dan dan": [{ dish: "Dan Dan Noodles", sentiment, quote: "Loved the dan dan noodles" }] })]);
+      expect(await extractMentions({db,llm}, "r1")).toMatchObject({invalid:0,mentions:1});
+      expect(db.raw.prepare("SELECT sentiment FROM mentions").all()).toEqual([{sentiment}]);
+    });
+    it("[manual] US07-R03 refresh replaces obsolete dish, sentiment and quote content", async () => {
+      await extractMentions({db,llm:mockLlm([respond({ "Loved the dan dan": [{ dish:"Dan Dan Noodles",sentiment:0.9,quote:"Loved the dan dan noodles" }] })])}, "r1");
+      await extractMentions({db,llm:mockLlm([respond({ "skip the pork": [{ dish:"Pork Dumplings",sentiment:-0.7,quote:"skip the pork dumplings" }] })])}, "r1");
+      expect(db.raw.prepare("SELECT dish_id, sentiment, quote FROM mentions").all()).toEqual([{dish_id:seed.dishId("Pork Dumplings"),sentiment:-0.7,quote:"skip the pork dumplings"}]);
     });
 
     it("[ai] T4 unit: aggregation computes mention count and mean sentiment per dish", async () => {

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { api, profileStore, type Profile } from "../lib/api";
 const ALLERGIES = [
   "peanut",
@@ -87,8 +87,13 @@ export function ProfileForm({ onSaved }: { onSaved?: () => void }) {
     "loading" | "idle" | "saving" | "saved" | "error"
   >("loading");
   const [loadError, setLoadError] = useState(false);
+  const [loadAttempt, setLoadAttempt] = useState(0);
+  const saving = useRef(false);
+  const [saveError, setSaveError] = useState("");
   useEffect(() => {
     let live = true;
+    setLoadError(false);
+    setState("loading");
     const existing = profileStore.get();
     if (!existing) {
       setState("idle");
@@ -112,22 +117,33 @@ export function ProfileForm({ onSaved }: { onSaved?: () => void }) {
     return () => {
       live = false;
     };
-  }, []);
+  }, [loadAttempt]);
   const save = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (saving.current || state === "loading" || loadError) return;
+    saving.current = true;
+    setSaveError("");
     setState("saving");
     try {
+      let savedId = id;
       if (id) await api.updateProfile(id, p);
       else {
         const created = await api.createProfile(p);
-        profileStore.set(created.id);
+        savedId = created.id;
         setId(created.id);
+      }
+      if (!profileStore.set(savedId!)) {
+        setSaveError("Your profile reached the server, but this browser could not remember it. Allow browser storage and try again.");
+        setState("error");
+        return;
       }
       setState("saved");
       window.dispatchEvent(new Event("wg:profile"));
       onSaved?.();
     } catch {
       setState("error");
+    } finally {
+      saving.current = false;
     }
   };
   return (
@@ -141,7 +157,7 @@ export function ProfileForm({ onSaved }: { onSaved?: () => void }) {
           <button
             type="button"
             className="button secondary"
-            onClick={() => location.reload()}
+            onClick={() => setLoadAttempt((attempt) => attempt + 1)}
           >
             Try again
           </button>
@@ -228,7 +244,7 @@ export function ProfileForm({ onSaved }: { onSaved?: () => void }) {
               )}
             </button>
             {state === "error" && (
-              <p role="alert">Couldn’t save your profile. Please try again.</p>
+              <p role="alert">{saveError || "Couldn’t save your profile. Please try again."}</p>
             )}
             {state === "saved" && !onSaved && (
               <p className="notice" role="status">

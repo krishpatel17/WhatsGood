@@ -18,7 +18,7 @@ export function uniqueDishes<T extends { id: string; name: string }>(dishes: T[]
   for (const d of dishes) {
     const i = kept.findIndex((k) => sameDish(k.name, d.name));
     if (i === -1) kept.push(d);
-    else if (mentions(d) > mentions(kept[i])) kept[i] = d;
+    else if (mentions(d) > mentions(kept[i]) || (mentions(d) === mentions(kept[i]) && d.id < kept[i].id)) kept[i] = d;
   }
   return kept;
 }

@@ -107,3 +107,6 @@ See `validation/a2-benchmark/README.md`. In short: hand-copy the 10 menus, tag t
 ## Workflow
 
 One branch and PR per issue. The first commit adds failing tests, and later commits make them pass. Each test is tagged `[ai]` or `[manual]`. CI runs everything on every push and uploads coverage.
+
+See [the test review follow-up](docs/test-review.md) for regression coverage,
+attribution, enforced coverage minimums, excluded execution surfaces and test limits.

@@ -3,6 +3,7 @@ import { clopperPearson } from "./stats";
 export type Judgement = { pass: boolean; summary: string };
 
 const pct = (x: number) => `${(x * 100).toFixed(1)}%`;
+const ratio = (x: number, n: number) => n > 0 ? x / n : 0;
 const ci = (x: number, n: number) => {
   const [lo, hi] = clopperPearson(x, n);
   return `95% CI [${lo.toFixed(3)}, ${hi.toFixed(3)}]`;
@@ -11,16 +12,16 @@ const ci = (x: number, n: number) => {
 export const THRESHOLDS = { a1: 0.8, a2Restaurants: 0.8, a2BootstrapLo: 0.9, a3: 0.8 };
 
 export function judgeA1(readable: number, n: number): Judgement {
-  return { pass: readable / n >= THRESHOLDS.a1 - 1e-9, summary: `${readable}/${n} restaurants have a readable menu source (${pct(readable / n)}, ${ci(readable, n)}); threshold >= 24/30` };
+  return { pass: ratio(readable, n) >= THRESHOLDS.a1 - 1e-9, summary: `${readable}/${n} restaurants have a readable menu source (${pct(ratio(readable, n))}, ${ci(readable, n)}); threshold >= 24/30` };
 }
 
 export function judgeA2(r: { passed: number; n: number; bootstrapLo: number }): Judgement {
-  const pass = r.passed / r.n >= THRESHOLDS.a2Restaurants - 1e-9 && r.bootstrapLo >= THRESHOLDS.a2BootstrapLo;
+  const pass = ratio(r.passed, r.n) >= THRESHOLDS.a2Restaurants - 1e-9 && r.bootstrapLo >= THRESHOLDS.a2BootstrapLo;
   return { pass, summary: `${r.passed}/${r.n} restaurants imported easily (${ci(r.passed, r.n)}); dish-accuracy bootstrap lower bound ${pct(r.bootstrapLo)}; thresholds >= 8/10 and >= 90%` };
 }
 
 export function judgeA3(enough: number, n: number): Judgement {
-  return { pass: enough / n >= THRESHOLDS.a3 - 1e-9, summary: `${enough}/${n} restaurants have at least 3 dishes with >= 3 matched mentions (${ci(enough, n)}); threshold >= 8/10` };
+  return { pass: ratio(enough, n) >= THRESHOLDS.a3 - 1e-9, summary: `${enough}/${n} restaurants have at least 3 dishes with >= 3 matched mentions (${ci(enough, n)}); threshold >= 8/10` };
 }
 
 export const PIVOTS = {

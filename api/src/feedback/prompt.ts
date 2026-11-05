@@ -25,8 +25,11 @@ export async function pendingRating(db: Db, profileId: string, now = new Date())
     shouldPrompt({ createdAt: r.created_at, rated: !!r.rated, dismissedAt: r.dismissed_at, promptedAt: r.prompted_at, picks: r.picks }, now),
   );
   if (!due) return null;
-  await db.prepare("UPDATE recommendations SET prompted_at = ? WHERE id = ?").bind(nowIso(), due.id).run();
-  return getRecommendation(db, due.id);
+  const claimed = await db.prepare(`UPDATE recommendations SET prompted_at = ?
+    WHERE id = ? AND prompted_at IS NULL AND dismissed_at IS NULL
+      AND NOT EXISTS (SELECT 1 FROM ratings WHERE recommendation_id = recommendations.id)
+    RETURNING id`).bind(nowIso(), due.id).first<{ id: string }>();
+  return claimed ? getRecommendation(db, due.id) : null;
 }
 
 export async function dismissPrompt(db: Db, recommendationId: string): Promise<boolean> {

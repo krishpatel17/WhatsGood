@@ -9,6 +9,7 @@ export interface Stmt {
 
 export interface Db {
   prepare(sql: string): Stmt;
+  batch(statements: Stmt[]): Promise<unknown[]>;
 }
 
 export const newId = () => crypto.randomUUID();

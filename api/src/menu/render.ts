@@ -2,7 +2,7 @@
 // menu with JavaScript after the page loads, so a plain download sees an empty shell.
 // The browser itself is supplied by the caller: Playwright locally (src/validation/playwright-render.ts);
 // a deployed Worker would need Cloudflare Browser Rendering (Beta).
-import { htmlToText, pickExtractor } from "./fetcher";
+import { htmlToText, pickExtractor, publicSourceUrl, sourceBytes, MAX_SOURCE_BYTES } from "./fetcher";
 
 export type Render = (url: string) => Promise<{ html: string; finalUrl: string }>;
 
@@ -26,14 +26,17 @@ export function needsRender(url: string, status: number, html: string): boolean 
 export function renderingFetch(inner: typeof fetch, render: Render): typeof fetch {
   return (async (input: RequestInfo | URL, init?: RequestInit) => {
     const url = String(input instanceof Request ? input.url : input);
+    publicSourceUrl(url);
     const res = await inner(input, init);
     const type = res.headers.get("content-type") ?? "";
     if (res.ok && !type.includes("text/html")) return res;
-    const body = await res.text();
+    const body = new TextDecoder().decode(await sourceBytes(res, init?.signal));
     const original = () => new Response(body, { status: res.status, headers: res.headers });
     if (!needsRender(url, res.status, body)) return original();
     try {
       const rendered = await render(url);
+      publicSourceUrl(rendered.finalUrl);
+      if (new TextEncoder().encode(rendered.html).length > MAX_SOURCE_BYTES) throw new Error('Rendered menu is too large.');
       if (priceCount(rendered.html) <= (res.ok ? priceCount(body) : -1)) return original();
       return new Response(rendered.html, { status: 200, headers: { "content-type": "text/html; charset=utf-8" } });
     } catch {

@@ -3,6 +3,8 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   testDir: "e2e",
   timeout: 30_000,
+  snapshotPathTemplate: "{testDir}/{testFilePath}-snapshots/{arg}{ext}",
+  expect: { toHaveScreenshot: { maxDiffPixelRatio: 0.01 } },
   use: {
     baseURL: "http://localhost:4173",
     ...devices["Desktop Edge"],

@@ -18,7 +18,7 @@ describe("US-13 Label picks when reviews are thin", () => {
     expect(labelsFor(0, "menu_only")).toEqual(["menu_only"]);
   });
 
-  it("[ai] T2 unit: only 1 eligible dish -> exactly 1 pick plus an explanation", () => {
+  it("[manual] US13-R01 planning: one eligible dish sets maxPicks=1 and an explanation", () => {
     const plan = planPicks([dish("a")], ev({ a: [5, 0.8] }));
     expect(plan.maxPicks).toBe(1);
     expect(plan.mode).toBe("reviews");
