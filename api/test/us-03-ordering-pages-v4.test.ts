@@ -63,10 +63,10 @@ describe("US-03 Import a menu: unpriced items on ordering pages (A2 v4)", () => 
   const names = () => (db.raw.prepare("SELECT name FROM dishes").all() as { name: string }[]).map((d) => d.name);
   const answer = { dishes: [dish("Beef Chili", 7.5), dish("Shower Pilsner", null), dish("Greek Salad", 11)] };
 
-  it("[ai] AC1 integration: an ordering-page item with no price (sold out) is left out", async () => {
+  it("[ai] AC1 integration: an ordering-page item with no price remains explicitly unknown", async () => {
     const result = await run("https://revsoupmenu.square.site/", mockLlm([answer]));
-    expect(result).toMatchObject({ status: "active", dishCount: 2 });
-    expect(names()).not.toContain("Shower Pilsner");
+    expect(result).toMatchObject({ status: "active", dishCount: 3 });
+    expect(names()).toContain("Shower Pilsner");
   });
 
   it("[ai] AC1 integration: a restaurant's own menu page keeps dishes printed without a price", async () => {
