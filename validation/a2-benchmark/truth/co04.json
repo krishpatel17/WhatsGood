@@ -1,6 +1,6 @@
 {
   "restaurant_id": "co04",
-  "copied_by": "Lara Mahajan",
+  "copied_by": "Krish Patel",
   "copied_on": "2026-11-02",
   "source_url": "https://www.thevirginiancville.com/s/Virginian-Menu-8-6-26.pdf",
   "dishes": [
@@ -198,6 +198,176 @@
       "section": "Desserts",
       "name": "ROOT-BEER FLOAT",
       "price": 7
+    },
+    {
+      "section": "Beverages",
+      "name": "Coke",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Diet Coke",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Root Beer",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Sprite",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Ginger Ale",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Dr. Pepper",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Tonic",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Lemonade",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Arnold Palmer",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Coffee",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Sweet or Unsweetened Tea",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Juices",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Hot Cider",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Hot Chocolate",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Hot Tea",
+      "price": 3.5
+    },
+    {
+      "section": "Beverages",
+      "name": "Milk",
+      "price": 3.5
+    },
+    {
+      "section": "Virginia Wines",
+      "name": "VIOGNIER - Eastwood Farm and Winery",
+      "price": 12
+    },
+    {
+      "section": "Virginia Wines",
+      "name": "VERMENTINO - Barboursville Vineyards",
+      "price": 12
+    },
+    {
+      "section": "Virginia Wines",
+      "name": "CHARDONNAY - Barboursville Vineyards",
+      "price": 11
+    },
+    {
+      "section": "Virginia Wines",
+      "name": "BARBERA RESERVE - Barboursville Vineyards",
+      "price": 13
+    },
+    {
+      "section": "Virginia Wines",
+      "name": "ROTUNDA RED - Lovingston Winery",
+      "price": 12
+    },
+    {
+      "section": "Virginia Wines",
+      "name": "MERITAGE - Rappahannock Cellars",
+      "price": 11
+    },
+    {
+      "section": "Virginia Wines",
+      "name": "SHY OX ROSÉ - Ox-Eye Vineyards",
+      "price": 10
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Double Flavored Hard Bodies",
+      "price": 6
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Domestic Bottles",
+      "price": 3
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Surfsides",
+      "price": 5
+    },
+    {
+      "section": "Daily Specials",
+      "name": "32oz pitchers",
+      "price": 8
+    },
+    {
+      "section": "Daily Specials",
+      "name": "featured pitcher",
+      "price": 4
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Rails",
+      "price": 2
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Surprise Shooters",
+      "price": 5
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Trash Cans",
+      "price": 10
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Mimosas",
+      "price": 5
+    },
+    {
+      "section": "Daily Specials",
+      "name": "Bloody Marys",
+      "price": 7
+    },
+    {
+      "section": "Happy Hour",
+      "name": "Drafts",
+      "price": 4
     }
   ]
 }

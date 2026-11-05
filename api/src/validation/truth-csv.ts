@@ -1,4 +1,5 @@
 // Hand-copied menus as spreadsheets (section,name,price) -> answer-key menus for the A2 benchmark.
+import { isAddOn } from "../menu/add-ons";
 import { parsePrice } from "../menu/validate";
 import type { Truth } from "./benchmark-set";
 import { parseCsv } from "./csv";
@@ -7,9 +8,6 @@ import { normalize } from "../text/match";
 
 type Meta = Omit<Truth, "dishes">;
 type TruthDish = Truth["dishes"][number];
-
-// Add-ons are not dishes you order on their own: "Add chicken to any salad", "Extra topping".
-const ADD_ON = /^add\b|^(extra|sub(stitute)?)\b.*\b(topp?ings?|cheese|sauces?|dressings?|proteins?|chicken|meat|shots?|eggs?|avocado|bacon)\b/i;
 
 /**
  * A blank price cell means the menu shows no price; anything else must read as a price.
@@ -30,7 +28,7 @@ export function csvToTruth(csv: string, meta: Meta): { truth: Truth | null; erro
       errors.push(`row ${row}: name is empty`);
       return;
     }
-    if (ADD_ON.test(name)) {
+    if (isAddOn(name)) {
       notes.push(`row ${row}: "${name}" is an add-on; left out`);
       return;
     }

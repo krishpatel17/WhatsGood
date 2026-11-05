@@ -1,6 +1,6 @@
 {
   "restaurant_id": "ba01",
-  "copied_by": "Lara Mahajan",
+  "copied_by": "Krish Patel",
   "copied_on": "2026-11-02",
   "source_url": "https://sedonataphouse.com/wp-content/uploads/2019/01/Dinner_Summer2026_Cville_11x14_06.02.26_web.pdf",
   "dishes": [
@@ -348,6 +348,306 @@
       "section": "FLATBREADS",
       "name": "Margherita",
       "price": 7.9
+    },
+    {
+      "section": "SIMPLY WOOD GRILLED - PREMIUM TOPPINGS",
+      "name": "Crab-Stuffed Shrimp (3)",
+      "price": 10
+    },
+    {
+      "section": "SIMPLY WOOD GRILLED - PREMIUM TOPPINGS",
+      "name": "Seared Shrimp",
+      "price": 10
+    },
+    {
+      "section": "SIMPLY WOOD GRILLED - PREMIUM TOPPINGS",
+      "name": "Shrimp Scampi",
+      "price": 9
+    },
+    {
+      "section": "SIMPLY WOOD GRILLED - PREMIUM TOPPINGS",
+      "name": "Jumbo Lump Crab Cake",
+      "price": 10
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "Sedona White Sangria",
+      "price": 8
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "Sedona Red Sangria",
+      "price": 8
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "STH Mule",
+      "price": 11
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "Orange Crush",
+      "price": 10
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "Prickly Pear Margarita",
+      "price": 11
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "Blood Orange Margarita",
+      "price": 11
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "El Patrón Margarita",
+      "price": 15
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "Fireside Chat",
+      "price": 14
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "STH Aperol Spritz",
+      "price": 12
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "Smoked Old Fashioned",
+      "price": 14
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "Father's Old Fashioned",
+      "price": 14
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "T2T Lemon Basil",
+      "price": 12.9
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "Red Rock",
+      "price": 10
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "Pomegranate-Blueberry",
+      "price": 11
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "Havana Coconut",
+      "price": 11
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "Lemon Drop",
+      "price": 11
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "The Sedona",
+      "price": 13
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "Espresso in Dublin",
+      "price": 13
+    },
+    {
+      "section": "COCKTAILS + MARTINIS",
+      "name": "Dirty Goose",
+      "price": 14
+    },
+    {
+      "section": "SPIRIT-FREE",
+      "name": "Cactus Lemonade",
+      "price": 6
+    },
+    {
+      "section": "SPIRIT-FREE",
+      "name": "Blueberry Blitz",
+      "price": 6
+    },
+    {
+      "section": "SPIRIT-FREE",
+      "name": "Strawberry + Basil Refresher",
+      "price": 6
+    },
+    {
+      "section": "SPIRIT-FREE",
+      "name": "Apple Crisp",
+      "price": 6
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "Coca-Cola Products",
+      "price": 3.9
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "Craft Root Beer",
+      "price": 4
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "Artisan Teas",
+      "price": 3.5
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "French Press Coffee",
+      "price": 4
+    },
+    {
+      "section": "BEVERAGES",
+      "name": "Saratoga Water",
+      "price": 6.5
+    },
+    {
+      "section": "WINE - HOUSE",
+      "name": "Chardonnay",
+      "price": 7
+    },
+    {
+      "section": "WINE - HOUSE",
+      "name": "Pinot Grigio",
+      "price": 7
+    },
+    {
+      "section": "WINE - HOUSE",
+      "name": "Pinot Noir",
+      "price": 7
+    },
+    {
+      "section": "WINE - HOUSE",
+      "name": "Cabernet Sauvignon",
+      "price": 7
+    },
+    {
+      "section": "WINE - SPARKLING",
+      "name": "Maschio",
+      "price": 9
+    },
+    {
+      "section": "WINE - SPARKLING",
+      "name": "Mumm",
+      "price": 54
+    },
+    {
+      "section": "WINE - SPARKLING",
+      "name": "Mumm Sparkling Brut Prestige",
+      "price": 54
+    },
+    {
+      "section": "WINE - SPARKLING",
+      "name": "J Vineyards California",
+      "price": 49
+    },
+    {
+      "section": "WINE - WHITE",
+      "name": "Villa Pozzi",
+      "price": 8
+    },
+    {
+      "section": "WINE - WHITE",
+      "name": "Barone Fini",
+      "price": 8
+    },
+    {
+      "section": "WINE - WHITE",
+      "name": "Heinz Eifel",
+      "price": 10
+    },
+    {
+      "section": "WINE - WHITE",
+      "name": "Brancott",
+      "price": 9
+    },
+    {
+      "section": "WINE - WHITE",
+      "name": "'Conundrum' by Caymus",
+      "price": 10
+    },
+    {
+      "section": "WINE - WHITE",
+      "name": "Joel Gott Unoaked",
+      "price": 10
+    },
+    {
+      "section": "WINE - WHITE",
+      "name": "Bezel by Cakebread",
+      "price": 13
+    },
+    {
+      "section": "WINE - ROSÉ",
+      "name": "Bieler Père & Fils, Sabine",
+      "price": 10
+    },
+    {
+      "section": "WINE - RED",
+      "name": "Acrobat",
+      "price": 13
+    },
+    {
+      "section": "WINE - RED",
+      "name": "Alexander Valley Vineyards",
+      "price": 12
+    },
+    {
+      "section": "WINE - RED",
+      "name": "Trapiche",
+      "price": 9
+    },
+    {
+      "section": "WINE - RED",
+      "name": "Double Trouble by Charles & Charles",
+      "price": 9
+    },
+    {
+      "section": "WINE - RED",
+      "name": "Columbia Crest 'Grand Estates'",
+      "price": 9
+    },
+    {
+      "section": "WINE - RED",
+      "name": "Bonanza by Caymus",
+      "price": 10
+    },
+    {
+      "section": "WINE - RED",
+      "name": "Josh Craftsman's Select",
+      "price": 11
+    },
+    {
+      "section": "WINE - LOCAL WINES OF INTEREST",
+      "name": "King Family 'Crosé'",
+      "price": 13
+    },
+    {
+      "section": "WINE - LOCAL WINES OF INTEREST",
+      "name": "King Family 'Verde'",
+      "price": 10
+    },
+    {
+      "section": "WINE - LOCAL WINES OF INTEREST",
+      "name": "King Family",
+      "price": 62
+    },
+    {
+      "section": "WINE - LOCAL WINES OF INTEREST",
+      "name": "Michael Shaps",
+      "price": 54
+    },
+    {
+      "section": "WINE - LOCAL WINES OF INTEREST",
+      "name": "Barboursville",
+      "price": 39
     }
   ]
 }

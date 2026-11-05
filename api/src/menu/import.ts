@@ -2,7 +2,11 @@ import type { Blobs } from "../blobs";
 import { type Db, newId, nowIso } from "../db";
 import type { Llm, LlmContent, LlmMessage, LlmUsage } from "../llm/types";
 import { MENU_IMPORT_SYSTEM } from "../prompts/menu-import";
-import { fetchSource, sourceContent, textOf } from "./fetcher";
+import { type FetchedSource, fetchSource, sourceContent, textOf } from "./fetcher";
+import { isAddOn } from "./add-ons";
+import { fetchMenuImages, findPageImages } from "./page-images";
+import { mapLimited, PDF_PAGE_CONCURRENCY, pdfPageInputs } from "./pdf-pages";
+import { MIN_PRICES, priceCount } from "./render";
 import { type Menu, MenuSchema } from "./schema";
 import { layoutItemCount, NO_DISHES, validateMenu } from "./validate";
 
@@ -98,16 +102,50 @@ export function importFailureMessage(failures: string[][]): string {
   return `${reason} Any existing menu was kept.`;
 }
 
+/**
+ * Reads each page of a long PDF in its own call (at most PDF_PAGE_CONCURRENCY at once) and combines
+ * the dishes in page order. A page with no dishes is fine; if any page fails all its retries, or the
+ * whole PDF yields nothing, the menu is not stored as active.
+ */
+async function extractPdfPages(llm: Llm, src: FetchedSource, pages: { bytes: Uint8Array; note: string }[], check: Validate, log: OnAttempt) {
+  const pageCheck: Validate = (data) => {
+    const r = check(data);
+    return r.menu && r.errors.length === 1 && r.errors[0] === NO_DISHES ? { menu: r.menu, errors: [] } : r;
+  };
+  const runs = await mapLimited(pages, PDF_PAGE_CONCURRENCY, (page) =>
+    extractWithRetry(llm, [...sourceContent({ ...src, bytes: page.bytes }), { type: "text", text: page.note }], pageCheck, log),
+  );
+  const usage: LlmUsage = { input_tokens: 0, output_tokens: 0 };
+  for (const r of runs) {
+    usage.input_tokens += r.usage.input_tokens;
+    usage.output_tokens += r.usage.output_tokens;
+  }
+  const attempts = Math.max(...runs.map((r) => r.attempts));
+  const failures = runs.flatMap((r, i) => r.failures.map((f) => f.map((e) => `page ${i + 1}: ${e}`)));
+  if (runs.some((r) => !r.menu)) return { menu: null, attempts, usage, failures };
+  const combined = check({ dishes: runs.flatMap((r) => r.menu!.dishes) });
+  if (!combined.menu || combined.errors.length) return { menu: null, attempts, usage, failures: [...failures, combined.errors] };
+  return { menu: combined.menu, attempts, usage, failures };
+}
+
 export async function importMenu(deps: ImportDeps, input: { restaurantId: string; url: string }, validate?: Validate): Promise<ImportResult> {
   const src = await fetchSource(deps.fetch, input.url);
   const snapshotKey = `snapshots/${input.restaurantId}/${Date.now()}`;
   await deps.blobs.put(snapshotKey, src.bytes, { httpMetadata: { contentType: src.contentType } });
 
   const text = textOf(src);
-  const check = validate ?? validateMenu(text === null ? null : layoutItemCount(text));
-  const run = await extractWithRetry(deps.llm, sourceContent(src), check, attemptLogger(deps.db, input.restaurantId, input.url));
-  const status = run.menu ? "active" : "needs_review";
-  const dishes = run.menu?.dishes ?? [];
+  // A web page with almost no menu text may post its menu as a picture: send its largest images too.
+  const html = text === null ? "" : new TextDecoder().decode(src.bytes);
+  const images = text !== null && priceCount(html) < MIN_PRICES ? await fetchMenuImages(deps.fetch, findPageImages(html, src.url)) : [];
+  // The layout count comes from page text, which says nothing about a menu in an image.
+  const check = validate ?? validateMenu(text === null || images.length ? null : layoutItemCount(text));
+  const log = attemptLogger(deps.db, input.restaurantId, input.url);
+  const pages = src.kind === "pdf" ? await pdfPageInputs(src.bytes) : [];
+  const run = pages.length > 1 ? await extractPdfPages(deps.llm, src, pages, check, log) : await extractWithRetry(deps.llm, [...images, ...sourceContent(src)], check, log);
+  // Add-ons the model listed ("Extra sauce") are not dishes on their own. On an ordering site every
+  // item you can order shows a price, so one without a price is sold out or unavailable.
+  const dishes = (run.menu?.dishes ?? []).filter((d) => !isAddOn(d.name) && !(src.kind === "ordering-page" && d.price === null));
+  const status = dishes.length ? "active" : "needs_review";
   const menuId = await storeMenu(deps.db, {
     restaurantId: input.restaurantId,
     sourceUrl: input.url,

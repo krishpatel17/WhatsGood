@@ -97,7 +97,7 @@ describe("US-20 report from the repository's data files", () => {
     expect(inputs.a1).toMatchObject({ readable: 25, n: 30 });
     const md = buildReport(inputs);
     expect(md).toContain("A1 Sources exist: PASS");
-  });
+  }, 30_000); // scores the real benchmark data, which takes a few seconds on CI
 
   it("[ai] AC1/AC6 unit: A2 results are scored against the hand-copied menus", async () => {
     const { scoreA2 } = await import("../src/validation/assemble");
@@ -107,5 +107,15 @@ describe("US-20 report from the repository's data files", () => {
     expect(a2.restaurants[0]).toMatchObject({ name: "Restaurant AA", pass: true, retries: 1 });
     expect(a2.restaurants[0].score.accuracy).toBe(1);
     expect(a2.bootstrap.lo).toBe(1);
+  });
+});
+
+describe("US-20 report: which importer ran", () => {
+  it("[ai] AC7 unit: the A2 section names the importer version, so v1 and v2 runs can't be confused", () => {
+    const a2 = { promptTag: "t", importer: "v2-render", restaurants: [], bootstrap: { lo: 0, hi: 0 } };
+    expect(buildReport({ a1: null, a2, a3: null })).toContain("Importer: v2 (JavaScript pages rendered in a local browser before import)");
+    expect(buildReport({ a1: null, a2: { ...a2, importer: "v1" }, a3: null })).toContain("Importer: v1 (plain download)");
+    expect(buildReport({ a1: null, a2: { ...a2, importer: "v3" }, a3: null })).toContain("Importer: v3 (v2 plus add-ons such as \"Extra sauce\" left out, by the answer keys' rule)");
+    expect(buildReport({ a1: null, a2: { ...a2, importer: "v4" }, a3: null })).toContain("Importer: v4 (v3 plus pages scrolled a screen at a time, and unpriced ordering-site items left out)");
   });
 });

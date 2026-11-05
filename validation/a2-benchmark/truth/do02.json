@@ -1,6 +1,6 @@
 {
   "restaurant_id": "do02",
-  "copied_by": "Lara Mahajan",
+  "copied_by": "Krish Patel",
   "copied_on": "2026-11-02",
   "source_url": "https://www.thewhiskeyjarcville.com/menu",
   "dishes": [
@@ -293,6 +293,16 @@
       "section": "DESSERTS",
       "name": "MIXED BERRY COBBLER",
       "price": 9
+    },
+    {
+      "section": "SIDES",
+      "name": "FRENCH FRIES",
+      "price": null
+    },
+    {
+      "section": "SIDES",
+      "name": "GRITS",
+      "price": null
     }
   ]
 }

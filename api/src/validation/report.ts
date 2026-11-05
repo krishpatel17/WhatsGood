@@ -3,7 +3,14 @@ import { judgeA1, judgeA2, judgeA3, type Judgement, verdict } from "./verdict";
 
 export type A1Input = { readable: number; n: number; bySourceType: Record<string, number> };
 export type A2Restaurant = { id: string; name: string; tier: string; sourceType: string; seconds: number; retries: number; manualFixes: number; score: MenuScore; pass: boolean };
-export type A2Input = { promptTag: string; llmPath?: string; restaurants: A2Restaurant[]; bootstrap: { lo: number; hi: number } };
+const IMPORTERS: Record<string, string> = {
+  v1: "v1 (plain download)",
+  "v2-render": "v2 (JavaScript pages rendered in a local browser before import)",
+  v3: 'v3 (v2 plus add-ons such as "Extra sauce" left out, by the answer keys\' rule)',
+  v4: "v4 (v3 plus pages scrolled a screen at a time, and unpriced ordering-site items left out)",
+};
+
+export type A2Input = { promptTag: string; llmPath?: string; importer?: string; restaurants: A2Restaurant[]; foodOnly?: A2Restaurant[]; bootstrap: { lo: number; hi: number } };
 export type A3Restaurant = { id: string; name: string; reviews: number; atLeast1: number; atLeast3: number; atLeast10: number; enough: boolean };
 export type A3Input = { restaurants: A3Restaurant[]; precision: number | null; recall: number | null };
 
@@ -51,7 +58,7 @@ export function buildReport(input: { a1: A1Input | null; a2: A2Input | null; a3:
     out.push(
       "## A2 — Menu import benchmark",
       "",
-      `Prompts frozen at \`${input.a2.promptTag}\`. Dish-accuracy cluster bootstrap (10,000 resamples of restaurants): 95% interval [${pct(input.a2.bootstrap.lo)}, ${pct(input.a2.bootstrap.hi)}].${input.a2.llmPath === "claude-login-bridge" ? " Deviation: model calls went through a developer's Claude login with the local bridge rather than the API, so seconds include the CLI's overhead and token costs are not meaningful." : ""}`,
+      `Prompts frozen at \`${input.a2.promptTag}\`. Importer: ${IMPORTERS[input.a2.importer ?? "v1"] ?? IMPORTERS.v1}. Dish-accuracy cluster bootstrap (10,000 resamples of restaurants): 95% interval [${pct(input.a2.bootstrap.lo)}, ${pct(input.a2.bootstrap.hi)}].${input.a2.llmPath === "claude-login-bridge" ? " Deviation: model calls went through a developer's Claude login with the local bridge rather than the API, so seconds include the CLI's overhead and token costs are not meaningful." : ""}`,
       "",
       "| Restaurant | Tier | Source | Accuracy | Invented | Missed | Seconds | Retries | Pass |",
       "|---|---|---|---|---|---|---|---|---|",
@@ -70,6 +77,21 @@ export function buildReport(input: { a1: A1Input | null; a2: A2Input | null; a3:
       ...rows.flatMap((r) => [...r.score.inventedNames.map((n) => `- ${r.name}: invented "${n}"`), ...r.score.missedNames.map((n) => `- ${r.name}: missed "${n}"`)]),
       "",
     );
+    const food = input.a2.foodOnly;
+    if (food?.length) {
+      out.push(
+        "### Exploratory, not the pre-registered test: food dishes only",
+        "",
+        `Added after the v4 run, so it does not change the A2 result or the verdict. The MVP ranks food dishes, so this view leaves drinks, sauces and toppings out of both the answer key and the import (generic section and name words, src/validation/food-only.ts). ${food.filter((r) => r.pass).length}/${food.length} restaurants pass when drinks, sauces and toppings are left out. A pre-registered Beta test on new restaurants is needed before this counts.`,
+        "",
+        "| Restaurant | Accuracy | Invented | Missed | Pass |",
+        "|---|---|---|---|---|",
+        ...food.map((r) => `| ${r.name} | ${pct(r.score.accuracy)} | ${r.score.invented} | ${r.score.missed} | ${r.pass ? "yes" : "no"} |`),
+        "",
+        ...food.flatMap((r) => [...r.score.inventedNames.map((n) => `- ${r.name}: invented "${n}"`), ...r.score.missedNames.map((n) => `- ${r.name}: missed "${n}"`)]),
+        "",
+      );
+    }
   }
   if (input.a3) {
     out.push(

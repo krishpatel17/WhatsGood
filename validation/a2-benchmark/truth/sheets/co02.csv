@@ -1,29 +1,20 @@
 section,name,price
-DUMPLINGS,Fried Dumplings (7),6.50
-DUMPLINGS,Steamed Pork Dumpling (7),6.50
-DUMPLINGS,Fried Pork Dumplings (10) - Portion & a half,9.00
-DUMPLINGS,Steamed Vegetarian Dumplings (6),6.50
-DUMPLINGS,Fried Vegetarian Dumplings (6),6.50
-DUMPLINGS,Steamed Vegetarian Dumplings (9) - Portion & a half,9.00
-DUMPLINGS,Fried Vegetarian Dumplings (9)- Portion & a half,9.00
-DUMPLINGS,Steamed Pork Dumpling (10) - Portion & a half,9.00
-NOODLES,Sesame Noodles,6.50
-NOODLES,Sweet and Sour Spicy Noodles,6.50
-HOT BUNS,Veggie Hot Bun,2.75
-HOT BUNS,Pork Hot Bun,2.75
-CHICKEN CURRY,Chicken Curry with Rice,11.00
-CHICKEN CURRY,Chicken Curry Combo,15.00
-CHICKEN CURRY,Side of Chicken Curry,7.00
-CHICKEN CURRY,Small Chicken Curry and Rice,6.50
-SOUP,Hot and Sour Soup Small,4.50
-SOUP,Wonton Soup Small,7.00
-SOUP,Wonton Soup Large,11.50
-SOUP,Hot and Sour Soup Large,8.75
-EXTRAS,Marco & Luca Sauce,0.40
-EXTRAS,Peanut Butter Sauce,0.75
-SIDES,White Rice,3.25
-DESSERTS,Sesame Balls,5.00
-UNCATEGORIZED,Extra Toping,0.75
-UNCATEGORIZED,Large Tray,120.00
-UNCATEGORIZED,Large Hot And Sour Soup,8.00
-UNCATEGORIZED,Small Wonton Soup,6.00
+Fried Dumplings,Fried Pork Dumplings (7pieces),
+Fried Dumplings,Vegetarian Dumplings (6 pieces),
+Fried Dumplings,Fried Pork Dumplings Portion & a Half (10 pieces),
+Steamed Dumplings,Steamed Pork Dumplings (7pieces),
+Steamed Dumplings,Steamed Vegetarian Dumplings (6 pieces),
+Soup,Wonton Soup Small,
+Soup,Hot And Sour Soup Small,
+Soup,Wonton Soup Large,
+Soup,Hot And Sour Soup Large,
+Dessert,Sesame Balls,
+Noodles,Sesame Noodles,
+Noodles,Sweet and Sour Spicy Noodles,
+Chicken Curry,Chicken Curry with Rice,
+Chicken Curry,Chicken Curry Combo,
+Chicken Curry,Side of Chicken Curry,
+Chicken Curry,Small Chicken Curry and Rice,
+Hot Buns,Pork Hot Bun,
+Hot Buns,Vegetarian Hot Bun,
+Sides,White Rice,

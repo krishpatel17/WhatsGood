@@ -28,7 +28,10 @@ export type RestaurantResult = {
   dishes: Dish[];
 };
 
-export type BenchmarkResults = { promptTag: string; model: string; llmPath: LlmPath; startedAt: string; restaurants: RestaurantResult[] };
+/** v1: plain download. v2-render: JavaScript pages rendered in a local browser first (src/menu/render.ts). v3: v2 plus add-ons left out (src/menu/add-ons.ts). v4: v3 plus step-by-step scrolling and unpriced ordering-site items left out. */
+export type Importer = "v1" | "v2-render" | "v3" | "v4";
+
+export type BenchmarkResults = { promptTag: string; model: string; llmPath: LlmPath; importer?: Importer; startedAt: string; restaurants: RestaurantResult[] };
 
 type Git = (args: string[]) => { ok: boolean; out: string };
 
@@ -80,7 +83,7 @@ function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
   return Promise.race([p, new Promise<T>((_, reject) => setTimeout(() => reject(new Error(`timed out after ${ms / 1000} s`)), ms))]);
 }
 
-export async function runBenchmark(opts: { root: string; llm: Llm; fetch: typeof fetch; promptTag: string; timeoutMs?: number }): Promise<BenchmarkResults> {
+export async function runBenchmark(opts: { root: string; llm: Llm; fetch: typeof fetch; promptTag: string; timeoutMs?: number; importer?: Importer }): Promise<BenchmarkResults> {
   const { root, llm, promptTag, timeoutMs = 120_000 } = opts;
   const manifest = loadManifest(root);
   const db = localDb();
@@ -129,7 +132,7 @@ export async function runBenchmark(opts: { root: string; llm: Llm; fetch: typeof
     }
   }
 
-  const results: BenchmarkResults = { promptTag, model: MODEL, llmPath: llmPath(llm), startedAt, restaurants };
+  const results: BenchmarkResults = { promptTag, model: MODEL, llmPath: llmPath(llm), importer: opts.importer ?? "v1", startedAt, restaurants };
   const dir = root + "validation/a2-benchmark/results/";
   mkdirSync(dir, { recursive: true });
   writeFileSync(`${dir}${startedAt.replace(/[:.]/g, "-")}.json`, JSON.stringify(results, null, 2));

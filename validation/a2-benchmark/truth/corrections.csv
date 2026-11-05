@@ -1,0 +1,9 @@
+restaurant_id,date,checked_by,dishes_added,source_checked,reason
+co04,2026-11-04,Lara Mahajan,23,validation/a2-benchmark/snapshots/co04.pdf (the PDF the benchmark read),Priced drinks and wines were missing from the copy; the copying rule only skips drinks without prices. Found while reviewing items the A2 v1 import returned that were not in the key.
+do09,2026-11-04,Lara Mahajan,7,https://afghankabob-house.com/our-menu/,Priced drinks were missing from the copy; same reason as co04.
+do02,2026-11-04,Lara Mahajan,2,https://www.thewhiskeyjarcville.com/menu,"French Fries and Grits are listed under Vegetarian Sides with no price printed; the copying rule keeps orderable dishes with a blank price, so both were added with no price."
+co04,2026-11-04,Lara Mahajan,11,official menu,"post-v2 correction: priced items on the official menu missing from the copy, confirmed one by one against the menu; also 7 wine names changed to the full printed name incl. winery"
+ba01,2026-11-04,Lara Mahajan,60,official menu,"post-v2 correction: priced items on the official menu missing from the copy, confirmed one by one against the menu"
+co10,2026-11-04,Lara Mahajan,9,official menu,"post-v2 correction: priced items on the official menu missing from the copy, confirmed one by one against the menu"
+do04,2026-11-04,Lara Mahajan,29,official menu,"post-v2 correction: priced items on the official menu missing from the copy, confirmed one by one against the menu"
+co02,2026-11-04,Lara Mahajan,re-copied,menu image on the restaurant site,post-v2 correction: key re-copied from the menu image the site shows (the old copy came from a different listing); the image prints no prices so prices are blank
