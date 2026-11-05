@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { mockApi, API, fallback } from "./mock-api";
 for (const width of [390, 1280]) {
-  test(`[ai] Prism flow and dialog accessibility at ${width}px`, async ({
+  test(`[manual] Prism flow and dialog accessibility at ${width}px`, async ({
     page,
   }, testInfo) => {
     await page.setViewportSize({ width, height: 900 });
@@ -40,6 +40,7 @@ for (const width of [390, 1280]) {
       path: testInfo.outputPath(`profile-${width}.png`),
       fullPage: false,
     });
+    await expect(dialog).toHaveScreenshot(`profile-dialog-${width}.png`, { animations: "disabled" });
     await page.keyboard.press("Escape");
     await expect(dialog).not.toBeVisible();
     await expect(profile).toBeFocused();

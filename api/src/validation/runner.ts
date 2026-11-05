@@ -5,6 +5,7 @@ import { MODEL } from "../llm/anthropic";
 import { type LlmPath, llmPath } from "../llm/select";
 import type { Llm } from "../llm/types";
 import { importMenu } from "../menu/import";
+import { sourceBytes } from "../menu/fetcher";
 import type { Dish } from "../menu/schema";
 import { createRestaurant } from "../restaurants/repo";
 import { loadManifest } from "./benchmark-set";
@@ -38,6 +39,8 @@ type Git = (args: string[]) => { ok: boolean; out: string };
 /** Refuses to run unless the prompts in the working tree are exactly the frozen tag's. */
 export function checkPromptsFrozen(tag: string, git: Git): void {
   if (!git(["rev-parse", "--verify", `refs/tags/${tag}`]).ok) throw new Error(`tag ${tag} does not exist; tag the commit you benchmark first`);
+  const untracked = git(["ls-files", "--others", "--", "api/src/prompts"]);
+  if (!untracked.ok || untracked.out.trim()) throw new Error(`untracked prompts in api/src/prompts differ from tag ${tag}`);
   if (!git(["diff", "--quiet", tag, "--", "api/src/prompts"]).ok) throw new Error(`prompts in api/src/prompts differ from tag ${tag}; commit and re-tag, or check out the tag`);
 }
 
@@ -52,7 +55,7 @@ function recordingFetch(root: string, inner: typeof fetch, idFor: Map<string, st
     const res = await inner(input, init);
     const id = idFor.get(url);
     if (!id || !res.ok) return res;
-    const bytes = new Uint8Array(await res.arrayBuffer());
+    const bytes = await sourceBytes(res, init?.signal);
     const contentType = res.headers.get("content-type") ?? "text/html";
     mkdirSync(dir, { recursive: true });
     const file = `${id}.${extFor(contentType)}`;
@@ -80,7 +83,9 @@ export function snapshotFetch(root: string): typeof fetch {
 const nullBlobs: Blobs = { put: async () => null, get: async () => null };
 
 function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
-  return Promise.race([p, new Promise<T>((_, reject) => setTimeout(() => reject(new Error(`timed out after ${ms / 1000} s`)), ms))]);
+  let timer: ReturnType<typeof setTimeout>;
+  const timeout = new Promise<T>((_, reject) => { timer = setTimeout(() => reject(new Error(`timed out after ${ms / 1000} s`)), ms); });
+  return Promise.race([p, timeout]).finally(() => clearTimeout(timer));
 }
 
 export async function runBenchmark(opts: { root: string; llm: Llm; fetch: typeof fetch; promptTag: string; timeoutMs?: number; importer?: Importer }): Promise<BenchmarkResults> {

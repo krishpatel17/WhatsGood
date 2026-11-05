@@ -12,7 +12,7 @@ const IMPORTERS: Record<string, string> = {
 
 export type A2Input = { promptTag: string; llmPath?: string; importer?: string; restaurants: A2Restaurant[]; foodOnly?: A2Restaurant[]; bootstrap: { lo: number; hi: number } };
 export type A3Restaurant = { id: string; name: string; reviews: number; atLeast1: number; atLeast3: number; atLeast10: number; enough: boolean };
-export type A3Input = { restaurants: A3Restaurant[]; precision: number | null; recall: number | null };
+export type A3Input = { promptTag?: string; llmPath?: string; restaurants: A3Restaurant[]; precision: number | null; recall: number | null };
 
 const pct = (x: number) => `${(x * 100).toFixed(1)}%`;
 const line = (name: string, j: Judgement | null) => `- **${name}: ${j === null ? "NOT RUN YET" : j.pass ? "PASS" : "FAIL"}**${j ? ` — ${j.summary}` : ""}`;
@@ -96,6 +96,8 @@ export function buildReport(input: { a1: A1Input | null; a2: A2Input | null; a3:
   if (input.a3) {
     out.push(
       "## A3 — Review dish coverage",
+      "",
+      `Prompts frozen at \`${input.a3.promptTag ?? "unknown"}\`.${input.a3.llmPath === "claude-login-bridge" ? " Deviation: extraction used a developer's Claude login via the local bridge; token costs are not meaningful as API billing estimates." : ""}`,
       "",
       `Extraction against the hand-labeled sample: precision ${input.a3.precision === null ? "not measured yet" : pct(input.a3.precision)}, recall ${input.a3.recall === null ? "not measured yet" : pct(input.a3.recall)}.`,
       "",

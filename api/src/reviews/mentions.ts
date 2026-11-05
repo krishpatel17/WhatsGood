@@ -53,7 +53,7 @@ export async function extractMentions(deps: { db: Db; llm: Llm }, restaurantId: 
   const byId = new Map(reviews.map((r) => [r.id, r.text]));
   const result: ExtractResult = { reviews: reviews.length, mentions: 0, matched: 0, rejectedQuotes: 0, invalid: 0, usage: { input_tokens: 0, output_tokens: 0 } };
 
-  await db.prepare("DELETE FROM mentions WHERE restaurant_id = ?").bind(restaurantId).run();
+  const statements = [db.prepare("DELETE FROM mentions WHERE restaurant_id = ?").bind(restaurantId)];
   const menuText = dishes.map((d) => `- ${d.name}`).join("\n");
 
   for (let i = 0; i < reviews.length; i += REVIEWS_PER_CALL) {
@@ -70,8 +70,7 @@ export async function extractMentions(deps: { db: Db; llm: Llm }, restaurantId: 
     result.usage.output_tokens += res.usage.output_tokens;
     const parsed = MentionsSchema.safeParse(res.data);
     if (!parsed.success) {
-      result.invalid += batch.length;
-      continue;
+      throw new Error("invalid mention extraction: previous evidence was kept");
     }
     for (const m of parsed.data.mentions) {
       const review = byId.get(m.review_id);
@@ -84,13 +83,14 @@ export async function extractMentions(deps: { db: Db; llm: Llm }, restaurantId: 
         continue;
       }
       const match = matchMention(m.dish, dishes);
-      await db
+      statements.push(db
         .prepare("INSERT INTO mentions (id, restaurant_id, review_id, dish_id, mention, sentiment, quote, score) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
-        .bind(newId(), restaurantId, m.review_id, match?.dishId ?? null, m.dish, m.sentiment, squash(m.quote), match?.score ?? 0)
-        .run();
+        .bind(newId(), restaurantId, m.review_id, match?.dishId ?? null, m.dish, m.sentiment, squash(m.quote), match?.score ?? 0));
       result.mentions += 1;
       if (match) result.matched += 1;
     }
   }
+  // Model work must finish before any previous evidence is replaced.
+  await db.batch(statements);
   return result;
 }

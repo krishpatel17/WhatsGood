@@ -18,7 +18,7 @@ const pick: Pick = {
 describe("US-14 Results screen: pick card", () => {
   afterEach(cleanup);
 
-  it("[ai] T1 component: card renders every field", () => {
+  it("[ai] US14-P01 component: card renders every field", () => {
     render(<PickCard pick={pick} rank={1} />);
     expect(screen.getByRole("heading", { name: "Dan Dan Noodles" })).toBeTruthy();
     expect(screen.getByText("$14.00")).toBeTruthy();
@@ -28,7 +28,7 @@ describe("US-14 Results screen: pick card", () => {
     expect(screen.queryByTestId("flag")).toBeNull();
   });
 
-  it("[ai] T1 component: each flag and label variant renders its own warning", () => {
+  it("[ai] US14-P02 component: each flag and label variant renders its own warning", () => {
     render(<PickCard pick={{ ...pick, price: null, mentionCount: 1, flags: ["ask_server", "price_unknown"], labels: ["few_reviews"] }} rank={2} />);
     const flags = screen.getAllByTestId("flag").map((f) => f.textContent);
     expect(flags).toEqual(["Ask your server about ingredients", "Price not listed. Check before ordering", "Based on few reviews"]);
@@ -36,14 +36,15 @@ describe("US-14 Results screen: pick card", () => {
     expect(screen.getByText("Price not listed")).toBeTruthy();
   });
 
-  it("[ai] T1 component: menu-only and fallback picks show no invented text", () => {
+  it("[ai] US14-P03 component: menu-only and fallback picks show no invented text", () => {
     render(<PickCard pick={{ ...pick, reason: null, quotes: [], mentionCount: 0, labels: ["menu_only"] }} rank={1} />);
     expect(screen.getAllByTestId("flag").map((f) => f.textContent)).toEqual(["Based on the menu only"]);
     expect(screen.queryByRole("blockquote")).toBeNull();
     expect(screen.queryByText(/reviewer/)).toBeNull();
   });
 
-  it("[ai] T1 component: the card never says a dish is safe", () => {
+  it("[manual] US14-P04 static card copy and ingredient warning add no safety claim for this benign fixture", () => {
+    // Human-specified scope clarification: model/review text is validated upstream, not sanitized by this component.
     const { container } = render(<PickCard pick={{ ...pick, flags: ["ask_server"] }} rank={1} />);
     expect(container.textContent).not.toMatch(/\bsafe\b|allergen-free/i);
   });

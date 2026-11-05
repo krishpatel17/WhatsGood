@@ -28,6 +28,21 @@ export function Dialog({
       className="modal"
       aria-labelledby="dialog-title"
       onCancel={onClose}
+      onKeyDown={(event) => {
+        if (event.key !== "Tab") return;
+        const controls = Array.from(ref.current!.querySelectorAll<HTMLElement>(
+          'button, a[href], input, select, textarea, [tabindex="0"]',
+        )).filter((node) => !node.matches(":disabled") && node.getClientRects().length > 0);
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first?.focus();
+        }
+      }}
       onClick={(e) => {
         if (e.target === ref.current) {
           const box = ref.current.getBoundingClientRect();

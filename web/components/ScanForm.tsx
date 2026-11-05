@@ -2,23 +2,24 @@
 import { useEffect, useRef, useState } from "react";
 import { api } from "../lib/api";
 async function toJpeg(file: File): Promise<Blob> {
-  const bitmap = await createImageBitmap(file);
-  const scale = Math.min(1, 2400 / Math.max(bitmap.width, bitmap.height));
-  const canvas = document.createElement("canvas");
-  canvas.width = Math.round(bitmap.width * scale);
-  canvas.height = Math.round(bitmap.height * scale);
-  canvas.getContext("2d")!.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
-  bitmap.close();
-  return new Promise((resolve, reject) =>
-    canvas.toBlob(
-      (b) =>
-        b
-          ? resolve(b)
-          : reject(new Error("Could not read this photo. Try a JPEG or PNG.")),
-      "image/jpeg",
-      0.85,
-    ),
-  );
+  let bitmap: ImageBitmap | undefined;
+  try {
+    bitmap = await createImageBitmap(file);
+    const scale = Math.min(1, 2400 / Math.max(bitmap.width, bitmap.height));
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+    canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+    const context = canvas.getContext("2d");
+    if (!context) throw new Error("Canvas unavailable");
+    context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    return await new Promise<Blob>((resolve, reject) =>
+      canvas.toBlob((blob) => blob ? resolve(blob) : reject(new Error("Encoding failed")), "image/jpeg", 0.85),
+    );
+  } catch {
+    throw new Error("Could not read this photo. Try a JPEG or PNG.");
+  } finally {
+    bitmap?.close();
+  }
 }
 export function ScanForm() {
   const [name, setName] = useState("");
@@ -27,6 +28,7 @@ export function ScanForm() {
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);
+  const [problem, setProblem] = useState(false);
   const [existing, setExisting] = useState(false);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
@@ -50,6 +52,7 @@ export function ScanForm() {
       .catch(() => {
         if (live) {
           setLoadError(true);
+          setProblem(true);
           setStatus(
             "Couldn’t load this restaurant. Close and reopen the scanner to try again.",
           );
@@ -73,6 +76,7 @@ export function ScanForm() {
     )
       return;
     setBusy(true);
+    setProblem(false);
     setStatus("Reading the menu…");
     try {
       const photo = source === "photo" ? await toJpeg(file!) : null;
@@ -89,6 +93,7 @@ export function ScanForm() {
         ? await api.scan(created.current.id, photo)
         : await api.importMenu(created.current.id, url);
       if (result.status !== "active") {
+        setProblem(true);
         setStatus(
           result.message ??
             "We couldn’t read every dish. Try another photo or menu link.",
@@ -97,6 +102,7 @@ export function ScanForm() {
       }
       location.href = `/results/?r=${created.current.id}`;
     } catch (e) {
+      setProblem(true);
       setStatus(
         e instanceof Error
           ? e.message
@@ -233,7 +239,7 @@ export function ScanForm() {
           )}
         </button>
         {status && (
-          <p className="notice" role="status">
+          <p className="notice" role={problem ? "alert" : "status"}>
             {status}
           </p>
         )}

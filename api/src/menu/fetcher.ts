@@ -35,11 +35,81 @@ export function htmlToText(html: string): string {
 
 export type FetchedSource = { url: string; kind: SourceKind; contentType: string; bytes: Uint8Array };
 
+export const MAX_SOURCE_BYTES = 10 * 1024 * 1024;
+export const SOURCE_TIMEOUT_MS = 15_000;
+
+/** Bound bytes before buffering, including in benchmark snapshot/render wrappers. */
+export async function sourceBytes(res: Response, signal?: AbortSignal | null): Promise<Uint8Array> {
+  if (Number(res.headers.get('content-length')) > MAX_SOURCE_BYTES) {
+    void res.body?.cancel(); throw new Error('Menu source is too large.');
+  }
+  const reader = res.body?.getReader();
+  const cancel = () => { void reader?.cancel().catch(() => {}); };
+  signal?.addEventListener('abort', cancel, {once:true});
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  try {
+    if (signal?.aborted) { cancel(); throw new Error('Menu source timed out.'); }
+    while (reader) {
+      const chunk = await reader.read();
+      if (signal?.aborted) throw new Error('Menu source timed out.');
+      if (chunk.done) break;
+      size += chunk.value.length;
+      if (size > MAX_SOURCE_BYTES) { await reader.cancel(); throw new Error('Menu source is too large.'); }
+      chunks.push(chunk.value);
+    }
+    const bytes = new Uint8Array(size);
+    let offset = 0;
+    for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.length; }
+    return bytes;
+  } finally { signal?.removeEventListener('abort', cancel); reader?.releaseLock(); }
+}
+
+/** Website imports accept public DNS names, never credentials or IP/local destinations. */
+export function publicSourceUrl(input: string): URL {
+  const url = new URL(input);
+  const host = url.hostname.toLowerCase().replace(/\.$/, '');
+  if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password ||
+      (url.port && !['80', '443'].includes(url.port)) || !host.includes('.') ||
+      /^[\d.]+$/.test(host) || host.includes(':') || /\.(localhost|local|internal|lan|home|test|invalid)$/.test(host)) {
+    throw new Error('Menu URL must use HTTP(S), a public website hostname and no credentials.');
+  }
+  return url;
+}
+
 export async function fetchSource(fetcher: typeof fetch, url: string): Promise<FetchedSource> {
-  const res = await fetcher(url, { headers: { "user-agent": "WhatsGoodMenuBot/0.1 (student project)" } });
-  if (!res.ok) throw new Error(`Fetching ${url} failed with HTTP ${res.status}`);
-  const contentType = res.headers.get("content-type") ?? "";
-  return { url, contentType, kind: pickExtractor(url, contentType), bytes: new Uint8Array(await res.arrayBuffer()) };
+  let current = publicSourceUrl(url);
+  const controller = new AbortController();
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => {
+      reject(new Error('Menu source timed out.'));
+      controller.abort();
+    }, SOURCE_TIMEOUT_MS);
+  });
+  try {
+    return await Promise.race([timeout, (async () => {
+      for (let redirects = 0; redirects <= 5; redirects++) {
+        const res = await fetcher(current.href, { redirect: 'manual', signal: controller.signal, headers: { 'user-agent': 'WhatsGoodMenuBot/0.1 (student project)' } });
+        if (controller.signal.aborted) { void res.body?.cancel(); throw new Error('Menu source timed out.'); }
+        if ([301,302,303,307,308].includes(res.status)) {
+          void res.body?.cancel();
+          const location = res.headers.get('location');
+          if (!location || redirects === 5) throw new Error('Menu source has an invalid or excessive redirect chain.');
+          current = publicSourceUrl(new URL(location, current).href);
+          continue;
+        }
+        if (!res.ok) { void res.body?.cancel(); throw new Error(`Fetching ${current.href} failed with HTTP ${res.status}`); }
+        const contentType = res.headers.get('content-type') ?? '';
+        if (!/^(text\/(html|plain)|application\/(pdf|xhtml\+xml)|image\/(jpeg|png|gif|webp))(;|$)/i.test(contentType)) {
+          void res.body?.cancel(); throw new Error('Menu source has an unsupported or missing Content-Type.');
+        }
+        const bytes = await sourceBytes(res, controller.signal);
+        return { url: current.href, contentType, kind: pickExtractor(current.href, contentType), bytes };
+      }
+      throw new Error('Too many redirects.');
+    })()]);
+  } finally { clearTimeout(timer); }
 }
 
 export function base64(bytes: Uint8Array): string {

@@ -95,8 +95,9 @@ describe("US-08 Get my top 3 dishes", () => {
     });
   });
 
-  it("[ai] T2 unit: response parser accepts 1-3 picks and rejects 4", () => {
+  it("[manual] US08-R01 parser accepts one, two, three picks and rejects four", () => {
     expect(validatePicks({ picks: goodPicks.picks.slice(0, 1) }, context()).errors).toEqual([]);
+    expect(validatePicks({ picks: goodPicks.picks.slice(0, 2) }, context()).errors).toEqual([]);
     expect(validatePicks(goodPicks, context()).errors).toEqual([]);
     const four = { picks: [...goodPicks.picks, { dish: "Vegetable Dumplings", reason: "Light.", quotes: [], mention_count: 0 }] };
     expect(validatePicks(four, context()).errors).toContain("returned 4 picks; expected 1 to 3");
@@ -117,7 +118,7 @@ describe("US-08 Get my top 3 dishes", () => {
     expect(JSON.parse(stored.picks)[0].name).toBe("Dan Dan Noodles");
   });
 
-  it("[ai] T3 integration: an invalid response goes to the US-12 loop before anything is shown", async () => {
+  it("[ai] US08-T03b integration: an invalid response goes to the US-12 loop before anything is shown", async () => {
     const invented = { picks: [{ ...validResponse.picks[0], quotes: ["Best noodles on Earth"] }] };
     const llm = mockLlm([invented, validResponse]);
     const app = createApp({ db, llm });

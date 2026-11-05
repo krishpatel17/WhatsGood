@@ -1,7 +1,7 @@
 // Some restaurants post their menu as a picture on an otherwise empty page. When a page has
 // almost no menu text, its largest images go to the vision model instead (A2 v2).
 import type { LlmContent } from "../llm/types";
-import { base64 } from "./fetcher";
+import { base64, fetchSource } from "./fetcher";
 
 // Logos and icons are small; a legible full menu is not.
 export const MIN_MENU_IMAGE_BYTES = 100_000;
@@ -31,11 +31,10 @@ export async function fetchMenuImages(fetcher: typeof fetch, urls: string[]): Pr
   const found: { mediaType: (typeof VISION_TYPES)[number]; bytes: Uint8Array }[] = [];
   for (const url of urls.slice(0, MAX_CANDIDATES)) {
     try {
-      const res = await fetcher(url);
-      if (!res.ok) continue;
-      const mediaType = VISION_TYPES.find((t) => (res.headers.get("content-type") ?? "").startsWith(t));
+      const src = await fetchSource(fetcher, url);
+      const mediaType = VISION_TYPES.find((t) => src.contentType.startsWith(t));
       if (!mediaType) continue;
-      const bytes = new Uint8Array(await res.arrayBuffer());
+      const bytes = src.bytes;
       if (bytes.length >= MIN_MENU_IMAGE_BYTES && bytes.length <= MAX_IMAGE_BYTES) found.push({ mediaType, bytes });
     } catch {
       // An image that can't be fetched is skipped.

@@ -28,7 +28,7 @@ export function anthropicLlm(opts: { apiKey?: string; fetch?: typeof fetch } = {
         output_config: { effort: req.effort ?? "medium", format: zodOutputFormat(req.schema) },
       });
       const raw = response.content.map((b) => (b.type === "text" ? b.text : "")).join("");
-      const usage = { input_tokens: response.usage.input_tokens, output_tokens: response.usage.output_tokens };
+      const usage = { input_tokens: response.usage.input_tokens + (response.usage.cache_read_input_tokens ?? 0) + (response.usage.cache_creation_input_tokens ?? 0), output_tokens: response.usage.output_tokens };
       if (response.stop_reason === "refusal") return { data: null, raw: `REFUSED: ${raw}`, usage };
       return { data: response.parsed_output ?? null, raw, usage };
     },

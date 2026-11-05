@@ -134,6 +134,9 @@ export const profileStore = {
   set(id: string) {
     try {
       localStorage.setItem(KEY, id);
-    } catch {}
+      return true;
+    } catch {
+      return false;
+    }
   },
 };

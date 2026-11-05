@@ -48,7 +48,10 @@ console.log(`# Engineering metrics (generated ${new Date().toISOString().slice(0
 | Average tests per issue | ${(tests.filter((t) => story(t) !== "shared").length / storyCount).toFixed(1)} (over ${storyCount} issues with tests) |
 | Pass rate (unit + integration, this run) | ${passed}/${run.length} = ${((passed / run.length) * 100).toFixed(1)}% |
 | Line coverage | API ${cov("api") ?? "run npm run coverage first"}%, web ${cov("web") ?? "n/a"}% |
-| AI-generated : manually written tests | ${ai} : ${manual}${tests.length - ai - manual ? ` (${tests.length - ai - manual} untagged)` : ""} |
+| Tests counted as AI : manual | ${ai} : ${manual}${tests.length - ai - manual ? ` (${tests.length - ai - manual} untagged)` : ""} |
+
+Manual is the reporting category requested for this review; these follow-up tests
+were implemented with AI assistance. See [attribution](test-review.md#attribution).
 
 ## Tests per story
 

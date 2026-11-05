@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { type Db, newId, nowIso } from "../db";
-import { logEvent } from "../events/log";
+import { EventSchema, type UsageEvent } from "../events/log";
 import type { Recommended } from "../recommend/validate";
 
 export const RatingSchema = z
@@ -60,12 +60,21 @@ export async function rateMeal(db: Db, recommendationId: string, input: unknown)
   }
 
   const ratingId = newId();
-  await db
-    .prepare("INSERT INTO ratings (id, recommendation_id, profile_id, restaurant_id, dish_id, dish_name, rating, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
-    .bind(ratingId, rec.id, rec.profileId, rec.restaurantId, dishId, dishName, rating, nowIso())
-    .run();
   const ids = { profileId: rec.profileId, restaurantId: rec.restaurantId, recommendationId: rec.id };
-  await logEvent(db, { type: "pick_ordered", ...ids, dishId, dishName });
-  await logEvent(db, { type: "rating_submitted", ...ids, dishId, rating });
+  const events: UsageEvent[] = [
+    { type: "pick_ordered", ...ids, dishId, dishName },
+    { type: "rating_submitted", ...ids, dishId, rating },
+  ];
+  const insert = db
+    .prepare("INSERT INTO ratings (id, recommendation_id, profile_id, restaurant_id, dish_id, dish_name, rating, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(recommendation_id) DO NOTHING")
+    .bind(ratingId, rec.id, rec.profileId, rec.restaurantId, dishId, dishName, rating, nowIso());
+  // Only the request that won the unique recommendation ID can emit events.
+  await db.batch([insert, ...events.map((event) => {
+    const e = EventSchema.parse(event);
+    return db.prepare("INSERT INTO events (id, type, profile_id, restaurant_id, recommendation_id, payload, created_at) SELECT ?, ?, ?, ?, ?, ?, ? WHERE EXISTS (SELECT 1 FROM ratings WHERE id = ?)")
+      .bind(newId(), e.type, rec.profileId, rec.restaurantId, rec.id, JSON.stringify(e), nowIso(), ratingId);
+  })]);
+  const saved = await db.prepare("SELECT id FROM ratings WHERE id = ?").bind(ratingId).first();
+  if (!saved) return { ok: false, status: 409, error: "already rated" };
   return { ok: true, ratingId };
 }

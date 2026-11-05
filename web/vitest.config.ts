@@ -10,6 +10,7 @@ export default defineConfig({
       include: ["components/**/*.tsx", "lib/**/*.ts"],
       reporter: ["text", "json-summary", "html"],
       reportsDirectory: "coverage",
+      thresholds: { lines: 75, statements: 75, functions: 70, branches: 65 },
     },
   },
 });

@@ -1,3 +1,5 @@
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { describe, expect, it } from "vitest";
 import { clopperPearson, clusterBootstrap, mulberry32 } from "../src/validation/stats";
 import { a2Passes, scoreMenu, A2_LIMITS } from "../src/validation/score";
@@ -18,13 +20,14 @@ describe("US-20 Validation scoring and report (A1-A3 verdict)", () => {
     expect(s.missedNames).toEqual(["Garlic Bok Choy"]);
   });
 
-  it("[ai] T2 unit: A2 pass/fail rule - 95% correct passes, 94% fails; 1 invented dish fails; 121 s fails", () => {
+  it("[manual] US20-R02 unit: A2 pass/fail rule - 95% correct passes, 94% fails; 1 invented dish fails; 121 s fails", () => {
     const base = { accuracy: 0.95, invented: 0, seconds: 60, manualFixes: 0 };
     expect(A2_LIMITS).toEqual({ minAccuracy: 0.95, maxInvented: 0, maxSeconds: 120 });
     expect(a2Passes(base)).toBe(true);
     expect(a2Passes({ ...base, accuracy: 0.94 })).toBe(false);
     expect(a2Passes({ ...base, invented: 1 })).toBe(false);
     expect(a2Passes({ ...base, seconds: 121 })).toBe(false);
+    expect(a2Passes({ ...base, seconds: 120 })).toBe(false);
     expect(a2Passes({ ...base, seconds: 119.9 })).toBe(true);
     expect(a2Passes({ ...base, manualFixes: 1 })).toBe(false);
   });
@@ -63,8 +66,9 @@ describe("US-20 Validation scoring and report (A1-A3 verdict)", () => {
     expect(judgeA3(7, 10).pass).toBe(false);
   });
 
-  it("[ai] AC1 unit: A2 needs 8/10 restaurants and a bootstrap lower bound >= 90%", () => {
+  it("[manual] US20-R03 unit: A2 needs 8/10 restaurants and a bootstrap lower bound >= 90%", () => {
     expect(judgeA2({ passed: 8, n: 10, bootstrapLo: 0.91 }).pass).toBe(true);
+    expect(judgeA2({ passed: 8, n: 10, bootstrapLo: 0.90 }).pass).toBe(true);
     expect(judgeA2({ passed: 8, n: 10, bootstrapLo: 0.89 }).pass).toBe(false);
     expect(judgeA2({ passed: 7, n: 10, bootstrapLo: 0.99 }).pass).toBe(false);
   });
@@ -91,13 +95,25 @@ describe("US-20 Validation scoring and report (A1-A3 verdict)", () => {
 });
 
 describe("US-20 report from the repository's data files", () => {
-  it("[ai] AC7 integration: the report reads the real A1 survey and marks A2/A3 pending until their results exist", async () => {
+  it("[ai] AC7 integration: the report reads the committed A1 survey and completed A2/A3 datasets", async () => {
     const { assembleInputs } = await import("../src/validation/assemble");
     const inputs = assembleInputs(import.meta.dirname + "/../../");
     expect(inputs.a1).toMatchObject({ readable: 25, n: 30 });
     const md = buildReport(inputs);
     expect(md).toContain("A1 Sources exist: PASS");
   }, 30_000); // scores the real benchmark data, which takes a few seconds on CI
+  it("[manual] US20-R01 isolated A1 survey leaves both absent A2/A3 pending", async () => {
+    const root=mkdtempSync(tmpdir()+"/report-")+"/";
+    try {
+      mkdirSync(root+"validation/a1-survey",{recursive:true});
+      writeFileSync(root+"validation/a1-survey/survey.csv","id,area,name,address,source_type,url,notes\n"+Array.from({length:30},(_,i)=>`${i},area,R${i},street,${i<25?'html':'none'},https://example.com,`).join("\n"));
+      const {assembleInputs}=await import("../src/validation/assemble");
+      const inputs=assembleInputs(root);
+      expect(inputs).toEqual({a1:{readable:25,n:30,bySourceType:{html:25,none:5}},a2:null,a3:null});
+      const md=buildReport(inputs);
+      expect(md).toContain("A1 Sources exist: PASS");expect(md).toContain("A2 Import works: NOT RUN YET");expect(md).toContain("A3 Reviews mention dishes: NOT RUN YET");expect(md).toContain("Verdict: Pending");expect(md).toContain("Still to run: A2, A3");
+    } finally {rmSync(root,{recursive:true,force:true});}
+  });
 
   it("[ai] AC1/AC6 unit: A2 results are scored against the hand-copied menus", async () => {
     const { scoreA2 } = await import("../src/validation/assemble");

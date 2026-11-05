@@ -82,7 +82,7 @@ describe("Local subscription bridge", () => {
     const base = await start(async () => {
       throw new Error("not logged in");
     });
-    const res = await fetch(`${base}/json`, { method: "POST", headers: { "content-type": "application/json" }, body: "{}" });
+    const res = await fetch(`${base}/json`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({task:"t",system:"s",messages:[],jsonSchema:{}}) });
     expect(res.status).toBe(502);
     expect(await res.json()).toEqual({ error: "not logged in" });
   });

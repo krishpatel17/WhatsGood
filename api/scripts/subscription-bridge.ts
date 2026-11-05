@@ -4,6 +4,7 @@
 // Usage: npm run bridge -w api   (then set LLM_BRIDGE_URL=http://127.0.0.1:8790 in api/.dev.vars)
 import { createServer, type IncomingMessage } from "node:http";
 import { pathToFileURL } from "node:url";
+import { z } from "zod";
 import type { LlmMessage, LlmResponse } from "../src/llm/types";
 
 export const BRIDGE_PORT = 8790;
@@ -35,44 +36,82 @@ export function toUserContent(messages: LlmMessage[]): Block[] {
   });
 }
 
-async function readBody(req: IncomingMessage) {
-  const chunks: Buffer[] = [];
-  for await (const chunk of req) chunks.push(chunk as Buffer);
-  return Buffer.concat(chunks).toString();
+export const MAX_BRIDGE_BODY_BYTES = 12 * 1024 * 1024;
+const blockSchema = z.discriminatedUnion("type", [
+  z.object({type:z.literal("text"),text:z.string()}),
+  z.object({type:z.literal("image"),mediaType:z.enum(["image/jpeg","image/png","image/gif","image/webp"]),data:z.string()}),
+  z.object({type:z.literal("pdf"),data:z.string()}),
+]);
+const requestSchema = z.object({
+  task:z.string().min(1), system:z.string(),
+  messages:z.array(z.object({role:z.enum(["user","assistant"]),content:z.union([z.string(),z.array(blockSchema)])})),
+  model:z.string().min(1).optional(), jsonSchema:z.record(z.string(),z.unknown()),
+  effort:z.enum(["low","medium","high"]).optional(),
+});
+class RequestError extends Error { constructor(public status: number, message: string) { super(message); } }
+function readBody(req: IncomingMessage): Promise<string> {
+  return new Promise((resolve,reject) => {
+    const chunks:Buffer[]=[]; let size=0;
+    req.on("data", (chunk:Buffer) => {
+      size += chunk.length;
+      if (size > MAX_BRIDGE_BODY_BYTES) {
+        chunks.length=0;
+        reject(new RequestError(413,"Request body too large."));
+      } else chunks.push(chunk);
+    });
+    req.once("end",()=>resolve(Buffer.concat(chunks).toString("utf8")));
+    req.once("error",reject);
+    req.once("aborted",()=>reject(new RequestError(400,"Request aborted.")));
+  });
 }
 
 /**
  * Requiring JSON and no Origin stops a web page from spending the subscription: browsers
  * add Origin to cross-site POSTs, and a JSON body needs a preflight this server never grants.
  */
-export function createBridge(run: (req: BridgeRequest) => Promise<LlmResponse>) {
+export function createBridge(run: (req: BridgeRequest, signal: AbortSignal) => Promise<LlmResponse>) {
   return createServer(async (req, res) => {
+    const controller = new AbortController();
+    res.once("close", () => { if (!res.writableEnded) controller.abort(); });
     const reply = (status: number, body: unknown) => {
+      if (res.destroyed || controller.signal.aborted) return;
       res.writeHead(status, { "content-type": "application/json" });
       res.end(JSON.stringify(body));
     };
-    if (req.headers.origin || !req.headers["content-type"]?.startsWith("application/json")) return reply(403, { error: "Local API calls only." });
+    if (req.headers.origin || req.headers["content-type"]?.split(";")[0].trim().toLowerCase() !== "application/json") return reply(403, { error: "Local API calls only." });
     if (req.method !== "POST" || req.url !== "/json") return reply(404, { error: "Not found." });
     try {
-      reply(200, await run(JSON.parse(await readBody(req)) as BridgeRequest));
+      const body = await readBody(req);
+      let parsed: unknown;
+      try { parsed = JSON.parse(body); } catch { throw new RequestError(400, "Malformed JSON."); }
+      const valid = requestSchema.safeParse(parsed);
+      if (!valid.success) throw new RequestError(400, "Invalid bridge request.");
+      if (controller.signal.aborted) return;
+      reply(200, await run(valid.data, controller.signal));
     } catch (e) {
-      reply(502, { error: e instanceof Error ? e.message : String(e) });
+      reply(e instanceof RequestError ? e.status : 502, { error: e instanceof Error ? e.message : String(e) });
     }
   });
 }
 
 /** One isolated model call: no tools, no project or user settings, no MCP connectors, nothing saved. */
-export async function runWithSubscription(req: BridgeRequest): Promise<LlmResponse> {
+export async function runWithSubscription(req: BridgeRequest, signal?: AbortSignal): Promise<LlmResponse> {
+  const abortController = new AbortController();
+  const abort = () => abortController.abort();
+  if (signal?.aborted) abort();
+  signal?.addEventListener("abort", abort, { once: true });
   const { query } = await import("@anthropic-ai/claude-agent-sdk");
   // An API key in the environment would take priority over the login.
   const { ANTHROPIC_API_KEY: _ignored, ...env } = process.env;
   async function* prompt() {
     yield { type: "user" as const, parent_tool_use_id: null, session_id: "", message: { role: "user" as const, content: toUserContent(req.messages) } };
   }
+  try {
   for await (const msg of query({
     prompt: prompt() as never,
     options: {
       model: req.model,
+      abortController,
       systemPrompt: req.system,
       tools: [],
       settingSources: [],
@@ -93,11 +132,12 @@ export async function runWithSubscription(req: BridgeRequest): Promise<LlmRespon
     };
   }
   throw new Error("The model run ended without a result.");
+  } finally { signal?.removeEventListener("abort", abort); }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  createBridge((req) => {
+  createBridge((req, signal) => {
     console.log(`${new Date().toISOString()} ${req.task}`);
-    return runWithSubscription(req);
+    return runWithSubscription(req, signal);
   }).listen(BRIDGE_PORT, "127.0.0.1", () => console.log(`Subscription bridge on http://127.0.0.1:${BRIDGE_PORT} (local use only)`));
 }

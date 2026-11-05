@@ -14,10 +14,13 @@ function ciSteps(): Step[] {
 }
 
 describe("US-22 Deploy on Cloudflare with CI", () => {
-  it("[ai] T1 ci: the test step can fail the job (no continue-on-error) and runs with coverage", () => {
-    const testStep = ciSteps().find((s) => s.run?.includes("coverage"));
+  it("[manual] US22-R01 CI runs the workspace test runner with coverage and propagates failure", () => {
+    const testStep = ciSteps().find((s) => s.run?.trim() === "npm run coverage");
     expect(testStep, "a step running the suite with coverage").toBeDefined();
     expect(testStep!["continue-on-error"]).not.toBe(true);
+    const scripts=JSON.parse(read("package.json")).scripts;
+    expect(scripts.coverage).toBe("npm run coverage --workspaces --if-present");
+    for (const workspace of ["api","web"]) expect(JSON.parse(read(`${workspace}/package.json`)).scripts.coverage).toBe("vitest run --coverage");
   });
 
   it("[ai] T2 ci: the coverage report is uploaded as an artifact even when tests fail", () => {
@@ -39,7 +42,7 @@ describe("US-22 Deploy on Cloudflare with CI", () => {
     expect(toml).toMatch(/\[\[r2_buckets\]\]/);
   });
 
-  it("[ai] AC3: no API keys are committed and .dev.vars is ignored", () => {
+  it("[manual] US22-R02 config-only check: wrangler has no inline credentials and .dev.vars is ignored", () => {
     expect(read(".gitignore")).toMatch(/^\.dev\.vars$/m);
     const toml = read("api/wrangler.toml");
     expect(toml).not.toMatch(/sk-ant-|ANTHROPIC_API_KEY\s*=|APIFY_TOKEN\s*=/);

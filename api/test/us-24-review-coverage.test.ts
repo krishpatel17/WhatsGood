@@ -67,6 +67,18 @@ describe("US-24 Review dish-coverage measurement (A3)", () => {
     });
     afterEach(() => rmSync(root, { recursive: true, force: true }));
 
+    it("[manual] A3-R01 repeated extraction spans from one review cannot satisfy three-review coverage", async () => {
+      const extract = (req: LlmRequest) => {
+        const ids = [...JSON.stringify(req.messages).matchAll(/\[review ([\w-]+)\] The dan dan/g)].map((m) => m[1]);
+        return { mentions: ids.flatMap((review_id) => Array.from({ length: 3 }, () => ({ review_id, dish: "Dan Dan Noodles", sentiment: 0.8, quote: "The dan dan noodles are great" }))) };
+      };
+      const fetcher = (async () => Response.json(apifyItems)) as typeof fetch;
+      const out = await runCoverage({ root, llm: mockLlm([extract, extract]), fetch: fetcher, apifyToken: "t", promptTag: "prompts-test" });
+      for (const restaurant of out.restaurants) {
+        expect(restaurant).toMatchObject({ atLeast1: 1, atLeast3: 0, atLeast10: 0, enough: false });
+      }
+    });
+
     it("[ai] T4 integration: run over 2 fixture restaurants (mocked LLM) writes the results file US-20 expects", async () => {
       const apify = (async () => Response.json(apifyItems)) as unknown as typeof fetch;
       const extract = (req: LlmRequest) => {

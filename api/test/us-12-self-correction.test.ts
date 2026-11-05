@@ -128,11 +128,12 @@ describe("US-12 Self-correction loop and fallback ranking", () => {
     expect(JSON.stringify(out.picks)).not.toContain("bacon");
   });
 
-  it("[ai] AC2 unit: the parser accepts 1-3 picks and rejects more than the plan allows", () => {
-    expect(validatePicks(goodPicks, context()).errors).toEqual([]);
-    const four = { picks: [...goodPicks.picks, { ...goodPicks.picks[0], dish: "Vegetable Dumplings", quotes: [], mention_count: 0 }] };
-    expect(validatePicks(four, context()).errors).toContain("returned 4 picks; expected 1 to 3");
-    expect(validatePicks({ picks: [] }, context()).errors).toContain("returned 0 picks; expected 1 to 3");
+  // Human-specified: US-08 owns global 1..3 bounds; this test owns plan-specific limits.
+  it.each([1, 2])("[manual] US12-R01 honors a plan allowing at most %s picks", maxPicks => {
+    const ctx = context(); ctx.plan = {...ctx.plan,maxPicks};
+    expect(validatePicks({picks:goodPicks.picks.slice(0,maxPicks)},ctx).errors).toEqual([]);
+    expect(validatePicks({picks:goodPicks.picks.slice(0,maxPicks+1)},ctx).errors).toContain(`returned ${maxPicks+1} picks; expected 1 to ${maxPicks}`);
+    expect(validatePicks({picks:[]},ctx).errors).toContain(`returned 0 picks; expected 1 to ${maxPicks}`);
   });
 });
 
