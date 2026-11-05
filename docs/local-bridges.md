@@ -74,7 +74,7 @@ These retain the frozen-prompt gate and existing benchmark behavior. They write 
 
 Local Windows validation on 2026-11-05:
 
-- `npm run coverage`: 337 API tests and 43 web tests passed. API line coverage 96.52%; web line coverage 89.65%; all configured thresholds passed. CLI runner tests are included in the test counts but CLI scripts are outside the existing source-coverage scope.
+- `npm run coverage`: 338 API tests and 43 web tests passed. API line coverage 96.52%; web line coverage 89.65%; all configured thresholds passed. CLI runner tests are included in the test counts but CLI scripts are outside the existing source-coverage scope.
 - `npm run typecheck -w api` and `npm run build -w web` passed.
 - `npx wrangler deploy --dry-run` bundled the Worker successfully; no deployment was performed.
 - `npm run e2e -w web`: all 19 browser tests passed using Edge.

@@ -16,7 +16,7 @@ export function isLoopbackUrl(url: string): boolean {
 export function bridgeLlm(opts: { url: string; provider?: "claude" | "codex"; model?: string; fetch?: typeof fetch }): Llm {
   const send = opts.fetch ?? fetch;
   const provider = opts.provider ?? "claude";
-  const model = opts.model ?? (provider === "codex" ? "codex-cli-default" : MODEL);
+  const model = opts.model || (provider === "codex" ? "codex-cli-default" : MODEL);
   const responseSchema = z.object({ data: z.unknown(), raw: z.string(), usage: z.object({ input_tokens: z.number().nonnegative(), output_tokens: z.number().nonnegative() }), provider: z.enum(["claude", "codex"]).optional() });
   return {
     kind: "bridge",

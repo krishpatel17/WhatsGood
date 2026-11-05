@@ -7,7 +7,7 @@ export function selectLlm(opts: { apiKey?: string; bridgeUrl?: string; bridgePro
   if (opts.bridgeProvider && !["claude", "codex"].includes(opts.bridgeProvider)) throw new Error("Unknown LLM_BRIDGE_PROVIDER; use claude or codex");
   if (opts.bridgeProvider && !opts.bridgeUrl) throw new Error("LLM_BRIDGE_URL is required when a bridge provider is selected");
   if (opts.bridgeProvider && !isLoopbackUrl(opts.bridgeUrl!)) throw new Error("An explicit bridge must use a loopback HTTP(S) URL");
-  if (opts.bridgeUrl && isLoopbackUrl(opts.bridgeUrl)) return bridgeLlm({ url: opts.bridgeUrl, provider: (opts.bridgeProvider ?? "claude") as "claude" | "codex", model: opts.bridgeModel, fetch: (input, init) => fetch(input, init) });
+  if (opts.bridgeUrl && isLoopbackUrl(opts.bridgeUrl)) return bridgeLlm({ url: opts.bridgeUrl, provider: (opts.bridgeProvider || "claude") as "claude" | "codex", model: opts.bridgeModel, fetch: (input, init) => fetch(input, init) });
   return anthropicLlm({ apiKey: opts.apiKey });
 }
 

@@ -13,6 +13,12 @@ const servers: ReturnType<typeof createBridge>[] = [];
 afterEach(async () => { await Promise.all(servers.splice(0).map((s) => new Promise<void>((done) => { s.closeAllConnections(); s.close(() => done()); }))); });
 
 describe("Claude and Codex bridge selection", () => {
+  it("[ai] treats blank optional provider/model environment values as defaults", () => {
+    const claude = selectLlm({ bridgeUrl: "http://127.0.0.1:8790", bridgeProvider: "", bridgeModel: "" });
+    expect(claude.provider).toBe("claude");
+    expect(claude.model).toBeTruthy();
+    expect(selectLlm({ bridgeUrl: "http://127.0.0.1:8791", bridgeProvider: "codex", bridgeModel: "" }).model).toBe("codex-cli-default");
+  });
   it("[ai] preserves the legacy Claude selection and explicitly selects Codex in the Worker", () => {
     expect(llmPath(selectLlm({ bridgeUrl: "http://127.0.0.1:8790" }))).toBe("claude-login-bridge");
     const env = { DB: {}, BUCKET: {}, LLM_BRIDGE_URL: "http://127.0.0.1:8791", LLM_BRIDGE_PROVIDER: "codex", LLM_BRIDGE_MODEL: "test-codex-model" };
