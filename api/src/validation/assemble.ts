@@ -47,7 +47,7 @@ export function scoreA2(results: BenchmarkResults, truths: Map<string, Truth>, n
     });
   const restaurants = score(false);
   const boot = clusterBootstrap(restaurants.map((r) => ({ correct: r.score.correct, total: r.score.truthCount })), { resamples: 10_000 });
-  return { promptTag: results.promptTag, llmPath: results.llmPath, importer: results.importer ?? "v1", restaurants, foodOnly: score(true), bootstrap: { lo: boot.lo, hi: boot.hi } };
+  return { promptTag: results.promptTag, model: results.model, llmPath: results.llmPath, importer: results.importer ?? "v1", restaurants, foodOnly: score(true), bootstrap: { lo: boot.lo, hi: boot.hi } };
 }
 
 function latestJson<T>(dir: string): T | null {
@@ -60,16 +60,16 @@ function latestJson<T>(dir: string): T | null {
 const count = z.number().int().nonnegative();
 const benchmarkSchema = z.object({
   promptTag: z.string().min(1), model: z.string().min(1), startedAt: z.string(),
-  llmPath: z.enum(["anthropic-api", "claude-login-bridge"]),
+  llmPath: z.enum(["anthropic-api", "claude-login-bridge", "codex-login-bridge"]),
   restaurants: z.array(z.object({
     id: z.string().min(1), tier: z.enum(["easy", "medium", "hard"]), sourceType: z.string(),
     status: z.enum(["active", "needs_review", "failed"]), failure: z.string().nullable(),
     seconds: z.number().nonnegative(), retries: count, inputTokens: count, outputTokens: count,
-    costUsd: z.number().nonnegative(), snapshot: z.string().nullable(), dishes: z.array(DishSchema),
+    costUsd: z.number().nonnegative().nullable(), snapshot: z.string().nullable(), dishes: z.array(DishSchema),
   }).passthrough()),
 }).passthrough();
 const coverageSchema = z.object({
-  promptTag: z.string().min(1), llmPath: z.enum(["anthropic-api", "claude-login-bridge"]),
+  promptTag: z.string().min(1), model: z.string().min(1).optional(), llmPath: z.enum(["anthropic-api", "claude-login-bridge", "codex-login-bridge"]),
   restaurants: z.array(z.object({id:z.string(),name:z.string(),reviews:count,atLeast1:count,atLeast3:count,atLeast10:count,enough:z.boolean()})),
   predictedMentions: z.array(z.object({restaurant_id:z.string(),source_id:z.string(),dish:z.string()})),
 });
@@ -111,7 +111,7 @@ export function assembleInputs(root: string): { a1: A1Input | null; a2: A2Input 
       });
       ({ precision, recall } = precisionRecall(cov.predictedMentions, labels));
     }
-    a3 = { promptTag: cov.promptTag, llmPath: cov.llmPath, restaurants: cov.restaurants, precision, recall };
+    a3 = { promptTag: cov.promptTag, ...(cov.model ? { model: cov.model } : {}), llmPath: cov.llmPath, restaurants: cov.restaurants, precision, recall };
   }
   return { a1, a2, a3 };
 }

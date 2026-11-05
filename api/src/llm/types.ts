@@ -28,5 +28,8 @@ export type LlmResponse = {
 
 export interface Llm {
   kind?: "bridge";
+  provider?: "claude" | "codex";
+  /** An explicit model ID, or codex-cli-default when the CLI chooses its default. */
+  model?: string;
   json(req: LlmRequest): Promise<LlmResponse>;
 }

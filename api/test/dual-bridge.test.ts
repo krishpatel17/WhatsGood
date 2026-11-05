@@ -37,6 +37,12 @@ describe("Claude and Codex bridge selection", () => {
     const llm = bridgeLlm({ url: "http://127.0.0.1:8791", provider: "codex", fetch: async () => Response.json({ ...answer, provider: "claude" }) });
     await expect(llm.json({ task: "test", system: "Extract", messages: [], schema: z.object({ ok: z.boolean() }) })).rejects.toThrow(/provider/i);
   });
+  it("[ai] rejects unlabelled Codex responses and malformed success payloads", async () => {
+    for (const body of [answer, { provider: "codex", data: {}, raw: "{}", usage: null }]) {
+      const llm = bridgeLlm({ url: "http://127.0.0.1:8791/", provider: "codex", fetch: async () => Response.json(body) });
+      await expect(llm.json({ task: "test", system: "Extract", messages: [], schema: z.object({ ok: z.boolean() }) })).rejects.toThrow(/provider|response/i);
+    }
+  });
   it("[ai] exposes local provider health and refuses wrong-provider requests before any model work", async () => {
     let calls = 0;
     const server = createBridge(async () => { calls++; return answer; }, { provider: "codex" });

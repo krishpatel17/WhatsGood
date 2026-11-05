@@ -24,7 +24,7 @@ export type RestaurantResult = {
   retries: number;
   inputTokens: number;
   outputTokens: number;
-  costUsd: number;
+  costUsd: number | null;
   snapshot: string | null;
   dishes: Dish[];
 };
@@ -108,7 +108,7 @@ export async function runBenchmark(opts: { root: string; llm: Llm; fetch: typeof
         .prepare("SELECT name, section, price, description, tags FROM dishes WHERE menu_id = ?")
         .bind(res.menuId)
         .all<{ name: string; section: string; price: number | null; description: string | null; tags: string }>();
-      const cost = (res.usage.input_tokens * PRICE_PER_MTOK.input + res.usage.output_tokens * PRICE_PER_MTOK.output) / 1e6;
+      const cost = llm.kind === "bridge" ? null : (res.usage.input_tokens * PRICE_PER_MTOK.input + res.usage.output_tokens * PRICE_PER_MTOK.output) / 1e6;
       restaurants.push({
         ...base,
         status: res.status,
@@ -130,14 +130,14 @@ export async function runBenchmark(opts: { root: string; llm: Llm; fetch: typeof
         retries: 0,
         inputTokens: 0,
         outputTokens: 0,
-        costUsd: 0,
+        costUsd: llm.kind === "bridge" ? null : 0,
         snapshot: saved.get(r.id) ?? null,
         dishes: [],
       });
     }
   }
 
-  const results: BenchmarkResults = { promptTag, model: MODEL, llmPath: llmPath(llm), importer: opts.importer ?? "v1", startedAt, restaurants };
+  const results: BenchmarkResults = { promptTag, model: llm.model ?? MODEL, llmPath: llmPath(llm), importer: opts.importer ?? "v1", startedAt, restaurants };
   const dir = root + "validation/a2-benchmark/results/";
   mkdirSync(dir, { recursive: true });
   writeFileSync(`${dir}${startedAt.replace(/[:.]/g, "-")}.json`, JSON.stringify(results, null, 2));

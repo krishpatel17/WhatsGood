@@ -10,9 +10,15 @@ const IMPORTERS: Record<string, string> = {
   v4: "v4 (v3 plus pages scrolled a screen at a time, and unpriced ordering-site items left out)",
 };
 
-export type A2Input = { promptTag: string; llmPath?: string; importer?: string; restaurants: A2Restaurant[]; foodOnly?: A2Restaurant[]; bootstrap: { lo: number; hi: number } };
+export type A2Input = { promptTag: string; model?: string; llmPath?: string; importer?: string; restaurants: A2Restaurant[]; foodOnly?: A2Restaurant[]; bootstrap: { lo: number; hi: number } };
 export type A3Restaurant = { id: string; name: string; reviews: number; atLeast1: number; atLeast3: number; atLeast10: number; enough: boolean };
-export type A3Input = { promptTag?: string; llmPath?: string; restaurants: A3Restaurant[]; precision: number | null; recall: number | null };
+export type A3Input = { promptTag?: string; model?: string; llmPath?: string; restaurants: A3Restaurant[]; precision: number | null; recall: number | null };
+
+function subscriptionNote(path?: string): string {
+  if (path === "codex-login-bridge") return " Deviation: model calls used a developer's Codex login through the local bridge. Timings include CLI overhead and local PDF-to-image conversion; API costs are not estimated.";
+  if (path === "claude-login-bridge") return " Deviation: model calls used a developer's Claude login through the local bridge. Timings include CLI overhead; token costs are not meaningful as API billing estimates.";
+  return "";
+}
 
 const pct = (x: number) => `${(x * 100).toFixed(1)}%`;
 const line = (name: string, j: Judgement | null) => `- **${name}: ${j === null ? "NOT RUN YET" : j.pass ? "PASS" : "FAIL"}**${j ? ` — ${j.summary}` : ""}`;
@@ -58,7 +64,7 @@ export function buildReport(input: { a1: A1Input | null; a2: A2Input | null; a3:
     out.push(
       "## A2 — Menu import benchmark",
       "",
-      `Prompts frozen at \`${input.a2.promptTag}\`. Importer: ${IMPORTERS[input.a2.importer ?? "v1"] ?? IMPORTERS.v1}. Dish-accuracy cluster bootstrap (10,000 resamples of restaurants): 95% interval [${pct(input.a2.bootstrap.lo)}, ${pct(input.a2.bootstrap.hi)}].${input.a2.llmPath === "claude-login-bridge" ? " Deviation: model calls went through a developer's Claude login with the local bridge rather than the API, so seconds include the CLI's overhead and token costs are not meaningful." : ""}`,
+      `Prompts frozen at \`${input.a2.promptTag}\`.${input.a2.model ? ` Model: \`${input.a2.model}\`.` : ""} Importer: ${IMPORTERS[input.a2.importer ?? "v1"] ?? IMPORTERS.v1}. Dish-accuracy cluster bootstrap (10,000 resamples of restaurants): 95% interval [${pct(input.a2.bootstrap.lo)}, ${pct(input.a2.bootstrap.hi)}].${subscriptionNote(input.a2.llmPath)}`,
       "",
       "| Restaurant | Tier | Source | Accuracy | Invented | Missed | Seconds | Retries | Pass |",
       "|---|---|---|---|---|---|---|---|---|",
@@ -97,7 +103,7 @@ export function buildReport(input: { a1: A1Input | null; a2: A2Input | null; a3:
     out.push(
       "## A3 — Review dish coverage",
       "",
-      `Prompts frozen at \`${input.a3.promptTag ?? "unknown"}\`.${input.a3.llmPath === "claude-login-bridge" ? " Deviation: extraction used a developer's Claude login via the local bridge; token costs are not meaningful as API billing estimates." : ""}`,
+      `Prompts frozen at \`${input.a3.promptTag ?? "unknown"}\`.${input.a3.model ? ` Model: \`${input.a3.model}\`.` : ""}${subscriptionNote(input.a3.llmPath)}`,
       "",
       `Extraction against the hand-labeled sample: precision ${input.a3.precision === null ? "not measured yet" : pct(input.a3.precision)}, recall ${input.a3.recall === null ? "not measured yet" : pct(input.a3.recall)}.`,
       "",

@@ -24,12 +24,12 @@ const render = process.argv.includes("--render") ? playwrightRender() : null;
 const baseFetch = fromSnapshots ? snapshotFetch(root) : fetch;
 const results = await runBenchmark({
   root,
-  llm: selectLlm({ apiKey: process.env.ANTHROPIC_API_KEY, bridgeUrl: process.env.LLM_BRIDGE_URL }),
+  llm: selectLlm({ apiKey: process.env.ANTHROPIC_API_KEY, bridgeUrl: process.env.LLM_BRIDGE_URL, bridgeProvider: process.env.LLM_BRIDGE_PROVIDER, bridgeModel: process.env.LLM_BRIDGE_MODEL }),
   fetch: render && !fromSnapshots ? renderingFetch(baseFetch, render) : baseFetch,
   promptTag: tag,
   importer: render ? "v4" : "v1",
 });
 await render?.close();
 for (const r of results.restaurants) {
-  console.log(`${r.id.padEnd(6)} ${r.tier.padEnd(7)} ${r.status.padEnd(13)} ${r.dishes.length} dishes  ${r.seconds.toFixed(1)}s  retries ${r.retries}  $${r.costUsd.toFixed(3)}${r.failure ? `  ${r.failure}` : ""}`);
+  console.log(`${r.id.padEnd(6)} ${r.tier.padEnd(7)} ${r.status.padEnd(13)} ${r.dishes.length} dishes  ${r.seconds.toFixed(1)}s  retries ${r.retries}  ${r.costUsd === null ? "subscription (API cost not estimated)" : `$${r.costUsd.toFixed(3)}`}${r.failure ? `  ${r.failure}` : ""}`);
 }

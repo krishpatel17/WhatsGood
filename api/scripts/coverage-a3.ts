@@ -14,6 +14,6 @@ checkPromptsFrozen(tag, (args) => {
     return { ok: false, out: "" };
   }
 });
-const out = await runCoverage({ root, llm: selectLlm({ apiKey: process.env.ANTHROPIC_API_KEY, bridgeUrl: process.env.LLM_BRIDGE_URL }), fetch, apifyToken: process.env.APIFY_TOKEN, promptTag: tag });
+const out = await runCoverage({ root, llm: selectLlm({ apiKey: process.env.ANTHROPIC_API_KEY, bridgeUrl: process.env.LLM_BRIDGE_URL, bridgeProvider: process.env.LLM_BRIDGE_PROVIDER, bridgeModel: process.env.LLM_BRIDGE_MODEL }), fetch, apifyToken: process.env.APIFY_TOKEN, promptTag: tag });
 console.table(out.restaurants);
 console.log("Next: fill in validation/a3-coverage/to-label.csv by hand and save it as labels.csv");

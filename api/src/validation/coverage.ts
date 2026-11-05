@@ -66,6 +66,7 @@ function latestA2Dishes(root: string, id: string): Dish[] | null {
 }
 
 export type CoverageResults = {
+  model?: string;
   promptTag: string;
   llmPath: LlmPath;
   restaurants: A3Restaurant[];
@@ -117,7 +118,7 @@ export async function runCoverage(opts: { root: string; llm: Llm; fetch: typeof 
 
   const sample = sampleForLabeling(allReviews, 50, seed).map((r) => ({ ...r, dishes_mentioned: "", labeled_by: "" }));
   writeFileSync(outDir + "to-label.csv", toCsv(sample, ["source_id", "restaurant_id", "text", "dishes_mentioned", "labeled_by"]));
-  const results: CoverageResults = { promptTag, llmPath: llmPath(llm), restaurants, predictedMentions };
+  const results: CoverageResults = { promptTag, ...(llm.model ? { model: llm.model } : {}), llmPath: llmPath(llm), restaurants, predictedMentions };
   writeFileSync(outDir + "results.json", JSON.stringify(results, null, 2));
   return results;
 }

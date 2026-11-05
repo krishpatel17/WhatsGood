@@ -16,6 +16,8 @@ export type Env = {
   APIFY_TOKEN?: string;
   /** Local development only: see scripts/subscription-bridge.ts. */
   LLM_BRIDGE_URL?: string;
+  LLM_BRIDGE_PROVIDER?: string;
+  LLM_BRIDGE_MODEL?: string;
 };
 
 export type Deps = {
@@ -30,7 +32,7 @@ export type AppEnv = { Bindings: Env; Variables: { deps: Deps } };
 
 export function depsFromEnv(env: Env | undefined): Partial<Deps> {
   if (!env) return {};
-  const llm = selectLlm({ apiKey: env.ANTHROPIC_API_KEY, bridgeUrl: env.LLM_BRIDGE_URL });
+  const llm = selectLlm({ apiKey: env.ANTHROPIC_API_KEY, bridgeUrl: env.LLM_BRIDGE_URL, bridgeProvider: env.LLM_BRIDGE_PROVIDER, bridgeModel: env.LLM_BRIDGE_MODEL });
   return { db: env.DB, blobs: env.BUCKET, llm, fetch: (input, init) => fetch(input, init), apifyToken: env.APIFY_TOKEN };
 }
 
