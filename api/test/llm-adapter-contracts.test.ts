@@ -16,6 +16,12 @@ const result={type:'result',subtype:'success',is_error:false,result:'raw text',s
 const stream=(items:unknown[])=>(async function*(){for(const item of items)yield item;})();
 beforeEach(()=>vi.clearAllMocks());afterEach(()=>vi.unstubAllEnvs());
 describe('LLM adapter boundaries',()=>{
+ it('[ai] Anthropic SDK receives caller cancellation as request options',async()=>{
+  mocks.parse.mockResolvedValue({content:[],parsed_output:{picks:[]},usage,stop_reason:'end_turn'});
+  const controller=new AbortController();
+  await anthropicLlm().json({...request,signal:controller.signal});
+  expect(mocks.parse).toHaveBeenCalledWith(expect.any(Object),{signal:controller.signal});
+ });
  it('[manual] ADAPTER-R01 Anthropic SDK receives model, schema, system, effort and image/PDF blocks',async()=>{
   mocks.parse.mockResolvedValue({content:[{type:'text',text:'{"picks":["Noodles"]}'}],parsed_output:{picks:['Noodles']},usage,stop_reason:'end_turn'});
   const out=await anthropicLlm({apiKey:'test-only'}).json(request);

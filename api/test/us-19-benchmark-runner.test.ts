@@ -79,7 +79,8 @@ describe("US-19 Benchmark runner", () => {
       expect(out.restaurants[1].status).toBe("active");
       const file=root+"validation/a2-benchmark/results/"+readdirSync(root+"validation/a2-benchmark/results")[0];
       const saved=readFileSync(file,"utf8");const snapshot=structuredClone(out);
-      // Current contract is timeout-only: model work is not cancelled. Record late completion explicitly.
+      // Even an uncooperative model receives cancellation and cannot publish its late result.
+      expect(slow.calls[0].signal?.aborted).toBe(true);
       expect(completed).toBe(false);release(easyMenu);await vi.advanceTimersByTimeAsync(0);
       expect(completed).toBe(true);expect(out).toEqual(snapshot);expect(readFileSync(file,"utf8")).toBe(saved);
     } finally {vi.clearAllTimers();vi.useRealTimers();}

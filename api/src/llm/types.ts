@@ -17,6 +17,7 @@ export type LlmRequest = {
   /** Shape the model is asked to produce. Callers still validate the result themselves. */
   schema: z.ZodType;
   effort?: "low" | "medium" | "high";
+  signal?: AbortSignal;
 };
 
 export type LlmResponse = {

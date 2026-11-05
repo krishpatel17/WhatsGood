@@ -18,6 +18,7 @@ export function anthropicLlm(opts: { apiKey?: string; fetch?: typeof fetch } = {
   const client = new Anthropic({ apiKey: opts.apiKey, fetch: opts.fetch });
   return {
     async json(req: LlmRequest): Promise<LlmResponse> {
+      const options: [] | [{ signal: AbortSignal }] = req.signal ? [{ signal: req.signal }] : [];
       const response = await client.beta.messages.parse({
         model: MODEL,
         max_tokens: 16000,
@@ -26,7 +27,7 @@ export function anthropicLlm(opts: { apiKey?: string; fetch?: typeof fetch } = {
         system: req.system,
         messages: req.messages.map((m) => ({ role: m.role, content: toBlocks(m.content) })),
         output_config: { effort: req.effort ?? "medium", format: zodOutputFormat(req.schema) },
-      });
+      }, ...options);
       const raw = response.content.map((b) => (b.type === "text" ? b.text : "")).join("");
       const usage = { input_tokens: response.usage.input_tokens + (response.usage.cache_read_input_tokens ?? 0) + (response.usage.cache_creation_input_tokens ?? 0), output_tokens: response.usage.output_tokens };
       if (response.stop_reason === "refusal") return { data: null, raw: `REFUSED: ${raw}`, usage };

@@ -82,10 +82,15 @@ export function snapshotFetch(root: string): typeof fetch {
 
 const nullBlobs: Blobs = { put: async () => null, get: async () => null };
 
-function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
+function withTimeout<T>(start: (signal: AbortSignal) => Promise<T>, ms: number): Promise<T> {
+  const controller = new AbortController();
   let timer: ReturnType<typeof setTimeout>;
-  const timeout = new Promise<T>((_, reject) => { timer = setTimeout(() => reject(new Error(`timed out after ${ms / 1000} s`)), ms); });
-  return Promise.race([p, timeout]).finally(() => clearTimeout(timer));
+  const timeout = new Promise<T>((_, reject) => { timer = setTimeout(() => {
+    const error = new Error(`timed out after ${ms / 1000} s`);
+    controller.abort(error);
+    reject(error);
+  }, ms); });
+  return Promise.race([start(controller.signal), timeout]).finally(() => clearTimeout(timer));
 }
 
 export async function runBenchmark(opts: { root: string; llm: Llm; fetch: typeof fetch; promptTag: string; timeoutMs?: number; importer?: Importer }): Promise<BenchmarkResults> {
@@ -103,7 +108,7 @@ export async function runBenchmark(opts: { root: string; llm: Llm; fetch: typeof
     const t0 = performance.now();
     const base = { id: r.id, tier: r.tier, sourceType: r.source_type };
     try {
-      const res = await withTimeout(importMenu({ db, blobs: nullBlobs, llm, fetch: fetcher }, { restaurantId: r.id, url: r.menu_url }), timeoutMs);
+      const res = await withTimeout((signal) => importMenu({ db, blobs: nullBlobs, llm, fetch: fetcher, signal }, { restaurantId: r.id, url: r.menu_url }), timeoutMs);
       const { results: dishes } = await db
         .prepare("SELECT name, section, price, description, tags FROM dishes WHERE menu_id = ?")
         .bind(res.menuId)

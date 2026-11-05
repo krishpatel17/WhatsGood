@@ -12,7 +12,7 @@ import { layoutItemCount, NO_DISHES, validateMenu } from "./validate";
 
 export const MAX_ATTEMPTS = 3;
 
-export type ImportDeps = { db: Db; blobs: Blobs; llm: Llm; fetch: typeof fetch };
+export type ImportDeps = { db: Db; blobs: Blobs; llm: Llm; fetch: typeof fetch; signal?: AbortSignal };
 
 export type ImportResult = {
   menuId: string;
@@ -44,16 +44,19 @@ export function retryMessage(attempt: number, errors: string[]): string {
 export type OnAttempt = (attempt: number, errors: string[]) => Promise<void>;
 
 /** Run the model with up to MAX_ATTEMPTS tries, feeding validation errors back each time. */
-export async function extractWithRetry(llm: Llm, content: LlmContent[], validate: Validate, onAttempt: OnAttempt = async () => {}) {
+export async function extractWithRetry(llm: Llm, content: LlmContent[], validate: Validate, onAttempt: OnAttempt = async () => {}, signal?: AbortSignal) {
   const messages: LlmMessage[] = [{ role: "user", content }];
   const usage: LlmUsage = { input_tokens: 0, output_tokens: 0 };
   const failures: string[][] = [];
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
-    const res = await llm.json({ task: "menu_import", system: MENU_IMPORT_SYSTEM, messages, schema: MenuSchema, effort: "medium" });
+    signal?.throwIfAborted();
+    const res = await llm.json({ task: "menu_import", system: MENU_IMPORT_SYSTEM, messages, schema: MenuSchema, effort: "medium", signal });
+    signal?.throwIfAborted();
     usage.input_tokens += res.usage.input_tokens;
     usage.output_tokens += res.usage.output_tokens;
     const { menu, errors } = validate(res.data);
     await onAttempt(attempt, errors);
+    signal?.throwIfAborted();
     if (menu && errors.length === 0) return { menu, attempts: attempt, usage, failures };
     failures.push(errors);
     // Nothing on the page contradicts an empty answer, and with no layout count nothing would catch dishes invented on a retry.
@@ -107,13 +110,13 @@ export function importFailureMessage(failures: string[][]): string {
  * the dishes in page order. A page with no dishes is fine; if any page fails all its retries, or the
  * whole PDF yields nothing, the menu is not stored as active.
  */
-async function extractPdfPages(llm: Llm, src: FetchedSource, pages: { bytes: Uint8Array; note: string }[], check: Validate, log: OnAttempt) {
+async function extractPdfPages(llm: Llm, src: FetchedSource, pages: { bytes: Uint8Array; note: string }[], check: Validate, log: OnAttempt, signal?: AbortSignal) {
   const pageCheck: Validate = (data) => {
     const r = check(data);
     return r.menu && r.errors.length === 1 && r.errors[0] === NO_DISHES ? { menu: r.menu, errors: [] } : r;
   };
   const runs = await mapLimited(pages, PDF_PAGE_CONCURRENCY, (page) =>
-    extractWithRetry(llm, [...sourceContent({ ...src, bytes: page.bytes }), { type: "text", text: page.note }], pageCheck, log),
+    extractWithRetry(llm, [...sourceContent({ ...src, bytes: page.bytes }), { type: "text", text: page.note }], pageCheck, log, signal),
   );
   const usage: LlmUsage = { input_tokens: 0, output_tokens: 0 };
   for (const r of runs) {
@@ -129,19 +132,30 @@ async function extractPdfPages(llm: Llm, src: FetchedSource, pages: { bytes: Uin
 }
 
 export async function importMenu(deps: ImportDeps, input: { restaurantId: string; url: string }, validate?: Validate): Promise<ImportResult> {
-  const src = await fetchSource(deps.fetch, input.url);
+  const { signal } = deps;
+  signal?.throwIfAborted();
+  const fetcher: typeof fetch = signal ? (input, init) => {
+    signal.throwIfAborted();
+    return deps.fetch(input, { ...init, signal: init?.signal ? AbortSignal.any([init.signal, signal]) : signal });
+  } : deps.fetch;
+  const src = await fetchSource(fetcher, input.url);
+  signal?.throwIfAborted();
   const snapshotKey = `snapshots/${input.restaurantId}/${Date.now()}`;
   await deps.blobs.put(snapshotKey, src.bytes, { httpMetadata: { contentType: src.contentType } });
+  signal?.throwIfAborted();
 
   const text = textOf(src);
   // A web page with almost no menu text may post its menu as a picture: send its largest images too.
   const html = text === null ? "" : new TextDecoder().decode(src.bytes);
-  const images = text !== null && priceCount(html) < MIN_PRICES ? await fetchMenuImages(deps.fetch, findPageImages(html, src.url)) : [];
+  const images = text !== null && priceCount(html) < MIN_PRICES ? await fetchMenuImages(fetcher, findPageImages(html, src.url)) : [];
+  signal?.throwIfAborted();
   // The layout count comes from page text, which says nothing about a menu in an image.
   const check = validate ?? validateMenu(text === null || images.length ? null : layoutItemCount(text));
   const log = attemptLogger(deps.db, input.restaurantId, input.url);
   const pages = src.kind === "pdf" ? await pdfPageInputs(src.bytes) : [];
-  const run = pages.length > 1 ? await extractPdfPages(deps.llm, src, pages, check, log) : await extractWithRetry(deps.llm, [...images, ...sourceContent(src)], check, log);
+  signal?.throwIfAborted();
+  const run = pages.length > 1 ? await extractPdfPages(deps.llm, src, pages, check, log, signal) : await extractWithRetry(deps.llm, [...images, ...sourceContent(src)], check, log, signal);
+  signal?.throwIfAborted();
   // Missing prices (including market price) do not establish that an item is unavailable.
   // Keep them explicitly unknown; add-ons still aren't standalone dishes.
   const dishes = (run.menu?.dishes ?? []).filter((d) => !isAddOn(d.name));

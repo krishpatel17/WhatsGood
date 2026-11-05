@@ -23,11 +23,12 @@ export function bridgeLlm(opts: { url: string; provider?: "claude" | "codex"; mo
     provider,
     model,
     async json(req: LlmRequest): Promise<LlmResponse> {
-      const { schema, ...rest } = req;
+      const { schema, signal, ...rest } = req;
       // The CLI's schema checker rejects the draft URL Zod adds.
       const { $schema: _draft, ...jsonSchema } = z.toJSONSchema(schema);
       const res = await send(`${opts.url.replace(/\/+$/, "")}/json`, {
         method: "POST",
+        signal,
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ ...rest, provider, model, jsonSchema }),
       });
