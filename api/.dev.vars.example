@@ -3,3 +3,13 @@ ANTHROPIC_API_KEY=
 APIFY_TOKEN=
 # Optional, local only: use your own Claude login instead of ANTHROPIC_API_KEY, for the app and the benchmarks. Run `npm run bridge -w api` first.
 # LLM_BRIDGE_URL=http://127.0.0.1:8790
+# LLM_BRIDGE_PROVIDER=claude
+# Optional explicit Claude model; otherwise the API's configured model is used.
+# LLM_BRIDGE_MODEL=
+#
+# To use your Codex subscription instead, run `npm run bridge:codex -w api`
+# and use these settings (do not enable both URL examples):
+# LLM_BRIDGE_PROVIDER=codex
+# LLM_BRIDGE_URL=http://127.0.0.1:8791
+# Optional: pin a model available to your Codex login. Omit to use the CLI default.
+# LLM_BRIDGE_MODEL=

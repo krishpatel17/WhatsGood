@@ -56,9 +56,19 @@ Open **[localhost:3000](http://localhost:3000)**; API: **8787**.
 </details>
 
 <details>
-<summary>Optional: use your own Claude login locally</summary>
+<summary>Optional: use your own Claude Code or Codex login locally</summary>
 
-Sign in with `claude`; run `npm run bridge -w api`. Set `LLM_BRIDGE_URL=http://127.0.0.1:8790` in `api/.dev.vars`, then restart the API. This uses your plan limits; Apify is still needed. The bridge is local-only; deployed/shared use requires an API key. Reports disclose bridge usage.
+Run `npm run bridge:claude -w api` for Claude Code (port 8790), or sign in with `codex login` and run `npm run bridge:codex -w api` for Codex (port 8791). Both servers can run together. The existing `npm run bridge -w api` command still starts Claude.
+
+Select one in the ignored `api/.dev.vars`, then restart the API:
+
+```dotenv
+LLM_BRIDGE_PROVIDER=codex
+LLM_BRIDGE_URL=http://127.0.0.1:8791
+# Optional: pin an available model with LLM_BRIDGE_MODEL.
+```
+
+For Claude use `LLM_BRIDGE_PROVIDER=claude` and port 8790; an existing URL without a provider still selects Claude. Run `npm run bridge:check -w api -- --media` to test text/image/PDF inputs using the selected login. These local-only calls use your plan limits; reviews still need Apify. Reports record the provider/model and do not estimate API charges for subscription calls. See [local bridge setup and limits](docs/local-bridges.md).
 
 </details>
 
@@ -67,6 +77,8 @@ Sign in with `claude`; run `npm run bridge -w api`. Set `LLM_BRIDGE_URL=http://1
 **382 automated cases** · **363/363 unit + integration passed** · **19/19 browser passed**
 
 Measured **2026-11-05** · [Passing CI](https://github.com/krishpatel17/WhatsGood/actions/runs/42038050531)
+
+This is the published main-branch measurement. Dual-bridge validation results are recorded in [the bridge guide](docs/local-bridges.md#validation-record).
 
 | Layer | Cases | How / what it checks |
 |---|---:|---|
