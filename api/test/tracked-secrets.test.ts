@@ -2,6 +2,7 @@ import { execFileSync } from 'node:child_process';
 import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { expect, it } from 'vitest';
 
 const root=join(import.meta.dirname,'../..');
@@ -12,7 +13,7 @@ it('[manual] US22-S01 scans every tracked text path and reports a nested credent
     const value=['sk','ant','api03', 'x'.repeat(40)].join('-');
     writeFileSync(join(dir,'nested','fixture.txt'),value);
     execFileSync('git',['add','.'],{cwd:dir});
-    const output=execFileSync(process.execPath,['--input-type=module','-e',`import {scanTracked} from ${JSON.stringify(join(root,'scripts/check-secrets.mjs'))}; console.log(JSON.stringify(scanTracked(${JSON.stringify(dir)})));`],{encoding:'utf8'});
+    const output=execFileSync(process.execPath,['--input-type=module','-e',`import {scanTracked} from ${JSON.stringify(pathToFileURL(join(root,'scripts/check-secrets.mjs')).href)}; console.log(JSON.stringify(scanTracked(${JSON.stringify(dir)})));`],{encoding:'utf8'});
     expect(JSON.parse(output)).toEqual(['nested/fixture.txt']);
     expect(output).not.toContain(value);
   } finally {rmSync(dir,{recursive:true,force:true});}

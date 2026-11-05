@@ -11,8 +11,8 @@ export default defineConfig({
     channel: process.env.CI ? "chromium" : "msedge",
   },
   webServer: {
-    command:
-      "NEXT_PUBLIC_API_URL=http://api.test npm run build && node e2e/serve.mjs",
+    command: "npm run build && node e2e/serve.mjs",
+    env: { NEXT_PUBLIC_API_URL: "http://api.test" },
     url: "http://localhost:4173",
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
