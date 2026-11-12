@@ -21,10 +21,13 @@ const list: Item[] = JSON.parse(readFileSync(listPath, "utf8"));
 const proxy = await getPlatformProxy<Env>({ configPath: "wrangler.toml", persist: true });
 const { DB: db, BUCKET: blobs } = proxy.env;
 const llm = selectLlm({ apiKey: process.env.ANTHROPIC_API_KEY, bridgeUrl: process.env.LLM_BRIDGE_URL, bridgeProvider: process.env.LLM_BRIDGE_PROVIDER, bridgeModel: process.env.LLM_BRIDGE_MODEL });
-const render = playwrightRender({ timeoutMs: 45_000 });
 // --prerender: render each menu page up front (outside the importer's 15s source timeout)
 // and serve that HTML to the importer, for slow JavaScript ordering pages.
 const prerender = process.argv.includes("--prerender");
+// Prerender: Toast and similar pages never go network-idle, so wait for the DOM then let the app draw.
+const render = prerender
+  ? playwrightRender({ timeoutMs: 45_000, waitUntil: "domcontentloaded", settleMs: 8_000 })
+  : playwrightRender({ timeoutMs: 45_000 });
 const rendered = new Map<string, { html: string; finalUrl: string }>();
 const baseFetch: typeof fetch = (i, init) => {
   const hit = rendered.get(String(i instanceof Request ? i.url : i));

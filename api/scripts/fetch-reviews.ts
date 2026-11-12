@@ -1,6 +1,7 @@
 // Local only: fetch recent Google reviews (Apify) for every restaurant that has an active menu
 // and no reviews yet, then extract dish mentions. Caps reviews per restaurant to control cost.
-//   npx tsx --env-file-if-exists=.dev.vars scripts/fetch-reviews.ts [maxReviews=40] [concurrency=2]
+//   npx tsx --env-file-if-exists=.dev.vars scripts/fetch-reviews.ts [maxReviews=40] [concurrency=2] [apifyConcurrency=5]
+// Workers run mention extraction in parallel; Apify fetches are capped separately (free plan allows 5 concurrent runs).
 import { getPlatformProxy } from "wrangler";
 import type { Env } from "../src/app";
 import { selectLlm } from "../src/llm/select";
@@ -8,7 +9,13 @@ import { listRestaurants } from "../src/restaurants/repo";
 import { APIFY_ACTOR, mapApifyItem, type ReviewRow, saveReviews } from "../src/reviews/collect";
 import { extractMentions } from "../src/reviews/mentions";
 
-const [max = "40", conc = "2"] = process.argv.slice(2);
+const [max = "40", conc = "2", apifyConc = "5"] = process.argv.slice(2);
+let apifySlots = Number(apifyConc);
+const waiting: (() => void)[] = [];
+async function withApifySlot<T>(fn: () => Promise<T>): Promise<T> {
+  if (apifySlots > 0) apifySlots--; else await new Promise<void>((go) => waiting.push(go));
+  try { return await fn(); } finally { const go = waiting.shift(); if (go) go(); else apifySlots++; }
+}
 const token = process.env.APIFY_TOKEN;
 if (!token) throw new Error("APIFY_TOKEN is not set in .dev.vars");
 
@@ -26,13 +33,16 @@ async function worker() {
     if (!place?.maps_url) { console.log(`${r.name}: no maps link`); continue; }
     const t = Date.now();
     try {
-      const res = await fetch(`https://api.apify.com/v2/acts/${APIFY_ACTOR}/run-sync-get-dataset-items`, {
-        method: "POST",
-        headers: { authorization: `Bearer ${token}`, "content-type": "application/json" },
-        body: JSON.stringify({ startUrls: [{ url: place.maps_url }], maxReviews: Number(max), reviewsSort: "newest", language: "en" }),
+      const got = await withApifySlot(async () => {
+        const res = await fetch(`https://api.apify.com/v2/acts/${APIFY_ACTOR}/run-sync-get-dataset-items`, {
+          method: "POST",
+          headers: { authorization: `Bearer ${token}`, "content-type": "application/json" },
+          body: JSON.stringify({ startUrls: [{ url: place.maps_url }], maxReviews: Number(max), reviewsSort: "newest", language: "en" }),
+        });
+        return res.ok ? { ok: true as const, items: (await res.json()) as Record<string, unknown>[] } : { ok: false as const, status: res.status, text: await res.text() };
       });
-      if (!res.ok) { console.log(`${r.name}: Apify HTTP ${res.status} ${(await res.text()).slice(0, 160)}`); if (res.status === 402) process.exit(1); continue; }
-      const rows = ((await res.json()) as Record<string, unknown>[]).map(mapApifyItem).filter((x): x is ReviewRow => x !== null);
+      if (!got.ok) { console.log(`${r.name}: Apify HTTP ${got.status} ${got.text.slice(0, 160)}`); if (got.status === 402) process.exit(1); continue; }
+      const rows = got.items.map(mapApifyItem).filter((x): x is ReviewRow => x !== null);
       total += rows.length;
       const stored = await saveReviews(db, r.id, rows);
       if (stored === 0) { console.log(`${r.name}: 0 reviews found`); continue; }
