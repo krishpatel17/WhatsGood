@@ -1,0 +1,1190 @@
+[
+ {
+  "name": "Bodo's Bagels",
+  "address": "1609 University Avenue, Charlottesville, VA",
+  "area": "The Corner",
+  "menu_url": "http://www.bodosbagels.com/menu/creamcheeses.html"
+ },
+ {
+  "name": "Marco and Luca",
+  "address": "107 Elliewood Avenue, Charlottesville, VA",
+  "area": "The Corner",
+  "menu_url": "https://www.marcoandluca.com/menu"
+ },
+ {
+  "name": "Take It Away",
+  "address": "115 Elliewood Avenue, Charlottesville, VA",
+  "area": "The Corner",
+  "menu_url": "http://take-it-away.square.site"
+ },
+ {
+  "name": "The Virginian",
+  "address": "1521 University Avenue, Charlottesville, VA",
+  "area": "The Corner",
+  "menu_url": "https://www.thevirginiancville.com/s/Virginian-Menu-8-6-26.pdf"
+ },
+ {
+  "name": "Crozet Pizza at Buddhist Biker Bar",
+  "address": "20 Elliewood Avenue, Charlottesville, VA",
+  "area": "The Corner",
+  "menu_url": "https://order.toasttab.com/online/crozet-pizza-cville-20-elliewood-ave"
+ },
+ {
+  "name": "Kuma Sushi Noodles & Bar",
+  "address": "12 Elliewood Avenue, Charlottesville, VA",
+  "area": "The Corner",
+  "menu_url": ""
+ },
+ {
+  "name": "The Spot",
+  "address": "1407 University Avenue, Charlottesville, VA",
+  "area": "The Corner",
+  "menu_url": ""
+ },
+ {
+  "name": "Poke Sushi Bowl",
+  "address": "101 14th Street Northwest, Charlottesville, VA",
+  "area": "The Corner",
+  "menu_url": "https://ordering.chownow.com/order/17523/locations"
+ },
+ {
+  "name": "Inka Grill",
+  "address": "105 14th Street Northwest, Charlottesville, VA",
+  "area": "The Corner",
+  "menu_url": "https://www.inkagrill.pe/menu/"
+ },
+ {
+  "name": "Boylan Heights",
+  "address": "102 14th Street Northwest, Charlottesville, VA",
+  "area": "The Corner",
+  "menu_url": "https://ordering.chownow.com/order/27047/locations"
+ },
+ {
+  "name": "Christian's Pizza",
+  "address": "100 14th Street Northwest, Charlottesville, VA",
+  "area": "The Corner",
+  "menu_url": "https://order.online/store/-462571/"
+ },
+ {
+  "name": "Got Dumplings",
+  "address": "1395 West Main Street, Charlottesville, VA",
+  "area": "The Corner",
+  "menu_url": "https://order.chownow.com/order/30810/locations"
+ },
+ {
+  "name": "Bang!",
+  "address": "213 2nd Street Southwest, Charlottesville, VA",
+  "area": "Downtown Mall",
+  "menu_url": ""
+ },
+ {
+  "name": "The Whiskey Jar",
+  "address": "225 West Main Street, Charlottesville, VA",
+  "area": "Downtown Mall",
+  "menu_url": "https://www.thewhiskeyjarcville.com/menu"
+ },
+ {
+  "name": "Brightside Beach Pub",
+  "address": "225 West Main Street, Charlottesville, VA",
+  "area": "Downtown Mall",
+  "menu_url": "https://cvillebrightside.square.site"
+ },
+ {
+  "name": "Otto",
+  "address": "111 Water Street West, Charlottesville, VA",
+  "area": "Downtown Mall",
+  "menu_url": "https://www.clover.com/online-ordering/otto-eats-catering-cville"
+ },
+ {
+  "name": "The Alley Light",
+  "address": "108 2nd Street Southwest, Charlottesville, VA",
+  "area": "Downtown Mall",
+  "menu_url": "https://alleylight.com/#menus"
+ },
+ {
+  "name": "Revolutionary Soup",
+  "address": "108 2nd Street Southwest, Charlottesville, VA",
+  "area": "Downtown Mall",
+  "menu_url": "https://revsoupmenu.square.site/"
+ },
+ {
+  "name": "The Bebedero",
+  "address": "225 West Main Street, Charlottesville, VA",
+  "area": "Downtown Mall",
+  "menu_url": "https://thebebedero.com/menu"
+ },
+ {
+  "name": "Afghan Kabob House",
+  "address": "200 West Market Street, Charlottesville, VA",
+  "area": "Downtown Mall",
+  "menu_url": "https://afghankabob-house.com/our-menu/"
+ },
+ {
+  "name": "Bizou",
+  "address": "119 West Main Street, Charlottesville, VA",
+  "area": "Downtown Mall",
+  "menu_url": "https://www.toasttab.com/bizou/v2/online-order"
+ },
+ {
+  "name": "Luce",
+  "address": "110 2nd Street Northwest, Charlottesville, VA",
+  "area": "Downtown Mall",
+  "menu_url": "https://www.toasttab.com/luce"
+ },
+ {
+  "name": "Miller's Downtown",
+  "address": "109 West Main Street, Charlottesville, VA",
+  "area": "Downtown Mall",
+  "menu_url": "https://millersdowntown.com/eat.html"
+ },
+ {
+  "name": "Sedona Taphouse",
+  "address": "1035 Millmont Street, Charlottesville, VA",
+  "area": "Barracks Road",
+  "menu_url": "https://sedonataphouse.com/wp-content/uploads/2019/01/Dinner_Summer2026_Cville_11x14_06.02.26_web.pdf"
+ },
+ {
+  "name": "Poke Sushi Bowl",
+  "address": "1104 Emmet Street North, Charlottesville, VA",
+  "area": "Barracks Road",
+  "menu_url": "https://ordering.chownow.com/order/17523/locations"
+ },
+ {
+  "name": "First Watch",
+  "address": "1114 Emmet Street North, Charlottesville, VA",
+  "area": "Barracks Road",
+  "menu_url": "https://firstwatch.com/menu"
+ },
+ {
+  "name": "Brazos",
+  "address": "1133 Emmet Street North, Charlottesville, VA",
+  "area": "Barracks Road",
+  "menu_url": "https://brazostacos.com/menu/brazos-tacos-barracks-1133-emmett-st-n"
+ },
+ {
+  "name": "El Puerto Mexican Restaurant",
+  "address": "2045 Barracks Road, Charlottesville, VA",
+  "area": "Barracks Road",
+  "menu_url": "https://irp.cdn-website.com/d3c36932/files/uploaded/VA-2903_El+Puerto+Cville_9.5+x+14_113092+Web.pdf"
+ },
+ {
+  "name": "CAVA",
+  "address": "1200 Emmet Street North, Charlottesville, VA",
+  "area": "Barracks Road",
+  "menu_url": "https://cava.com/menu"
+ },
+ {
+  "name": "Cactus Mexican Restuarant",
+  "address": "221 Carlton Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://cactuscvillerest.com/menu/"
+ },
+ {
+  "name": "Citizen Burger Bar",
+  "address": "212 East Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.citizenburgerbarcville.com/s/CB-Cville-Food-Menu-8-6-26.pdf"
+ },
+ {
+  "name": "Mellow Mushroom",
+  "address": "1321 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.mellowmushroom.com/menu/43877"
+ },
+ {
+  "name": "Asado Wing & Taco Company",
+  "address": "1327 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://asadocville.com/menu/"
+ },
+ {
+  "name": "FIG Bistro & Bar",
+  "address": "1331 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.figuva.com/menus-1"
+ },
+ {
+  "name": "Smyrna",
+  "address": "707 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.smyrnacville.com/menu"
+ },
+ {
+  "name": "Orzo Kitchen and Wine Bar",
+  "address": "416 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "http://orzokitchen.com/"
+ },
+ {
+  "name": "Continental Divide",
+  "address": "811 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://continental-divide.square.site/"
+ },
+ {
+  "name": "Vision BBQ",
+  "address": "249 Ridge McIntire Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.visionbbqcville.com/_files/ugd/e6a12b_1b82c8343edc408298e827c87b5ce78b.pdf"
+ },
+ {
+  "name": "Hong Kong",
+  "address": "32 Mill Creek Drive, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.hongkongmillcreek.com/#menu"
+ },
+ {
+  "name": "Botanical Plant Based Fare",
+  "address": "421 East Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.botanicalfare.com/charlottesvillemenus"
+ },
+ {
+  "name": "Rapture",
+  "address": "303 East Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.rapturerestaurant.com/menu"
+ },
+ {
+  "name": "Caf\u00e9 Frank",
+  "address": "317 East Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.cafefrankcville.com/menus-1"
+ },
+ {
+  "name": "The Nook",
+  "address": "415 East Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.thenookcville.com/charlottesville-the-nook-food-menu"
+ },
+ {
+  "name": "Kabuto Sushi and Teppanyaki",
+  "address": "1836 Abbey Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://kabuto-cville.com/kabuto-menu.pdf"
+ },
+ {
+  "name": "Lazy Parrot Backyard BBQ",
+  "address": "594 Pantops Center, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.lazyparrotwingsandbrews.com/menu"
+ },
+ {
+  "name": "Noodles & Company",
+  "address": "2035 Bond Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.noodles.com/menu/ramen"
+ },
+ {
+  "name": "Burton's Grill and Bar of Charlottesville",
+  "address": "2010 Bond Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://burtonsgrill.com/menus/va/charlottesville/all-day/"
+ },
+ {
+  "name": "Chang Thai Cville",
+  "address": "1232 Emmet Street North, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.changthaicville.com/menu"
+ },
+ {
+  "name": "Applebee's",
+  "address": "2005 Abbey Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.applebees.com/en/menu"
+ },
+ {
+  "name": "Roots Natural Kitchen",
+  "address": "1329 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.rootsnaturalkitchen.com/menu/"
+ },
+ {
+  "name": "Royalty Eats",
+  "address": "820 Cherry Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.royaltyeatsllc.com/menu-2"
+ },
+ {
+  "name": "Little Manila Resto",
+  "address": "816 Cherry Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.littlemanilacville.com/"
+ },
+ {
+  "name": "Plaza Azteca",
+  "address": "101 Seminole Court, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.plazaaztecacville.com/"
+ },
+ {
+  "name": "Baggby's Gourmet Sandwiches",
+  "address": "512 East Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.baggbys.com/"
+ },
+ {
+  "name": "Himalayan Fusion",
+  "address": "520 East Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.smorefood.com/tciyyv5e/himalayan-fusion-charlottesville-22902/order-online?utm_source=gmb&utm_medium=order_link&menu=All+Day+Menu&category=Appetizer"
+ },
+ {
+  "name": "Petit Pois",
+  "address": "201 East Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.petitpoisrestaurant.com"
+ },
+ {
+  "name": "Zocalo",
+  "address": "201 East Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.zocalo-restaurant.com/"
+ },
+ {
+  "name": "Maya Restaurant",
+  "address": "633 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.maya-restaurant.com/dine-in-menu"
+ },
+ {
+  "name": "Moge Tee",
+  "address": "109 14th Street Northwest, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.mogeteeusa.com"
+ },
+ {
+  "name": "IHOP",
+  "address": "1740 Rio Hill Center, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.ihop.com/en/menu"
+ },
+ {
+  "name": "Seoul Korean BBQ and Hotpot",
+  "address": "100 Zan Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://seoul.restaurant/menu"
+ },
+ {
+  "name": "Matchbox",
+  "address": "2055 Bond Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.matchboxrestaurants.com/menu-and-locations-dropdown"
+ },
+ {
+  "name": "The Melting Pot",
+  "address": "501 East Water Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.meltingpot.com/charlottesville-va/charlottesville-restaurant-menu.aspx"
+ },
+ {
+  "name": "BJ's",
+  "address": "3924 Lenox Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.bjsrestaurants.com/locations/va/charlottesville"
+ },
+ {
+  "name": "The Ridley",
+  "address": "1106 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.ridleyva.com/menu"
+ },
+ {
+  "name": "Chimm",
+  "address": "365 Merchant Walk Square, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://toasttab.com/chimmtaste"
+ },
+ {
+  "name": "Mochiko",
+  "address": "365 Merchant Walk Square, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.hawaiianfoodcville.com/menu"
+ },
+ {
+  "name": "Timberwood Tap House",
+  "address": "245 Merchant Walk Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://timberwoodtaphouse.com/lunch-menu/"
+ },
+ {
+  "name": "Carmello's Restaurant",
+  "address": "400 Twentyninth Place, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://carmellosrestaurantandwinebar.com/menu/"
+ },
+ {
+  "name": "Pizza Hut",
+  "address": "230 Twentyninth Place Court, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.pizzahut.com/menu"
+ },
+ {
+  "name": "DOMA",
+  "address": "701 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://domakoreankitchen.com/menu"
+ },
+ {
+  "name": "Kanak Indian Restaurant",
+  "address": "385 Merchant Walk Square, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "http://www.kanakcville.com/"
+ },
+ {
+  "name": "Akira Level Sushi & Ramen",
+  "address": "3912 Lenox Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.akiralevel.com/"
+ },
+ {
+  "name": "Mission BBQ",
+  "address": "3912 Lenox Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://mission-bbq.com/locations-and-menu"
+ },
+ {
+  "name": "Canipe Brothers Bar & Grill",
+  "address": "2104 Angus Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.canipebrothersbarandgrill.com/full-menu/2650751"
+ },
+ {
+  "name": "Insomnia Cookies",
+  "address": "1409 University Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://insomniacookies.com/store/charlottesville"
+ },
+ {
+  "name": "Farm Bell Kitchen",
+  "address": "1209 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://farmbellkitchen.com/menu/"
+ },
+ {
+  "name": "Bad Luck Ramen",
+  "address": "522 2nd Street Southeast, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.badluckramen.com/food"
+ },
+ {
+  "name": "M Sushi",
+  "address": "171 Seminole Court, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://msushi.kwickmenu.com/"
+ },
+ {
+  "name": "Maharaja Indian Cuisine",
+  "address": "378 Hillsdale Drive, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.maharaja-indian-restaurant.com/"
+ },
+ {
+  "name": "The Grill at Meadowcreek",
+  "address": "1400 Pen Park Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://thegrillatmeadowcreek.com/menu/"
+ },
+ {
+  "name": "Maple Pine Breakfast & Thai Kitchen",
+  "address": "630 Riverside Shops Way, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.maplepinecville.com/menu-1"
+ },
+ {
+  "name": "Pho 3 Pho",
+  "address": "315 Rivanna Plaza Drive, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://pho3photogo.com/"
+ },
+ {
+  "name": "Lampo2Go",
+  "address": "929 2nd Street Southeast, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.lampopizza.com/menu"
+ },
+ {
+  "name": "Domoishi",
+  "address": "853 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://domoishi.com/menu/"
+ },
+ {
+  "name": "Pico Wrap",
+  "address": "2214 Ivy Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.picowrap.com/menu"
+ },
+ {
+  "name": "Ivy Provisions",
+  "address": "2206 Ivy Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.ivyprovisions.com/s/The-Official-2025-Menu.pdf"
+ },
+ {
+  "name": "Thyme and Co",
+  "address": "104 14th Street Northwest, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.thyme-co.com/menu"
+ },
+ {
+  "name": "Sticks Kebob Shop",
+  "address": "1820 Abbey Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.stickskebobshop.com/our-menu"
+ },
+ {
+  "name": "El Tizon Rotisserie Chicken",
+  "address": "1875 Seminole Trail, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.eltizonchicken.com/menu"
+ },
+ {
+  "name": "Chopan Kebab Express",
+  "address": "620 Albemarle Square, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.chopankabobexpress.com/menu"
+ },
+ {
+  "name": "Popitos Pizza",
+  "address": "1966 Rio Hill Center, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.popitospizza.com/"
+ },
+ {
+  "name": "Al Carbon",
+  "address": "365 Merchant Walk Square, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.alcarbonva.com"
+ },
+ {
+  "name": "Pineapples Thai Kitchen",
+  "address": "722 Preston Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.pineapplescville.com/menu-1"
+ },
+ {
+  "name": "I Am Thai",
+  "address": "946 Grady Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.dairymarketcville.com/stalls/iamthai"
+ },
+ {
+  "name": "Dino's Wood-Fired Pizza and Grill",
+  "address": "946 Grady Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://dinos.restaurant/food-menu"
+ },
+ {
+  "name": "Currylicious",
+  "address": "Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.dairymarketcville.com/stalls/grn-burger-1"
+ },
+ {
+  "name": "Maizal",
+  "address": "946 Grady Avenue Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://order.maizalgrill.com/"
+ },
+ {
+  "name": "Mashu Festival",
+  "address": "946 Grady Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.dairymarketcville.com/stalls/mashu-festival"
+ },
+ {
+  "name": "Aromas Cafe and Catering",
+  "address": "Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.aromascafeandcatering.com"
+ },
+ {
+  "name": "Barbie's Burrito Barn",
+  "address": "201 Avon Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "http://www.barbiesburritobarn.com/#menu-2-section"
+ },
+ {
+  "name": "Holly's Diner",
+  "address": "1221 East Market Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://hollysgrill.blogspot.com"
+ },
+ {
+  "name": "Mas Tapas",
+  "address": "904 Monticello Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://mastapas.com/menus"
+ },
+ {
+  "name": "Conmole",
+  "address": "816 Hinton Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.conmole.com/"
+ },
+ {
+  "name": "The Local Restaurant and Catering",
+  "address": "824 Hinton Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.thelocal-cville.com/menu"
+ },
+ {
+  "name": "Tavola Restaurant",
+  "address": "826 Hinton Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://tavolavino.com/wp-content/uploads/2026/09/FALL-26-Food-Menu.pdf"
+ },
+ {
+  "name": "Sal's Caffe Italia",
+  "address": "221 East Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.salscaffeitalia.com/italian-food-menu"
+ },
+ {
+  "name": "Ten",
+  "address": "120 East Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://ten.hrpos.heartland.us/menu"
+ },
+ {
+  "name": "Sultan Kebab",
+  "address": "333 2nd Street Southeast, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://sultankebabcville.com/charlottesville-sultan-kebab-food-menu"
+ },
+ {
+  "name": "Guajiros Miami Eatery",
+  "address": "114 10th Street Northwest, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.guajiroscville.com/s/09012026-NEW-Food-and-Drink-Menu-1.pdf"
+ },
+ {
+  "name": "Firefly",
+  "address": "1304 East Market Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://fireflycville.com/menu"
+ },
+ {
+  "name": "Hamiltons' at First & Main",
+  "address": "101 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.hamiltonsrestaurant.com/bistro-menu"
+ },
+ {
+  "name": "Oakhart Social Restaurant",
+  "address": "511 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.oakhartsocial.com/dinner-menu"
+ },
+ {
+  "name": "Public Fish and Oyster",
+  "address": "513 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.publicfo.com/menu"
+ },
+ {
+  "name": "Vivace Italian Ristorante",
+  "address": "2244 Ivy Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.vivacecville.com/"
+ },
+ {
+  "name": "El Tio",
+  "address": "2171 Ivy Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://eltiorestauranteytienda.com/"
+ },
+ {
+  "name": "Pi-Napo Pizzeria",
+  "address": "2115 Jefferson Park Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://pinapopizza.com/"
+ },
+ {
+  "name": "Nguyen's Kitchen",
+  "address": "900 Gardens Boulevard, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://website-cdn.menusifu.com/wp-content/uploads/nguyenskitchenva.com/2022/07/dish-meal-food-produce-meat-cuisine-755650-pxhere.com_.jpg"
+ },
+ {
+  "name": "Now and Zen",
+  "address": "202 2nd Street Northwest, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://nowandzencville.square.site/"
+ },
+ {
+  "name": "Sticks Kebob Shop",
+  "address": "917 Preston Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.stickskebobshop.com/our-menu"
+ },
+ {
+  "name": "Vu Noodles",
+  "address": "111 Water Street East, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.vunoodles.com/"
+ },
+ {
+  "name": "Mockingbird",
+  "address": "421 Monticello Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.mockingbird-cville.com/menu"
+ },
+ {
+  "name": "Ciaccia Pizza and Focaccia",
+  "address": "Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.ciacciashop.com/menu"
+ },
+ {
+  "name": "Southern Crescent",
+  "address": "814 Hinton Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.thesoutherncrescent.com/#menu-section"
+ },
+ {
+  "name": "Mejicali",
+  "address": "852 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://mejicalirestaurant.com/charlottesville-albemarle-county-university-of-virginia-downtown-mejicali-restaurant-food-menu"
+ },
+ {
+  "name": "Bambu",
+  "address": "245 Merchant Walk Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://bambudumplinghouse.com/"
+ },
+ {
+  "name": "El Ranchero Restaurant Charlottesville",
+  "address": "1145 5th Street Southwest, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://elrancherorestaurantcharlottesvilleva.com/el-ranchero-restaurant-charlottesville/"
+ },
+ {
+  "name": "Black Cow Chophouse",
+  "address": "420 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.blackcowchophouse.com/eat"
+ },
+ {
+  "name": "C&O Restaurant",
+  "address": "515 Water Street East, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.candorestaurant.com/dinner-menu"
+ },
+ {
+  "name": "Tubby's",
+  "address": "1412 East High Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.tubbyscville.com/full-menu/"
+ },
+ {
+  "name": "Aberdeen Barn",
+  "address": "2018 Holiday Drive, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.aberdeenbarn.com/"
+ },
+ {
+  "name": "Lampo",
+  "address": "205 Monticello Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.lampopizza.com/menu"
+ },
+ {
+  "name": "Jack Brown\u2019s Beer & Burger Joint",
+  "address": "109 2nd Street Southeast, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.jackbrownsjoint.com/menu/"
+ },
+ {
+  "name": "Red Hub Food Co.",
+  "address": "202 10th Street Northwest, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://redhubfoodco.com/sample-menu"
+ },
+ {
+  "name": "Texas Roadhouse",
+  "address": "455 Albemarle Square, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.texasroadhouse.com/global-menu"
+ },
+ {
+  "name": "Afghan Kabob",
+  "address": "400 Emmet Street North, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.afghankabobcville.com/our-menu/"
+ },
+ {
+  "name": "Wayside Takeout And Catering",
+  "address": "2203 Jefferson Park Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://waysidechicken.com/"
+ },
+ {
+  "name": "Michie Tavern",
+  "address": "Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.michietavern.com/wp-content/uploads/2026/10/PubMenu_October152026_BackGround_FullPage.pdf"
+ },
+ {
+  "name": "Szechuan Restaurant",
+  "address": "2006 Holiday Drive, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "http://www.szechuanva.com/"
+ },
+ {
+  "name": "Outback Steakhouse",
+  "address": "1101 Seminole Trail, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.outback.com/menu/charlottesville"
+ },
+ {
+  "name": "Mexico Viejo Grill",
+  "address": "571 Branchlands Boulevard, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://mexicoviejogrillva.com/mexico-viejo-grill/"
+ },
+ {
+  "name": "Tip Top",
+  "address": "1420 Richmond Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://tiptoprestaurant.com/breakfast-menu/"
+ },
+ {
+  "name": "Waffle House",
+  "address": "495 Premier Circle, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.wafflehouse.com/menu/"
+ },
+ {
+  "name": "Ivy Inn Restaurant",
+  "address": "2244 Old Ivy Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": "https://www.ivyinnrestaurant.com/dinner-menu"
+ },
+ {
+  "name": "Beer Run",
+  "address": "156 Carlton Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Thai Cuisine & Noodle House",
+  "address": "2005 Commonwealth Drive, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Box'd Kitchen",
+  "address": "909 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Jade Garden",
+  "address": "1139 5th Street Southwest, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Yuan Ho Gao",
+  "address": "117 Maury Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Thai Fresh",
+  "address": "106 5th Street Southeast, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Lime Leaf",
+  "address": "Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Peter Chang's China Grill",
+  "address": "2162 Barracks Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Mi Casita",
+  "address": "312 Pantops Center, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "The Castle",
+  "address": "10 Bonnycastle Drive, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Red Lantern",
+  "address": "221 Carlton Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Vita Nova Pizza & Pasta Bar",
+  "address": "310 East Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Lazeez",
+  "address": "401 East Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Cafe 88",
+  "address": "923 Preston Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "El Ciruelo",
+  "address": "1703 Allied Lane, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Lemongrass",
+  "address": "104 14th Street Northwest, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Kyoto",
+  "address": "1864 Rio Hill Center, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Guadalajara Mexican Restaurant",
+  "address": "395 Greenbrier Drive, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Mezeh Mediterranean Grill",
+  "address": "2015 Bond Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Thai '99 II Restaurant & Bar",
+  "address": "915 Gardens Boulevard, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Taste of China",
+  "address": "610 Albemarle Square, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Deen's Bistro",
+  "address": "622 Albemarle Square, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Brazos Tacos",
+  "address": "925 2nd Street Southeast, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Bento Sushi",
+  "address": "Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "7 Days Jr. Deli & Bar",
+  "address": "104 14th Street Northwest, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Buffalo Wild Wings",
+  "address": "Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Q Noodles",
+  "address": "1001 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Marco & Luca Dumplings",
+  "address": "176 Zan Road, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Dillishus Fish & Chik'n",
+  "address": "719 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Silk Thai",
+  "address": "2210 Fontaine Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Bar Tomas",
+  "address": "309 Avon Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Monsoon Siam",
+  "address": "113 West Market Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Basta Pasta",
+  "address": "Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Mashumen",
+  "address": "2208 Fontaine Avenue, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Tangerine's Kitchen",
+  "address": "32 Mill Creek Drive, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Beijing Station",
+  "address": "104 14th Street Northwest, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Mariscos El Barco",
+  "address": "625 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Asian Express",
+  "address": "909 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Taqueria El Comalito",
+  "address": "905 East Market Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "La Michoacana",
+  "address": "508 Stewart Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Buffalo Wild Wings",
+  "address": "930 Olympia Drive, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Six Ko Korean Eats",
+  "address": "416,418 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Tavern & Grocery",
+  "address": "333 West Main Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Hibachi Grill Supreme Buffet",
+  "address": "1185 Seminole Trail, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Guadalajara",
+  "address": "108 Town and Country Lane, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Riverside Lunch",
+  "address": "1429 Hazel Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Jak 'n' Jil",
+  "address": "1404 East High Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Guadalajara",
+  "address": "805 East Market Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Korner Restaurant",
+  "address": "415 Roosevelt Brown Boulevard, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Western Sizzlin'",
+  "address": "576 Branchlands Boulevard, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Fabio's NY Pizza",
+  "address": "1551 East High Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Milan Indian Cuisine",
+  "address": "1817 Emmet Street North, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "East Garden",
+  "address": "120 Riverbend Drive, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ },
+ {
+  "name": "Brown's",
+  "address": "1210 Avon Street, Charlottesville, VA",
+  "area": "Charlottesville",
+  "menu_url": ""
+ }
+]

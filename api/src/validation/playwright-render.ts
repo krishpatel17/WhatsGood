@@ -7,14 +7,24 @@ import { scrollUntilEnd } from "../menu/scroll";
 const USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36";
 
 /** Opens the page, waits for it to settle, scrolls a screen at a time so lazy sections load, and returns the rendered HTML. */
-export function playwrightRender(opts: { timeoutMs?: number } = {}): Render & { close: () => Promise<void> } {
+// Some hosts (Toast) keep polling and never reach "networkidle"; for those pass
+// waitUntil "domcontentloaded" plus settleMs so the client app has time to draw the menu.
+export function playwrightRender(
+  opts: { timeoutMs?: number; waitUntil?: "networkidle" | "domcontentloaded" | "load"; settleMs?: number } = {},
+): Render & { close: () => Promise<void> } {
   const timeout = opts.timeoutMs ?? 30_000;
+  const waitUntil = opts.waitUntil ?? "networkidle";
   let browser: Promise<Browser> | null = null;
   const render = (async (url: string) => {
     browser ??= chromium.launch();
     const page = await (await browser).newPage({ userAgent: USER_AGENT });
     try {
-      await page.goto(url, { waitUntil: "networkidle", timeout });
+      const res = await page.goto(url, { waitUntil, timeout });
+      if (opts.settleMs) {
+        // Bot-blocked (e.g. Toast 403 to headless browsers): fail fast instead of waiting on an error page.
+        if (res && res.status() >= 400) throw new Error(`HTTP ${res.status()}`);
+        await page.waitForTimeout(opts.settleMs);
+      }
       await scrollUntilEnd({
         // In-page code as strings: this package's types have no browser globals.
         scrollBy: () => page.evaluate("window.scrollBy(0, window.innerHeight * 0.8)").then(() => {}),
