@@ -30,6 +30,8 @@ for (const file of readdirSync(dir).filter((f) => f.endsWith(".json")).sort()) {
   const reviews: ReviewRow[] = saved.filter((x) => x.text?.trim()).map((x) => ({ source_id: x.source_id, text: x.text.trim(), rating: x.rating, date: x.date, source: x.source_id.split(":")[0] || "google" }));
   const total = await saveReviews(db, r.id, reviews);
   if ((await activeMenuDishes(db, r.id)).length === 0) { console.log(`${r.name}: ${total} reviews stored; no menu yet, mentions skipped`); continue; }
+  const done = await db.prepare("SELECT COUNT(*) AS n FROM mentions WHERE restaurant_id = ?").bind(r.id).first<{ n: number }>();
+  if (done?.n && !process.argv.includes("--redo")) { console.log(`${r.name}: ${total} reviews; mentions already extracted (${done.n})`); continue; }
   const t = Date.now();
   try {
     const m = await extractMentions({ db, llm }, r.id);

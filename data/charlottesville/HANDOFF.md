@@ -1,6 +1,8 @@
 # Charlottesville restaurant data — handoff
 
-**State (2026-11-12):** 199 restaurants, 91 with active menus (5,821 dishes). Saved reviews + dish mentions loaded for all 10 survey restaurants (2,211 reviews, 1,583 mentions; Crozet Pizza's mentions still pending, menu now loaded). No Apify reviews fetched yet.
+**State (2026-11-12, merged):** 199 restaurants, 92 with active menus (5,951 dishes), 67 with reviews (3,779 reviews, 2,955 dish mentions). Saved repo reviews for all 10 survey restaurants (mentions done, incl. Crozet Pizza); 57 more restaurants got 35 recent Google reviews each via Apify (~$0.94 of credit used). Combines krishpatel17's menu retries (Bodo's Bagels, Mellow Mushroom, El Tio) with ll739's Apify reviews.
+
+Note: export `seed.sql` with an sqlite3 that does not emit `unistr(...)` (sqlite3 >= 3.48 does for newlines), or loading into D1 fails on those rows. Check with `grep -c unistr data/charlottesville/seed.sql` (should be 0).
 
 ## Files
 - `seed.sql` — restaurants, menus, dishes, reviews, mentions exported from local D1 (idempotent `INSERT OR IGNORE`).
@@ -19,11 +21,10 @@ npx wrangler d1 execute whats-good --local --file=../data/charlottesville/seed.s
 ```
 
 ## Remaining work (run from api/, with `npm run dev` stopped so one process writes D1)
-Done: saved reviews (step 1) and the slow-menu retry (15 of 29 recovered; Toast prerender fix is in `playwrightRender` — `domcontentloaded` + 8s settle, fails fast on HTTP 4xx).
-1. Fresh reviews: `npx tsx --env-file-if-exists=.dev.vars scripts/fetch-reviews.ts 40 10 5` (10 workers for mention extraction, 5 concurrent Apify runs = free-plan cap). ~109 restaurants, ~$2.60. Codex bridge with `LLM_BRIDGE_MODEL=gpt-6-luna` worked well.
-2. Crozet Pizza: extract mentions now that it has a menu (re-run `scripts/load-saved-reviews.ts`).
-3. Retry `Chimm` and `Tubby's` (Codex bridge timed out at 120s) and Pizza Hut (HTTP2 error, blocks headless).
-4. Need better menu URLs by hand: Brightside Beach Pub, Rapture, Royalty Eats, Plaza Azteca, Moge Tee, Mochiko, Al Carbon, Mashu Festival, Conmole, Barbie's Burrito Barn (validation 11 vs 22), plus the ~39 earlier "No dishes found" and 57 with no menu link.
-5. Re-export `seed.sql` (sqlite3 loop in the PR description) and push.
+Done: saved reviews + mentions (all 10), slow-menu retry with the Toast prerender fix, Apify reviews for 57 restaurants.
+1. Apify reviews still missing for ~25 restaurants with menus (most hit Node's 5-minute timeout on Apify's sync endpoint — "fetch failed" — e.g. Mockingbird, C&O, Michie Tavern, Lampo, Texas Roadhouse; plus Noodles & Company 408, Oakhurst Inn no maps link). Rerun `npx tsx --env-file-if-exists=.dev.vars scripts/fetch-reviews.ts 35 4 2`; it only picks restaurants with a menu and no reviews.
+2. Retry `Chimm` and `Tubby's` if still missing; Pizza Hut blocks headless browsers.
+3. Need better menu URLs by hand: Brightside Beach Pub, Rapture, Royalty Eats, Plaza Azteca, Moge Tee, Mochiko, Al Carbon, Mashu Festival, Conmole, Barbie's Burrito Barn, plus the ~39 earlier "No dishes found" and 57 with no menu link.
+4. Re-export `seed.sql` (sqlite3 loop in the PR description) and push.
 
 Production D1 is untouched. To load there: `npx wrangler d1 execute whats-good --remote --file=../data/charlottesville/seed.sql` (only when the team agrees).
