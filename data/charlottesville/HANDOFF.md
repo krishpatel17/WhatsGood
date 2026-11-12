@@ -19,7 +19,7 @@ npx wrangler d1 execute whats-good --local --file=../data/charlottesville/seed.s
 ```
 
 ## Remaining work (run from api/, with `npm run dev` stopped so one process writes D1)
-1. Saved reviews: done (all 10 loaded; restaurants without a menu got reviews but no dish mentions — rerun `scripts/load-saved-reviews.ts` after their menus load).
+1. Saved reviews: all 10 stored. Dish mentions still needed for Otto, Revolutionary Soup, Afghan Kabob House (hit usage limit) and Crozet Pizza (no menu yet): rerun `scripts/load-saved-reviews.ts`.
 2. Retry slow menus: `npx tsx --env-file-if-exists=.dev.vars scripts/bulk-import.ts ../data/charlottesville/retry-timeouts.json 2 --prerender`.
    Known issue: Toast pages never reach "network idle", so `playwrightRender` times out. Fix: in the prerender path use `waitUntil: "domcontentloaded"` + ~8s wait + scroll. Toast may still return 403 to headless browsers; skip those.
 3. Fresh reviews: `npx tsx --env-file-if-exists=.dev.vars scripts/fetch-reviews.ts 40 2` (~$0.60 per 1,000 reviews; Apify free tier had ~$2.11 left).
