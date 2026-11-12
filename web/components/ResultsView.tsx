@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { api, type Picks, type Profile } from "../lib/api";
 import { PickCard } from "./PickCard";
+import { PicksProgress } from "./PicksProgress";
 export function ResultsView({
   restaurantId,
   profileId,
@@ -61,10 +62,8 @@ export function ResultsView({
     );
   if (!picks)
     return (
-      <section aria-busy="true" aria-label="Loading recommendations">
-        <p className="notice" role="status">
-          Finding the best picks for you…
-        </p>
+      <section aria-label="Loading recommendations">
+        <PicksProgress />
         {[1, 2, 3].map((n) => (
           <div className="card skeleton-card" key={n} aria-hidden="true">
             <div className="skeleton short" />
@@ -89,11 +88,13 @@ export function ResultsView({
         </span>
       </div>
       {picks.mode === "fallback" && generating && (
-        <p className="notice" aria-busy="true" role="status">
-          {reviewBacked
-            ? "Finding the best picks for you… Here are the top-rated dishes meanwhile."
-            : "Finding the best picks for you… Here are some menu matches meanwhile."}
-        </p>
+        <PicksProgress
+          meanwhile={
+            reviewBacked
+              ? "Here are the top-rated dishes meanwhile. They'll update when your picks are ready."
+              : "Here are some menu matches meanwhile. They'll update when your picks are ready."
+          }
+        />
       )}
       {picks.mode === "fallback" && !generating && (
         <p className="notice">
